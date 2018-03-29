@@ -22,3 +22,8 @@ body {
 h1, h2, h3, h4 {
   font-weight: normal;
 }
+
+.mat-elevation-z5 {
+  position: relative;
+  z-index: 2;
+}
