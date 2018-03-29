@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, MatMenuModule, MatToolbarModule,  MatCardModule,
   MatSidenavModule,
   MatFormFieldModule, MatTooltipModule } from '@angular/material';
+import {MatTabsModule} from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -29,6 +30,7 @@ const materialModules = [
     ToolbarComponent
   ],
   imports: [
+    MatTabsModule,
     materialModules,
     BrowserModule,
     BrowserAnimationsModule,
