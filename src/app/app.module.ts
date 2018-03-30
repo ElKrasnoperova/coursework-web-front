@@ -5,12 +5,14 @@ import { MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, MatMen
   MatSidenavModule,
   MatFormFieldModule, MatTooltipModule } from '@angular/material';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { EpisodeChooserComponent } from './episode-chooser/episode-chooser.component';
 
 const materialModules = [
   MatButtonModule,
@@ -22,12 +24,14 @@ const materialModules = [
   MatFormFieldModule,
   MatInputModule,
   MatTooltipModule,
-  MatSelectModule
+  MatSelectModule,
+  MatCheckboxModule
 ];
 @NgModule({
   declarations: [
     AppComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    EpisodeChooserComponent
   ],
   imports: [
     MatTabsModule,

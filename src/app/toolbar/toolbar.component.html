@@ -1,0 +1,28 @@
+<mat-toolbar color="primary" class = "mat-elevation-z5">
+  <mat-toolbar-row>
+    <span>Game of thrones</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>perm_identity</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <span>Админка</span>
+      </button>
+      <button mat-menu-item>
+        <span>Настройки</span>
+      </button>
+      <button mat-menu-item>
+        <span>Выход</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-tab-group >
+  <mat-tab label="Персонажи">
+  </mat-tab>
+  <mat-tab label="Карта">
+  </mat-tab>
+  <mat-tab label="Игры">
+  </mat-tab>
+</mat-tab-group>
