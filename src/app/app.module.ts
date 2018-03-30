@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { EpisodeChooserComponent } from './episode-chooser/episode-chooser.component';
+import { CardForMapComponent } from './card-for-map/card-for-map.component';
 
 const materialModules = [
   MatButtonModule,
@@ -31,7 +32,8 @@ const materialModules = [
   declarations: [
     AppComponent,
     ToolbarComponent,
-    EpisodeChooserComponent
+    EpisodeChooserComponent,
+    CardForMapComponent
   ],
   imports: [
     MatTabsModule,
