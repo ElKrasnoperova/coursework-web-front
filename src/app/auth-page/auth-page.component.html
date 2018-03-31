@@ -1,0 +1,26 @@
+<app-toolbar></app-toolbar>
+<div class = slider-block>
+  <div class = slider>
+    <slideshow
+               [height]="'400px'"
+               [autoPlay]="true"
+               [showArrows]="true"
+               [imageUrls]="imageSources"
+               [lazyLoad]="imageSources?.length > 1"
+               [autoPlayWaitForLazyLoad]="true">
+    </slideshow>
+  </div>
+</div>
+
+<div class = forms>
+  <mat-tab-group class="auth-tabs">
+    <mat-tab label="Вход" class="auth-label-login">
+      <app-sign-in-form></app-sign-in-form>
+      <button mat-raised-button color="primary" class = button-position>Войти</button>
+    </mat-tab>
+    <mat-tab label="Регистрация" class="auth-label-login">
+      <app-sign-up-form></app-sign-up-form>
+      <button mat-raised-button color="primary" class = button-position>Зарегистрироваться</button>
+    </mat-tab>
+  </mat-tab-group>
+</div>

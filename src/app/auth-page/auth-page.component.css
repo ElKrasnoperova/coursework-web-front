@@ -1,0 +1,53 @@
+.slider-block {
+  width: 60%;
+  margin: 48px;
+  overflow: hidden;
+  float: left;
+}
+
+.slider {
+  margin-top: 2%;
+}
+
+.auth-label-login{
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 62px;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.forms {
+  float: left;
+  width: 320px;
+}
+
+.button-position {
+  float: right;
+  margin-top: 8px;
+}
+
+.auth-tabs{
+  margin-top: 16%;
+  width: 100%;
+}
+
+.demo-tab-group {
+  border: 1px solid #e8e8e8;
+}
+
+.demo-tab-content {
+  padding: 16px;
+}
+
+.mat-tab-header{
+  width: 320px;
+}
