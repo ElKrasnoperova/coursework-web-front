@@ -6,3 +6,12 @@
   flex: 1 1 auto;
 }
 
+.logo {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.background {
+  height: 100%;
+}

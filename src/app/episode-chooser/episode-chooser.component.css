@@ -1,4 +1,11 @@
 .chronology {
-  width: 15%;
+  width: 12%;
+  background-color: #ffffffE3;
+  float: right;
+  z-index: 100;
+  display: block;
+  position: fixed;
+  top: 128px;
+  right: 8px;
 }
 

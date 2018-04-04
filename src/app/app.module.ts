@@ -6,7 +6,7 @@ import { MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, MatMen
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { EpisodeChooserComponent } from './episode-chooser/episode-chooser.component';
@@ -15,6 +15,10 @@ import { AuthPageComponent } from './auth-page/auth-page.component';
 import {SlideshowModule} from 'ng-simple-slideshow';
 import { SignInFormComponent } from './sign-in-form/sign-in-form.component';
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
+import { TranslationGamePageComponent } from './translation-game-page/translation-game-page.component';
+import { MapPageComponent } from './map-page/map-page.component';
+import { YearChooserComponent } from './year-chooser/year-chooser.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
 
@@ -29,7 +33,8 @@ const materialModules = [
   MatInputModule,
   MatTooltipModule,
   MatSelectModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatProgressBarModule
 ];
 @NgModule({
   declarations: [
@@ -39,7 +44,10 @@ const materialModules = [
     CardForMapComponent,
     AuthPageComponent,
     SignInFormComponent,
-    SignUpFormComponent
+    SignUpFormComponent,
+    TranslationGamePageComponent,
+    MapPageComponent,
+    YearChooserComponent,
   ],
   imports: [
     MatTabsModule,
@@ -48,7 +56,8 @@ const materialModules = [
     BrowserAnimationsModule,
     FormsModule,
     SlideshowModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

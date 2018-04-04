@@ -24,8 +24,10 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
     "angular-ui-carousel": "^0.1.10",
+    "angular2-image-zoom": "^1.2.1",
     "core-js": "^2.4.1",
     "ng-simple-slideshow": "^1.1.16",
+    "ng2-zoomable": "^0.1.1",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
   },
