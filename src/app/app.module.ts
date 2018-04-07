@@ -18,7 +18,8 @@ import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
 import { TranslationGamePageComponent } from './translation-game-page/translation-game-page.component';
 import { MapPageComponent } from './map-page/map-page.component';
 import { YearChooserComponent } from './year-chooser/year-chooser.component';
-import { AppRoutingModule } from './app-routing.module';
+import { GameCardComponent } from './game-card/game-card.component';
+
 
 
 
@@ -48,6 +49,7 @@ const materialModules = [
     TranslationGamePageComponent,
     MapPageComponent,
     YearChooserComponent,
+    GameCardComponent,
   ],
   imports: [
     MatTabsModule,
@@ -57,7 +59,8 @@ const materialModules = [
     FormsModule,
     SlideshowModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    BrowserModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

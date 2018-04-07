@@ -1,0 +1,26 @@
+.card{
+  width: 20%;
+  padding: 0;
+  height: 360px;
+}
+
+.button-style{
+  width: 100%;
+  background-color: #0000007F;
+
+}
+
+.picture{
+  display: inline;
+  position: absolute;
+}
+
+.mat-card-image:first-child {
+  width: calc(100%);
+  margin: 0;
+}
+
+.card-location {
+  float: left;
+  margin: 16px;
+}
