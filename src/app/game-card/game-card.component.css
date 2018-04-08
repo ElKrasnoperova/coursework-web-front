@@ -15,12 +15,27 @@
   position: absolute;
 }
 
-.mat-card-image:first-child {
-  width: calc(100%);
-  margin: 0;
+.mat-card-image {
+  background-size: cover;
 }
 
 .card-location {
-  float: left;
-  margin: 16px;
+  display: inline;
 }
+
+.game-list-item {
+  width: 20%;
+}
+
+.game-list{
+  position: absolute;
+}
+
+.game-list-parent{
+  position: relative;
+}
+
+.game-card-location{
+  width: 50%;
+}
+

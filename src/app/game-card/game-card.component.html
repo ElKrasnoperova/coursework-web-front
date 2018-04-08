@@ -1,11 +1,11 @@
-<ul>
-  <li *ngFor="let game of games_imgs">
-  <mat-card class = "card">
-    <mat-card-content>
-      <img mat-card-image src = {{game.image}} class = "picture">
-      <button mat-button class="button-style">Перевод</button>
-    </mat-card-content>
-  </mat-card>
-  </li>
-</ul>
+ <mat-grid-list cols="2" rowHeight="1:0.9">
+    <mat-grid-tile *ngFor="let game of games_imgs" class = "game-list-item" >
+      <mat-card class="game-card-location">
+        <img mat-card-image src={{game.image}}>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+<!--<button mat-button class="button-style">Перевод</button>-->
+
 

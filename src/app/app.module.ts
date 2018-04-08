@@ -19,6 +19,7 @@ import { TranslationGamePageComponent } from './translation-game-page/translatio
 import { MapPageComponent } from './map-page/map-page.component';
 import { YearChooserComponent } from './year-chooser/year-chooser.component';
 import { GameCardComponent } from './game-card/game-card.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 
 
@@ -35,7 +36,8 @@ const materialModules = [
   MatTooltipModule,
   MatSelectModule,
   MatCheckboxModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatGridListModule
 ];
 @NgModule({
   declarations: [
