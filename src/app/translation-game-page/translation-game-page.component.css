@@ -12,7 +12,7 @@ body, html {
   margin-top: 48px
 }
 
-.container {
+.container-for-translation-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,16 +20,16 @@ body, html {
   margin-top: 24px;
 }
 
-.container > * {
+.container-for-translation-card > * {
   width: 60%;
   height: 100%;
 }
 
-.container form {
+.container-for-translation-card form {
   margin-bottom: 20px;
 }
 
-.container form > * {
+.container-for-translation-card form > * {
   margin: 8px 0;
 }
 

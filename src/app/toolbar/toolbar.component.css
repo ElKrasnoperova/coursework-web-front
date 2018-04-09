@@ -15,3 +15,21 @@
 .background {
   height: 80%;
 }
+
+.button-column{
+  margin: 8px;
+}
+
+.container-for-character{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 4%;
+}
+
+.up-down-buttons {
+  margin-left: 48px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
