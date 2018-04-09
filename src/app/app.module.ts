@@ -20,9 +20,7 @@ import { MapPageComponent } from './map-page/map-page.component';
 import { YearChooserComponent } from './year-chooser/year-chooser.component';
 import { GameCardComponent } from './game-card/game-card.component';
 import { MatGridListModule } from '@angular/material/grid-list';
-
-
-
+import {CharacterCardComponent} from './character-card/character-card.component';
 
 const materialModules = [
   MatButtonModule,
@@ -52,6 +50,7 @@ const materialModules = [
     MapPageComponent,
     YearChooserComponent,
     GameCardComponent,
+    CharacterCardComponent
   ],
   imports: [
     MatTabsModule,
