@@ -2,6 +2,7 @@
     <mat-grid-tile *ngFor="let game of games_imgs" class = "game-list-item" >
       <mat-card class="game-card-location">
         <img mat-card-image src={{game.image}}>
+        <button mat-button class="button-style">Перевод</button>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>

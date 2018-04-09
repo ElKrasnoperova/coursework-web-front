@@ -1,3 +1,20 @@
+<app-toolbar></app-toolbar>
 <mat-progress-bar mode="determinate" value="40" class="progress-bar-margin"></mat-progress-bar>
-<p>Напишите на русском</p>
+<div class="container">
+<form class="container">
+  <p class="top-label">Напишите на русском</p>
+  <p class = "word-for-translation">acchak</p> <!--Тут через *ngFor надо будет получать слова из модели (или из .ts)-->
+  <mat-form-field >
+  <textarea matInput placeholder="Введите перевод" matTextareaAutosize matAutosizeMinRows="5"
+            matAutosizeMaxRows="15"></textarea>
+  </mat-form-field>
+  <br>
+  <div class = "button-row">
+    <button mat-raised-button color="primary">Пропустить</button>
+    <button mat-raised-button color="accent">Дальше</button>
+  </div>
+</form>
+</div>
+
+
 
