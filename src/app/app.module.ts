@@ -21,6 +21,8 @@ import { YearChooserComponent } from './year-chooser/year-chooser.component';
 import { GameCardComponent } from './game-card/game-card.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {CharacterCardComponent} from './character-card/character-card.component';
+import { AnswerListPageComponent } from './answer-list-page/answer-list-page.component';
+import {MatTableModule} from '@angular/material/table';
 
 const materialModules = [
   MatButtonModule,
@@ -35,7 +37,8 @@ const materialModules = [
   MatSelectModule,
   MatCheckboxModule,
   MatProgressBarModule,
-  MatGridListModule
+  MatGridListModule,
+  MatTableModule
 ];
 @NgModule({
   declarations: [
@@ -50,7 +53,8 @@ const materialModules = [
     MapPageComponent,
     YearChooserComponent,
     GameCardComponent,
-    CharacterCardComponent
+    CharacterCardComponent,
+    AnswerListPageComponent
   ],
   imports: [
     MatTabsModule,

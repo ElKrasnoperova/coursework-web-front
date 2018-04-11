@@ -1,0 +1,40 @@
+.table-title {
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.header-font{
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+}
+
+.button-row-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-style-for-answers{
+  margin-top: 16px;
+  margin-right: 96px;
+  width: 200px;
+  text-transform: uppercase;
+}
+
+.answer-list-card {
+  width: 70%;
+}

@@ -1,0 +1,30 @@
+<mat-card class = answer-list-card>
+  <p class = "table-title">Результаты:</p>
+  <div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="inputWord">
+        <mat-header-cell *matHeaderCellDef class = "header-font"> Слово для перевода </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.inputWord}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="userTranslation">
+        <mat-header-cell *matHeaderCellDef class = "header-font"> Ваш перевод </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.userTranslation}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="rightTranslation">
+        <mat-header-cell *matHeaderCellDef class = "header-font"> Правильный перевод </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.rightTranslation}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; displayedColumns"></mat-row>
+    </mat-table>
+  </div>
+  <div class = "button-row-center">
+    <button mat-raised-button color="primary" class = "button-style-for-answers">К играм</button>
+    <button mat-raised-button color="accent" class = "button-style-for-answers">Ещё раз!</button>
+  </div>
+
+</mat-card>
