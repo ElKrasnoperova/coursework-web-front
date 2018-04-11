@@ -33,3 +33,13 @@
   justify-content: center;
   flex-direction: column;
 }
+
+.app-game-card-location{
+  width: 60%;
+  margin-left: 20%;
+  margin-top: -4%;
+}
+
+.mat-grid-list[_ngcontent-c9] {
+  padding-bottom: calc(((1 * ((20% - 0.5px) * 1)) + 0px) + 0px);
+}
