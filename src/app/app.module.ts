@@ -7,7 +7,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import { AppComponent } from './app.component';
+import {AppComponent, CharacterPageComponent, GamesPageComponent} from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { EpisodeChooserComponent } from './episode-chooser/episode-chooser.component';
 import { CardForMapComponent } from './card-for-map/card-for-map.component';
@@ -23,6 +23,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import {CharacterCardComponent} from './character-card/character-card.component';
 import { AnswerListPageComponent } from './answer-list-page/answer-list-page.component';
 import {MatTableModule} from '@angular/material/table';
+import { AppRoutingModule } from './app-routing.module';
 
 const materialModules = [
   MatButtonModule,
@@ -54,7 +55,9 @@ const materialModules = [
     YearChooserComponent,
     GameCardComponent,
     CharacterCardComponent,
-    AnswerListPageComponent
+    AnswerListPageComponent,
+    CharacterPageComponent,
+    GamesPageComponent
   ],
   imports: [
     MatTabsModule,
@@ -64,7 +67,8 @@ const materialModules = [
     FormsModule,
     SlideshowModule,
     ReactiveFormsModule,
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
 
   ],
   providers: [],
