@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule,  Routes} from '@angular/router';
-import {ToolbarComponent} from './toolbar/toolbar.component';
-import {TABS_ROUTES} from './toolbar/routes';
-import {AuthPageComponent} from './auth-page/auth-page.component';
+import {ToolbarComponent} from './components/toolbar/toolbar.component';
+import {TABS_ROUTES} from './components/toolbar/routes';
+import {AuthPageComponent} from './pages/auth-page/auth-page.component';
 import {CharacterPageComponent, GamesPageComponent} from './app.component';
-import {MapPageComponent} from './map-page/map-page.component';
+import {MapPageComponent} from './pages/map-page/map-page.component';
 
 const routes: Routes = [
   { path: '', component: ToolbarComponent},

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {GameCardImages} from '../game-card-images';
+import {GameCardImages} from '../../game-card-images';
 import {GAMES_IMGS} from './mock-cards';
 
 @Component({

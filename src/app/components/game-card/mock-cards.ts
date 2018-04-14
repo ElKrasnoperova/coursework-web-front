@@ -1,4 +1,4 @@
-import {GameCardImages} from '../game-card-images';
+import {GameCardImages} from '../../game-card-images';
 
 export const GAMES_IMGS: GameCardImages[] = [
   // {id: 4, image: ''},

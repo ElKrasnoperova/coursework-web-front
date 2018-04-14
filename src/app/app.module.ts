@@ -8,22 +8,23 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {AppComponent, CharacterPageComponent, GamesPageComponent} from './app.component';
-import { ToolbarComponent } from './toolbar/toolbar.component';
-import { EpisodeChooserComponent } from './episode-chooser/episode-chooser.component';
-import { CardForMapComponent } from './card-for-map/card-for-map.component';
-import { AuthPageComponent } from './auth-page/auth-page.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { EpisodeChooserComponent } from './components/episode-chooser/episode-chooser.component';
+import { CardForMapComponent } from './components/card-for-map/card-for-map.component';
+import { AuthPageComponent } from './pages/auth-page/auth-page.component';
 import {SlideshowModule} from 'ng-simple-slideshow';
-import { SignInFormComponent } from './sign-in-form/sign-in-form.component';
-import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
-import { TranslationGamePageComponent } from './translation-game-page/translation-game-page.component';
-import { MapPageComponent } from './map-page/map-page.component';
-import { YearChooserComponent } from './year-chooser/year-chooser.component';
-import { GameCardComponent } from './game-card/game-card.component';
+import { SignInFormComponent } from './components/sign-in-form/sign-in-form.component';
+import { SignUpFormComponent } from './components/sign-up-form/sign-up-form.component';
+import { TranslationGamePageComponent } from './pages/translation-game-page/translation-game-page.component';
+import { MapPageComponent } from './pages/map-page/map-page.component';
+import { YearChooserComponent } from './components/year-chooser/year-chooser.component';
+import { GameCardComponent } from './components/game-card/game-card.component';
 import { MatGridListModule } from '@angular/material/grid-list';
-import {CharacterCardComponent} from './character-card/character-card.component';
-import { AnswerListPageComponent } from './answer-list-page/answer-list-page.component';
+import {CharacterCardComponent} from './components/character-card/character-card.component';
+import { AnswerListPageComponent } from './pages/answer-list-page/answer-list-page.component';
 import {MatTableModule} from '@angular/material/table';
 import { AppRoutingModule } from './app-routing.module';
+import { MapComponent } from './components/map/map.component';
 
 const materialModules = [
   MatButtonModule,
@@ -57,7 +58,8 @@ const materialModules = [
     CharacterCardComponent,
     AnswerListPageComponent,
     CharacterPageComponent,
-    GamesPageComponent
+    GamesPageComponent,
+    MapComponent
   ],
   imports: [
     MatTabsModule,

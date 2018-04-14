@@ -25,7 +25,7 @@ export class AppComponent {
   '            </button>\n' +
   '            </div>\n' +
   '      </div>',
-  styleUrls: ['toolbar/toolbar.component.css']
+  styleUrls: ['components/toolbar/toolbar.component.css']
 })
 export class CharacterPageComponent {}
 
@@ -34,7 +34,7 @@ export class CharacterPageComponent {}
   template: ' <div class = "app-game-card-location">\n' +
   '        <app-game-card></app-game-card>\n' +
   '      </div>',
-  styleUrls: ['toolbar/toolbar.component.css']
+  styleUrls: ['components/toolbar/toolbar.component.css']
 })
 
 export class GamesPageComponent {}
