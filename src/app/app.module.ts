@@ -18,7 +18,7 @@ import { SignUpFormComponent } from './components/sign-up-form/sign-up-form.comp
 import { TranslationGamePageComponent } from './pages/translation-game-page/translation-game-page.component';
 import { MapPageComponent } from './pages/map-page/map-page.component';
 import { YearChooserComponent } from './components/year-chooser/year-chooser.component';
-import { GameCardComponent } from './components/game-card/game-card.component';
+import {GameCardComponent, GamesListComponent} from './components/game-card/game-card.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {CharacterCardComponent} from './components/character-card/character-card.component';
 import { AnswerListPageComponent } from './pages/answer-list-page/answer-list-page.component';
@@ -59,7 +59,8 @@ const materialModules = [
     AnswerListPageComponent,
     CharacterPageComponent,
     GamesPageComponent,
-    MapComponent
+    MapComponent,
+    GamesListComponent,
   ],
   imports: [
     MatTabsModule,

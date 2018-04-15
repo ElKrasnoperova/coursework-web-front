@@ -1,0 +1,10 @@
+<mat-grid-list cols="2" rowHeight="1:0.9">
+  <mat-grid-tile *ngFor="let game of games_imgs" class = "game-list-item" >
+    <mat-card class="game-card-location">
+      <img mat-card-image src={{game.image}}>
+      <a mat-button class="button-style" routerLink={{game.path}}>{{game.button_name}}</a>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+
+

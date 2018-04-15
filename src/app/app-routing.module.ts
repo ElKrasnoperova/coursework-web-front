@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule,  Routes} from '@angular/router';
-import {ToolbarComponent} from './components/toolbar/toolbar.component';
-import {TABS_ROUTES} from './components/toolbar/routes';
 import {AuthPageComponent} from './pages/auth-page/auth-page.component';
-import {CharacterPageComponent, GamesPageComponent} from './app.component';
+import {CharacterPageComponent} from './app.component';
 import {MapPageComponent} from './pages/map-page/map-page.component';
+import {GAMES_ROUTES} from './components/game-card/routes';
+import {GameCardComponent} from './components/game-card/game-card.component';
 
 const routes: Routes = [
-  { path: '', component: ToolbarComponent},
+  { path: '', component: CharacterPageComponent},
   { path: 'login', component: AuthPageComponent},
   { path: 'characters', component: CharacterPageComponent},
   { path: 'map', component: MapPageComponent},
-  { path: 'games', component: GamesPageComponent}
+  { path: 'games', component: GameCardComponent, children: GAMES_ROUTES}
 ];
 @NgModule({
   imports: [
