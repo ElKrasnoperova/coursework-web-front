@@ -1,11 +1,22 @@
 .example-card {
-  max-width: 25%;
-  max-height: 30%;
+  max-width: 312px;
+  height: 128px;
+  padding: 0;
 }
 
 .img-for-card {
   width: 30%;
-  height: 40%;
+  height: 100%;
   float: right;
-  margin: -22% -7% 0 0;
+  margin: 0 !important;
+}
+
+.left-rotation {
+  float: left;
+  height: 100%;
+  padding: 16px;
+}
+
+.button-location{
+  margin-left: 20px !important;
 }
