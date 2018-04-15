@@ -24,9 +24,9 @@
 }
 
 .game-list-item {
-  width: 20%;
-  height: 100%;
-  padding-top: 0 !important;
+  width: 45% !important;
+  height: 95%;
+  padding: 0 !important;
 }
 
 .game-list {
@@ -38,12 +38,12 @@
 }
 
 .mat-grid-list {
-  height: 40vh;
-  padding-bottom: 0;
+  height: 20vh;
+  padding-bottom: calc(((1 * ((30% - 0.5px) * 1)) + 0px) + 0px) !important;
+
 }
 
 .game-card-location {
-  width: 50%;
-  /*margin-bottom: 96px;*/
+  width: 30% !important;
 }
 

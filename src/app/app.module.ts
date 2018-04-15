@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, MatMenuModule, MatToolbarModule,  MatCardModule,
-  MatSidenavModule, MatFormFieldModule, MatTooltipModule } from '@angular/material';
+import {
+  MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, MatMenuModule, MatToolbarModule, MatCardModule,
+  MatSidenavModule, MatFormFieldModule, MatTooltipModule, MatDialogModule
+} from '@angular/material';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,6 +27,8 @@ import { AnswerListPageComponent } from './pages/answer-list-page/answer-list-pa
 import {MatTableModule} from '@angular/material/table';
 import { AppRoutingModule } from './app-routing.module';
 import { MapComponent } from './components/map/map.component';
+import {DialogOverviewExampleDialogComponent, SettingsPageComponent} from './pages/settings-page/settings-page.component';
+
 
 const materialModules = [
   MatButtonModule,
@@ -40,7 +44,8 @@ const materialModules = [
   MatCheckboxModule,
   MatProgressBarModule,
   MatGridListModule,
-  MatTableModule
+  MatTableModule,
+  MatDialogModule,
 ];
 @NgModule({
   declarations: [
@@ -61,6 +66,11 @@ const materialModules = [
     GamesPageComponent,
     MapComponent,
     GamesListComponent,
+    SettingsPageComponent,
+    DialogOverviewExampleDialogComponent,
+  ],
+  entryComponents: [
+    DialogOverviewExampleDialogComponent
   ],
   imports: [
     MatTabsModule,
