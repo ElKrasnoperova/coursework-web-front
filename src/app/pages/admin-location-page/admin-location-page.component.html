@@ -1,0 +1,41 @@
+<mat-horizontal-stepper #stepper="matHorizontalStepper">
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Выберите сезон</ng-template>
+      <mat-form-field>
+        <mat-select placeholder="Сезон">
+          <mat-option *ngFor="let season of seasons" [value]="season.number">
+            {{ season.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext color = "accent">Дальше</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Выберите серию</ng-template>
+      <mat-form-field>
+        <mat-select placeholder="Серия">
+          <mat-option *ngFor="let episode of episodes" [value]="episode.number">
+            {{ episode.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious color = "primary">Назад</button>
+        <button mat-button matStepperNext color = "accent">Дальше</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Редактировать</ng-template>
+    <p>Место для отображения персонажей в серии</p>
+    <div>
+      <button mat-button matStepperPrevious color = "primary">Назад</button>
+      <button mat-button (click)="stepper.reset()" color = "warn">Сбросить</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

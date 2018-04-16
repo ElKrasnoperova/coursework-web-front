@@ -6,13 +6,15 @@ import {CharacterPageComponent} from './app.component';
 import {MapPageComponent} from './pages/map-page/map-page.component';
 import {GAMES_ROUTES} from './components/game-card/routes';
 import {GameCardComponent} from './components/game-card/game-card.component';
+import {SettingsPageComponent} from './pages/settings-page/settings-page.component';
 
 const routes: Routes = [
   { path: '', component: CharacterPageComponent},
   { path: 'login', component: AuthPageComponent},
   { path: 'characters', component: CharacterPageComponent},
   { path: 'map', component: MapPageComponent},
-  { path: 'games', component: GameCardComponent, children: GAMES_ROUTES}
+  { path: 'games', component: GameCardComponent, children: GAMES_ROUTES},
+  { path: 'settings', component: SettingsPageComponent}
 ];
 @NgModule({
   imports: [
