@@ -8,6 +8,7 @@ import {GAMES_ROUTES} from './components/game-card/routes';
 import {GameCardComponent} from './components/game-card/game-card.component';
 import {SettingsPageComponent} from './pages/settings-page/settings-page.component';
 import {AdminToolbarComponent} from './components/admin-toolbar/admin-toolbar.component';
+import {ADMIN_ROUTES} from './components/admin-toolbar/routes';
 
 const routes: Routes = [
   { path: '', component: CharacterPageComponent},
@@ -16,7 +17,7 @@ const routes: Routes = [
   { path: 'map', component: MapPageComponent},
   { path: 'games', component: GameCardComponent, children: GAMES_ROUTES},
   { path: 'settings', component: SettingsPageComponent},
-  { path: 'admin', component: AdminToolbarComponent}
+  { path: 'admin', component: AdminToolbarComponent, children: ADMIN_ROUTES}
 ];
 @NgModule({
   imports: [
