@@ -29,7 +29,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MapComponent } from './components/map/map.component';
 import {DialogOverviewExampleDialogComponent, SettingsPageComponent} from './pages/settings-page/settings-page.component';
 import { AdminLocationPageComponent } from './pages/admin-location-page/admin-location-page.component';
-import { LocationOfCharacterComponent } from './components/location-of-character/location-of-character.component';
+import {DialogEditComponent, LocationOfCharacterComponent} from './components/location-of-character/location-of-character.component';
 
 
 const materialModules = [
@@ -73,9 +73,11 @@ const materialModules = [
     DialogOverviewExampleDialogComponent,
     AdminLocationPageComponent,
     LocationOfCharacterComponent,
+    DialogEditComponent,
   ],
   entryComponents: [
-    DialogOverviewExampleDialogComponent
+    DialogOverviewExampleDialogComponent,
+    DialogEditComponent
   ],
   imports: [
     MatTabsModule,

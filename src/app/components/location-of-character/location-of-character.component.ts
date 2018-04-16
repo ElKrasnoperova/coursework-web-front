@@ -14,7 +14,7 @@ export class LocationOfCharacterComponent implements OnInit {
   ngOnInit() {
   }
 
-  openDialog() {
+  openDialogDelete() {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialogComponent, {
       height: '25%'
     });
@@ -23,4 +23,20 @@ export class LocationOfCharacterComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
+  openDialogEdit() {
+    const dialogRef = this.dialog.open(DialogEditComponent, {
+      height: '55%'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }
+
+@Component({
+  selector: 'app-dialog-edit',
+  templateUrl: 'dialog-edit.html',
+  styleUrls: ['location-of-character.component.css']
+})
+export class DialogEditComponent {}

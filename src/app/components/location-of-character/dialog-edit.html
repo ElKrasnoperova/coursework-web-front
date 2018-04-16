@@ -1,0 +1,19 @@
+ <mat-dialog-content>
+    <h3>Редактировать</h3>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <div class = column-rotation>
+      <mat-form-field>
+        <input matInput placeholder="Введите место" class = "margin-for-edit-dialog">
+      </mat-form-field>
+      <br>
+      <button mat-raised-button>Выбрать на карте</button>
+      <br>
+      <p class="margin-for-edit-dialog">Координаты:</p>
+      <div class = "button-row-for-edit-dialog">
+        <button mat-button mat-dialog-close color="primary">Отмена</button>
+        <button mat-button [mat-dialog-close]="true" cdkFocusInitial color = "accent">Сохранить</button>
+      </div>
+    </div>
+  </mat-dialog-actions>
+
