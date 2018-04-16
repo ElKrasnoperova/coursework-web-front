@@ -1,0 +1,12 @@
+<div class="example-container-admin-toolbar">
+  <mat-sidenav-container class="example-sidenav-container">
+    <mat-sidenav #snav [mode]="'side'" [opened]="true">
+      <mat-nav-list>
+        <a mat-list-item routerLink="{{nav.path}}" *ngFor="let nav of fillerNav">{{nav.value}}</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <app-admin-location-page></app-admin-location-page>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

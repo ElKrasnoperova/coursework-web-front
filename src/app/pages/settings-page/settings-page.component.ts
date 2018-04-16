@@ -14,7 +14,6 @@ export class SettingsPageComponent implements OnInit {
   ngOnInit() {
   }
 
-
   openDialog() {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialogComponent, {
       height: '25%'

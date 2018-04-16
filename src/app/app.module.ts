@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, MatMenuModule, MatToolbarModule, MatCardModule,
-  MatSidenavModule, MatFormFieldModule, MatTooltipModule, MatDialogModule, MatStepperModule
+  MatFormFieldModule, MatTooltipModule, MatDialogModule, MatStepperModule, MatListModule
 } from '@angular/material';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -30,6 +30,8 @@ import { MapComponent } from './components/map/map.component';
 import {DialogOverviewExampleDialogComponent, SettingsPageComponent} from './pages/settings-page/settings-page.component';
 import { AdminLocationPageComponent } from './pages/admin-location-page/admin-location-page.component';
 import {DialogEditComponent, LocationOfCharacterComponent} from './components/location-of-character/location-of-character.component';
+import { AdminToolbarComponent } from './components/admin-toolbar/admin-toolbar.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 const materialModules = [
@@ -49,6 +51,7 @@ const materialModules = [
   MatTableModule,
   MatDialogModule,
   MatStepperModule,
+  MatListModule,
 ];
 @NgModule({
   declarations: [
@@ -74,6 +77,7 @@ const materialModules = [
     AdminLocationPageComponent,
     LocationOfCharacterComponent,
     DialogEditComponent,
+    AdminToolbarComponent,
   ],
   entryComponents: [
     DialogOverviewExampleDialogComponent,
