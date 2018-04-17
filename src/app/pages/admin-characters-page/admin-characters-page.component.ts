@@ -4,10 +4,10 @@ import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-admin-games-page',
-  templateUrl: './admin-games-page.component.html',
-  styleUrls: ['./admin-games-page.component.css']
+  templateUrl: './admin-characters-page.component.html',
+  styleUrls: ['./admin-characters-page.component.css']
 })
-export class AdminGamesPageComponent implements OnInit {
+export class AdminCharactersPageComponent implements OnInit {
   typesOfShoes = ['Дейнерис Таргариен', 'Джон Сноу', 'Санса Старк'];
   constructor(public dialog: MatDialog) { }
 
@@ -25,7 +25,7 @@ export class AdminGamesPageComponent implements OnInit {
   }
 
   openEditDialog() {
-    const dialogRef = this.dialog.open(AdminGamesEditDialogComponent, {
+    const dialogRef = this.dialog.open(AdminCharactersEditDialogComponent, {
       height: '80%', width: '25%'
     });
 
@@ -35,7 +35,7 @@ export class AdminGamesPageComponent implements OnInit {
   }
 
   openAddDialog() {
-    const dialogRef = this.dialog.open(AdminGamesAddDialogComponent, {
+    const dialogRef = this.dialog.open(AdminCharactersAddDialogComponent, {
       height: '80%', width: '25%'
     });
 
@@ -46,16 +46,16 @@ export class AdminGamesPageComponent implements OnInit {
 }
 
 @Component ({
-  selector: 'app-admin-games-edit',
-  templateUrl: 'admin-games-edit.html',
-  styleUrls: ['./admin-games-page.component.css']
+  selector: 'app-admin-characters-edit',
+  templateUrl: 'admin-characters-edit.html',
+  styleUrls: ['./admin-characters-page.component.css']
 })
-export class AdminGamesEditDialogComponent {}
+export class AdminCharactersEditDialogComponent {}
 
 @Component ({
-  selector: 'app-admin-games-add',
-  templateUrl: 'admin-games-add.html',
-  styleUrls: ['./admin-games-page.component.css']
+  selector: 'app-admin-chracters-add',
+  templateUrl: 'admin-characters-add.html',
+  styleUrls: ['./admin-characters-page.component.css']
 })
-export class AdminGamesAddDialogComponent {
+export class AdminCharactersAddDialogComponent {
 }
