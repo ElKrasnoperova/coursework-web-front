@@ -1,0 +1,27 @@
+<!--TODO можно попробовать сделать всё это через один инпут и филд, а не через столько-->
+
+<div class = edit-column>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Имя" value="полученное из бд">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Год рождения" value="полученное из бд">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Мать" value="полученное из бд">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Отец" value="полученное из бд">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Вера" value="полученное из бд">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Организация" value="полученное из бд">
+  </mat-form-field>
+  <mat-dialog-actions class = button-row-for-games>
+    <button mat-button mat-dialog-close color="primary">Отмена</button>
+    <button mat-button [mat-dialog-close]="true" color = "accent">Сохранить</button>
+  </mat-dialog-actions>
+</div>
+

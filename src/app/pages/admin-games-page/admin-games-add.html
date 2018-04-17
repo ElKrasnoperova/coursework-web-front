@@ -1,0 +1,26 @@
+<!--TODO создать массив с именами инпутов и сделать через фор-->
+
+<div class = edit-column>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Введите имя">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Введите год рождения">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Введите имя матери">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Введите имя отца">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Введите веру">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Введите организацию">
+  </mat-form-field>
+  <mat-dialog-actions class = button-row-for-games>
+    <button mat-button mat-dialog-close color="primary">Отмена</button>
+    <button mat-button [mat-dialog-close]="true" color = "accent">Сохранить</button>
+  </mat-dialog-actions>
+</div>

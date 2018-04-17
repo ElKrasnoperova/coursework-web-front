@@ -32,6 +32,11 @@ import { AdminLocationPageComponent } from './pages/admin-location-page/admin-lo
 import {DialogEditComponent, LocationOfCharacterComponent} from './components/location-of-character/location-of-character.component';
 import { AdminToolbarComponent } from './components/admin-toolbar/admin-toolbar.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {
+  AdminGamesAddDialogComponent,
+  AdminGamesEditDialogComponent,
+  AdminGamesPageComponent
+} from './pages/admin-games-page/admin-games-page.component';
 
 
 const materialModules = [
@@ -78,10 +83,15 @@ const materialModules = [
     LocationOfCharacterComponent,
     DialogEditComponent,
     AdminToolbarComponent,
+    AdminGamesPageComponent,
+    AdminGamesEditDialogComponent,
+    AdminGamesAddDialogComponent,
   ],
   entryComponents: [
     DialogOverviewExampleDialogComponent,
-    DialogEditComponent
+    DialogEditComponent,
+    AdminGamesEditDialogComponent,
+    AdminGamesAddDialogComponent
   ],
   imports: [
     MatTabsModule,

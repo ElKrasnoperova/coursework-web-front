@@ -12,6 +12,8 @@ export class AnswerListPageComponent implements OnInit {
 
   ngOnInit() {
   }
+
+
 }
 
 export interface Element {
