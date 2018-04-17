@@ -18,5 +18,5 @@ export const ITEMS = [
   {id: 1, value: 'Местоположение', path: 'location'},
   {id: 2, value: 'Игры', path: 'games'},
   {id: 3, value: 'Персонажи', path: 'characters'},
-  {id: 4, value: 'Рассылка', path: 'newsletter'},
+  {id: 4, value: 'Пользователи', path: 'users'},
 ];
