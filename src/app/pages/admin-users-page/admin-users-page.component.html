@@ -1,4 +1,4 @@
-<div class="example-container mat-elevation-z8">
+<div class="container-admin-users mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource">
 
     <ng-container matColumnDef="select">
@@ -17,23 +17,23 @@
     </ng-container>
 
     <ng-container matColumnDef="position">
-      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Номер </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Имя </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="weight">
-      <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef> E-mail </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="symbol">
-      <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+    <ng-container matColumnDef="rights">
+      <mat-header-cell *matHeaderCellDef> Админ </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.rights}} </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -42,8 +42,8 @@
     </mat-row>
   </mat-table>
 </div>
-<div class = button-row-for-games>
-  <button mat-raised-button color="accent" class = button-in-admin-games (click)="openEditDialog()">Редактировать</button>
-  <button mat-raised-button color="primary" class = button-in-admin-games (click)="openDeleteDialog()">Удалить</button>
+<div class = button-row-for-admin-users>
+  <button mat-raised-button color="accent">Сделать админом</button>
+  <button mat-raised-button color="primary">Заблокировать</button>
 </div>
 
