@@ -38,6 +38,7 @@ import {
   AdminCharactersPageComponent
 } from './pages/admin-characters-page/admin-characters-page.component';
 import { AdminUsersPageComponent } from './pages/admin-users-page/admin-users-page.component';
+import { AdminGamePageComponent } from './pages/admin-game-page/admin-game-page.component';
 
 
 const materialModules = [
@@ -88,6 +89,7 @@ const materialModules = [
     AdminCharactersEditDialogComponent,
     AdminCharactersAddDialogComponent,
     AdminUsersPageComponent,
+    AdminGamePageComponent,
   ],
   entryComponents: [
     DialogOverviewExampleDialogComponent,

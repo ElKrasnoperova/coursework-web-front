@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DialogOverviewExampleDialogComponent} from '../settings-page/settings-page.component';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatTableDataSource} from '@angular/material';
+import {SelectionModel} from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-admin-games-page',
@@ -8,7 +9,9 @@ import {MatDialog} from '@angular/material';
   styleUrls: ['./admin-characters-page.component.css']
 })
 export class AdminCharactersPageComponent implements OnInit {
-  typesOfShoes = ['Дейнерис Таргариен', 'Джон Сноу', 'Санса Старк'];
+  displayedColumns = ['position', 'name', 'year', 'mother', 'father', 'faith', 'organisation', 'select'];
+  dataSource = new MatTableDataSource<Character>(CHARACTERS_DATA);
+  selection = new SelectionModel<Character>(true, []);
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -43,6 +46,17 @@ export class AdminCharactersPageComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
+
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+  masterToggle() {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.dataSource.data.forEach(row => this.selection.select(row));
+  }
 }
 
 @Component ({
@@ -59,3 +73,17 @@ export class AdminCharactersEditDialogComponent {}
 })
 export class AdminCharactersAddDialogComponent {
 }
+
+export interface Character {
+  name: string;
+  position: number;
+  year: number;
+  mother: string;
+  father: string;
+  faith: string;
+  organisation: string;
+}
+
+const CHARACTERS_DATA: Character[] = [
+  {position: 1, name: 'Джон Сноу', year: 789, mother: 'Неизвестно', father: 'Эддард Старк', faith: 'Семеро', organisation: 'Дозор' }
+];

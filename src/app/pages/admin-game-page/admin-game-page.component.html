@@ -1,0 +1,40 @@
+<mat-horizontal-stepper #stepper="matHorizontalStepper" disabled="true">
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Язык</ng-template>
+      <div class = languages-chooser>
+        <div>
+          <h2>Ввести самому</h2>
+          <mat-form-field>
+            <input matInput placeholder="Добавить язык" >
+          </mat-form-field>
+        </div>
+        <div>
+          <h2>Выбрать из списка</h2>
+          <mat-form-field>
+            <mat-select class = "languages-list-admin">
+              <mat-option *ngFor="let language of languages" [value]="language">
+                {{language}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div>
+        <button mat-button matStepperNext color = "accent">Дальше</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Слова</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="word" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-raised-button color = "accent">Добавить</button>
+      </div>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>
