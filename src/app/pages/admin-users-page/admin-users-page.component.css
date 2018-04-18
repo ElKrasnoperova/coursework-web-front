@@ -1,8 +1,10 @@
-container-admin-users {
+.container-admin-users {
   display: flex;
   flex-direction: column;
   max-height: 500px;
   min-width: 300px;
+  width: 95%;
+  margin: 30px;
 }
 
 .mat-table {
