@@ -1,6 +1,6 @@
 
 <div class="container-for-admin-characters mat-elevation-z8">
-  <button mat-icon-button class = add-character-button (click)="openAddDialog()">
+  <button mat-icon-button class = add-character-button (click)="add()">
     <mat-icon>add</mat-icon>
   </button>
   <mat-table #table [dataSource]="dataSource">
@@ -35,16 +35,6 @@
       <mat-cell *matCellDef="let element"> {{element.birthYear}} </mat-cell>
     </ng-container>
 
-    <!--<ng-container matColumnDef="mother">-->
-      <!--<mat-header-cell *matHeaderCellDef> Мать </mat-header-cell>-->
-      <!--<mat-cell *matCellDef="let element"> {{element.mother}} </mat-cell>-->
-    <!--</ng-container>-->
-
-    <!--<ng-container matColumnDef="father">-->
-      <!--<mat-header-cell *matHeaderCellDef> Отец </mat-header-cell>-->
-      <!--<mat-cell *matCellDef="let element"> {{element.father}} </mat-cell>-->
-    <!--</ng-container>-->
-
     <ng-container matColumnDef="faith">
       <mat-header-cell *matHeaderCellDef> Вера </mat-header-cell>
       <mat-cell *matCellDef="let element "> {{element.faith}} </mat-cell>
@@ -62,7 +52,7 @@
   </mat-table>
 </div>
 <div class = button-row-for-games>
-  <button mat-raised-button color="accent" class = button-in-admin-games (click)="openEditDialog()">Редактировать</button>
-  <button mat-raised-button color="primary" class = button-in-admin-games (click)="openDeleteDialog()">Удалить</button>
+  <button mat-raised-button color="accent" class = button-in-admin-games (click)="edit()">Редактировать</button>
+  <button mat-raised-button color="primary" class = button-in-admin-games (click)="delete()">Удалить</button>
 </div>
 

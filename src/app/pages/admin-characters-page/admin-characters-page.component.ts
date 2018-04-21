@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { DialogOverviewExampleDialogComponent } from '../settings-page/settings-page.component';
 import { MatDialog,  MatTableDataSource } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -19,10 +19,11 @@ export class AdminCharactersPageComponent implements OnInit {
   displayedColumns = ['id', 'name', 'birthYear', 'faith', 'organisation', 'select'];
   dataSource: any;
   selection = new SelectionModel<Character>(true, []);
-  constructor(public dialog: MatDialog, private characterService: CharacterService) {
+  constructor(public dialog: MatDialog,
+              private characterService: CharacterService,
+              private changeDetectorRefs: ChangeDetectorRef) {
   }
   characters: Character[];
-  newCharacter = new Character;
 
   ngOnInit(): void {
     this.getCharacters();
@@ -32,34 +33,48 @@ export class AdminCharactersPageComponent implements OnInit {
     this.characterService.getCharacters()
       .then( items => {
         this.characters = items;
-        this.dataSource = new MatTableDataSource<Character>(this.characters);
+        this.refresh();
       });
   }
 
-  openAddDialog(): void {
-    const dialogRef = this.dialog.open(AdminCharactersAddDialogComponent, {
-      height: '80%', width: '35%',
-      data: {
-        name:         this.newCharacter.name,
-        birthYear:    this.newCharacter.birthYear,
-        faith:        this.newCharacter.faith,
-        organization: this.newCharacter.organization,
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Add Dialog was closed, result: ${result}`);
-    });
+  add(): void {
+    this.openAddDialog();
   }
 
-  openEditDialog() {
-    const dialogRef = this.dialog.open(AdminCharactersEditDialogComponent, {
-      height: '80%', width: '35%'
-    });
+  edit(): void {                                                                              // TODO get selected characters
+    // let index_from_this.characters =
+    // this.openEditDialogForCharacter(index);
+  }
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Edit Dialog result: ${result}`);
-    });
+  delete(): void {
+      this.openDeleteDialog();
+  }
+
+  openAddDialog(): void {
+    this.dialog
+      .open(AdminCharactersAddDialogComponent, {
+        height: '80%', width: '35%'
+      })
+      .afterClosed().subscribe(result => {
+        this.characters.push(result);
+        this.refresh();
+      });
+  }
+
+  openEditDialogForCharacter(index: number): any {
+    this.dialog
+      .open(AdminCharactersEditDialogComponent, {
+        height: '80%', width: '35%',
+        data: {
+          character: this.characters[index]
+        }
+      })
+      .afterClosed().subscribe(result => {
+        console.log(`Edit Dialog result: ${result}`);
+        console.log(`got updated ${result.name}`);
+        this.characters[index] = result;
+        this.refresh();
+      });
   }
 
   openDeleteDialog(): void {
@@ -71,6 +86,11 @@ export class AdminCharactersPageComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
       console.log('page char ' + result.name + ' ' + result.birthYear);
     });
+  }
+
+  refresh(): void {
+    this.dataSource = new MatTableDataSource<Character>(this.characters);
+    this.changeDetectorRefs.detectChanges();
   }
 
   isAllSelected() {

@@ -1,23 +1,21 @@
 <!--TODO можно попробовать сделать всё это через один инпут и филд, а не через столько-->
 
 <div class = edit-column>
+
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Имя">
+    <input matInput placeholder="Имя" name="name" [(ngModel)]="character.name" required>
   </mat-form-field>
+
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Год рождения" value="полученное из бд">
+    <input matInput placeholder="Год рождения" name="birthYear" [(ngModel)]="character.birthYear">
   </mat-form-field>
-  <!--<mat-form-field class="example-full-width">-->
-    <!--<input matInput placeholder="Мать" value="полученное из бд">-->
-  <!--</mat-form-field>-->
-  <!--<mat-form-field class="example-full-width">-->
-    <!--<input matInput placeholder="Отец" value="полученное из бд">-->
-  <!--</mat-form-field>-->
+
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Вера" value="полученное из бд">
+    <input matInput placeholder="Вера" name="faith" [(ngModel)]="character.faith">
   </mat-form-field>
+
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Организация" value="полученное из бд">
+    <input matInput placeholder="Организация" name="organization" [(ngModel)]="character.organization">
   </mat-form-field>
   <div>
     <p>Первое появление</p>
@@ -25,9 +23,11 @@
     <p>Последнее появление</p>
     <app-episode-chooser-for-admin></app-episode-chooser-for-admin>
   </div>
+
   <mat-dialog-actions>
     <button mat-button mat-dialog-close color="primary">Отмена</button>
-    <button mat-button [mat-dialog-close]="true" color = "accent">Сохранить</button>
+    <button mat-button [mat-dialog-close]="true" color="accent" (click)="updateCharacter()">Сохранить</button>
   </mat-dialog-actions>
+
 </div>
 

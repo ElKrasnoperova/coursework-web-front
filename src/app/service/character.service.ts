@@ -22,6 +22,13 @@ export class CharacterService {
       .catch(this.handleError);
   }
 
+  getCharacter(id: number) {
+    return this.http.get(this.baseUrl + '/admin/character/update/' + id)
+      .toPromise()
+      .then(response => response.json() as Character)
+      .catch(this.handleError);
+  }
+
   updateCharacter(updatedCharacter: Character): Promise<Character> {
     return this.http.put(this.baseUrl + '/admin/character/update', updatedCharacter)
       .toPromise()
@@ -29,8 +36,8 @@ export class CharacterService {
       .catch(this.handleError);
   }
 
-  deleteCharacter(id: string): Promise<any> {
-    return this.http.delete(this.baseUrl + '/admin/character/delete' + id)
+  deleteCharacter(): Promise<any> {
+    return this.http.delete(this.baseUrl + '/admin/character/delete')
       .toPromise()
       .catch(this.handleError);
   }
