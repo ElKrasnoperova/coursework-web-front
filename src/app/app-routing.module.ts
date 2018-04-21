@@ -17,7 +17,8 @@ const routes: Routes = [
   { path: 'map', component: MapPageComponent},
   { path: 'games', component: GameCardComponent, children: GAMES_ROUTES},
   { path: 'settings', component: SettingsPageComponent},
-  { path: 'admin', component: AdminToolbarComponent, children: ADMIN_ROUTES}
+  { path: 'admin', component: AdminToolbarComponent, children: ADMIN_ROUTES},
+  { path: 'error', component: AdminToolbarComponent}
 ];
 @NgModule({
   imports: [
