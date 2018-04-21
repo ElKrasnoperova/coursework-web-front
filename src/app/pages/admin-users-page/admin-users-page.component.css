@@ -21,6 +21,6 @@
   align-items: right;
   margin-top: 16px;
   margin-bottom: 16px;
-  width: 100%;
+  /*width: 100%;*/
   justify-content: space-around;
 }

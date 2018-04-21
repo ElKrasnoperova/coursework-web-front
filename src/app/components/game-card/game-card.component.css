@@ -7,7 +7,7 @@
 .button-style {
   height: 100%;
   background-color: #0000007F;
-  width: 100%;
+  /*width: 100%;*/
   display: block;
 }
 

@@ -1,13 +1,13 @@
 .button-row-for-games {
   display: flex;
   align-items: center;
-  width: 100%;
+  /*width: 100%;*/
   justify-content: center;
 }
 
 .button-in-admin-games {
   margin: 24px;
-  width: 15%
+  /*width: 15%*/
 }
 
 .add-character-button {
