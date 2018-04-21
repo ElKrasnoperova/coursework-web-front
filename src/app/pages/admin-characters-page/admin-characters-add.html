@@ -1,24 +1,23 @@
 <!--TODO создать массив с именами инпутов и сделать через фор-->
 
 <div class = edit-column>
+
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Введите имя" name="name" required [(ngModel)]="newCharacter.name">
   </mat-form-field>
+
   <mat-form-field class="full-width">
     <input matInput placeholder="Введите год рождения" name="birthYear" [(ngModel)]="newCharacter.birthYear">
   </mat-form-field>
-  <!--<mat-form-field class="example-full-width">-->
-    <!--<input matInput placeholder="Введите имя матери">-->
-  <!--</mat-form-field>-->
-  <!--<mat-form-field class="example-full-width">-->
-    <!--<input matInput placeholder="Введите имя отца">-->
-  <!--</mat-form-field>-->
+
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Введите веру" name="faith" [(ngModel)]="newCharacter.faith">
   </mat-form-field>
+
   <mat-form-field>
     <input matInput placeholder="Введите организацию" name="organization" [(ngModel)]="newCharacter.organization">
   </mat-form-field>
+
   <div>
     <p>Первое появление</p>
     <app-episode-chooser-for-admin></app-episode-chooser-for-admin>
@@ -30,4 +29,5 @@
     <button mat-button mat-dialog-close color="primary">Отмена</button>
     <button mat-button [mat-dialog-close]="true" color = "accent" (click)="createCharacter()">Сохранить</button>
   </mat-dialog-actions>
+
 </div>
