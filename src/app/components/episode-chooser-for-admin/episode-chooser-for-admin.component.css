@@ -1,0 +1,10 @@
+.selectors-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 2px;
+
+}
+
+.selector-size {
+  width: 45%;
+}

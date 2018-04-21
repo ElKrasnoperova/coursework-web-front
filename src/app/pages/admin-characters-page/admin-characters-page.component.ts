@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { DialogOverviewExampleDialogComponent } from '../settings-page/settings-page.component';
 import { MatDialog,  MatTableDataSource } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -7,6 +7,7 @@ import { Character } from '../../model/Character';
 import { CharacterService } from '../../service/character.service';
 
 import { AdminCharactersAddDialogComponent } from './admin-characters-add';
+import {AdminCharactersEditDialogComponent} from './admin-characters-edit';
 
 
 @Component({
@@ -37,7 +38,7 @@ export class AdminCharactersPageComponent implements OnInit {
 
   openAddDialog(): void {
     const dialogRef = this.dialog.open(AdminCharactersAddDialogComponent, {
-      height: '80%', width: '25%',
+      height: '80%', width: '35%',
       data: {
         name:         this.newCharacter.name,
         birthYear:    this.newCharacter.birthYear,
@@ -51,15 +52,15 @@ export class AdminCharactersPageComponent implements OnInit {
     });
   }
 
-  // openEditDialog() {
-  //   const dialogRef = this.dialog.open(CharactersEditDialogComponent, {
-  //     height: '80%', width: '25%'
-  //   });
-  //
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log(`Edit Dialog result: ${result}`);
-  //   });
-  // }
+  openEditDialog() {
+    const dialogRef = this.dialog.open(AdminCharactersEditDialogComponent, {
+      height: '80%', width: '35%'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Edit Dialog result: ${result}`);
+    });
+  }
 
   openDeleteDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialogComponent, {

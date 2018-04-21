@@ -41,6 +41,7 @@ import { CharacterService } from './service/character.service';
 import { HttpModule } from '@angular/http';
 import { AdminCharactersAddDialogComponent } from './pages/admin-characters-page/admin-characters-add';
 import {AdminCharactersEditDialogComponent} from './pages/admin-characters-page/admin-characters-edit';
+import { EpisodeChooserForAdminComponent } from './components/episode-chooser-for-admin/episode-chooser-for-admin.component';
 
 
 
@@ -92,7 +93,8 @@ const materialModules = [
     AdminUsersPageComponent,
     AdminGamePageComponent,
     AdminCharactersAddDialogComponent,
-    AdminCharactersEditDialogComponent
+    AdminCharactersEditDialogComponent,
+    EpisodeChooserForAdminComponent
   ],
   entryComponents: [
     DialogOverviewExampleDialogComponent,

@@ -19,7 +19,13 @@
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Организация" value="полученное из бд">
   </mat-form-field>
-  <mat-dialog-actions class = button-row-for-games>
+  <div>
+    <p>Первое появление</p>
+    <app-episode-chooser-for-admin></app-episode-chooser-for-admin>
+    <p>Последнее появление</p>
+    <app-episode-chooser-for-admin></app-episode-chooser-for-admin>
+  </div>
+  <mat-dialog-actions>
     <button mat-button mat-dialog-close color="primary">Отмена</button>
     <button mat-button [mat-dialog-close]="true" color = "accent">Сохранить</button>
   </mat-dialog-actions>
