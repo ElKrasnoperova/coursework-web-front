@@ -8,3 +8,12 @@
   align-items: center;
   justify-content: space-around;
 }
+
+.container-for-admin-language {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+  width: 95%;
+  margin: 30px;
+}

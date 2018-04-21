@@ -16,9 +16,9 @@
       </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="position">
+    <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef> Номер </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="name">
@@ -43,7 +43,7 @@
   </mat-table>
 </div>
 <div class = button-row-for-admin-users>
-  <button mat-raised-button color="accent">Сделать админом</button>
+  <button mat-raised-button color="accent" (click)="getSelectedItem()">Сделать админом</button>
   <button mat-raised-button color="primary">Заблокировать</button>
 </div>
 

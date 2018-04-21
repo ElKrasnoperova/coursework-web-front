@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {SelectionModel} from '@angular/cdk/collections';
+import {MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-admin-game-page',
@@ -9,11 +11,26 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class AdminGamePageComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  languages = ['Дотракийский', 'Валирийский'];
-  disabledList = false;
-  readonlyInput = false;
+  displayedColumns = ['select', 'position', 'name', 'weight', 'symbol'];
+  dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
+  selection = new SelectionModel<Element>(true, []);
 
-  constructor(private _formBuilder: FormBuilder) { }
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.dataSource.data.forEach(row => this.selection.select(row));
+  }
+
+  constructor(private _formBuilder: FormBuilder) {
+  }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -23,15 +40,14 @@ export class AdminGamePageComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     });
   }
-
-  onFocusInput() {
-    this.disabledList = true;
-  }
-  onUnfocus() {
-    this.readonlyInput = false;
-    this.disabledList = false;
-  }
-  onFocusList() {
-    this.readonlyInput = true;
-  }
 }
+
+export interface Element {
+  name: string;
+  position: number;
+}
+
+const ELEMENT_DATA: Element[] = [
+  {position: 1, name: 'Hydrogen'},
+  {position: 2, name: 'Helium'},
+];

@@ -18,11 +18,19 @@ import {AdminCharactersEditDialogComponent} from './admin-characters-edit';
 export class AdminCharactersPageComponent implements OnInit {
   displayedColumns = ['id', 'name', 'birthYear', 'faith', 'organisation', 'select'];
   dataSource: any;
-  selection = new SelectionModel<Character>(true, []);
+  selection = new SelectionModel<Character>(false, []);
   constructor(public dialog: MatDialog, private characterService: CharacterService) {
   }
   characters: Character[];
   newCharacter = new Character;
+
+  getSelectedItem() {
+    if (this.selection.selected.length === 0) {
+      return -1;
+    } else {
+      return this.selection.selected[0].id;
+    }
+  }
 
   ngOnInit(): void {
     this.getCharacters();
@@ -84,3 +92,4 @@ export class AdminCharactersPageComponent implements OnInit {
       this.dataSource.data.forEach(row => this.selection.select(row));
   }
 }
+
