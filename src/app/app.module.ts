@@ -40,6 +40,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CharacterService } from './service/character.service';
 import { HttpModule } from '@angular/http';
 import { AdminCharactersAddDialogComponent } from './pages/admin-characters-page/admin-characters-add';
+import {AdminCharactersEditDialogComponent} from './pages/admin-characters-page/admin-characters-edit';
+
 
 
 const materialModules = [
@@ -89,12 +91,14 @@ const materialModules = [
     AdminCharactersPageComponent,
     AdminUsersPageComponent,
     AdminGamePageComponent,
-    AdminCharactersAddDialogComponent
+    AdminCharactersAddDialogComponent,
+    AdminCharactersEditDialogComponent
   ],
   entryComponents: [
     DialogOverviewExampleDialogComponent,
     DialogEditComponent,
-    AdminCharactersAddDialogComponent
+    AdminCharactersAddDialogComponent,
+    AdminCharactersEditDialogComponent
   ],
   imports: [
     MatTabsModule,
