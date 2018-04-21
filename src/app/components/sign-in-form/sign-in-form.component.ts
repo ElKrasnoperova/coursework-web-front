@@ -17,12 +17,12 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: 'sign-in-form.component.html',
   styleUrls: ['sign-in-form.component.css'],
 })
+
 export class SignInFormComponent {
   hide = true;
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
-
   matcher = new MyErrorStateMatcher();
 }

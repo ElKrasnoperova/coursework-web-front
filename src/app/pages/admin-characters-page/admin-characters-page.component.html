@@ -20,9 +20,9 @@
       </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="position">
+    <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef> Номер </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="name">
@@ -30,29 +30,29 @@
       <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="year">
+    <ng-container matColumnDef="birthYear">
       <mat-header-cell *matHeaderCellDef> Год рождения </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.year}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.birthYear}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="mother">
-      <mat-header-cell *matHeaderCellDef> Мать </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.mother}} </mat-cell>
-    </ng-container>
+    <!--<ng-container matColumnDef="mother">-->
+      <!--<mat-header-cell *matHeaderCellDef> Мать </mat-header-cell>-->
+      <!--<mat-cell *matCellDef="let element"> {{element.mother}} </mat-cell>-->
+    <!--</ng-container>-->
 
-    <ng-container matColumnDef="father">
-      <mat-header-cell *matHeaderCellDef> Отец </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.father}} </mat-cell>
-    </ng-container>
+    <!--<ng-container matColumnDef="father">-->
+      <!--<mat-header-cell *matHeaderCellDef> Отец </mat-header-cell>-->
+      <!--<mat-cell *matCellDef="let element"> {{element.father}} </mat-cell>-->
+    <!--</ng-container>-->
 
     <ng-container matColumnDef="faith">
       <mat-header-cell *matHeaderCellDef> Вера </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.faith}} </mat-cell>
+      <mat-cell *matCellDef="let element "> {{element.faith}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="organisation">
       <mat-header-cell *matHeaderCellDef> Организация </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.organisation}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.organization}} </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

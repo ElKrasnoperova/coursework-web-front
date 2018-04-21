@@ -1,7 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import {DialogOverviewExampleDialogComponent} from '../settings-page/settings-page.component';
-import {MatDialog, MatTableDataSource} from '@angular/material';
-import {SelectionModel} from '@angular/cdk/collections';
+import {Component, Inject, OnInit} from '@angular/core';
+import { DialogOverviewExampleDialogComponent } from '../settings-page/settings-page.component';
+import { MatDialog,  MatTableDataSource } from '@angular/material';
+import { SelectionModel } from '@angular/cdk/collections';
+
+import { Character } from '../../model/Character';
+import { CharacterService } from '../../service/character.service';
+
+import { AdminCharactersAddDialogComponent } from './admin-characters-add';
+
 
 @Component({
   selector: 'app-admin-games-page',
@@ -9,41 +15,60 @@ import {SelectionModel} from '@angular/cdk/collections';
   styleUrls: ['./admin-characters-page.component.css']
 })
 export class AdminCharactersPageComponent implements OnInit {
-  displayedColumns = ['position', 'name', 'year', 'mother', 'father', 'faith', 'organisation', 'select'];
-  dataSource = new MatTableDataSource<Character>(CHARACTERS_DATA);
+  displayedColumns = ['id', 'name', 'birthYear', 'faith', 'organisation', 'select'];
+  dataSource: any;
   selection = new SelectionModel<Character>(true, []);
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private characterService: CharacterService) {
+  }
+  characters: Character[];
+  newCharacter = new Character;
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.getCharacters();
   }
 
-  openDeleteDialog() {
+  getCharacters(): void {
+    this.characterService.getCharacters()
+      .then( items => {
+        this.characters = items;
+        this.dataSource = new MatTableDataSource<Character>(this.characters);
+      });
+  }
+
+  openAddDialog(): void {
+    const dialogRef = this.dialog.open(AdminCharactersAddDialogComponent, {
+      height: '80%', width: '25%',
+      data: {
+        name:         this.newCharacter.name,
+        birthYear:    this.newCharacter.birthYear,
+        faith:        this.newCharacter.faith,
+        organization: this.newCharacter.organization,
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Add Dialog was closed, result: ${result}`);
+    });
+  }
+
+  // openEditDialog() {
+  //   const dialogRef = this.dialog.open(CharactersEditDialogComponent, {
+  //     height: '80%', width: '25%'
+  //   });
+  //
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log(`Edit Dialog result: ${result}`);
+  //   });
+  // }
+
+  openDeleteDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialogComponent, {
       height: '25%'
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
-    });
-  }
-
-  openEditDialog() {
-    const dialogRef = this.dialog.open(AdminCharactersEditDialogComponent, {
-      height: '80%', width: '25%'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-
-  openAddDialog() {
-    const dialogRef = this.dialog.open(AdminCharactersAddDialogComponent, {
-      height: '80%', width: '25%'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      console.log('page char ' + result.name + ' ' + result.birthYear);
     });
   }
 
@@ -58,32 +83,3 @@ export class AdminCharactersPageComponent implements OnInit {
       this.dataSource.data.forEach(row => this.selection.select(row));
   }
 }
-
-@Component ({
-  selector: 'app-admin-characters-edit',
-  templateUrl: 'admin-characters-edit.html',
-  styleUrls: ['./admin-characters-page.component.css']
-})
-export class AdminCharactersEditDialogComponent {}
-
-@Component ({
-  selector: 'app-admin-chracters-add',
-  templateUrl: 'admin-characters-add.html',
-  styleUrls: ['./admin-characters-page.component.css']
-})
-export class AdminCharactersAddDialogComponent {
-}
-
-export interface Character {
-  name: string;
-  position: number;
-  year: number;
-  mother: string;
-  father: string;
-  faith: string;
-  organisation: string;
-}
-
-const CHARACTERS_DATA: Character[] = [
-  {position: 1, name: 'Джон Сноу', year: 789, mother: 'Неизвестно', father: 'Эддард Старк', faith: 'Семеро', organisation: 'Дозор' }
-];
