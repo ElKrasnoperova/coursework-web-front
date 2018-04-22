@@ -1,5 +1,6 @@
 // TODO Добавить картинки для слайдера
 import { Component, OnInit } from '@angular/core';
+import {IImage} from 'ng-simple-slideshow/src/app/modules/slideshow/IImage';
 
 @Component({
   selector: 'app-auth-page',
@@ -9,9 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class AuthPageComponent implements OnInit {
 
 
-  public imageSources: string[] = [
-    '',
-    ''
+  public imageSources: IImage[] = [
+    {url: '', href: '/login'}
   ];
 
   ngOnInit() {
