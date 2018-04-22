@@ -1,12 +1,15 @@
 <mat-horizontal-stepper #stepper="matHorizontalStepper">
+
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Выберите сезон</ng-template>
       <mat-form-field>
-        <mat-select placeholder="Сезон">
-          <mat-option *ngFor="let season of seasons" [value]="season.number">
-            {{ season.viewValue }}
-          </mat-option>
+         <mat-select placeholder="Сезон" (change)="setSelectedSeasonNumber($event.value)">
+           <ng-container *ngFor="let season of episodes">
+             <mat-option [value]="season.seasonNumber">
+               <div> Сезон {{ season.seasonNumber }} </div>
+             </mat-option>
+           </ng-container>
         </mat-select>
       </mat-form-field>
       <div>
@@ -14,14 +17,17 @@
       </div>
     </form>
   </mat-step>
+
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Выберите серию</ng-template>
       <mat-form-field>
-        <mat-select placeholder="Серия">
-          <mat-option *ngFor="let episode of episodes" [value]="episode.number">
-            {{ episode.viewValue }}
-          </mat-option>
+        <mat-select placeholder="Серия" (change)="setSelectedEpisodeNumber($event.value)">
+          <ng-container *ngFor="let season of episodes">
+            <mat-option *ngIf="season.seasonNumber==selectedSeasonNumber" [value]="season.episodeNumber">
+              <div> Серия {{ season.episodeNumber }} </div>
+            </mat-option>
+          </ng-container>
         </mat-select>
       </mat-form-field>
       <div>
@@ -30,8 +36,10 @@
       </div>
     </form>
   </mat-step>
+
   <mat-step>
     <ng-template matStepLabel>Редактировать</ng-template>
     <p>Тут будет список персонажей</p>
   </mat-step>
+
 </mat-horizontal-stepper>

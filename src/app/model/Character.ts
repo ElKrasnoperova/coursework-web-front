@@ -5,7 +5,7 @@ export class Character {
   faith:                    string;
   organization:             string;
   firstEpisodeSeasonNumber: number;
-  firstEpisodeNumber:        number;
+  firstEpisodeNumber:       number;
   lastEpisodeSeasonNumber:  number;
   lastEpisodeNumber:        number;
   description:              any;

@@ -1,5 +1,4 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import { DialogOverviewExampleDialogComponent } from '../settings-page/settings-page.component';
 import { MatDialog,  MatTableDataSource } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 
@@ -8,6 +7,7 @@ import { CharacterService } from '../../service/character.service';
 
 import { AdminCharactersAddDialogComponent } from './admin-characters-add';
 import {AdminCharactersEditDialogComponent} from './admin-characters-edit';
+import {ConfirmActionDialogComponent} from '../../components/confirm-action/confirm-action-dialog';
 
 
 @Component({
@@ -16,7 +16,7 @@ import {AdminCharactersEditDialogComponent} from './admin-characters-edit';
   styleUrls: ['./admin-characters-page.component.css']
 })
 export class AdminCharactersPageComponent implements OnInit {
-  displayedColumns = ['id', 'name', 'birthYear', 'faith', 'organisation', 'select'];
+  displayedColumns = ['id', 'name', 'birthYear', 'faith', 'organization', 'select'];
   dataSource: any;
   selection = new SelectionModel<Character>(false, []);
   constructor(public dialog: MatDialog,
@@ -25,11 +25,11 @@ export class AdminCharactersPageComponent implements OnInit {
   }
   characters: Character[];
 
-  getSelectedItem() {
+  getSelectedItemIndex(): number {
     if (this.selection.selected.length === 0) {
       return -1;
     } else {
-      return this.selection.selected[0].id;
+      return this.characters.indexOf(this.selection.selected[0]);
     }
   }
 
@@ -49,13 +49,15 @@ export class AdminCharactersPageComponent implements OnInit {
     this.openAddDialog();
   }
 
-  edit(): void {                                                                              // TODO get selected characters
-    // let index_from_this.characters =
-    // this.openEditDialogForCharacter(index);
+  edit(): void {
+    const index = this.getSelectedItemIndex();
+    console.log(`selected ${index}`);
+    this.openEditDialogForCharacter(index);
   }
 
   delete(): void {
-      this.openDeleteDialog();
+    const index = this.getSelectedItemIndex();
+    this.openDeleteDialogForCharacter(index);
   }
 
   openAddDialog(): void {
@@ -69,7 +71,8 @@ export class AdminCharactersPageComponent implements OnInit {
       });
   }
 
-  openEditDialogForCharacter(index: number): any {
+  openEditDialogForCharacter(index: number): void {
+    console.log('open dialog for ' + this.characters[index]);
     this.dialog
       .open(AdminCharactersEditDialogComponent, {
         height: '80%', width: '35%',
@@ -78,22 +81,28 @@ export class AdminCharactersPageComponent implements OnInit {
         }
       })
       .afterClosed().subscribe(result => {
-        console.log(`Edit Dialog result: ${result}`);
-        console.log(`got updated ${result.name}`);
-        this.characters[index] = result;
-        this.refresh();
+        if (result) {
+          console.log('updating local');
+          this.characters[index] = result;
+          this.refresh();
+        }
       });
   }
 
-  openDeleteDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialogComponent, {
-      height: '25%'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-      console.log('page char ' + result.name + ' ' + result.birthYear);
-    });
+  openDeleteDialogForCharacter(index: number): void {
+    this.dialog
+      .open(ConfirmActionDialogComponent, {
+        height: '25%'
+      })
+      .afterClosed().subscribe(result => {
+        if (result) {
+          this.characterService.deleteCharacter( this.characters[index].id )
+            .then(() => {
+              this.characters.splice(index, 1);
+              this.refresh();
+            });
+        }
+      });
   }
 
   refresh(): void {

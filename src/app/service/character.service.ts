@@ -10,34 +10,37 @@ export class CharacterService {
   constructor(private http: Http) { }
 
   getCharacters():  Promise<Character[]> {
-    return this.http.get(this.baseUrl + '/character/all')
+    return this.http.get(`${this.baseUrl}/character/all`)
       .toPromise()
       .then(response => response.json() as Character[])
       .catch(this.handleError);
   }
 
   createCharacter(newCharacter: Character): Promise<Character> {
-    return this.http.post(this.baseUrl + '/admin/character/create', newCharacter)
+    return this.http.post(`${this.baseUrl}/admin/character/create`, newCharacter)
       .toPromise().then(response => response.json() as Character)
       .catch(this.handleError);
   }
 
   getCharacter(id: number) {
-    return this.http.get(this.baseUrl + '/admin/character/update/' + id)
+    return this.http.get(`${this.baseUrl}/admin/character/update/${id}`)
       .toPromise()
       .then(response => response.json() as Character)
       .catch(this.handleError);
   }
 
   updateCharacter(updatedCharacter: Character): Promise<Character> {
-    return this.http.put(this.baseUrl + '/admin/character/update', updatedCharacter)
+    console.log('service update');
+    console.log(updatedCharacter.name);
+    return this.http.put(`${this.baseUrl}/admin/character/update`, updatedCharacter)
       .toPromise()
       .then(response => response.json() as Character)
       .catch(this.handleError);
   }
 
-  deleteCharacter(): Promise<any> {
-    return this.http.delete(this.baseUrl + '/admin/character/delete')
+  deleteCharacter(id: number): Promise<any> {
+    console.log('service delete');
+    return this.http.delete(`${this.baseUrl}/admin/character/delete/${id}`)
       .toPromise()
       .catch(this.handleError);
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {DialogOverviewExampleDialogComponent} from '../../pages/settings-page/settings-page.component';
 import {MatDialog} from '@angular/material';
+import {ConfirmActionDialogComponent} from '../confirm-action/confirm-action-dialog';
 
 @Component({
   selector: 'app-location-of-character',
@@ -15,7 +15,7 @@ export class LocationOfCharacterComponent implements OnInit {
   }
 
   openDialogDelete() {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialogComponent, {
+    const dialogRef = this.dialog.open(ConfirmActionDialogComponent, {
       height: '25%'
     });
 

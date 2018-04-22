@@ -11,24 +11,28 @@ import {MatDialogRef} from '@angular/material';
 })
 export class AdminCharactersEditDialogComponent implements OnInit {
   character: Character;
-  // id:        number;
+
   ngOnInit(): void {
-    console.log(`onInit-Edit: id ${this.character.id}`);
-    this.getIrrelevantCharacterData();
+    console.log('ngOnInit-Edit ' + this.character);
   }
+
   constructor(private characterService: CharacterService,
               private dialogRef: MatDialogRef<AdminCharactersAddDialogComponent>) {
+    console.log('constructor-Edit ' + this.character);
   }
 
   updateCharacter(): void {
+    console.log('-> server');
+    console.log(this.character.name);
     this.characterService.updateCharacter(this.character)
       .then(response => {
+        console.log(`<- response: ${response}`);
         this.dialogRef.close(response);
       });
   }
 
-  getIrrelevantCharacterData(): void {
-    this.characterService.getCharacter(this.character.id)
-      .then(response => this.character = response );
-  }
+  // getIrrelevantCharacterData(): void {
+  //   this.characterService.getCharacter(this.character.id)
+  //     .then(response => this.character = response );
+  // }
 }

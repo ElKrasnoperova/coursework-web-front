@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
+import {ConfirmActionDialogComponent} from '../../components/confirm-action/confirm-action-dialog';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class SettingsPageComponent implements OnInit {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialogComponent, {
+    const dialogRef = this.dialog.open(ConfirmActionDialogComponent, {
       height: '25%'
     });
 
@@ -25,9 +26,9 @@ export class SettingsPageComponent implements OnInit {
   }
 }
 
-@Component({
-  selector: 'app-confirm-of-action-dialog',
-  templateUrl: 'confirm-action-dialog.html',
-})
-export class DialogOverviewExampleDialogComponent {
-}
+// @Component({
+//   selector: 'app-confirm-of-action-dialog',
+//   templateUrl: 'confirm-action-dialog.html',
+// })
+// export class DialogOverviewExampleDialogComponent {
+// }

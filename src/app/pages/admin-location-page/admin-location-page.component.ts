@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Episode} from '../../model/Episode';
+import {EpisodeService} from '../../service/episode.service';
+import {map} from 'rxjs/operator/map';
 
 @Component({
   selector: 'app-admin-location-page',
@@ -7,22 +10,18 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./admin-location-page.component.css']
 })
 export class AdminLocationPageComponent implements OnInit {
-  seasons = [
-    {number: '1', viewValue: 'Сезон 1'},
-    {number: '2', viewValue: 'Сезон 2'},
-    {number: '3', viewValue: 'Сезон 3'}
-  ];
 
-  episodes = [
-    {number: '1', viewValue: 'Серия 1'},
-    {number: '2', viewValue: 'Серия 2'},
-    {number: '3', viewValue: 'Серия 3'}
-  ];
+  episodes:               Episode[];
+  seasonsCount:           number;
+  selectedSeasonNumber:   number;
+  selectedEpisodeNumber:  number;
 
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder,
+              private episodeService: EpisodeService) {
+  }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -31,5 +30,32 @@ export class AdminLocationPageComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
+    this.getAllSeasons();
+    this.getSeasonsCount();
+  }
+
+  getAllSeasons(): void {
+    this.episodeService.getSeasons()
+      .then( items => {
+        this.episodes = items;
+      });
+  }
+
+  getSeasonsCount(): void {
+    this.episodeService.getSeasonsCount()
+      .then(count => {
+        this.seasonsCount = count;
+      });
+  }
+
+  getCharactersForEpisode(): void {
+  }
+
+  setSelectedSeasonNumber(n: number): void {
+    this.selectedSeasonNumber = n;
+  }
+
+  setSelectedEpisodeNumber(n: number) {
+    this.selectedEpisodeNumber = n;
   }
 }

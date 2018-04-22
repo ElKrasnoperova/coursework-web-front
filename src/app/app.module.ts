@@ -27,7 +27,7 @@ import { AnswerListPageComponent } from './pages/answer-list-page/answer-list-pa
 import {MatTableModule} from '@angular/material/table';
 import { AppRoutingModule } from './app-routing.module';
 import { MapComponent } from './components/map/map.component';
-import { DialogOverviewExampleDialogComponent, SettingsPageComponent } from './pages/settings-page/settings-page.component';
+import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 import { AdminLocationPageComponent } from './pages/admin-location-page/admin-location-page.component';
 import { DialogEditComponent, LocationOfCharacterComponent } from './components/location-of-character/location-of-character.component';
 import { AdminToolbarComponent } from './components/admin-toolbar/admin-toolbar.component';
@@ -42,6 +42,9 @@ import { HttpModule } from '@angular/http';
 import { AdminCharactersAddDialogComponent } from './pages/admin-characters-page/admin-characters-add';
 import {AdminCharactersEditDialogComponent} from './pages/admin-characters-page/admin-characters-edit';
 import { EpisodeChooserForAdminComponent } from './components/episode-chooser-for-admin/episode-chooser-for-admin.component';
+import {EpisodeService} from './service/episode.service';
+import {ConfirmActionDialogComponent} from './components/confirm-action/confirm-action-dialog';
+import {PlaceService} from './service/place.service';
 
 
 
@@ -84,7 +87,7 @@ const materialModules = [
     MapComponent,
     GamesListComponent,
     SettingsPageComponent,
-    DialogOverviewExampleDialogComponent,
+    ConfirmActionDialogComponent,
     AdminLocationPageComponent,
     LocationOfCharacterComponent,
     DialogEditComponent,
@@ -97,7 +100,7 @@ const materialModules = [
     EpisodeChooserForAdminComponent
   ],
   entryComponents: [
-    DialogOverviewExampleDialogComponent,
+    ConfirmActionDialogComponent,
     DialogEditComponent,
     AdminCharactersAddDialogComponent,
     AdminCharactersEditDialogComponent
@@ -116,7 +119,9 @@ const materialModules = [
     HttpModule
   ],
   providers: [
-    CharacterService
+    CharacterService,
+    EpisodeService,
+    PlaceService
   ],
   bootstrap: [AppComponent]
 })

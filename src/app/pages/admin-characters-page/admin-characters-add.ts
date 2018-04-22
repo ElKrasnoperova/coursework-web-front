@@ -13,7 +13,7 @@ import {MatDialogRef} from '@angular/material';
 export class AdminCharactersAddDialogComponent implements OnInit {
   newCharacter: Character;
   ngOnInit(): void {
-    this.newCharacter = new Character;
+    this.newCharacter = new Character();
   }
   constructor(private characterService: CharacterService,
               private dialogRef: MatDialogRef<AdminCharactersAddDialogComponent>) {
