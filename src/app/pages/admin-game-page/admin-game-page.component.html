@@ -3,16 +3,29 @@
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Язык</ng-template>
       <mat-form-field>
-        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+        <input matInput placeholder="Язык" formControlName="firstCtrl" required>
       </mat-form-field>
+      <div>
+        <button mat-button color="accent" matStepperNext>Добавить</button>
+        <button mat-button color="accent" matStepperNext>Выбрать</button>
+      </div>
     </form>
   </mat-step>
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Слово</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="Address" formControlName="secondCtrl" required>
-      </mat-form-field>
+      <div class = "words-form">
+        <mat-form-field>
+          <input matInput placeholder="Слово" formControlName="secondCtrl" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Перевод на русский" formControlName="secondCtrl" required>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-button color="accent">Добавить</button>
+      </div>
+
     </form>
   </mat-step>
 </mat-horizontal-stepper>

@@ -17,3 +17,10 @@
   width: 95%;
   margin: 30px;
 }
+
+.words-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 50%;
+}
