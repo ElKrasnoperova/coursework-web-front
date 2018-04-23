@@ -45,7 +45,7 @@ import { EpisodeChooserForAdminComponent } from './components/episode-chooser-fo
 import {EpisodeService} from './service/episode.service';
 import {ConfirmActionDialogComponent} from './components/confirm-action/confirm-action-dialog';
 import {PlaceService} from './service/place.service';
-
+import {AdminService} from './service/admin.service';
 
 
 const materialModules = [
@@ -121,7 +121,8 @@ const materialModules = [
   providers: [
     CharacterService,
     EpisodeService,
-    PlaceService
+    PlaceService,
+    AdminService
   ],
   bootstrap: [AppComponent]
 })

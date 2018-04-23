@@ -21,6 +21,11 @@
       <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="login">
+      <mat-header-cell *matHeaderCellDef> Имя пользователя </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.login}} </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Имя </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
@@ -31,9 +36,14 @@
       <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="rights">
+    <ng-container matColumnDef="telegram">
+      <mat-header-cell *matHeaderCellDef> Telegram </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.telegram}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="isAdmin">
       <mat-header-cell *matHeaderCellDef> Админ </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.rights}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.isAdmin}}</mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -43,7 +53,7 @@
   </mat-table>
 </div>
 <div class = button-row-for-admin-users>
-  <button mat-raised-button color="accent" (click)="getSelectedItem()">Сделать админом</button>
-  <button mat-raised-button color="primary">Заблокировать</button>
+  <button mat-raised-button color="accent" (click)="promoteToAdmin()">Сделать админом</button>
+  <button mat-raised-button color="primary" (click)="demote()">Отречься от админа</button>
 </div>
 
