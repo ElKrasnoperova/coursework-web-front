@@ -1,4 +1,4 @@
-<mat-horizontal-stepper #stepper="matHorizontalStepper">
+<mat-horizontal-stepper #stepper="matHorizontalStepper" linear = false>
 
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
@@ -17,7 +17,6 @@
       </div>
     </form>
   </mat-step>
-
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Выберите серию</ng-template>
@@ -35,6 +34,51 @@
         <button mat-button matStepperNext color = "accent">Дальше</button>
       </div>
     </form>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Место</ng-template>
+    <div class="container-for-admin-location mat-elevation-z8">
+    <button mat-icon-button class = add-location-button (click)="openDialogAddPlace()">
+      <mat-icon>add</mat-icon>
+    </button>
+    <mat-table #table [dataSource]="dataSource">
+      <ng-container matColumnDef="select">
+        <mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()">
+          </mat-checkbox>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)">
+          </mat-checkbox>
+        </mat-cell>
+      </ng-container>
+
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef> Номер </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Место </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"
+               (click)="selection.toggle(row)">
+      </mat-row>
+    </mat-table>
+    </div>
+    <div class = button-row-for-location>
+      <button mat-raised-button color="accent" class = button-in-admin-games (click)="opedDialogEditPlace()">Редактировать</button>
+      <button mat-raised-button color="primary" class = button-in-admin-games (click)="openDialogDeletePlace()">Удалить</button>
+    </div>
+
   </mat-step>
 
   <mat-step>

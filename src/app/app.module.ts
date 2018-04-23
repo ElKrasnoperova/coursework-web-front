@@ -45,6 +45,9 @@ import { EpisodeChooserForAdminComponent } from './components/episode-chooser-fo
 import {EpisodeService} from './service/episode.service';
 import {ConfirmActionDialogComponent} from './components/confirm-action/confirm-action-dialog';
 import {PlaceService} from './service/place.service';
+import {AdminAddLocationDialogComponent} from './pages/admin-location-page/add-location-dialog';
+import {AdminEditLocationDialogComponent} from './pages/admin-location-page/edit-location-dialog';
+import {AdminDeleteLocationDialogComponent} from './pages/admin-location-page/delete-location-dialog';
 
 
 
@@ -97,13 +100,19 @@ const materialModules = [
     AdminGamePageComponent,
     AdminCharactersAddDialogComponent,
     AdminCharactersEditDialogComponent,
-    EpisodeChooserForAdminComponent
+    EpisodeChooserForAdminComponent,
+    AdminAddLocationDialogComponent,
+    AdminEditLocationDialogComponent,
+    AdminDeleteLocationDialogComponent
   ],
   entryComponents: [
     ConfirmActionDialogComponent,
     DialogEditComponent,
     AdminCharactersAddDialogComponent,
-    AdminCharactersEditDialogComponent
+    AdminCharactersEditDialogComponent,
+    AdminAddLocationDialogComponent,
+    AdminEditLocationDialogComponent,
+    AdminDeleteLocationDialogComponent
   ],
   imports: [
     MatTabsModule,
