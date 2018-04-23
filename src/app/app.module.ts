@@ -49,6 +49,7 @@ import {AdminAddLocationDialogComponent} from './pages/admin-location-page/add-l
 import {AdminEditLocationDialogComponent} from './pages/admin-location-page/edit-location-dialog';
 import {AdminDeleteLocationDialogComponent} from './pages/admin-location-page/delete-location-dialog';
 
+import {AdminService} from './service/admin.service';
 
 
 const materialModules = [
@@ -130,7 +131,8 @@ const materialModules = [
   providers: [
     CharacterService,
     EpisodeService,
-    PlaceService
+    PlaceService,
+    AdminService
   ],
   bootstrap: [AppComponent]
 })
