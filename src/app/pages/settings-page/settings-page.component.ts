@@ -15,7 +15,10 @@ export class SettingsPageComponent implements OnInit {
   ngOnInit() {
   }
 
-  openDialog() {
+  saveChanges(): void {
+  }
+
+  openConfirmationDialog() {
     const dialogRef = this.dialog.open(ConfirmActionDialogComponent, {
       height: '25%'
     });
@@ -26,9 +29,4 @@ export class SettingsPageComponent implements OnInit {
   }
 }
 
-// @Component({
-//   selector: 'app-confirm-of-action-dialog',
-//   templateUrl: 'confirm-action-dialog.html',
-// })
-// export class DialogOverviewExampleDialogComponent {
-// }
+
