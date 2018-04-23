@@ -50,6 +50,8 @@ import {AdminEditLocationDialogComponent} from './pages/admin-location-page/edit
 import {AdminDeleteLocationDialogComponent} from './pages/admin-location-page/delete-location-dialog';
 
 import {AdminService} from './service/admin.service';
+import {AdminAddLanguageDialogComponent} from './pages/admin-game-page/add-language-dialog';
+import {AdminEditLanguageDialogComponent} from './pages/admin-game-page/edit-language-dialog';
 
 
 const materialModules = [
@@ -104,7 +106,9 @@ const materialModules = [
     EpisodeChooserForAdminComponent,
     AdminAddLocationDialogComponent,
     AdminEditLocationDialogComponent,
-    AdminDeleteLocationDialogComponent
+    AdminDeleteLocationDialogComponent,
+    AdminAddLanguageDialogComponent,
+    AdminEditLanguageDialogComponent
   ],
   entryComponents: [
     ConfirmActionDialogComponent,
@@ -113,7 +117,9 @@ const materialModules = [
     AdminCharactersEditDialogComponent,
     AdminAddLocationDialogComponent,
     AdminEditLocationDialogComponent,
-    AdminDeleteLocationDialogComponent
+    AdminDeleteLocationDialogComponent,
+    AdminAddLanguageDialogComponent,
+    AdminEditLanguageDialogComponent
   ],
   imports: [
     MatTabsModule,

@@ -1,15 +1,49 @@
 <mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper">
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Язык</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="Язык" formControlName="firstCtrl" required>
-      </mat-form-field>
-      <div>
-        <button mat-button color="accent" matStepperNext>Добавить</button>
-        <button mat-button color="accent" matStepperNext>Выбрать</button>
-      </div>
-    </form>
+  <mat-step>
+    <ng-template matStepLabel>Место</ng-template>
+    <div class="container-for-admin-games mat-elevation-z8">
+      <button mat-icon-button class = add-language-button (click)="openDialogAddLanguage()">
+        <mat-icon>add</mat-icon>
+      </button>
+      <mat-table #table [dataSource]="dataSource">
+        <ng-container matColumnDef="select">
+          <mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? masterToggle() : null"
+                          [checked]="selection.hasValue() && isAllSelected()"
+                          [indeterminate]="selection.hasValue() && !isAllSelected()">
+            </mat-checkbox>
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()"
+                          (change)="$event ? selection.toggle(row) : null"
+                          [checked]="selection.isSelected(row)">
+            </mat-checkbox>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef> Номер </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Название </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"
+                 (click)="selection.toggle(row)">
+        </mat-row>
+      </mat-table>
+    </div>
+    <div class = button-row-for-language>
+      <button mat-raised-button color="accent" class = button-in-admin-languages (click)="openDialogEditLanguage()">Редактировать</button>
+      <button mat-raised-button color="primary" class = button-in-admin-languages (click)="openDialogDeleteLanguage()">Удалить</button>
+      <button mat-raised-button color="accent" matStepperNext>Дальше</button>
+    </div>
+
+
   </mat-step>
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
@@ -25,7 +59,6 @@
       <div>
         <button mat-button color="accent">Добавить</button>
       </div>
-
     </form>
   </mat-step>
 </mat-horizontal-stepper>

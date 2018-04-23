@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {SelectionModel} from '@angular/cdk/collections';
-import {MatTableDataSource} from '@angular/material';
+import {MatDialog, MatTableDataSource} from '@angular/material';
+import {AdminAddLanguageDialogComponent} from './add-language-dialog';
+import {AdminEditLanguageDialogComponent} from './edit-language-dialog';
+import {AdminDeleteLocationDialogComponent} from '../admin-location-page/delete-location-dialog';
 
 @Component({
   selector: 'app-admin-game-page',
@@ -11,9 +14,9 @@ import {MatTableDataSource} from '@angular/material';
 export class AdminGamePageComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  displayedColumns = ['select', 'position', 'name', 'weight', 'symbol'];
+  displayedColumns = ['id', 'name', 'select'];
   dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
-  selection = new SelectionModel<Element>(true, []);
+  selection = new SelectionModel<Element>(false, []);
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
@@ -29,7 +32,34 @@ export class AdminGamePageComponent implements OnInit {
       this.dataSource.data.forEach(row => this.selection.select(row));
   }
 
-  constructor(private _formBuilder: FormBuilder) {
+  openDialogEditLanguage() {
+    this.dialog
+      .open(AdminEditLanguageDialogComponent, {
+        height: '35%', width: '35%'
+      })
+      .afterClosed().subscribe(result => {
+    });
+  }
+
+  openDialogAddLanguage() {
+    this.dialog
+      .open(AdminAddLanguageDialogComponent, {
+        height: '35%', width: '35%'
+      })
+      .afterClosed().subscribe(result => {
+    });
+  }
+
+  openDialogDeleteLanguage() {
+    this.dialog
+      .open(AdminDeleteLocationDialogComponent, {
+        height: '25%', width: '31%'
+      })
+      .afterClosed().subscribe(result => {
+    });
+  }
+
+  constructor(private _formBuilder: FormBuilder, public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -44,10 +74,10 @@ export class AdminGamePageComponent implements OnInit {
 
 export interface Element {
   name: string;
-  position: number;
+  id: number;
 }
 
 const ELEMENT_DATA: Element[] = [
-  {position: 1, name: 'Hydrogen'},
-  {position: 2, name: 'Helium'},
+  {id: 1, name: 'Валирийский'},
+  {id: 2, name: 'Дотракийский'},
 ];
