@@ -9,8 +9,15 @@ export class PlaceService {
 
   constructor(private http: Http) { }
 
+  getPlacesNames(): Promise<string[]> {
+    return this.http.get(`${this.baseUrl}/admin/place/names`)
+      .toPromise()
+      .then(response => response.json() as Place[])
+      .catch(this.handleError);
+  }
+
   getPlaces(): Promise<Place[]> {
-    return this.http.get(`${this.baseUrl}/place/all`)
+    return this.http.get(`${this.baseUrl}/admin/place/all`)
       .toPromise()
       .then(response => response.json() as Place[])
       .catch(this.handleError);

@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Episode} from '../../model/Episode';
+import {Place} from '../../model/Place';
+import {Character} from '../../model/Character';
 import {EpisodeService} from '../../service/episode.service';
+import {PlaceService} from '../../service/place.service';
+import {CharacterService} from '../../service/character.service';
 import {MatDialog, MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 import {AdminAddLocationDialogComponent} from './add-location-dialog';
 import {AdminEditLocationDialogComponent} from './edit-location-dialog';
 import {AdminDeleteLocationDialogComponent} from './delete-location-dialog';
+
 
 @Component({
   selector: 'app-admin-location-page',
@@ -16,20 +21,27 @@ import {AdminDeleteLocationDialogComponent} from './delete-location-dialog';
 export class AdminLocationPageComponent implements OnInit {
 
   episodes:               Episode[];
+  places:                 Place[];
+  characters:             Character[];
+
+  placesNames:            string[];
+
   seasonsCount:           number;
   selectedSeasonNumber:   number;
   selectedEpisodeNumber:  number;
 
   displayedColumns = ['id', 'name', 'select'];
-  dataSource = new MatTableDataSource<Location>(LOCATION_DATA);
-  selection = new SelectionModel<Location>(false, []);
+  dataSource: MatTableDataSource<Place>;
+  selection = new SelectionModel<Place>(false, []);
 
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
   constructor(public dialog: MatDialog,
               private _formBuilder: FormBuilder,
-              private episodeService: EpisodeService) {
+              private episodeService: EpisodeService,
+              private placeService: PlaceService,
+              private characterService: CharacterService) {
   }
 
   ngOnInit() {
@@ -39,8 +51,13 @@ export class AdminLocationPageComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
+
     this.getAllSeasons();
     this.getSeasonsCount();
+
+    this.getPlacesNames();
+    this.dataSource = new MatTableDataSource<Place>(this.places);
+
   }
 
   getAllSeasons(): void {
@@ -57,15 +74,11 @@ export class AdminLocationPageComponent implements OnInit {
       });
   }
 
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
-  }
-  masterToggle() {
-    this.isAllSelected() ?
-      this.selection.clear() :
-      this.dataSource.data.forEach(row => this.selection.select(row));
+  getPlacesNames(): void {
+    this.placeService.getPlacesNames()
+      .then(names => {
+        this.placesNames = names;
+      });
   }
 
   getCharactersForEpisode(): void {
@@ -105,15 +118,16 @@ export class AdminLocationPageComponent implements OnInit {
       .afterClosed().subscribe(result => {
     });
   }
+
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+  masterToggle() {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.dataSource.data.forEach(row => this.selection.select(row));
+  }
 }
 
-export interface Location {
-  name: string;
-  id: number;
-}
-
-const LOCATION_DATA: Location[] = [
-  {id: 1, name: 'Винтерфелл'},
-  {id: 2, name: 'Королевская гавань'},
-  {id: 3, name: 'Дорн'},
-];
