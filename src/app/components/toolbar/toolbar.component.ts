@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {MatTabChangeEvent} from '@angular/material';
+import {MatDialog, MatTabChangeEvent} from '@angular/material';
+import {ConfirmExitDialogComponent} from './confirmation-dialog';
 
 @Component({
   selector: 'app-toolbar',
@@ -16,10 +17,18 @@ export class ToolbarComponent implements OnInit {
     {label: 'Игры', link: 'games'}
   ];
 
-  constructor(private router: Router) {}
+  constructor(public dialog: MatDialog, private router: Router) {}
 
   ngOnInit() {
     console.log(this.router.url);
   }
 
+  openConfirmationDialog() {
+    this.dialog
+      .open(ConfirmExitDialogComponent, {
+        height: '25%', width: '31%'
+      })
+      .afterClosed().subscribe(result => {
+    });
+  }
 }

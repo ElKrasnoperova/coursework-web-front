@@ -3,7 +3,7 @@
   <mat-card class = settings-section>
     <form class = "changing-password-form">
 
-      <mat-label> Личные данные </mat-label>
+      <mat-label class = section-label> Личные данные </mat-label>
 
       <mat-form-field class="full-width">
         <label class="mat-tab-label"> Имя
@@ -17,7 +17,7 @@
         </label>
       </mat-form-field>
 
-      <mat-label> Контактная информация </mat-label>
+      <mat-label class = section-label> Контактная информация </mat-label>
 
       <mat-form-field class="full-width">
         <label class="mat-tab-label"> Телеграм
@@ -31,28 +31,26 @@
         </label>
       </mat-form-field>
 
-      <mat-label> Безопасность </mat-label>
+      <mat-label class = section-label> Безопасность </mat-label>
 
       <mat-form-field class="full-width">
-        <input matInput placeholder="Введите новый пароль" [type]="hide ? 'password' : 'text'">
+        <label class="mat-tab-label"> Новый пароль</label>
+        <input matInput [type]="hide ? 'password' : 'text'">
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
       </mat-form-field>
 
+
       <mat-form-field class="full-width">
-        <input matInput placeholder="Повторите пароль" [type]="hide ? 'password' : 'text'">
+        <label class="mat-tab-label"> Повторите пароль</label>
+        <input matInput [type]="hide ? 'password' : 'text'">
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
       </mat-form-field>
     </form>
-
   </mat-card>
 
   <div class = "button-row-settings">
     <button mat-raised-button (click)="saveChanges()" color = "accent">Сохранить изменения</button>
   </div>
-</div>
-
-<div>
-  <button mat-raised-button (click)="openConfirmationDialog()" color = "primary">Выйти</button>
 </div>
 
 

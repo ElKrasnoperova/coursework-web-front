@@ -53,6 +53,7 @@ import {AdminService} from './service/admin.service';
 import {AdminAddLanguageDialogComponent} from './pages/admin-game-page/add-language-dialog';
 import {AdminEditLanguageDialogComponent} from './pages/admin-game-page/edit-language-dialog';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
+import {ConfirmExitDialogComponent} from './components/toolbar/confirmation-dialog';
 
 
 const materialModules = [
@@ -110,7 +111,8 @@ const materialModules = [
     AdminDeleteLocationDialogComponent,
     AdminAddLanguageDialogComponent,
     AdminEditLanguageDialogComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    ConfirmExitDialogComponent,
   ],
   entryComponents: [
     ConfirmActionDialogComponent,
@@ -121,7 +123,8 @@ const materialModules = [
     AdminEditLocationDialogComponent,
     AdminDeleteLocationDialogComponent,
     AdminAddLanguageDialogComponent,
-    AdminEditLanguageDialogComponent
+    AdminEditLanguageDialogComponent,
+    ConfirmExitDialogComponent
   ],
   imports: [
     MatTabsModule,

@@ -6,7 +6,6 @@
 
 .full-width{
   width: 100%;
-  margin-top: 4px;
 }
 
 .example-section {
@@ -47,3 +46,10 @@
   flex-direction: column;
   align-items: center;
 }
+
+.section-label {
+  margin-top: 4px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
