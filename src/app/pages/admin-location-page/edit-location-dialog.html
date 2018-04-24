@@ -1,11 +1,17 @@
-<h2>Добавить место</h2>
-<mat-form-field class = add-location-form>
-  <input matInput placeholder="Назва" name = "placeTitle" value="из бд" required>
-</mat-form-field>
-<mat-dialog-actions>
-  <button mat-button class = add-location-form>Выбрать место на карте</button>
-</mat-dialog-actions>
+<h2>Редактировать локацию</h2>
+<div >
+  <mat-form-field class = add-place-form>
+    <mat-select placeholder="Персонаж">
+      <!--<mat-option *ngFor="let food of foods" [value]="food.value">-->
+      <!--{{ food.viewValue }}-->
+      <!--</mat-option>-->
+    </mat-select>
+  </mat-form-field>
+  <mat-dialog-actions>
+    <button mat-button class = add-place-form>Выбрать на карте</button>
+  </mat-dialog-actions>
 
+</div>
 <div class = confirmation-buttons>
   <mat-dialog-actions>
     <button mat-button color = "primary">Отмена</button>

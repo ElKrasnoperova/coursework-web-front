@@ -14,7 +14,7 @@ import {ErrorPageComponent} from './pages/error-page/error-page.component';
 const routes: Routes = [
   { path: '', component: CharacterPageComponent},
   { path: 'login', component: AuthPageComponent},
-  { path: 'characters', component: CharacterPageComponent},
+  { path: 'characters', component: CharacterPageComponent, loadChildren: ''},
   { path: 'map', component: MapPageComponent},
   { path: 'games', component: GameCardComponent, children: GAMES_ROUTES},
   { path: 'settings', component: SettingsPageComponent},

@@ -11,6 +11,7 @@ import {SelectionModel} from '@angular/cdk/collections';
 import {AdminAddLocationDialogComponent} from './add-location-dialog';
 import {AdminEditLocationDialogComponent} from './edit-location-dialog';
 import {AdminDeleteLocationDialogComponent} from './delete-location-dialog';
+import {AdminAddPlaceDialogComponent} from './add-place-dialog';
 
 
 @Component({
@@ -31,6 +32,7 @@ export class AdminLocationPageComponent implements OnInit {
   selectedEpisodeNumber:  number;
 
   displayedColumns = ['id', 'name', 'select'];
+  displayedColumnsForLastStep = ['id', 'name', 'x', 'y', 'select'];
   dataSource: MatTableDataSource<Place>;
   selection = new SelectionModel<Place>(false, []);
 
@@ -94,7 +96,7 @@ export class AdminLocationPageComponent implements OnInit {
 
   openDialogAddPlace() {
     this.dialog
-      .open(AdminAddLocationDialogComponent, {
+      .open(AdminAddPlaceDialogComponent, {
         height: '45%', width: '35%'
       })
       .afterClosed().subscribe(result => {
@@ -114,6 +116,24 @@ export class AdminLocationPageComponent implements OnInit {
     this.dialog
       .open(AdminDeleteLocationDialogComponent, {
         height: '25%', width: '31%'
+      })
+      .afterClosed().subscribe(result => {
+    });
+  }
+
+  openDialogAddLocation() {
+    this.dialog
+      .open(AdminAddLocationDialogComponent, {
+        height: '45%', width: '31%'
+      })
+      .afterClosed().subscribe(result => {
+    });
+  }
+
+  opedDialogEditLocation() {
+    this.dialog
+      .open(AdminEditLocationDialogComponent, {
+        height: '45%', width: '31%'
       })
       .afterClosed().subscribe(result => {
     });
