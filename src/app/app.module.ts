@@ -52,6 +52,7 @@ import {AdminDeleteLocationDialogComponent} from './pages/admin-location-page/de
 import {AdminService} from './service/admin.service';
 import {AdminAddLanguageDialogComponent} from './pages/admin-game-page/add-language-dialog';
 import {AdminEditLanguageDialogComponent} from './pages/admin-game-page/edit-language-dialog';
+import { ErrorPageComponent } from './pages/error-page/error-page.component';
 
 
 const materialModules = [
@@ -108,7 +109,8 @@ const materialModules = [
     AdminEditLocationDialogComponent,
     AdminDeleteLocationDialogComponent,
     AdminAddLanguageDialogComponent,
-    AdminEditLanguageDialogComponent
+    AdminEditLanguageDialogComponent,
+    ErrorPageComponent
   ],
   entryComponents: [
     ConfirmActionDialogComponent,

@@ -91,7 +91,7 @@ export class AdminLocationPageComponent implements OnInit {
   opedDialogEditPlace() {
     this.dialog
       .open(AdminEditLocationDialogComponent, {
-        height: '55%', width: '35%'
+        height: '45%', width: '35%'
       })
       .afterClosed().subscribe(result => {
     });

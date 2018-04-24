@@ -1,0 +1,18 @@
+.error-message {
+  margin-top: 48px;
+  font-size: 28px;
+  /*font-weight: bold;*/
+  color: black;
+}
+
+.error-page-style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sub-text {
+  margin-top: 12px;
+  color: gray;
+}
