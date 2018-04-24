@@ -56,6 +56,9 @@ import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import {ConfirmExitDialogComponent} from './components/toolbar/confirmation-dialog';
 import {AdminAddPlaceDialogComponent} from './pages/admin-location-page/add-place-dialog';
 import {AdminEditPlaceDialogComponent} from './pages/admin-location-page/edit-place-dialog';
+import { AdminEpisodePageComponent } from './pages/admin-episode-page/admin-episode-page.component';
+import {AdminAddEpisodeDialogComponent} from './pages/admin-episode-page/add-episode-dialog';
+import {AdminAddSeasonDialogComponent} from './pages/admin-episode-page/add-season-dialog';
 
 
 const materialModules = [
@@ -116,7 +119,11 @@ const materialModules = [
     ErrorPageComponent,
     ConfirmExitDialogComponent,
     AdminAddPlaceDialogComponent,
-    AdminEditPlaceDialogComponent
+    AdminEditPlaceDialogComponent,
+    AdminEpisodePageComponent,
+    AdminAddPlaceDialogComponent,
+    AdminAddEpisodeDialogComponent,
+    AdminAddSeasonDialogComponent
   ],
   entryComponents: [
     ConfirmActionDialogComponent,
@@ -130,7 +137,9 @@ const materialModules = [
     AdminEditLanguageDialogComponent,
     ConfirmExitDialogComponent,
     AdminAddPlaceDialogComponent,
-    AdminEditPlaceDialogComponent
+    AdminEditPlaceDialogComponent,
+    AdminAddEpisodeDialogComponent,
+    AdminAddSeasonDialogComponent
   ],
   imports: [
     MatTabsModule,

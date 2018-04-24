@@ -1,0 +1,15 @@
+.add-season-button {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  color: red;
+  margin-left: 95%;
+}
+
+.add-season-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.season-full-width {
+  width: 100%;
+}

@@ -1,36 +1,29 @@
-<mat-horizontal-stepper #stepper="matHorizontalStepper" linear = false>
+<mat-horizontal-stepper #stepper="matHorizontalStepper" [linear] = false>
 
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Выберите сезон</ng-template>
+      <ng-template matStepLabel>Выберите сезон и серию</ng-template>
+      <div class = episode-and-season-choosers>
       <mat-form-field>
-         <mat-select placeholder="Сезон" (change)="setSelectedSeasonNumber($event.value)">
-           <ng-container *ngFor="let season of episodes">
-             <mat-option [value]="season.seasonNumber">
-               <div> Сезон {{ season.seasonNumber }} </div>
-             </mat-option>
-           </ng-container>
-        </mat-select>
+          <mat-select placeholder="Сезон" (change)="setSelectedSeasonNumber($event.value)">
+            <ng-container *ngFor="let season of episodes">
+              <mat-option [value]="season.seasonNumber">
+                <div> Сезон {{ season.seasonNumber }} </div>
+              </mat-option>
+            </ng-container>
+          </mat-select>
       </mat-form-field>
-      <div>
-        <button mat-button matStepperNext color = "accent">Дальше</button>
+      <mat-form-field>
+          <mat-select placeholder="Серия" (change)="setSelectedEpisodeNumber($event.value)">
+            <ng-container *ngFor="let season of episodes">
+              <mat-option *ngIf="season.seasonNumber==selectedSeasonNumber" [value]="season.episodeNumber">
+                <div> Серия {{ season.episodeNumber }} </div>
+              </mat-option>
+            </ng-container>
+          </mat-select>
+      </mat-form-field>
       </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Выберите серию</ng-template>
-      <mat-form-field>
-        <mat-select placeholder="Серия" (change)="setSelectedEpisodeNumber($event.value)">
-          <ng-container *ngFor="let season of episodes">
-            <mat-option *ngIf="season.seasonNumber==selectedSeasonNumber" [value]="season.episodeNumber">
-              <div> Серия {{ season.episodeNumber }} </div>
-            </mat-option>
-          </ng-container>
-        </mat-select>
-      </mat-form-field>
       <div>
-        <button mat-button matStepperPrevious color = "primary">Назад</button>
         <button mat-button matStepperNext color = "accent">Дальше</button>
       </div>
     </form>
