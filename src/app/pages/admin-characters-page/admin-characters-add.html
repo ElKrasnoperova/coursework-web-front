@@ -25,7 +25,17 @@
     <app-episode-chooser-for-admin></app-episode-chooser-for-admin>
   </div>
 
-  <mat-dialog-actions>
+  <mat-dialog-actions class = full-width-buttons>
+    <input
+      type="file"
+      (change)="getFilePath($event)"
+      style="display: none"
+      #fileInput>
+    <button mat-raised-button (click)="fileInput.click()">Выбрать фото</button>
+    <button mat-raised-button color = "accent" disabled = {{disabled}} (click)="onUpload()">Загрузить</button>
+  </mat-dialog-actions>
+
+  <mat-dialog-actions class = full-width-buttons>
     <button mat-button mat-dialog-close color="primary">Отмена</button>
     <button mat-button [mat-dialog-close]="true" color = "accent" (click)="createCharacter()">Сохранить</button>
   </mat-dialog-actions>

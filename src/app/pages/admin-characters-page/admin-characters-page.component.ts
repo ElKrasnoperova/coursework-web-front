@@ -62,7 +62,7 @@ export class AdminCharactersPageComponent implements OnInit {
   openAddDialog(): void {
     this.dialog
       .open(AdminCharactersAddDialogComponent, {
-        height: '80%', width: '35%'
+        height: '80%', width: '40%'
       })
       .afterClosed().subscribe(result => {
         if (result) {

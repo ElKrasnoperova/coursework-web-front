@@ -9,7 +9,6 @@ import {IImage} from 'ng-simple-slideshow/src/app/modules/slideshow/IImage';
 })
 export class AuthPageComponent implements OnInit {
 
-
   public imageSources: IImage[] = [
     {url: '', href: '/login'}
   ];
@@ -17,5 +16,6 @@ export class AuthPageComponent implements OnInit {
   ngOnInit() {
   }
 
+  constructor() {}
 }
 
