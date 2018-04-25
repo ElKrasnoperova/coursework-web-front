@@ -1,29 +1,24 @@
 <mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper">
   <mat-step>
-    <ng-template matStepLabel>Место</ng-template>
+    <ng-template matStepLabel>Язык</ng-template>
     <div class="container-for-admin-games mat-elevation-z8">
-      <button mat-icon-button class = add-language-button (click)="openDialogAddLanguage()">
+      <button mat-icon-button class = add-language-button (click)="addLanguage()">
         <mat-icon>add</mat-icon>
       </button>
-      <mat-table #table [dataSource]="dataSource">
+      <mat-table #table [dataSource]="dataSource_languages">
         <ng-container matColumnDef="select">
           <mat-header-cell *matHeaderCellDef>
             <mat-checkbox (change)="$event ? masterToggle() : null"
-                          [checked]="selection.hasValue() && isAllSelected()"
-                          [indeterminate]="selection.hasValue() && !isAllSelected()">
+                          [checked]="selection_languages.hasValue() && isAllSelected()"
+                          [indeterminate]="selection_languages.hasValue() && !isAllSelected()">
             </mat-checkbox>
           </mat-header-cell>
           <mat-cell *matCellDef="let row">
             <mat-checkbox (click)="$event.stopPropagation()"
-                          (change)="$event ? selection.toggle(row) : null"
-                          [checked]="selection.isSelected(row)">
+                          (change)="$event ? selection_languages.toggle(row) : null"
+                          [checked]="selection_languages.isSelected(row)">
             </mat-checkbox>
           </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="id">
-          <mat-header-cell *matHeaderCellDef> Номер </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="name">
@@ -31,34 +26,81 @@
           <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
         </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"
-                 (click)="selection.toggle(row)">
+        <mat-header-row *matHeaderRowDef="displayedColumns_languages"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns_languages;"
+                 (click)="selection_languages.toggle(row)">
         </mat-row>
       </mat-table>
     </div>
     <div class = button-row-for-language>
-      <button mat-raised-button color="accent" class = button-in-admin-languages (click)="openDialogEditLanguage()">Редактировать</button>
-      <button mat-raised-button color="primary" class = button-in-admin-languages (click)="openDialogDeleteLanguage()">Удалить</button>
-      <button mat-raised-button color="accent" matStepperNext>Дальше</button>
+      <button mat-raised-button color="primary" class = button-in-admin-languages (click)="deleteLanguage()">Удалить</button>
+      <button mat-raised-button color="accent" matStepperNext (click)="getDictionary()">Редактировать</button>
     </div>
-
-
   </mat-step>
+
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Слово</ng-template>
-      <div class = "words-form">
-        <mat-form-field>
-          <input matInput placeholder="Слово" formControlName="secondCtrl" required>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Перевод на русский" formControlName="secondCtrl" required>
-        </mat-form-field>
+      <ng-template matStepLabel>Словарь</ng-template>
+
+      <div> {{ selectedLanguage.name }}
+      <button mat-raised-button color="accent" class = button-in-admin-languages (click)="editLanguage()">Редактировать</button>
       </div>
+
+      <!--<div class = "words-form">-->
+        <!--<mat-form-field>-->
+          <!--<input matInput placeholder="Слово" formControlName="secondCtrl" required>-->
+        <!--</mat-form-field>-->
+        <!--<mat-form-field>-->
+          <!--<input matInput placeholder="Перевод" formControlName="secondCtrl" required>-->
+        <!--</mat-form-field>-->
+      <!--</div>-->
+      <!--<div>-->
+        <!--<button mat-button color="accent" (click)="addWord()">Добавить</button>-->
+      <!--</div>-->
+
+      <button mat-icon-button class = add-character-button (click)="addWord()">
+        <mat-icon>add</mat-icon>
+      </button>
       <div>
-        <button mat-button color="accent">Добавить</button>
+        <mat-table #table [dataSource]="dataSource_words">
+          <ng-container matColumnDef="select">
+            <mat-header-cell *matHeaderCellDef>
+              <mat-checkbox (change)="$event ? masterToggle() : null"
+                            [checked]="selection_words.hasValue() && isAllSelected()"
+                            [indeterminate]="selection_words.hasValue() && !isAllSelected()">
+              </mat-checkbox>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection_words.toggle(row) : null"
+                            [checked]="selection_words.isSelected(row)">
+              </mat-checkbox>
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="translation">
+            <mat-header-cell *matHeaderCellDef> Слово </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.translation}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="word">
+            <mat-header-cell *matHeaderCellDef> Перевод </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.word}} </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns_words"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns_words;"
+                   (click)="selection_words.toggle(row)">
+          </mat-row>
+        </mat-table>
       </div>
+      <div class = button-row-for-language>
+        <button mat-raised-button color="primary" class = button-in-admin-languages (click)="deleteWord()">Удалить</button>
+        <button mat-raised-button color="accent" matStepperNext (click)="editWord()">Редактировать</button>
+      </div>
+
+
     </form>
   </mat-step>
+
 </mat-horizontal-stepper>

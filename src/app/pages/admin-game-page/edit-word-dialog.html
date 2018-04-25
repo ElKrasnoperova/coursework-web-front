@@ -1,0 +1,20 @@
+<h2>Редактировать</h2>
+
+<mat-form-field class = full-width-language-input>
+  <label> Слово
+    <input matInput [(ngModel)]="updatedWord.translation">
+  </label>
+</mat-form-field>
+
+<mat-form-field class = full-width-language-input>
+  <label> Перевод
+    <input matInput [(ngModel)]="updatedWord.word">
+  </label>
+</mat-form-field>
+
+<div class = confirmation-buttons-languages>
+  <mat-dialog-actions>
+    <button mat-button color = "primary">Отмена</button>
+    <button mat-button color = "accent" (click)="updateWord()">Сохранить</button>
+  </mat-dialog-actions>
+</div>

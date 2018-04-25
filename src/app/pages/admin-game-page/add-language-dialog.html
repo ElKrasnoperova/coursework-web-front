@@ -1,10 +1,10 @@
 <h2>Добавить язык</h2>
 <mat-form-field class = full-width-language-input>
-  <input matInput placeholder="Название языка" >
+  <input matInput placeholder="Название языка" [(ngModel)]="newLanguage.name">
 </mat-form-field>
 <div class = confirmation-buttons-languages>
-<mat-dialog-actions>
-    <button mat-button color = "primary">Отмена</button>
-    <button mat-button color = "accent">Добавить</button>
-</mat-dialog-actions>
+  <mat-dialog-actions>
+      <button mat-button color = "primary">Отмена</button>
+      <button mat-button color = "accent" (click)="addLanguage()">Добавить</button>
+  </mat-dialog-actions>
 </div>
