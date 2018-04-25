@@ -41,3 +41,9 @@
 mat-cell {
   overflow: visible;
 }
+
+.episode-and-season-choosers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
