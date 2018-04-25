@@ -60,6 +60,7 @@ import {LanguageService} from './service/language.service';
 import {AdminEditWordDialogComponent} from './pages/admin-game-page/edit-word-dialog';
 import {AdminAddWordDialogComponent} from './pages/admin-game-page/add-word-dialog';
 import {WordService} from './service/word.service';
+import {AdminEpisodePageComponent} from './pages/admin-episode-page/admin-episode-page.component';
 
 
 const materialModules = [
@@ -122,7 +123,8 @@ const materialModules = [
     ErrorPageComponent,
     ConfirmExitDialogComponent,
     AdminAddPlaceDialogComponent,
-    AdminEditPlaceDialogComponent
+    AdminEditPlaceDialogComponent,
+    AdminEpisodePageComponent
   ],
   entryComponents: [
     ConfirmActionDialogComponent,

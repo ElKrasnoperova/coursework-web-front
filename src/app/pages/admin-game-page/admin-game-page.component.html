@@ -21,6 +21,11 @@
           </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef> Номер </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="name">
           <mat-header-cell *matHeaderCellDef> Название </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
@@ -43,7 +48,7 @@
       <ng-template matStepLabel>Словарь</ng-template>
 
       <div> {{ selectedLanguage.name }}
-      <button mat-raised-button color="accent" class = button-in-admin-languages (click)="editLanguage()">Редактировать</button>
+      <button mat-button color="accent" class = button-in-admin-languages (click)="editLanguage()">Изменить</button>
       </div>
 
       <!--<div class = "words-form">-->
@@ -58,10 +63,10 @@
         <!--<button mat-button color="accent" (click)="addWord()">Добавить</button>-->
       <!--</div>-->
 
-      <button mat-icon-button class = add-character-button (click)="addWord()">
+    <div class="container-for-admin-games mat-elevation-z8">
+      <button mat-icon-button class = add-language-button (click)="addWord()">
         <mat-icon>add</mat-icon>
       </button>
-      <div>
         <mat-table #table [dataSource]="dataSource_words">
           <ng-container matColumnDef="select">
             <mat-header-cell *matHeaderCellDef>
@@ -78,6 +83,11 @@
             </mat-cell>
           </ng-container>
 
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> Номер </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+          </ng-container>
+
           <ng-container matColumnDef="translation">
             <mat-header-cell *matHeaderCellDef> Слово </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.translation}} </mat-cell>
@@ -88,19 +98,17 @@
             <mat-cell *matCellDef="let element"> {{element.word}} </mat-cell>
           </ng-container>
 
-          <mat-header-row *matHeaderRowDef="displayedColumns_words"></mat-header-row>
+          <mat-header-row *matHeaderRowDef="displayedColumns_words" class = header></mat-header-row>
           <mat-row *matRowDef="let row; columns: displayedColumns_words;"
                    (click)="selection_words.toggle(row)">
           </mat-row>
         </mat-table>
-      </div>
+    </div>
+
       <div class = button-row-for-language>
-        <button mat-raised-button color="primary" class = button-in-admin-languages (click)="deleteWord()">Удалить</button>
+        <button mat-raised-button color="primary" (click)="deleteWord()">Удалить</button>
         <button mat-raised-button color="accent" matStepperNext (click)="editWord()">Редактировать</button>
       </div>
-
-
     </form>
   </mat-step>
-
 </mat-horizontal-stepper>

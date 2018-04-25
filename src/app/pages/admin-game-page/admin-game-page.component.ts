@@ -23,11 +23,11 @@ export class AdminGamePageComponent implements OnInit {
 
   selection_languages = new SelectionModel<Language>(false, []);
   dataSource_languages: MatTableDataSource<Language>;
-  displayedColumns_languages = ['name', 'select'];
+  displayedColumns_languages = ['id', 'name', 'select'];
 
   selection_words = new SelectionModel<Word>(false, []);
   dataSource_words: MatTableDataSource<Word>;
-  displayedColumns_words = ['translation', 'word', 'select'];
+  displayedColumns_words = ['id', 'translation', 'word', 'select'];
 
   languages: Language[];
   selectedLanguage: Language;
