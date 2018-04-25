@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {AdminCharactersAddDialogComponent} from './admin-characters-add';
 import {CharacterService} from '../../service/character.service';
 import {Character} from '../../model/Character';
@@ -11,28 +11,17 @@ import {MatDialogRef} from '@angular/material';
 })
 export class AdminCharactersEditDialogComponent implements OnInit {
   character: Character;
-
+  updatedCharacter: Character;
   ngOnInit(): void {
-    console.log('ngOnInit-Edit ' + this.character);
+    this.updatedCharacter = {...this.character};
   }
-
   constructor(private characterService: CharacterService,
               private dialogRef: MatDialogRef<AdminCharactersAddDialogComponent>) {
-    console.log('constructor-Edit ' + this.character);
   }
-
   updateCharacter(): void {
-    console.log('-> server');
-    console.log(this.character.name);
-    this.characterService.updateCharacter(this.character)
+    this.characterService.updateCharacter(this.updatedCharacter)
       .then(response => {
-        console.log(`<- response: ${response}`);
         this.dialogRef.close(response);
       });
   }
-
-  // getIrrelevantCharacterData(): void {
-  //   this.characterService.getCharacter(this.character.id)
-  //     .then(response => this.character = response );
-  // }
 }

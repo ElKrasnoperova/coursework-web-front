@@ -39,7 +39,6 @@ export class CharacterService {
   }
 
   deleteCharacter(id: number): Promise<any> {
-    console.log('service delete');
     return this.http.delete(`${this.baseUrl}/admin/character/delete/${id}`)
       .toPromise()
       .catch(this.handleError);

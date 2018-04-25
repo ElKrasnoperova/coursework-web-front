@@ -18,7 +18,6 @@ export class AdminCharactersAddDialogComponent implements OnInit {
   constructor(private characterService: CharacterService,
               private dialogRef: MatDialogRef<AdminCharactersAddDialogComponent>) {
   }
-
   createCharacter(): void {
     this.characterService.createCharacter(this.newCharacter)
       .then(response => {

@@ -3,20 +3,21 @@
 <div class = edit-column>
 
   <mat-form-field class="example-full-width">
-    <input matInput name="name" [(ngModel)]="character.name">
+    <input matInput name="name" [(ngModel)]="updatedCharacter.name" >
   </mat-form-field>
 
-  <!--<mat-form-field class="example-full-width">-->
-    <!--<input matInput placeholder="Год рождения" name="birthYear" (ngModel)="character.birthYear">-->
-  <!--</mat-form-field>-->
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Год рождения" name="birthYear" [(ngModel)]="updatedCharacter.birthYear">
+  </mat-form-field>
 
-  <!--<mat-form-field class="example-full-width">-->
-    <!--<input matInput placeholder="Вера" name="faith" [(ngModel)]="character.faith">-->
-  <!--</mat-form-field>-->
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Вера" name="faith" [(ngModel)]="updatedCharacter.faith">
+  </mat-form-field>
 
-  <!--<mat-form-field class="example-full-width">-->
-    <!--<input matInput placeholder="Организация" name="organization" [(ngModel)]="character.organization">-->
-  <!--</mat-form-field>-->
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Организация" name="organization" [(ngModel)]="updatedCharacter.organization">
+  </mat-form-field>
+
   <!--<div>-->
     <!--<p>Первое появление</p>-->
     <!--<app-episode-chooser-for-admin></app-episode-chooser-for-admin>-->

@@ -56,6 +56,10 @@ import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import {ConfirmExitDialogComponent} from './components/toolbar/confirmation-dialog';
 import {AdminAddPlaceDialogComponent} from './pages/admin-location-page/add-place-dialog';
 import {AdminEditPlaceDialogComponent} from './pages/admin-location-page/edit-place-dialog';
+import {LanguageService} from './service/language.service';
+import {AdminEditWordDialogComponent} from './pages/admin-game-page/edit-word-dialog';
+import {AdminAddWordDialogComponent} from './pages/admin-game-page/add-word-dialog';
+import {WordService} from './service/word.service';
 
 
 const materialModules = [
@@ -113,6 +117,8 @@ const materialModules = [
     AdminDeleteLocationDialogComponent,
     AdminAddLanguageDialogComponent,
     AdminEditLanguageDialogComponent,
+    AdminAddWordDialogComponent,
+    AdminEditWordDialogComponent,
     ErrorPageComponent,
     ConfirmExitDialogComponent,
     AdminAddPlaceDialogComponent,
@@ -128,6 +134,8 @@ const materialModules = [
     AdminDeleteLocationDialogComponent,
     AdminAddLanguageDialogComponent,
     AdminEditLanguageDialogComponent,
+    AdminAddWordDialogComponent,
+    AdminEditWordDialogComponent,
     ConfirmExitDialogComponent,
     AdminAddPlaceDialogComponent,
     AdminEditPlaceDialogComponent
@@ -149,7 +157,9 @@ const materialModules = [
     CharacterService,
     EpisodeService,
     PlaceService,
-    AdminService
+    AdminService,
+    LanguageService,
+    WordService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,5 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import { MatDialog,  MatTableDataSource } from '@angular/material';
+import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
+import {MatDialog, MatDialogConfig, MatSort, MatTableDataSource} from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 
 import { Character } from '../../model/Character';
@@ -17,9 +17,9 @@ import {ConfirmActionDialogComponent} from '../../components/confirm-action/conf
 })
 export class AdminCharactersPageComponent implements OnInit {
   displayedColumns = ['id', 'name', 'birthYear', 'faith', 'organization', 'select'];
-  dataSource: any;
+  dataSource: MatTableDataSource<Character>;
   selection = new SelectionModel<Character>(false, []);
-  constructor(public dialog: MatDialog,
+  constructor(public  dialog: MatDialog,
               private characterService: CharacterService,
               private changeDetectorRefs: ChangeDetectorRef) {
   }
@@ -51,13 +51,12 @@ export class AdminCharactersPageComponent implements OnInit {
 
   edit(): void {
     const index = this.getSelectedItemIndex();
-    console.log(`selected ${index}`);
-    this.openEditDialogForCharacter(index);
+    if (index !== -1) { this.openEditDialogForCharacter(index); }
   }
 
   delete(): void {
     const index = this.getSelectedItemIndex();
-    this.openDeleteDialogForCharacter(index);
+    if (index !== -1) { this.openDeleteDialogForCharacter(index); }
   }
 
   openAddDialog(): void {
@@ -66,27 +65,25 @@ export class AdminCharactersPageComponent implements OnInit {
         height: '80%', width: '35%'
       })
       .afterClosed().subscribe(result => {
-        this.characters.push(result);
-        this.refresh();
+        if (result) {
+          this.characters.push(result);
+          this.refresh();
+        }
       });
   }
 
   openEditDialogForCharacter(index: number): void {
-    console.log('open dialog for ' + this.characters[index]);
-    this.dialog
+    const dialogRef = this.dialog
       .open(AdminCharactersEditDialogComponent, {
-        height: '80%', width: '35%',
-        data: {
-          character: this.characters[index]
-        }
-      })
-      .afterClosed().subscribe(result => {
-        if (result) {
-          console.log('updating local');
-          this.characters[index] = result;
-          this.refresh();
-        }
+        height: '80%', width: '35%'
       });
+    dialogRef.componentInstance.character = this.characters[index];
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.characters[index] = result;
+        this.refresh();
+      }
+    });
   }
 
   openDeleteDialogForCharacter(index: number): void {
