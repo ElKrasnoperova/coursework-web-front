@@ -121,7 +121,7 @@ export class AdminEpisodePageComponent implements OnInit {
   openAddDialogForEpisode(): void {
     const dialogRef = this.dialog
       .open(AdminAddEpisodeDialogComponent, {
-        height: '40%', width: '31%'
+        height: '52%', width: '35%'
       });
     dialogRef.componentInstance.season = this.selectedSeason;
     dialogRef.afterClosed().subscribe(result => {

@@ -41,10 +41,10 @@
           </mat-row>
         </mat-table>
       </div>
-      <div>
-        <button mat-raised-button color = "accent" (click)="deleteSeason()">Удалить</button>
-        <button mat-raised-button color = "primary" (click)="editSeason()">Редактировать</button>
-        <button mat-raised-button matStepperNext color = "accent" (click)="getSeason()">Открыть список серий</button>
+      <div class = button-row-for-episodes>
+        <button mat-raised-button color = "primary" (click)="deleteSeason()">Удалить</button>
+        <button mat-raised-button color = "accent" (click)="editSeason()">Редактировать</button>
+        <button mat-raised-button matStepperNext color = "primary" (click)="getSeason()">Открыть список серий</button>
       </div>
     </form>
   </mat-step>
@@ -95,10 +95,10 @@
             </mat-row>
           </mat-table>
         </div>
-      <div>
-        <button mat-raised-button matStepperPrevious color = "accent">Назад</button>
-        <button mat-raised-button color = "primary" (click)="editEpisode()">Редактировать</button>
-        <button mat-raised-button color = "accent" (click)="deleteEpisode()">Удалить</button>
+      <div class = button-row-for-episodes>
+        <button mat-raised-button matStepperPrevious color = "primary">Назад</button>
+        <button mat-raised-button color = "accent" (click)="editEpisode()">Редактировать</button>
+        <button mat-raised-button color = "primary" (click)="deleteEpisode()">Удалить</button>
       </div>
     </form>
   </mat-step>

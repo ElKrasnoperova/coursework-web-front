@@ -22,3 +22,20 @@
   width: 95%;
   margin: 30px;
 }
+
+.button-row-for-episodes {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+mat-cell, mat-header-cell {
+  overflow: visible;
+}
+
+.confirmation-buttons-episodes {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 16px;
+}

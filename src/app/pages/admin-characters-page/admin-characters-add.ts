@@ -13,6 +13,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class AdminCharactersAddDialogComponent implements OnInit {
   selectedFile: string = null;
+  img: File;
   newCharacter: Character;
   disabled = true;
   ngOnInit(): void {
@@ -30,8 +31,15 @@ export class AdminCharactersAddDialogComponent implements OnInit {
   }
 
   getFilePath(event) {
-    this.selectedFile = event.target.value;
-    this.disabled = false;
+    const files = event.target.files;
+    const file = files[0];
+    if (!file.type.match('image.*')) {
+      alert('Только фотографии, не обманывай!');
+    } else {
+      this.selectedFile = event.target.value;
+      this.disabled = false;
+    }
+
     // return this.selectedFile;
   }
 
@@ -43,4 +51,6 @@ export class AdminCharactersAddDialogComponent implements OnInit {
         console.log(res);
       });
   }
+
+
 }

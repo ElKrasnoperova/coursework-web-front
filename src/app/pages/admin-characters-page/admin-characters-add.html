@@ -1,5 +1,4 @@
 <!--TODO создать массив с именами инпутов и сделать через фор-->
-
 <div class = edit-column>
 
   <mat-form-field class="example-full-width">
@@ -31,7 +30,7 @@
       (change)="getFilePath($event)"
       style="display: none"
       #fileInput>
-    <button mat-raised-button (click)="fileInput.click()">Выбрать фото</button>
+    <button mat-raised-button (click)="fileInput.click()" onclick="imageUpload($event)">Выбрать фото</button>
     <button mat-raised-button color = "accent" disabled = {{disabled}} (click)="onUpload()">Загрузить</button>
   </mat-dialog-actions>
 
