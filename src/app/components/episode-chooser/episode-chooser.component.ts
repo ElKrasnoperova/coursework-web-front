@@ -13,12 +13,28 @@ export class EpisodeChooserComponent implements OnInit {
   checked = false;
   indeterminate = false;
   align = 'start';
-  disabled = false;
-  selectedSeason = '';
-  selectedEpisode = '';
+  episodeDisabled = true;
+  seasonDisabled = true;
+  selectedSeason = null;
+  selectedEpisode = null;
   constructor() { }
 
   ngOnInit() {
   }
 
+  enableEpisodeSelect() {
+    this.episodeDisabled = false;
+  }
+
+  enableChronology(state) {
+    if (state === true) {
+      if (this.selectedSeason !== null) {
+        this.episodeDisabled = false;
+      }
+      this.seasonDisabled = false;
+    } else {
+      this.seasonDisabled = true;
+      this.episodeDisabled = true;
+    }
+  }
 }

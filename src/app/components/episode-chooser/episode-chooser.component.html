@@ -1,24 +1,25 @@
 <mat-card class = "chronology">
   <mat-card-content>
     <section>
-      <mat-checkbox [(ngModel)]="checked">Хронология</mat-checkbox>
+      <mat-checkbox [(ngModel)]="checked" (change)="enableChronology(checked)">Хронология</mat-checkbox>
     </section>
   </mat-card-content>
   <mat-form-field>
-    <mat-select [(value)]="selectedSeason" class = "selection" placeholder="Выберите сезон">
-      <mat-option value="option1">Cезон 1</mat-option>
+    <mat-select [(value)]="selectedSeason" class = "selection" placeholder="Выберите сезон"
+                (selectionChange)="enableEpisodeSelect()" disabled={{seasonDisabled}}>
+      <mat-option value="option1">Сезон 1</mat-option>
       <mat-option value="option2">Сезон 2</mat-option>
       <mat-option value="option3">Сезон 3</mat-option>
-      <mat-option value="option4">Cезон 4</mat-option>
+      <mat-option value="option4">Сезон 4</mat-option>
       <mat-option value="option5">Сезон 5</mat-option>
       <mat-option value="option6">Сезон 6</mat-option>
-      <mat-option value="option7">Cезон 7</mat-option>
+      <mat-option value="option7">Сезон 7</mat-option>
       <mat-option value="option8">Сезон 8</mat-option>
     </mat-select>
   </mat-form-field>
   <br>
   <mat-form-field>
-    <mat-select [(value)]="selectedEpisode" placeholder="Выберите серию">
+    <mat-select [(value)]="selectedEpisode" placeholder="Выберите серию" disabled={{episodeDisabled}}>
       <mat-option value="option9">Серия 1</mat-option>
       <mat-option value="option10">Серия 2</mat-option>
       <mat-option value="option11">Серия 3</mat-option>
