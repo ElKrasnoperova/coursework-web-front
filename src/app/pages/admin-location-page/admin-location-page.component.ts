@@ -39,6 +39,8 @@ export class AdminLocationPageComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
+  disableSelect = true;
+
   constructor(public dialog: MatDialog,
               private _formBuilder: FormBuilder,
               private episodeService: EpisodeService,
@@ -138,10 +140,16 @@ export class AdminLocationPageComponent implements OnInit {
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
   }
+
+
   masterToggle() {
     this.isAllSelected() ?
       this.selection.clear() :
       this.dataSource.data.forEach(row => this.selection.select(row));
+  }
+
+  enableEpisodeSelect() {
+    this.disableSelect = false;
   }
 }
 
