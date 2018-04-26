@@ -1,5 +1,5 @@
-<mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper">
-  <mat-step>
+<mat-horizontal-stepper #stepper="matHorizontalStepper" [linear] = true>
+  <mat-step [stepControl]="firstFormGroup">
     <ng-template matStepLabel>Язык</ng-template>
     <div class="container-for-admin-games mat-elevation-z8">
       <button mat-icon-button class = add-language-button (click)="addLanguage()">
