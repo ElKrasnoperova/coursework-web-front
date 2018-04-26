@@ -16,7 +16,7 @@ export class AdminToolbarComponent {
 
 export const ITEMS = [
   {id: 1, value: 'Местоположение', path: 'location'},
-  {id: 2, value: 'Игры', path: 'games'},
+  {id: 2, value: 'Словари', path: 'dictionaries'},
   {id: 3, value: 'Персонажи', path: 'characters'},
   {id: 4, value: 'Пользователи', path: 'users'},
   {id: 5, value: 'Эпизоды', path: 'episodes'}

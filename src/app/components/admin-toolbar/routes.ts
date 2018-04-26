@@ -9,6 +9,6 @@ export const ADMIN_ROUTES = [
   { path: 'location', component: AdminLocationPageComponent},
   { path: 'characters', component: AdminCharactersPageComponent},
   { path: 'users', component: AdminUsersPageComponent},
-  { path: 'games', component: AdminGamePageComponent},
+  { path: 'dictionaries', component: AdminGamePageComponent},
   { path: 'episodes', component: AdminEpisodePageComponent}
 ];
