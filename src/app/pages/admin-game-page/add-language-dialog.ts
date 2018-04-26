@@ -11,7 +11,6 @@ import {MatDialogRef} from '@angular/material';
 })
 export class AdminAddLanguageDialogComponent implements OnInit {
   newLanguage: Language;
-
   constructor(private  http: Http,
               private dialogRef: MatDialogRef<AdminAddLanguageDialogComponent>,
               private languageService: LanguageService) {
@@ -19,7 +18,6 @@ export class AdminAddLanguageDialogComponent implements OnInit {
   }
   ngOnInit(): void {
   }
-
   addLanguage(): void {
     this.languageService.createLanguage(this.newLanguage)
       .then(response => {

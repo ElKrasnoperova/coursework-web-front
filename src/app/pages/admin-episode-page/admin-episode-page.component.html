@@ -1,46 +1,104 @@
 <mat-horizontal-stepper #stepper="matHorizontalStepper" [linear] = false>
+
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Выберите сезон</ng-template>
-      <mat-dialog-actions>
-        <button mat-icon-button class = add-season-button (click)="openDialogAddSeason()">
+
+      <div class="container-for-admin-episodes mat-elevation-z8">
+        <button mat-icon-button class = add-season-button (click)="addSeason()">
           <mat-icon>add</mat-icon>
         </button>
-      </mat-dialog-actions>
-      <mat-form-field>
-        <mat-select placeholder="Сезон" (change)="setSelectedSeasonNumber($event.value)">
-          <ng-container *ngFor="let season of episodes">
-            <mat-option [value]="season.seasonNumber">
-              <div> Сезон {{ season.seasonNumber }} </div>
-            </mat-option>
+
+        <mat-table #table [dataSource]="dataSource_seasons">
+          <ng-container matColumnDef="select">
+            <mat-header-cell *matHeaderCellDef>
+              <mat-checkbox (change)="$event ? masterSeasonsToggle() : null"
+                            [checked]="selection_seasons.hasValue() && isAllSeasonsSelected()"
+                            [indeterminate]="selection_seasons.hasValue() && !isAllSeasonsSelected()">
+              </mat-checkbox>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection_seasons.toggle(row) : null"
+                            [checked]="selection_seasons.isSelected(row)">
+              </mat-checkbox>
+            </mat-cell>
           </ng-container>
-        </mat-select>
-      </mat-form-field>
+
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> Номер </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="seasonNumber">
+            <mat-header-cell *matHeaderCellDef> Сезон </mat-header-cell>
+            <mat-cell *matCellDef="let element"> Сезон {{element.seasonNumber}} </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns_seasons"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns_seasons;"
+                   (click)="selection_seasons.toggle(row)">
+          </mat-row>
+        </mat-table>
+      </div>
       <div>
-        <button mat-button matStepperNext color = "accent">Дальше</button>
+        <button mat-raised-button color = "accent" (click)="deleteSeason()">Удалить</button>
+        <button mat-raised-button color = "primary" (click)="editSeason()">Редактировать</button>
+        <button mat-raised-button matStepperNext color = "accent" (click)="getSeason()">Открыть список серий</button>
       </div>
     </form>
   </mat-step>
+
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Выберите серию</ng-template>
-      <mat-dialog-actions>
-        <button mat-icon-button class = add-season-button (click)="openDialogAddEpisode()">
-          <mat-icon>add</mat-icon>
-        </button>
-      </mat-dialog-actions>
-      <mat-form-field>
-        <mat-select placeholder="Серия" (change)="setSelectedEpisodeNumber($event.value)">
-          <ng-container *ngFor="let season of episodes">
-            <mat-option *ngIf="season.seasonNumber==selectedSeasonNumber" [value]="season.episodeNumber">
-              <div> Серия {{ season.episodeNumber }} </div>
-            </mat-option>
-          </ng-container>
-        </mat-select>
-      </mat-form-field>
+        <div class="container-for-admin-episodes mat-elevation-z8">
+
+          <button mat-icon-button class = add-season-button (click)="addEpisode()">
+            <mat-icon>add</mat-icon>
+          </button>
+
+          <mat-table #table [dataSource]="dataSource_episodes">
+            <ng-container matColumnDef="select">
+              <mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? masterEpisodesToggle() : null"
+                              [checked]="selection_episodes.hasValue() && isAllEpisodesSelected()"
+                              [indeterminate]="selection_episodes.hasValue() && !isAllEpisodesSelected()">
+                </mat-checkbox>
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()"
+                              (change)="$event ? selection_episodes.toggle(row) : null"
+                              [checked]="selection_episodes.isSelected(row)">
+                </mat-checkbox>
+              </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="id">
+              <mat-header-cell *matHeaderCellDef> Номер </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="episodeNumber">
+              <mat-header-cell *matHeaderCellDef> Серия </mat-header-cell>
+              <mat-cell *matCellDef="let element"> Серия {{element.episodeNumber}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+              <mat-header-cell *matHeaderCellDef> Название </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns_episodes"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns_episodes;"
+                     (click)="selection_episodes.toggle(row)">
+            </mat-row>
+          </mat-table>
+        </div>
       <div>
-        <button mat-button matStepperPrevious color = "primary">Назад</button>
-        <button mat-button matStepperNext color = "accent">Дальше</button>
+        <button mat-raised-button matStepperPrevious color = "accent">Назад</button>
+        <button mat-raised-button color = "primary" (click)="editEpisode()">Редактировать</button>
+        <button mat-raised-button color = "accent" (click)="deleteEpisode()">Удалить</button>
       </div>
     </form>
   </mat-step>

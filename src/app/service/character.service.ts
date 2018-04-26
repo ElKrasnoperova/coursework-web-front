@@ -30,8 +30,6 @@ export class CharacterService {
   }
 
   updateCharacter(updatedCharacter: Character): Promise<Character> {
-    console.log('service update');
-    console.log(updatedCharacter.name);
     return this.http.put(`${this.baseUrl}/admin/character/update`, updatedCharacter)
       .toPromise()
       .then(response => response.json() as Character)

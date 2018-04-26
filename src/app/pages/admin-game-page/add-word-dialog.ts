@@ -12,7 +12,6 @@ import {Word} from '../../model/Word';
 })
 export class AdminAddWordDialogComponent implements OnInit {
   newWord: Word;
-  wordLang: Language;
   translationLang: Language;
   constructor(private http: Http,
               private dialogRef: MatDialogRef<AdminAddWordDialogComponent>,
@@ -22,7 +21,6 @@ export class AdminAddWordDialogComponent implements OnInit {
   ngOnInit(): void {
   }
   addWord(): void {
-    this.newWord.wordLang = this.wordLang;
     this.newWord.translationLang = this.translationLang;
     this.wordService.createWord(this.newWord)
       .then(response => {

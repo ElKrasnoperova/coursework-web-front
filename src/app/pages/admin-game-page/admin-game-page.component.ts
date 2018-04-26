@@ -31,7 +31,6 @@ export class AdminGamePageComponent implements OnInit {
 
   languages: Language[];
   selectedLanguage: Language;
-  localLanguage: Language;
 
   words: Word[];
 
@@ -41,7 +40,6 @@ export class AdminGamePageComponent implements OnInit {
               private languageService: LanguageService,
               private wordService: WordService) {
     this.selectedLanguage = new Language();
-    this.localLanguage = new Language();
   }
 
   ngOnInit() {
@@ -85,15 +83,10 @@ export class AdminGamePageComponent implements OnInit {
     }
   }
 
-  setLocalLanguage(language: Language): void {
-    this.localLanguage = language;
-  }
-
   getWords(): void {
     this.wordService.getWords(this.selectedLanguage)
       .then(items => {
         this.words = items;
-        this.setLocalLanguage(items[0].wordLang); // :(
         this.refreshWords();
       });
   }
@@ -198,7 +191,6 @@ export class AdminGamePageComponent implements OnInit {
     dialogRef.componentInstance.word = this.words[index];
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log(result);
         this.words[index] = result;
         this.refreshWords();
       }
@@ -215,7 +207,6 @@ export class AdminGamePageComponent implements OnInit {
         height: '35%', width: '35%'
       });
     dialogRef.componentInstance.translationLang = this.selectedLanguage;
-    dialogRef.componentInstance.wordLang = this.localLanguage;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.words.push(result);
@@ -235,14 +226,25 @@ export class AdminGamePageComponent implements OnInit {
     this.changeDetectorRefs.detectChanges();
   }
 
-  isAllSelected() {
+  isAllLanguagesSelected() {
     const numSelected = this.selection_languages.selected.length;
     const numRows = this.dataSource_languages.data.length;
     return numSelected === numRows;
   }
-  masterToggle() {
-    this.isAllSelected() ?
+  masterLanguagesToggle() {
+    this.isAllLanguagesSelected() ?
       this.selection_languages.clear() :
       this.dataSource_languages.data.forEach(row => this.selection_languages.select(row));
+  }
+
+  isAllWordsSelected() {
+    const numSelected = this.selection_words.selected.length;
+    const numRows = this.dataSource_words.data.length;
+    return numSelected === numRows;
+  }
+  masterWordsToggle() {
+    this.isAllWordsSelected() ?
+      this.selection_words.clear() :
+      this.dataSource_words.data.forEach(row => this.selection_words.select(row));
   }
 }

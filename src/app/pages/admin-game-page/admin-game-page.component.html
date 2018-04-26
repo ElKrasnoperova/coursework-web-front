@@ -8,9 +8,9 @@
       <mat-table #table [dataSource]="dataSource_languages">
         <ng-container matColumnDef="select">
           <mat-header-cell *matHeaderCellDef>
-            <mat-checkbox (change)="$event ? masterToggle() : null"
-                          [checked]="selection_languages.hasValue() && isAllSelected()"
-                          [indeterminate]="selection_languages.hasValue() && !isAllSelected()">
+            <mat-checkbox (change)="$event ? masterLanguagesToggle() : null"
+                          [checked]="selection_languages.hasValue() && isAllLanguagesSelected()"
+                          [indeterminate]="selection_languages.hasValue() && !isAllLanguagesSelected()">
             </mat-checkbox>
           </mat-header-cell>
           <mat-cell *matCellDef="let row">
@@ -39,7 +39,8 @@
     </div>
     <div class = button-row-for-language>
       <button mat-raised-button color="primary" class = button-in-admin-languages (click)="deleteLanguage()">Удалить</button>
-      <button mat-raised-button color="accent" matStepperNext (click)="getDictionary()">Редактировать</button>
+      <button mat-raised-button color="accent"  (click)="editLanguage()">Редактировать</button>
+      <button mat-raised-button color="primary" matStepperNext (click)="getDictionary()">Открыть словарь</button>
     </div>
   </mat-step>
 
@@ -47,21 +48,7 @@
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Словарь</ng-template>
 
-      <div> {{ selectedLanguage.name }}
-      <button mat-button color="accent" class = button-in-admin-languages (click)="editLanguage()">Изменить</button>
-      </div>
-
-      <!--<div class = "words-form">-->
-        <!--<mat-form-field>-->
-          <!--<input matInput placeholder="Слово" formControlName="secondCtrl" required>-->
-        <!--</mat-form-field>-->
-        <!--<mat-form-field>-->
-          <!--<input matInput placeholder="Перевод" formControlName="secondCtrl" required>-->
-        <!--</mat-form-field>-->
-      <!--</div>-->
-      <!--<div>-->
-        <!--<button mat-button color="accent" (click)="addWord()">Добавить</button>-->
-      <!--</div>-->
+      <div> {{ selectedLanguage.name }}</div>
 
     <div class="container-for-admin-games mat-elevation-z8">
       <button mat-icon-button class = add-language-button (click)="addWord()">
@@ -70,9 +57,9 @@
         <mat-table #table [dataSource]="dataSource_words">
           <ng-container matColumnDef="select">
             <mat-header-cell *matHeaderCellDef>
-              <mat-checkbox (change)="$event ? masterToggle() : null"
-                            [checked]="selection_words.hasValue() && isAllSelected()"
-                            [indeterminate]="selection_words.hasValue() && !isAllSelected()">
+              <mat-checkbox (change)="$event ? masterWordsToggle() : null"
+                            [checked]="selection_words.hasValue() && isAllWordsSelected()"
+                            [indeterminate]="selection_words.hasValue() && !isAllWordsSelected()">
               </mat-checkbox>
             </mat-header-cell>
             <mat-cell *matCellDef="let row">

@@ -55,7 +55,6 @@ export class AdminLocationPageComponent implements OnInit {
     });
 
     this.getAllSeasons();
-    this.getSeasonsCount();
 
     this.getPlacesNames();
     this.dataSource = new MatTableDataSource<Place>(this.places);
@@ -68,12 +67,7 @@ export class AdminLocationPageComponent implements OnInit {
         this.episodes = items;
       });
   }
-
-  getSeasonsCount(): void {
-    this.episodeService.getSeasonsCount()
-      .then(count => {
-        this.seasonsCount = count;
-      });
+  getSeason(): void {
   }
 
   getPlacesNames(): void {

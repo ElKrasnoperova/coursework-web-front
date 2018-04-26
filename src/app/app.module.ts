@@ -61,6 +61,10 @@ import {AdminEditWordDialogComponent} from './pages/admin-game-page/edit-word-di
 import {AdminAddWordDialogComponent} from './pages/admin-game-page/add-word-dialog';
 import {WordService} from './service/word.service';
 import {AdminEpisodePageComponent} from './pages/admin-episode-page/admin-episode-page.component';
+import {AdminAddEpisodeDialogComponent} from './pages/admin-episode-page/add-episode-dialog';
+import {AdminAddSeasonDialogComponent} from './pages/admin-episode-page/add-season-dialog';
+import {AdminEditEpisodeDialogComponent} from './pages/admin-episode-page/edit-episode-dialog';
+import {AdminEditSeasonDialogComponent} from './pages/admin-episode-page/edit-season-dialog';
 
 
 const materialModules = [
@@ -124,7 +128,11 @@ const materialModules = [
     ConfirmExitDialogComponent,
     AdminAddPlaceDialogComponent,
     AdminEditPlaceDialogComponent,
-    AdminEpisodePageComponent
+    AdminEpisodePageComponent,
+    AdminAddEpisodeDialogComponent,
+    AdminAddSeasonDialogComponent,
+    AdminEditEpisodeDialogComponent,
+    AdminEditSeasonDialogComponent
   ],
   entryComponents: [
     ConfirmActionDialogComponent,
@@ -140,7 +148,11 @@ const materialModules = [
     AdminEditWordDialogComponent,
     ConfirmExitDialogComponent,
     AdminAddPlaceDialogComponent,
-    AdminEditPlaceDialogComponent
+    AdminEditPlaceDialogComponent,
+    AdminAddEpisodeDialogComponent,
+    AdminAddSeasonDialogComponent,
+    AdminEditEpisodeDialogComponent,
+    AdminEditSeasonDialogComponent
   ],
   imports: [
     MatTabsModule,
