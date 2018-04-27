@@ -1,5 +1,7 @@
+import {Photo} from './Photo';
+
 export class Language {
   id:    number;
   name:  string;
-  // photo: number;
+  photo: Photo;
 }

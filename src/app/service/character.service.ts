@@ -22,13 +22,6 @@ export class CharacterService {
       .catch(this.handleError);
   }
 
-  getCharacter(id: number) {
-    return this.http.get(`${this.baseUrl}/admin/character/update/${id}`)
-      .toPromise()
-      .then(response => response.json() as Character)
-      .catch(this.handleError);
-  }
-
   updateCharacter(updatedCharacter: Character): Promise<Character> {
     return this.http.put(`${this.baseUrl}/admin/character/update`, updatedCharacter)
       .toPromise()

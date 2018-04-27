@@ -1,13 +1,13 @@
+import {Episode} from './Episode';
+import {Photo} from './Photo';
+
 export class Character {
   id:                       number;
   name:                     string;
   birthYear:                number;
   faith:                    string;
   organization:             string;
-  firstEpisodeSeasonNumber: number;
-  firstEpisodeNumber:       number;
-  lastEpisodeSeasonNumber:  number;
-  lastEpisodeNumber:        number;
-  description:              any;
-  photoPath:                string;
+  firstEpisode:             Episode;
+  lastEpisode:              Episode;
+  photo:                    Photo;
 }

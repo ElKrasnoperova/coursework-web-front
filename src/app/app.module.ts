@@ -65,6 +65,9 @@ import {AdminAddEpisodeDialogComponent} from './pages/admin-episode-page/add-epi
 import {AdminAddSeasonDialogComponent} from './pages/admin-episode-page/add-season-dialog';
 import {AdminEditEpisodeDialogComponent} from './pages/admin-episode-page/edit-episode-dialog';
 import {AdminEditSeasonDialogComponent} from './pages/admin-episode-page/edit-season-dialog';
+import { PhotoLoaderComponent } from './components/photo-loader/photo-loader.component';
+import {UserService} from './service/user.service';
+// import {PhotoService} from './service/photo.service';
 
 
 const materialModules = [
@@ -132,7 +135,8 @@ const materialModules = [
     AdminAddEpisodeDialogComponent,
     AdminAddSeasonDialogComponent,
     AdminEditEpisodeDialogComponent,
-    AdminEditSeasonDialogComponent
+    AdminEditSeasonDialogComponent,
+    PhotoLoaderComponent
   ],
   entryComponents: [
     ConfirmActionDialogComponent,
@@ -172,8 +176,10 @@ const materialModules = [
     EpisodeService,
     PlaceService,
     AdminService,
+    UserService,
     LanguageService,
-    WordService
+    WordService,
+    // PhotoService
   ],
   bootstrap: [AppComponent]
 })
