@@ -1,0 +1,5 @@
+<mat-dialog-actions class = full-width-buttons>
+  <img #preview src="">
+  <input type="file" style="display: none" (change)="initPhoto($event.target.value)" #fileInput>
+  <button mat-raised-button (click)="fileInput.click()">Выбрать фото</button>
+</mat-dialog-actions>
