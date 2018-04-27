@@ -4,6 +4,7 @@ import {CharacterService} from '../../service/character.service';
 import {Character} from '../../model/Character';
 import {MatDialogRef} from '@angular/material';
 import {HttpClient} from '@angular/common/http';
+import {Photo} from '../../model/Photo';
 
 @Component({
   selector: 'app-admin-character-edit-dialog',
@@ -13,14 +14,11 @@ import {HttpClient} from '@angular/common/http';
 export class AdminCharactersEditDialogComponent implements OnInit {
   character: Character;
   updatedCharacter: Character;
-  selectedFile: string = null;
-  disabled = true;
   ngOnInit(): void {
     this.updatedCharacter = {...this.character};
   }
   constructor(private characterService: CharacterService,
-              private dialogRef: MatDialogRef<AdminCharactersAddDialogComponent>,
-              private http: HttpClient) {
+              private dialogRef: MatDialogRef<AdminCharactersAddDialogComponent>) {
   }
   updateCharacter(): void {
     this.characterService.updateCharacter(this.updatedCharacter)
@@ -28,18 +26,7 @@ export class AdminCharactersEditDialogComponent implements OnInit {
         this.dialogRef.close(response);
       });
   }
-  getFilePath(event) {
-    this.selectedFile = event.target.value;
-    this.disabled = false;
-    return this.selectedFile;
-  }
-
-  onUpload() {
-    const fd = new FormData();
-    fd.append('image', this.selectedFile, this.selectedFile);
-    this.http.post('', fd)
-      .subscribe( res => {
-        console.log(res);
-      });
+  setPhoto(photo: Photo): void {
+    this.updatedCharacter.photo = photo;
   }
 }

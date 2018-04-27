@@ -21,15 +21,16 @@ import {AdminAddPlaceDialogComponent} from './add-place-dialog';
 })
 export class AdminLocationPageComponent implements OnInit {
 
-  episodes:               Episode[];
+  // episodes:               Episode[];
   places:                 Place[];
   characters:             Character[];
 
+  episode: Episode;
+
   placesNames:            string[];
 
-  seasonsCount:           number;
-  selectedSeasonNumber:   number;
-  selectedEpisodeNumber:  number;
+  // selectedSeasonNumber:   number;
+  // selectedEpisodeNumber:  number;
 
   displayedColumns = ['id', 'name', 'select'];
   displayedColumnsForLastStep = ['id', 'name', 'x', 'y', 'select'];
@@ -56,21 +57,21 @@ export class AdminLocationPageComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     });
 
-    this.getAllSeasons();
+    // this.getAllSeasons();
 
     this.getPlacesNames();
     this.dataSource = new MatTableDataSource<Place>(this.places);
 
   }
 
-  getAllSeasons(): void {
-    this.episodeService.getSeasons()
-      .then( items => {
-        this.episodes = items;
-      });
-  }
-  getSeason(): void {
-  }
+  // getAllSeasons(): void {
+  //   this.episodeService.getSeasons()
+  //     .then( items => {
+  //       this.episodes = items;
+  //     });
+  // }
+  // getSeason(): void {
+  // }
 
   getPlacesNames(): void {
     this.placeService.getPlacesNames()
@@ -79,16 +80,20 @@ export class AdminLocationPageComponent implements OnInit {
       });
   }
 
+  setEpisode(episode: Episode) {
+    this.episode = episode;
+  }
+
   getCharactersForEpisode(): void {
   }
 
-  setSelectedSeasonNumber(n: number): void {
-    this.selectedSeasonNumber = n;
-  }
-
-  setSelectedEpisodeNumber(n: number) {
-    this.selectedEpisodeNumber = n;
-  }
+  // setSelectedSeasonNumber(n: number): void {
+  //   this.selectedSeasonNumber = n;
+  // }
+  //
+  // setSelectedEpisodeNumber(n: number) {
+  //   this.selectedEpisodeNumber = n;
+  // }
 
   openDialogAddPlace() {
     this.dialog
@@ -140,7 +145,6 @@ export class AdminLocationPageComponent implements OnInit {
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
   }
-
 
   masterToggle() {
     this.isAllSelected() ?

@@ -2,26 +2,29 @@
 
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Выберите сезон и серию</ng-template>
+      <ng-template matStepLabel>Выберите эпизод</ng-template>
       <div class = episode-and-season-choosers>
-      <mat-form-field>
-          <mat-select placeholder="Сезон" (change)="setSelectedSeasonNumber($event.value)" (selectionChange)="enableEpisodeSelect()">
-            <ng-container *ngFor="let season of episodes">
-              <mat-option [value]="season.seasonNumber">
-                <div> Сезон {{ season.seasonNumber }} </div>
-              </mat-option>
-            </ng-container>
-          </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-          <mat-select placeholder="Серия" (change)="setSelectedEpisodeNumber($event.value)" [disabled]="disableSelect">
-            <ng-container *ngFor="let season of episodes">
-              <mat-option *ngIf="season.seasonNumber==selectedSeasonNumber" [value]="season.episodeNumber">
-                <div> Серия {{ season.episodeNumber }} </div>
-              </mat-option>
-            </ng-container>
-          </mat-select>
-      </mat-form-field>
+      <!--<mat-form-field>-->
+          <!--<mat-select placeholder="Сезон" (change)="setSelectedSeasonNumber($event.value)" (selectionChange)="enableEpisodeSelect()">-->
+            <!--<ng-container *ngFor="let season of episodes">-->
+              <!--<mat-option [value]="season.seasonNumber">-->
+                <!--<div> Сезон {{ season.seasonNumber }} </div>-->
+              <!--</mat-option>-->
+            <!--</ng-container>-->
+          <!--</mat-select>-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field>-->
+          <!--<mat-select placeholder="Серия" (change)="setSelectedEpisodeNumber($event.value)" [disabled]="disableSelect">-->
+            <!--<ng-container *ngFor="let season of episodes">-->
+              <!--<mat-option *ngIf="season.seasonNumber==selectedSeasonNumber" [value]="season.episodeNumber">-->
+                <!--<div> Серия {{ season.episodeNumber }} </div>-->
+              <!--</mat-option>-->
+            <!--</ng-container>-->
+          <!--</mat-select>-->
+      <!--</mat-form-field>-->
+
+        <app-episode-chooser (episodeSelected)="setEpisode($event)"></app-episode-chooser>
+
       </div>
       <div>
         <button mat-button matStepperNext color = "accent">Дальше</button>

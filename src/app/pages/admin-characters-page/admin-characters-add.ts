@@ -4,6 +4,8 @@ import { Character } from '../../model/Character';
 import { CharacterService } from '../../service/character.service';
 import {MatDialogRef} from '@angular/material';
 import {HttpClient} from '@angular/common/http';
+import {Episode} from '../../model/Episode';
+import {Photo} from '../../model/Photo';
 
 
 @Component({
@@ -12,16 +14,17 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./admin-characters-page.component.css']
 })
 export class AdminCharactersAddDialogComponent implements OnInit {
-  selectedFile: string = null;
-  img: File;
+  // selectedFile: string = null;
+  // img: File;
+  // disabled = true;
+
   newCharacter: Character;
-  disabled = true;
+
   ngOnInit(): void {
     this.newCharacter = new Character();
   }
   constructor(private characterService: CharacterService,
-              private dialogRef: MatDialogRef<AdminCharactersAddDialogComponent>,
-              private http: HttpClient) {
+              private dialogRef: MatDialogRef<AdminCharactersAddDialogComponent>) {
   }
   createCharacter(): void {
     this.characterService.createCharacter(this.newCharacter)
@@ -30,27 +33,15 @@ export class AdminCharactersAddDialogComponent implements OnInit {
       });
   }
 
-  getFilePath(event) {
-    const files = event.target.files;
-    const file = files[0];
-    if (!file.type.match('image.*')) {
-      alert('Только фотографии, не обманывай!');
-    } else {
-      this.selectedFile = event.target.value;
-      this.disabled = false;
-    }
-
-    // return this.selectedFile;
+  setFirstEpisode(firstEpisode: Episode) {
+    this.newCharacter.firstEpisode = firstEpisode;
   }
 
-  onUpload() {
-    const fd = new FormData();
-    fd.append('image', this.selectedFile, this.selectedFile);
-    this.http.post('', fd)
-      .subscribe( res => {
-        console.log(res);
-      });
+  setLastEpisode(lastEpisode: Episode) {
+    this.newCharacter.lastEpisode = lastEpisode;
   }
 
-
+  setPhoto(photo: Photo) {
+    this.newCharacter.photo = photo;
+  }
 }

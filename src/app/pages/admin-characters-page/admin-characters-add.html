@@ -18,21 +18,25 @@
   </mat-form-field>
 
   <div>
-    <p>Первое появление</p>
-    <app-episode-chooser-for-admin></app-episode-chooser-for-admin>
-    <p>Последнее появление</p>
-    <app-episode-chooser-for-admin></app-episode-chooser-for-admin>
+    <div> Первое появление
+      <app-episode-chooser (episodeSelected)="setFirstEpisode($event)"></app-episode-chooser>
+    </div>
+    <!--<div> Последнее появление-->
+      <!--<app-episode-chooser (episodeSelected)="setLastEpisode($event)"></app-episode-chooser>-->
+    <!--</div>-->
   </div>
 
-  <mat-dialog-actions class = full-width-buttons>
-    <input
-      type="file"
-      (change)="getFilePath($event)"
-      style="display: none"
-      #fileInput>
-    <button mat-raised-button (click)="fileInput.click()" onclick="imageUpload($event)">Выбрать фото</button>
-    <button mat-raised-button color = "accent" disabled = {{disabled}} (click)="onUpload()">Загрузить</button>
-  </mat-dialog-actions>
+  <app-photo-loader (photoIsChosen)="setPhoto($event)"></app-photo-loader>
+
+  <!-- input (change)="getFilePath($event)"-->
+  <!--<mat-dialog-actions class = full-width-buttons>-->
+    <!--<input-->
+      <!--type="file"-->
+      <!--style="display: none"-->
+      <!--#fileInput>-->
+    <!--<button mat-raised-button (click)="fileInput.click()" onclick="imageUpload($event)">Выбрать фото</button>-->
+    <!--<button mat-raised-button color = "accent" disabled = {{disabled}} >Загрузить</button> &lt;!&ndash;(click)="onUpload()"&ndash;&gt;-->
+  <!--</mat-dialog-actions>-->
 
   <mat-dialog-actions class = full-width-buttons>
     <button mat-button mat-dialog-close color="primary">Отмена</button>

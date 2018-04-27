@@ -45,6 +45,24 @@
       <mat-cell *matCellDef="let element"> {{element.organization}} </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="firstEpisode">
+      <mat-header-cell *matHeaderCellDef> Первый эпизод </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.firstEpisode">
+          сезон {{element.firstEpisode.seasonNumber}} серия {{element.firstEpisode.episodeNumber}}
+        </ng-container>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="lastEpisode">
+      <mat-header-cell *matHeaderCellDef> Последний эпизод </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <!--<ng-container *ngIf="element.lastEpisode!=null">-->
+          <!--s {{element.lastEpisode.seasonNumber}} ep {{element.lastEpisode.episodeNumber}}-->
+        <!--</ng-container>-->
+      </mat-cell>
+    </ng-container>
+
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"
              (click)="selection.toggle(row)">
