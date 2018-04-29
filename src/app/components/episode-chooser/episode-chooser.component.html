@@ -7,7 +7,7 @@
 
   <mat-form-field>
     <mat-select class = "selection" placeholder="Выберите сезон"
-                (selectionChange)="getEpisodesForSeason($event.value)">                       <!-- disabled={{seasonDisabled}}-->
+               (change)="enableEpisodeSelect()" (selectionChange)="getEpisodesForSeason($event.value)">
       <mat-option [value]="null"></mat-option>
       <mat-option *ngFor="let season of seasons" [value]="season">
         Сезон {{season.seasonNumber}}
@@ -17,7 +17,8 @@
   <!--<br>-->
   <mat-form-field>
     <mat-select class = "selection" placeholder="Выберите серию"
-                [value]="selectedEpisode" (selectionChange)="setEpisode($event.value)">                      <!--disabled={{episodeDisabled}}-->
+                [value]="selectedEpisode" (selectionChange)="setEpisode($event.value)"
+                disabled={{episodeDisabled}}>
       <mat-option [value]="null"></mat-option>
       <mat-option *ngFor="let episode of episodes" [value]="episode">
         Серия {{episode.episodeNumber}}: {{episode.name}}

@@ -16,6 +16,8 @@ export class EpisodeChooserComponent implements OnInit {
 
   selectedEpisode: Episode;
 
+  episodeDisabled = true;
+
   @Output()
   episodeSelected: EventEmitter<Episode> = new EventEmitter<Episode>();
 
@@ -49,14 +51,13 @@ export class EpisodeChooserComponent implements OnInit {
   // checked = false;
   // indeterminate = false;
   // align = 'start';
-  // episodeDisabled = true;
-  // seasonDisabled = true;
   // selectedSeason = null;
   // selectedEpisode = null;
   //
-  // enableEpisodeSelect() {
-  //   this.episodeDisabled = false;
-  // }
+
+  enableEpisodeSelect() {
+    this.episodeDisabled = false;
+  }
   //
   // enableChronology(state) {
   //   if (state === true) {
