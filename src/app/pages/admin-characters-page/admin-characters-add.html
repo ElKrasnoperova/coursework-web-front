@@ -19,11 +19,15 @@
 
   <div>
     <div> Первое появление
-      <app-episode-chooser (episodeSelected)="setFirstEpisode($event)"></app-episode-chooser>
+      <div class = margin-for-chooser>
+        <app-episode-chooser (episodeSelected)="setFirstEpisode($event)" ></app-episode-chooser>
+      </div>
     </div>
-    <!--<div> Последнее появление-->
-      <!--<app-episode-chooser (episodeSelected)="setLastEpisode($event)"></app-episode-chooser>-->
-    <!--</div>-->
+    <div> Последнее появление
+    <div class = margin-for-chooser>
+      <app-episode-chooser (episodeSelected)="setLastEpisode($event)"></app-episode-chooser>
+  </div>
+  </div>
   </div>
 
   <app-photo-loader (photoIsChosen)="setPhoto($event)"></app-photo-loader>

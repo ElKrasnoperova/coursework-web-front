@@ -18,6 +18,18 @@
     <input matInput placeholder="Организация" name="organization" [(ngModel)]="updatedCharacter.organization">
   </mat-form-field>
 
+  <div> Первое появление
+    <div class = margin-for-chooser>
+      <app-episode-chooser></app-episode-chooser>
+    </div>
+  </div>
+
+  <div> Последнее появление
+    <div class = margin-for-chooser>
+      <app-episode-chooser></app-episode-chooser>
+    </div>
+  </div>
+
   <mat-dialog-actions class = full-width-buttons>
     <app-photo-loader [photo]="updatedCharacter.photo"></app-photo-loader>
   </mat-dialog-actions>

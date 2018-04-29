@@ -5,6 +5,7 @@ import {Character} from '../../model/Character';
 import {MatDialogRef} from '@angular/material';
 import {HttpClient} from '@angular/common/http';
 import {Photo} from '../../model/Photo';
+import {Episode} from '../../model/Episode';
 
 @Component({
   selector: 'app-admin-character-edit-dialog',
