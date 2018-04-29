@@ -1,19 +1,14 @@
 <mat-progress-bar mode="determinate" value="40" class="progress-bar-margin"></mat-progress-bar>
 <div class="container-for-translation-card">
-<form class="container-for-translation-card">
-  <p class="top-label">Напишите на русском</p>
-  <p class = "word-for-translation">acchak</p> <!--Тут через *ngFor надо будет получать слова из модели (или из .ts)-->
-  <mat-form-field >
-  <textarea matInput placeholder="Введите перевод" matTextareaAutosize matAutosizeMinRows="5"
-            matAutosizeMaxRows="15"></textarea>
-  </mat-form-field>
-  <br>
-  <div class = "button-row">
-    <button mat-raised-button color="primary">Пропустить</button>
-    <button mat-raised-button color="accent">Дальше</button>
-  </div>
-</form>
+
+  <!--<ng-container *ngFor="let word of words; index as i">-->
+    <app-game-card #gameCard [(word)]="words[0]"></app-game-card>
+    <div class = "button-row">
+      <button #nextButton mat-raised-button color="accent" (click)="next()" >Дальше</button>
+    </div>
+  <!--</ng-container>-->
+
+  <!--<app-game-card *ngFor="let word of words" [(word)]="word" > &lt;!&ndash;(translationIsDone)="saveAnswer($event)"&ndash;&gt;-->
+  <!--</app-game-card>-->
+
 </div>
-
-
-

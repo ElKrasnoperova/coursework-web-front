@@ -20,7 +20,7 @@ import { SignUpFormComponent } from './components/sign-up-form/sign-up-form.comp
 import { TranslationGamePageComponent } from './pages/translation-game-page/translation-game-page.component';
 import { MapPageComponent } from './pages/map-page/map-page.component';
 import { YearChooserComponent } from './components/year-chooser/year-chooser.component';
-import { GameCardComponent, GamesListComponent } from './components/game-card/game-card.component';
+import { GameCardComponent } from './components/game-card/game-card.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {CharacterCardComponent} from './components/character-card/character-card.component';
 import { AnswerListPageComponent } from './pages/answer-list-page/answer-list-page.component';
@@ -67,7 +67,9 @@ import {AdminEditEpisodeDialogComponent} from './pages/admin-episode-page/edit-e
 import {AdminEditSeasonDialogComponent} from './pages/admin-episode-page/edit-season-dialog';
 import { PhotoLoaderComponent } from './components/photo-loader/photo-loader.component';
 import {UserService} from './service/user.service';
-// import {PhotoService} from './service/photo.service';
+import { GameListItemComponent } from './components/game-list-item/game-list-item.component';
+import {GameService} from './service/game.service';
+import { GamePageComponent } from './pages/game-page/game-page.component';
 
 
 const materialModules = [
@@ -107,7 +109,6 @@ const materialModules = [
     CharacterPageComponent,
     GamesPageComponent,
     MapComponent,
-    GamesListComponent,
     SettingsPageComponent,
     ConfirmActionDialogComponent,
     AdminLocationPageComponent,
@@ -136,7 +137,9 @@ const materialModules = [
     AdminAddSeasonDialogComponent,
     AdminEditEpisodeDialogComponent,
     AdminEditSeasonDialogComponent,
-    PhotoLoaderComponent
+    PhotoLoaderComponent,
+    GameListItemComponent,
+    GamePageComponent
   ],
   entryComponents: [
     ConfirmActionDialogComponent,
@@ -179,6 +182,7 @@ const materialModules = [
     UserService,
     LanguageService,
     WordService,
+    GameService
     // PhotoService
   ],
   bootstrap: [AppComponent]

@@ -1,22 +1,23 @@
-import { Component } from '@angular/core';
-import {GameCardImages} from '../../game-card-images';
-import {GAMES_IMGS} from './mock-cards';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Word} from '../../model/Word';
 
 @Component({
   selector: 'app-game-card',
   templateUrl: './game-card.component.html',
   styleUrls: ['./game-card.component.css']
 })
-export class GameCardComponent {
-}
+export class GameCardComponent implements OnInit {
+  @Input() word: Word;
+  @Output()
+  // translationIsDone: EventEmitter<Word> = new EventEmitter<Word>();
+  // answer: string;
 
-@Component({
-  selector: 'app-games-list',
-  templateUrl: './games-list.html',
-  styleUrls: ['./game-card.component.css']
-})
-
-export class GamesListComponent {
-
-  games_imgs: GameCardImages[] = GAMES_IMGS;
+  ngOnInit(): void {
+    this.word = new Word();
+  }
+  constructor() { }
+  // submitAnswer(): void {
+  //   // this.word.word = this.answer;
+  //   this.translationIsDone.emit(this.word);
+  // }
 }
