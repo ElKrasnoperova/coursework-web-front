@@ -1,0 +1,36 @@
+.game-card {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+}
+
+.image-for-language-card {
+  background-size: contain;
+}
+
+.image-style {
+  width: 100%;
+}
+
+.cards-location {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.game-list-item {
+  width: 45% !important;
+  height: 75%;
+  padding: 0 !important;
+}
+
+.button-style {
+  display: block;
+  margin-top: 16px;
+
+}
+
+.card-button {
+  width: 100% !important;
+}
+

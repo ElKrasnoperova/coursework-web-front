@@ -1,4 +1,13 @@
-<div>
-  <img [src]="language.photo.path">
-  <button>{{language.name}}</button>
-</div>
+<mat-grid-list cols = 2>
+    <mat-grid-tile class = game-list-item>
+      <div class = game-card>
+        <div class = image-for-language-card>
+          <img [src]="language.photo.path">
+        </div>
+        <div class = button-style>
+          <a mat-raised-button class = card-button routerLink="dothraky">{{language.name}}</a>
+        </div>
+      </div>
+    </mat-grid-tile>
+</mat-grid-list>
+

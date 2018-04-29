@@ -1,4 +1,7 @@
-<mat-card>
-  <app-game-list-item *ngFor="let language of languages" (language)="language" > <!--routerLink={{language.name}}-->
-  </app-game-list-item>
+<mat-card class="card">
+  <!--<app-game-list-item *ngFor="let language of languages" (language)="language" > &lt;!&ndash;routerLink={{language.name}}&ndash;&gt;-->
+  <!--</app-game-list-item>-->
+
+  <router-outlet></router-outlet>
+
 </mat-card>
