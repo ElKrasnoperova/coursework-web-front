@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
+import {Http, RequestOptions} from '@angular/http';
 
 @Injectable()
 export class UserService {
@@ -14,30 +14,41 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  checkUsername(): Promise<boolean> {
-    return this.http.get(`${this.baseUrl}/signup/check/username`)
+  checkUsername(login: string): Promise<boolean> {
+    return this.http.post(`${this.baseUrl}/signup/check/username`, login)
       .toPromise()
       .then(response => response.json() as boolean)
       .catch(this.handleError);
   }
 
-  checkTelegram(): Promise<boolean> {
-    return this.http.get(`${this.baseUrl}/signup/check/telegram`)
+  checkTelegram(telegram: string): Promise<boolean> {
+    return this.http.post(`${this.baseUrl}/signup/check/telegram`, telegram)
       .toPromise()
       .then(response => response.json() as boolean)
       .catch(this.handleError);
   }
 
-  checkEmail(): Promise<boolean> {
-    return this.http.get(`${this.baseUrl}/signup/check/email`)
+  checkEmail(email: string): Promise<boolean> {
+    return this.http.post(`${this.baseUrl}/signup/check/email`, email)
       .toPromise()
       .then(response => response.json() as boolean)
       .catch(this.handleError);
   }
 
+  signin(username: string, password: string): Promise<any> {
+    const requestParam = {
+      username: username,
+      password: password
+    };
+    console.log(requestParam);
+    return this.http.post(`${this.baseUrl}/login`, requestParam)
+      .toPromise()
+      .catch(this.handleError);
+  }
 
   private handleError(error: any): Promise<any> {
     console.error('Some ERROR occured', error);
     return Promise.reject(error.message || error);
   }
 }
+// const options = new RequestOptions({ withCredentials: true });

@@ -1,21 +1,47 @@
+<div (click)="checkUsername()"> TEST </div>
 <form class="example-form">
+
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Имя">
   </mat-form-field>
+
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Логин">
+    <input matInput placeholder="Имя пользователя" name="username" [(ngModel)]="user.login" (input)="checkUsername()"
+           [formControl]="username">
   </mat-form-field>
+  <mat-error *ngIf="!isUsernameAvailable">
+    Имя пользователя занято
+  </mat-error>
+  <mat-error *ngIf="username.dirty && username.hasError('required')">
+    Введите имя пользователя
+  </mat-error>
+
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="E-mail">
+    <input matInput placeholder="Telegram" name="telegram" [(ngModel)]="user.telegram" (input)="checkTelegram()">
   </mat-form-field>
+  <mat-error *ngIf="!isTelegramAvailable">
+    Пользователь уже зарегестрирован
+  </mat-error>
+
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Пароль" [type]="hide ? 'password' : 'text'">
+    <input matInput placeholder="E-mail" name="email" [(ngModel)]="user.email" (input)="checkEmail()"> <!-- #email="ngModel"-->
+  </mat-form-field>
+  <mat-error *ngIf="!isEmailAvailable">
+    Пользователь уже зарегестрирован
+  </mat-error>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Пароль" name="password"
+           [type]="hide ? 'password' : 'text'">
     <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
   </mat-form-field>
+
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Повторите пароль" [type]="hide ? 'password' : 'text'">
+    <input matInput placeholder="Повторите пароль"
+           [type]="hide ? 'password' : 'text'">
     <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
   </mat-form-field>
+
 </form>
 
 

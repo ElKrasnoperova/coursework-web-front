@@ -1,7 +1,9 @@
 
-import {Component} from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {Component, Directive, EventEmitter, Input, Output} from '@angular/core';
+import {AbstractControl, FormControl, FormGroupDirective, NG_VALIDATORS, NgForm, Validator, ValidatorFn, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import {User} from '../../model/User';
+import {Episode} from '../../model/Episode';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -20,9 +22,18 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 export class SignInFormComponent {
   hide = true;
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
+
+  user = new User();
+  @Output() dataChanged: EventEmitter<User> = new EventEmitter<User>();
+
+  usernameControl = new FormControl('', [
+    Validators.required
   ]);
-  matcher = new MyErrorStateMatcher();
+  passwordControl = new FormControl('', [
+    Validators.required
+  ]);
+
+  passData(): void {
+    this.dataChanged.emit(this.user);
+  }
 }
