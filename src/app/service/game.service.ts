@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Language} from '../model/Language';
 import {Http} from '@angular/http';
 import {Word} from '../model/Word';
+import {log} from 'util';
 
 @Injectable()
 export class GameService {
@@ -9,8 +10,8 @@ export class GameService {
 
   constructor(private http: Http) { }
 
-  getWords(): Promise<Word[]> {
-    return this.http.get(`${this.baseUrl}/game/start`)
+  getWords(languageName: string): Promise<Word[]> {
+    return this.http.post(`${this.baseUrl}/game/start`, languageName)
       .toPromise()
       .then(response => response.json() as Word[])
       .catch(this.handleError);

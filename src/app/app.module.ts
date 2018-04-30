@@ -70,6 +70,7 @@ import {UserService} from './service/user.service';
 import { GameListItemComponent } from './components/game-list-item/game-list-item.component';
 import {GameService} from './service/game.service';
 import { GamePageComponent } from './pages/game-page/game-page.component';
+import {GameListComponent} from './components/game-list-item/game-list';
 
 
 const materialModules = [
@@ -139,7 +140,8 @@ const materialModules = [
     AdminEditSeasonDialogComponent,
     PhotoLoaderComponent,
     GameListItemComponent,
-    GamePageComponent
+    GamePageComponent,
+    GameListComponent
   ],
   entryComponents: [
     ConfirmActionDialogComponent,

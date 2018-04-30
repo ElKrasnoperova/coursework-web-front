@@ -1,6 +1,10 @@
-import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ContentChild, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {Word} from '../../model/Word';
 import {GameService} from '../../service/game.service';
+import {Language} from '../../model/Language';
+import {ActivatedRoute} from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {GameCardComponent} from '../../components/game-card/game-card.component';
 
 @Component({
   selector: 'app-translation-game-page',
@@ -10,24 +14,50 @@ import {GameService} from '../../service/game.service';
 export class TranslationGamePageComponent implements OnInit {
   // @Output() word: Word;
   // answerIsReady: EventEmitter<Word> = new EventEmitter<Word>();
+  // @Input() language: Language;
+
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+
   count: number;
   words: Word[];
   results: Boolean[];
 
-  @ViewChild('gameCard') gameCard: ElementRef;
-  @ViewChild('nextButton') nextButton: ElementRef;
-  constructor(private gameService: GameService) { }
+  languageName: string;
 
-  ngOnInit() {
-    this.getWords();
+  @ViewChild(GameCardComponent) gameCard: ElementRef;
+  @ViewChild('nextButton') nextButton: ElementRef;
+  @ContentChild(GameCardComponent) card2: ElementRef
+
+  constructor(private gameService: GameService,
+              private route: ActivatedRoute,
+              private _formBuilder: FormBuilder) {
+    this.languageName = route.snapshot.params['**'];
   }
 
-  getWords(): void {
-    this.gameService.getWords()
+  ngOnInit() {
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
+  }
+
+  getWords(languageName: string): void {
+    this.gameService.getWords(languageName)
       .then(items => {
+        console.log(items);
         this.words = items;
         this.count = items.length;
+        console.log('card-component:');
+        console.log(this.gameCard);
+        // this.gameCard.nativeElement.setAttribute('word', this.words[0]);
       });
+  }
+
+  startGame() {
+    this.getWords(this.languageName);
   }
 
   getResults(): void {
@@ -50,4 +80,6 @@ export class TranslationGamePageComponent implements OnInit {
       // getresults
     }
   }
+
+
 }

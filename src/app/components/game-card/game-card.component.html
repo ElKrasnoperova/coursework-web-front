@@ -3,9 +3,8 @@
   <p class="top-label">Напишите на русском</p>
   <p class = "word-for-translation">{{word.translation}}</p>
 
-  <mat-form-field >
-    <textarea matInput placeholder="Введите перевод" matTextareaAutosize
-              [(value)]="word.word"></textarea>
+  <mat-form-field *ngIf="word">
+    <textarea matInput placeholder="Введите перевод" matTextareaAutosize [(value)]="word.word"></textarea>
       <!--(change)="submitAnswer()"-->
       <!--matAutosizeMinRows="5" matAutosizeMaxRows="15"-->
   </mat-form-field>

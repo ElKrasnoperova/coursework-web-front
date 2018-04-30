@@ -8,12 +8,14 @@ import {Word} from '../../model/Word';
 })
 export class GameCardComponent implements OnInit {
   @Input() word: Word;
-  @Output()
+  // @Output()
   // translationIsDone: EventEmitter<Word> = new EventEmitter<Word>();
   // answer: string;
 
   ngOnInit(): void {
     this.word = new Word();
+    console.log('in card init');
+    console.log(this.word);
   }
   constructor() { }
   // submitAnswer(): void {

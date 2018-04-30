@@ -8,17 +8,8 @@ import {LanguageService} from '../../service/language.service';
   styleUrls: ['./game-page.component.css']
 })
 export class GamePageComponent implements OnInit {
-  languages: Language[];
   ngOnInit(): void {
-    this.getLanguages();
   }
-  constructor(private languageService: LanguageService) { }
-  getLanguages() {
-    this.languageService.getLanguages()
-      .then(items => {
-        console.log(items);
-        this.languages = items;
-      });
-  }
+  constructor() { }
 }
 

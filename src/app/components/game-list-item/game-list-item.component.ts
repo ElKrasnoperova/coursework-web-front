@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {Language} from '../../model/Language';
 
 @Component({
@@ -7,9 +7,11 @@ import {Language} from '../../model/Language';
   styleUrls: ['./game-list-item.component.css']
 })
 export class GameListItemComponent implements OnInit {
+
   @Input() language: Language;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
