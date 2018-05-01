@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'characters/1', pathMatch: 'full'},
   {path: 'login', component: AuthPageComponent},
   {path: 'characters/:id', component: CharacterPageComponent},
-  {path: 'characters', redirectTo: 'characters/1'},
+  {path: 'characters', component: CharacterPageComponent},
   {path: 'map', component: MapPageComponent},
   {path: 'games', component: GamePageComponent, children: GAMES_ROUTES},
   {path: 'settings', component: SettingsPageComponent},

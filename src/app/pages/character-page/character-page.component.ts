@@ -12,7 +12,7 @@ export class CharacterPageComponent implements OnInit {
 
   nextCharacter: Character;
   previousCharacter: Character;
-  currentId: number;
+
   character: Character;
   characters: Character[];
 
@@ -22,30 +22,29 @@ export class CharacterPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentId = Number(this.route.snapshot.paramMap.get('id'));
     this.getCharacters();
-  }
-
-  findCurrentCharacter() {
-    let isRightId = false;
-    this.characters.forEach(value => {
-      if (value.id === this.currentId) {
-        isRightId = true;
-        this.setCharacter(value);
-      }
-    });
-
-    if (!isRightId) { this.router.navigate(['/characterNotFound']); }
-
   }
 
   getCharacters(): void {
     this.characterService.getCharacters()
       .then(characters => {
         this.characters = characters;
-        this.findCurrentCharacter();
-        this.setNeighboursCharacters();
+        this.initCards();
       });
+  }
+
+  initCards(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const character = this.findById(id);
+    if (character) {
+      this.setCharacter(character);
+    } else {
+      this.router.navigate(['/characterNotFound']);
+    }
+  }
+
+  findById(id: number): Character {
+    return this.characters.filter(character => character.id === id)[0];
   }
 
   setCharacter(character: Character) {

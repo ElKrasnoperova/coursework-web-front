@@ -29,7 +29,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MapComponent } from './components/map/map.component';
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 import { AdminLocationPageComponent } from './pages/admin-location-page/admin-location-page.component';
-import { DialogEditComponent, LocationOfCharacterComponent } from './components/location-of-character/location-of-character.component';
+import { LocationOfCharacterComponent } from './components/location-of-character/location-of-character.component';
 import { AdminToolbarComponent } from './components/admin-toolbar/admin-toolbar.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { AdminCharactersPageComponent } from './pages/admin-characters-page/admin-characters-page.component';
@@ -41,7 +41,6 @@ import { CharacterService } from './service/character.service';
 import { HttpModule } from '@angular/http';
 import { AdminCharactersAddDialogComponent } from './pages/admin-characters-page/admin-characters-add';
 import {AdminCharactersEditDialogComponent} from './pages/admin-characters-page/admin-characters-edit';
-import { EpisodeChooserForAdminComponent } from './components/episode-chooser-for-admin/episode-chooser-for-admin.component';
 import {EpisodeService} from './service/episode.service';
 import {ConfirmActionDialogComponent} from './components/confirm-action/confirm-action-dialog';
 import {PlaceService} from './service/place.service';
@@ -115,14 +114,12 @@ const materialModules = [
     ConfirmActionDialogComponent,
     AdminLocationPageComponent,
     LocationOfCharacterComponent,
-    DialogEditComponent,
     AdminToolbarComponent,
     AdminCharactersPageComponent,
     AdminUsersPageComponent,
     AdminGamePageComponent,
     AdminCharactersAddDialogComponent,
     AdminCharactersEditDialogComponent,
-    EpisodeChooserForAdminComponent,
     AdminAddLocationDialogComponent,
     AdminEditLocationDialogComponent,
     AdminDeleteLocationDialogComponent,
@@ -147,7 +144,6 @@ const materialModules = [
   ],
   entryComponents: [
     ConfirmActionDialogComponent,
-    DialogEditComponent,
     AdminCharactersAddDialogComponent,
     AdminCharactersEditDialogComponent,
     AdminAddLocationDialogComponent,
