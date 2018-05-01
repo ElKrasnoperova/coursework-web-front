@@ -9,7 +9,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressBarModule} from '@angular/material/progress-bar';
-import { AppComponent, CharacterPageComponent, GamesPageComponent } from './app.component';
+import { AppComponent, GamesPageComponent } from './app.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { EpisodeChooserComponent } from './components/episode-chooser/episode-chooser.component';
 import { CardForMapComponent } from './components/card-for-map/card-for-map.component';
@@ -71,6 +71,7 @@ import { GameListItemComponent } from './components/game-list-item/game-list-ite
 import {GameService} from './service/game.service';
 import { GamePageComponent } from './pages/game-page/game-page.component';
 import {GameListComponent} from './components/game-list-item/game-list';
+import {CharacterPageComponent} from './pages/character-page/character-page.component';
 
 
 const materialModules = [
@@ -107,7 +108,6 @@ const materialModules = [
     GameCardComponent,
     CharacterCardComponent,
     AnswerListPageComponent,
-    CharacterPageComponent,
     GamesPageComponent,
     MapComponent,
     SettingsPageComponent,
@@ -141,7 +141,8 @@ const materialModules = [
     PhotoLoaderComponent,
     GameListItemComponent,
     GamePageComponent,
-    GameListComponent
+    GameListComponent,
+    CharacterPageComponent
   ],
   entryComponents: [
     ConfirmActionDialogComponent,
