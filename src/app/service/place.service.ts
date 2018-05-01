@@ -9,13 +9,6 @@ export class PlaceService {
 
   constructor(private http: Http) { }
 
-  getPlacesNames(): Promise<string[]> {
-    return this.http.get(`${this.baseUrl}/admin/place/names`)
-      .toPromise()
-      .then(response => response.json() as Place[])
-      .catch(this.handleError);
-  }
-
   getPlaces(): Promise<Place[]> {
     return this.http.get(`${this.baseUrl}/admin/place/all`)
       .toPromise()
@@ -29,10 +22,15 @@ export class PlaceService {
       .catch(this.handleError);
   }
 
-  getPlace(id: number) {
-    return this.http.get(`${this.baseUrl}/admin/place/${id}`)
+  updatePlace(updatedPlace: Place) {
+    return this.http.put(`${this.baseUrl}/admin/place/update`, updatedPlace)
+      .toPromise().then(response => response.json() as Place)
+      .catch(this.handleError);
+  }
+
+  deletePlace(id: number): Promise<any> {
+    return this.http.delete(`${this.baseUrl}/admin/place/delete/${id}`)
       .toPromise()
-      .then(response => response.json() as Place)
       .catch(this.handleError);
   }
 

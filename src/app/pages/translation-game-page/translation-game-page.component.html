@@ -13,7 +13,8 @@
 
 <!--</div>-->
 
-<mat-horizontal-stepper #stepper="matHorizontalStepper" [linear] = true>
+<mat-horizontal-stepper #stepper="matHorizontalStepper" [linear] = false>
+
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Начать</ng-template>
@@ -25,12 +26,14 @@
 
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
-      cards
       <ng-template matStepLabel>Игра</ng-template>
+      cards
+
       <div class="container-for-admin-episodes mat-elevation-z8">
-        <app-game-card #gameCard [word]=""></app-game-card> <!-- [(word)]="words[0]"-->
-        <!--<button #nextButton mat-raised-button color="accent" (click)="next()" >Дальше</button>-->
+        <app-game-card #gameCard></app-game-card> <!-- [(word)]="words[0]"-->
+        <button #nextButton mat-raised-button color="accent" (click)="next()" >Дальше</button>
       </div>
     </form>
   </mat-step>
+
 </mat-horizontal-stepper>

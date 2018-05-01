@@ -71,6 +71,7 @@ import { GameListItemComponent } from './components/game-list-item/game-list-ite
 import {GameService} from './service/game.service';
 import { GamePageComponent } from './pages/game-page/game-page.component';
 import {GameListComponent} from './components/game-list-item/game-list';
+import {LocationService} from './service/location.service';
 import {CharacterPageComponent} from './pages/character-page/character-page.component';
 
 
@@ -181,12 +182,12 @@ const materialModules = [
     CharacterService,
     EpisodeService,
     PlaceService,
+    LocationService,
     AdminService,
     UserService,
     LanguageService,
     WordService,
     GameService
-    // PhotoService
   ],
   bootstrap: [AppComponent]
 })

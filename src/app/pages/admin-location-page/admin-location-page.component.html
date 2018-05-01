@@ -1,27 +1,9 @@
-<mat-horizontal-stepper #stepper="matHorizontalStepper" [linear] = true>
+<mat-horizontal-stepper #stepper="matHorizontalStepper" [linear] = false>
 
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Выберите эпизод</ng-template>
       <div class = episode-and-season-choosers>
-      <!--<mat-form-field>-->
-          <!--<mat-select placeholder="Сезон" (change)="setSelectedSeasonNumber($event.value)" (selectionChange)="enableEpisodeSelect()">-->
-            <!--<ng-container *ngFor="let season of episodes">-->
-              <!--<mat-option [value]="season.seasonNumber">-->
-                <!--<div> Сезон {{ season.seasonNumber }} </div>-->
-              <!--</mat-option>-->
-            <!--</ng-container>-->
-          <!--</mat-select>-->
-      <!--</mat-form-field>-->
-      <!--<mat-form-field>-->
-          <!--<mat-select placeholder="Серия" (change)="setSelectedEpisodeNumber($event.value)" [disabled]="disableSelect">-->
-            <!--<ng-container *ngFor="let season of episodes">-->
-              <!--<mat-option *ngIf="season.seasonNumber==selectedSeasonNumber" [value]="season.episodeNumber">-->
-                <!--<div> Серия {{ season.episodeNumber }} </div>-->
-              <!--</mat-option>-->
-            <!--</ng-container>-->
-          <!--</mat-select>-->
-      <!--</mat-form-field>-->
 
         <app-episode-chooser (episodeSelected)="setEpisode($event)"></app-episode-chooser>
 
@@ -35,21 +17,21 @@
   <mat-step>
     <ng-template matStepLabel>Место</ng-template>
     <div class="container-for-admin-location mat-elevation-z8">
-    <button mat-icon-button class = add-location-button (click)="openDialogAddPlace()">
+    <button mat-icon-button class = add-location-button (click)="addPlace()">
       <mat-icon>add</mat-icon>
     </button>
-    <mat-table #table [dataSource]="dataSource">
+    <mat-table #table [dataSource]="dataSource_places">
       <ng-container matColumnDef="select">
         <mat-header-cell *matHeaderCellDef>
-          <mat-checkbox (change)="$event ? masterToggle() : null"
-                        [checked]="selection.hasValue() && isAllSelected()"
-                        [indeterminate]="selection.hasValue() && !isAllSelected()">
+          <mat-checkbox (change)="$event ? masterToggle_places() : null"
+                        [checked]="selection_places.hasValue() && isAllPlacesSelected()"
+                        [indeterminate]="selection_places.hasValue() && !isAllPlacesSelected()">
           </mat-checkbox>
         </mat-header-cell>
         <mat-cell *matCellDef="let row">
           <mat-checkbox (click)="$event.stopPropagation()"
-                        (change)="$event ? selection.toggle(row) : null"
-                        [checked]="selection.isSelected(row)">
+                        (change)="$event ? selection_places.toggle(row) : null"
+                        [checked]="selection_places.isSelected(row)">
           </mat-checkbox>
         </mat-cell>
       </ng-container>
@@ -64,37 +46,43 @@
           <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
         </ng-container>
 
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"
-               (click)="selection.toggle(row)">
+      <mat-header-row *matHeaderRowDef="displayedColumns_places"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns_places;"
+               (click)="selection_places.toggle(row)">
       </mat-row>
     </mat-table>
     </div>
     <div class = button-row-for-location>
-      <button mat-raised-button color="accent" class = button-in-admin-games (click)="opedDialogEditPlace()">Редактировать</button>
-      <button mat-raised-button color="primary" class = button-in-admin-games (click)="openDialogDeletePlace()">Удалить</button>
+      <button mat-raised-button color="primary" class = button-in-admin-games (click)="deletePlace()">Удалить</button>
+      <button mat-raised-button color="accent"  class = button-in-admin-games (click)="editPlace()">Редактировать</button>
+      <button mat-raised-button color="primary" class = button-in-admin-games (click)="getCharactersList()" matStepperNext>Список персонажей</button>
     </div>
 
   </mat-step>
 
   <mat-step>
     <ng-template matStepLabel>Редактировать</ng-template>
+
+    <p *ngIf="location.place">
+      Локация: {{location.place.name}}
+    </p>
+
     <div class="container-for-admin-location mat-elevation-z8">
-      <button mat-icon-button class = add-location-button (click)="openDialogAddLocation()">
+      <button mat-icon-button class = add-location-button (click)="addLocation()">
         <mat-icon>add</mat-icon>
       </button>
-      <mat-table #table [dataSource]="dataSource">
+      <mat-table #table [dataSource]="dataSource_locations">
         <ng-container matColumnDef="select">
           <mat-header-cell *matHeaderCellDef>
-            <mat-checkbox (change)="$event ? masterToggle() : null"
-                          [checked]="selection.hasValue() && isAllSelected()"
-                          [indeterminate]="selection.hasValue() && !isAllSelected()">
+            <mat-checkbox (change)="$event ? masterToggle_locations() : null"
+                          [checked]="selection_locations.hasValue() && isAllLocationsSelected()"
+                          [indeterminate]="selection_locations.hasValue() && !isAllLocationsSelected()">
             </mat-checkbox>
           </mat-header-cell>
           <mat-cell *matCellDef="let row">
             <mat-checkbox (click)="$event.stopPropagation()"
-                          (change)="$event ? selection.toggle(row) : null"
-                          [checked]="selection.isSelected(row)">
+                          (change)="$event ? selection_locations.toggle(row) : null"
+                          [checked]="selection_locations.isSelected(row)">
             </mat-checkbox>
           </mat-cell>
         </ng-container>
@@ -106,28 +94,28 @@
 
         <ng-container matColumnDef="name">
           <mat-header-cell *matHeaderCellDef> Персонаж </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+          <mat-cell *matCellDef="let element"> {{element.character.name}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="x">
           <mat-header-cell *matHeaderCellDef> Координата X </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.x}} </mat-cell>
+          <mat-cell *matCellDef="let element"> {{element.place.x}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="y">
           <mat-header-cell *matHeaderCellDef> Координата Y </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.y}} </mat-cell>
+          <mat-cell *matCellDef="let element"> {{element.place.y}} </mat-cell>
         </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumnsForLastStep"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumnsForLastStep;"
-                 (click)="selection.toggle(row)">
+        <mat-header-row *matHeaderRowDef="displayedColumns_locations"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns_locations;"
+                 (click)="selection_locations.toggle(row)">
         </mat-row>
       </mat-table>
     </div>
     <div class = button-row-for-location>
-      <button mat-raised-button color="accent" class = button-in-admin-games (click)="opedDialogEditLocation()">Редактировать</button>
-      <button mat-raised-button color="primary" class = button-in-admin-games (click)="openDialogDeletePlace()">Удалить</button>
+      <button mat-raised-button color="accent" class = button-in-admin-games (click)="editLocation()" >Редактировать</button>
+      <button mat-raised-button color="primary" class = button-in-admin-games (click)="deleteLocation()">Удалить</button>
     </div>
   </mat-step>
 
