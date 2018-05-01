@@ -1,15 +1,11 @@
 <h2>Добавить место</h2>
 <mat-form-field class = add-place-form>
-  <input matInput placeholder="Название места" name = "placeTitle" required>
+  <input matInput placeholder="Название места" name="placeTitle" [(ngModel)]="newPlace.name" required>
 </mat-form-field>
-<mat-dialog-actions>
-  <button mat-button class = add-place-form>Выбрать место на карте</button>
-</mat-dialog-actions>
-
 <div class = confirmation-buttons>
   <mat-dialog-actions>
     <button mat-button color = "primary">Отмена</button>
-    <button mat-button color = "accent">Добавить</button>
+    <button mat-button color = "accent" (click)="addPlace()">Добавить</button>
   </mat-dialog-actions>
 </div>
 
