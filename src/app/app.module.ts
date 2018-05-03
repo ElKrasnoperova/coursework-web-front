@@ -69,9 +69,9 @@ import {UserService} from './service/user.service';
 import { GameListItemComponent } from './components/game-list-item/game-list-item.component';
 import {GameService} from './service/game.service';
 import { GamePageComponent } from './pages/game-page/game-page.component';
-import {GameListComponent} from './components/game-list-item/game-list';
 import {LocationService} from './service/location.service';
 import {CharacterPageComponent} from './pages/character-page/character-page.component';
+import { CharacterIconComponent } from './components/character-icon/character-icon.component';
 
 
 const materialModules = [
@@ -139,8 +139,8 @@ const materialModules = [
     PhotoLoaderComponent,
     GameListItemComponent,
     GamePageComponent,
-    GameListComponent,
-    CharacterPageComponent
+    CharacterPageComponent,
+    CharacterIconComponent
   ],
   entryComponents: [
     ConfirmActionDialogComponent,
@@ -159,7 +159,8 @@ const materialModules = [
     AdminAddEpisodeDialogComponent,
     AdminAddSeasonDialogComponent,
     AdminEditEpisodeDialogComponent,
-    AdminEditSeasonDialogComponent
+    AdminEditSeasonDialogComponent,
+    CharacterIconComponent
   ],
   imports: [
     MatTabsModule,

@@ -4,10 +4,10 @@
   <p class = "word-for-translation">{{word.translation}}</p>
 
   <mat-form-field *ngIf="word">
-    <textarea matInput placeholder="Введите перевод" matTextareaAutosize [(value)]="word.word"></textarea>
-      <!--(change)="submitAnswer()"-->
-      <!--matAutosizeMinRows="5" matAutosizeMaxRows="15"-->
+    <input matInput placeholder="Введите перевод" name="word"
+           [(ngModel)]="word.word"
+           (input)="submitAnswer()"
+           [formControl]="answerControl">
   </mat-form-field>
 
-  <br>
 </form>

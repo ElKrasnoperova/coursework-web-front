@@ -10,8 +10,8 @@ export class GameService {
 
   constructor(private http: Http) { }
 
-  getWords(languageName: string): Promise<Word[]> {
-    return this.http.post(`${this.baseUrl}/game/start`, languageName)
+  getWords(id: number): Promise<Word[]> {
+    return this.http.get(`${this.baseUrl}/game/language/${id}/start`)
       .toPromise()
       .then(response => response.json() as Word[])
       .catch(this.handleError);

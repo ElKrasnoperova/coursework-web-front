@@ -1,10 +1,9 @@
-import {Component, ContentChild, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Word} from '../../model/Word';
 import {GameService} from '../../service/game.service';
 import {Language} from '../../model/Language';
-import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {GameCardComponent} from '../../components/game-card/game-card.component';
+import {ActivatedRoute, Router} from '@angular/router';
+import {LanguageService} from '../../service/language.service';
 
 @Component({
   selector: 'app-translation-game-page',
@@ -12,74 +11,83 @@ import {GameCardComponent} from '../../components/game-card/game-card.component'
   styleUrls: ['./translation-game-page.component.css']
 })
 export class TranslationGamePageComponent implements OnInit {
-  // @Output() word: Word;
-  // answerIsReady: EventEmitter<Word> = new EventEmitter<Word>();
-  // @Input() language: Language;
 
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-
-  count: number;
-  words: Word[];
-  results: Boolean[];
-
+  language: Language;
   languageName: string;
 
-  @ViewChild(GameCardComponent) gameCard: ElementRef;
-  @ViewChild('nextButton') nextButton: ElementRef;
-  @ContentChild(GameCardComponent) card2: ElementRef
+  words: Word[];
+  word: Word;
+
+  index: number;
+  lastIndex: number;
+
+  results: Boolean[];
+
+  answer = false;
+  answerRequiredError = false;
+
 
   constructor(private gameService: GameService,
+              private languageService: LanguageService,
               private route: ActivatedRoute,
-              private _formBuilder: FormBuilder) {
+              private router: Router) {
     this.languageName = route.snapshot.params['**'];
   }
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
+    if (this.language == null ) {
+      this.initLanguage();
+    } else {
+      this.getWords();
+    }
   }
-
-  getWords(languageName: string): void {
-    this.gameService.getWords(languageName)
+  getLanguageByName(languageName: string): void {
+    this.languageService.getLanguage(languageName)
+      .then(result => {
+        this.language = result;
+        this.getWords();
+      })
+      .catch(() => this.router.navigate(['/notFound']));
+  }
+  initLanguage(): void {
+    const languageName = this.route.snapshot.paramMap.get('languageName');
+    if (languageName !== '') {
+      this.getLanguageByName(languageName);
+    }
+  }
+  getWords(): void {
+    this.gameService.getWords(this.language.id)
       .then(items => {
-        console.log(items);
         this.words = items;
-        this.count = items.length;
-        console.log('card-component:');
-        console.log(this.gameCard);
-        // this.gameCard.nativeElement.setAttribute('word', this.words[0]);
+        this.index = 0;
+        this.word = this.words[0];
+        this.lastIndex  = this.words.length - 1;
       });
   }
+  nextWord() {
+    if (!this.answer) {
+      this.answerRequiredError = true;
+      return;
+    }
+    if (this.index < this.lastIndex) {
+      this.index++;
+      this.word = this.words[this.index];
+      this.answer = false;
+    } else {
+      this.getResults();
+    }
+  }
 
-  startGame() {
-    this.getWords(this.languageName);
+  setAnswer(answer: boolean) {
+    this.answer = answer;
+    if (answer) { this.answerRequiredError = false; }
   }
 
   getResults(): void {
     this.gameService.getResult(this.words)
       .then(items => {
         this.results = items;
+        this.router.navigate([`/games/${this.language.name}/results`]);       // TODO + words, answers
       });
   }
-
-  // saveAnswer(word: Word): void {
-  //   this.word = word;
-  // }
-
-  next(): void {
-    // this.answerIsReady.emit(this.word);
-    if (this.count > 0) {
-      this.count--;
-      this.gameCard.nativeElement.setAttribute('word', this.words[this.count]);
-    } else {
-      // getresults
-    }
-  }
-
-
 }
