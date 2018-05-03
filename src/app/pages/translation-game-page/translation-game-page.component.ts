@@ -81,5 +81,4 @@ export class TranslationGamePageComponent implements OnInit {
     }
   }
 
-
 }

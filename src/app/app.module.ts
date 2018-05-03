@@ -72,6 +72,7 @@ import { GamePageComponent } from './pages/game-page/game-page.component';
 import {GameListComponent} from './components/game-list-item/game-list';
 import {LocationService} from './service/location.service';
 import {CharacterPageComponent} from './pages/character-page/character-page.component';
+import { PanelForMapComponent } from './components/panel-for-map/panel-for-map.component';
 
 
 const materialModules = [
@@ -140,7 +141,8 @@ const materialModules = [
     GameListItemComponent,
     GamePageComponent,
     GameListComponent,
-    CharacterPageComponent
+    CharacterPageComponent,
+    PanelForMapComponent
   ],
   entryComponents: [
     ConfirmActionDialogComponent,
