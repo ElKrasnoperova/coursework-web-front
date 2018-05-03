@@ -14,13 +14,14 @@
   margin: 0
 }
 
-.episode-chooser-location {
-  width: 16%;
+.panel-location {
+  width: 30%;
+  height: 100%;
   background-color: #ffffffE3;
   float: right;
   z-index: 100;
   display: block;
   position: fixed;
-  top: 128px;
-  right: 8px;
+  top: 112px;
+  right: 0;
 }
