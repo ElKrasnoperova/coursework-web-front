@@ -2,6 +2,10 @@
 <mat-form-field class = full-width-language-input>
   <input matInput placeholder="Название языка" [(ngModel)]="newLanguage.name">
 </mat-form-field>
+<div class = full-width-language-input>
+
+  <app-photo-loader></app-photo-loader>
+</div>
 <div class = confirmation-buttons-languages>
   <mat-dialog-actions>
       <button mat-button color = "primary">Отмена</button>

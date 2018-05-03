@@ -44,17 +44,16 @@ import {AdminCharactersEditDialogComponent} from './pages/admin-characters-page/
 import {EpisodeService} from './service/episode.service';
 import {ConfirmActionDialogComponent} from './components/confirm-action/confirm-action-dialog';
 import {PlaceService} from './service/place.service';
-import {AdminAddLocationDialogComponent} from './pages/admin-location-page/add-location-dialog';
-import {AdminEditLocationDialogComponent} from './pages/admin-location-page/edit-location-dialog';
-import {AdminDeleteLocationDialogComponent} from './pages/admin-location-page/delete-location-dialog';
+import {AdminAddLocationDialogComponent} from './pages/admin-location-page/edit-location-page/add-location-dialog';
+import {AdminEditLocationDialogComponent} from './pages/admin-location-page/edit-location-page/edit-location-dialog';
+import {AdminDeleteLocationDialogComponent} from './pages/admin-location-page/edit-location-page/delete-location-dialog';
 
 import {AdminService} from './service/admin.service';
 import {AdminAddLanguageDialogComponent} from './pages/admin-game-page/add-language-dialog';
 import {AdminEditLanguageDialogComponent} from './pages/admin-game-page/edit-language-dialog';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import {ConfirmExitDialogComponent} from './components/toolbar/confirmation-dialog';
-import {AdminAddPlaceDialogComponent} from './pages/admin-location-page/add-place-dialog';
-import {AdminEditPlaceDialogComponent} from './pages/admin-location-page/edit-place-dialog';
+import {AdminEditPlaceDialogComponent} from './pages/admin-location-page/choose-place-page/edit-place-dialog';
 import {LanguageService} from './service/language.service';
 import {AdminEditWordDialogComponent} from './pages/admin-game-page/edit-word-dialog';
 import {AdminAddWordDialogComponent} from './pages/admin-game-page/add-word-dialog';
@@ -73,6 +72,10 @@ import {GameListComponent} from './components/game-list-item/game-list';
 import {LocationService} from './service/location.service';
 import {CharacterPageComponent} from './pages/character-page/character-page.component';
 import { PanelForMapComponent } from './components/panel-for-map/panel-for-map.component';
+import { ChooseEpisodePageComponent } from './pages/admin-location-page/choose-episode-page/choose-episode-page.component';
+import { ChoosePlacePageComponent } from './pages/admin-location-page/choose-place-page/choose-place-page.component';
+import { EditLocationPageComponent } from './pages/admin-location-page/edit-location-page/edit-location-page.component';
+import {AdminAddPlaceDialogComponent} from './pages/admin-location-page/choose-place-page/add-place-dialog';
 
 
 const materialModules = [
@@ -142,7 +145,10 @@ const materialModules = [
     GamePageComponent,
     GameListComponent,
     CharacterPageComponent,
-    PanelForMapComponent
+    PanelForMapComponent,
+    ChooseEpisodePageComponent,
+    ChoosePlacePageComponent,
+    EditLocationPageComponent
   ],
   entryComponents: [
     ConfirmActionDialogComponent,

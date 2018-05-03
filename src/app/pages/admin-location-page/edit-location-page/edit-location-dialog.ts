@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {Location} from '../../model/Location';
-import {AdminAddLanguageDialogComponent} from '../admin-game-page/add-language-dialog';
+import {Location} from '../../../model/Location';
+import {AdminAddLanguageDialogComponent} from '../../admin-game-page/add-language-dialog';
 import {MatDialogRef} from '@angular/material';
-import {LocationService} from '../../service/location.service';
-import {Character} from '../../model/Character';
+import {LocationService} from '../../../service/location.service';
+import {Character} from '../../../model/Character';
 
 @Component ({
   selector: 'app-edit-location-dialog',
   templateUrl: 'edit-location-dialog.html',
-  styleUrls: ['./admin-location-page.component.css']
+  styleUrls: ['../admin-location-page.component.css']
 })
 export class AdminEditLocationDialogComponent implements OnInit {
   location: Location;

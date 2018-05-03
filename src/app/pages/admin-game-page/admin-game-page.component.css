@@ -58,6 +58,7 @@ mat-cell, mat-header-cell {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin: 16px;
 }
 
 .header {

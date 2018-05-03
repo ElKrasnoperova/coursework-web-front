@@ -146,7 +146,7 @@ export class AdminGamePageComponent implements OnInit {
   openAddDialogForLanguage() {
     this.dialog
       .open(AdminAddLanguageDialogComponent, {
-        height: '35%', width: '35%'
+        height: '31%', width: '35%'
       })
       .afterClosed().subscribe(result => {
         if (result) {
