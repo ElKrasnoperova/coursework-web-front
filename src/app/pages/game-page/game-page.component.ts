@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Language} from '../../model/Language';
 import {LanguageService} from '../../service/language.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-game-page',
@@ -8,8 +9,17 @@ import {LanguageService} from '../../service/language.service';
   styleUrls: ['./game-page.component.css']
 })
 export class GamePageComponent implements OnInit {
+  languages: Language[];
+
   ngOnInit(): void {
+    this.getLanguages();
   }
-  constructor() { }
+  constructor(private languageService: LanguageService) { }
+  getLanguages() {
+    this.languageService.getLanguages()
+      .then(items => {
+        this.languages = items;
+      });
+  }
 }
 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Word} from '../../model/Word';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-answer-list-page',
@@ -6,24 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./answer-list-page.component.css']
 })
 export class AnswerListPageComponent implements OnInit {
-  displayedColumns = ['inputWord', 'userTranslation', 'rightTranslation'];
-  dataSource = ELEMENT_DATA;
-  constructor() { }
+
+  displayedColumns = ['translation', 'word'];
+
+  words: Word[];
+  results: boolean[];
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    console.log( this.route.snapshot.paramMap );
   }
 
-
 }
 
-export interface Element {
-  inputWord: string;
-  userTranslation: string;
-  rightTranslation: string;
-}
-
-const ELEMENT_DATA: Element[] = [
-  {inputWord: 'addakhat', userTranslation: 'есть', rightTranslation: 'есть'},
-  {inputWord: 'ahesh', userTranslation: 'снег', rightTranslation: 'снег'},
-  {inputWord: 'alle', userTranslation: 'звонить', rightTranslation: 'дальше'}
-  ];
