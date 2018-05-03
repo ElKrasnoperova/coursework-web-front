@@ -5,7 +5,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class CharacterService {
-  private baseUrl = 'http://localhost:9090/api';
+  private baseUrl = 'http://localhost:4200/api';
 
   constructor(private http: Http) { }
 
