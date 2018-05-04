@@ -28,12 +28,10 @@ import {MatTableModule} from '@angular/material/table';
 import { AppRoutingModule } from './app-routing.module';
 import { MapComponent } from './components/map/map.component';
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
-import { AdminLocationPageComponent } from './pages/admin-location-page/admin-location-page.component';
 import { AdminToolbarComponent } from './components/admin-toolbar/admin-toolbar.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { AdminCharactersPageComponent } from './pages/admin-characters-page/admin-characters-page.component';
 import { AdminUsersPageComponent } from './pages/admin-users-page/admin-users-page.component';
-import { AdminGamePageComponent } from './pages/admin-game-page/admin-game-page.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { CharacterService } from './service/character.service';
@@ -57,7 +55,6 @@ import {LanguageService} from './service/language.service';
 import {AdminEditWordDialogComponent} from './pages/admin-game-page/dictionary-page/edit-word-dialog';
 import {AdminAddWordDialogComponent} from './pages/admin-game-page/dictionary-page/add-word-dialog';
 import {WordService} from './service/word.service';
-import {AdminEpisodePageComponent} from './pages/admin-episode-page/admin-episode-page.component';
 import {AdminAddEpisodeDialogComponent} from './pages/admin-episode-page/episode-page/add-episode-dialog';
 import {AdminAddSeasonDialogComponent} from './pages/admin-episode-page/season-page/add-season-dialog';
 import {AdminEditEpisodeDialogComponent} from './pages/admin-episode-page/episode-page/edit-episode-dialog';
@@ -119,11 +116,9 @@ const materialModules = [
     MapComponent,
     SettingsPageComponent,
     ConfirmActionDialogComponent,
-    AdminLocationPageComponent,
     AdminToolbarComponent,
     AdminCharactersPageComponent,
     AdminUsersPageComponent,
-    AdminGamePageComponent,
     AdminCharactersAddDialogComponent,
     AdminCharactersEditDialogComponent,
     AdminAddLocationDialogComponent,
@@ -137,7 +132,6 @@ const materialModules = [
     ConfirmExitDialogComponent,
     AdminAddPlaceDialogComponent,
     AdminEditPlaceDialogComponent,
-    AdminEpisodePageComponent,
     AdminAddEpisodeDialogComponent,
     AdminAddSeasonDialogComponent,
     AdminEditEpisodeDialogComponent,
