@@ -2,13 +2,13 @@ import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Episode} from '../../model/Episode';
 import {MatDialog, MatTableDataSource} from '@angular/material';
-import {AdminAddEpisodeDialogComponent} from './add-episode-dialog';
-import {AdminAddSeasonDialogComponent} from './add-season-dialog';
+import {AdminAddEpisodeDialogComponent} from './episode-page/add-episode-dialog';
+import {AdminAddSeasonDialogComponent} from './season-page/add-season-dialog';
 import {ConfirmActionDialogComponent} from '../../components/confirm-action/confirm-action-dialog';
 import {SelectionModel} from '@angular/cdk/collections';
 import {EpisodeService} from '../../service/episode.service';
-import {AdminEditEpisodeDialogComponent} from './edit-episode-dialog';
-import {AdminEditSeasonDialogComponent} from './edit-season-dialog';
+import {AdminEditEpisodeDialogComponent} from './episode-page/edit-episode-dialog';
+import {AdminEditSeasonDialogComponent} from './season-page/edit-season-dialog';
 
 @Component({
   selector: 'app-admin-episode-page',

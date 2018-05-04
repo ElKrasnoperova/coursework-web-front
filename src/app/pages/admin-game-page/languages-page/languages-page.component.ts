@@ -9,7 +9,7 @@ import {AdminAddLanguageDialogComponent} from './add-language-dialog';
 import {AdminEditLanguageDialogComponent} from './edit-language-dialog';
 import {Word} from '../../../model/Word';
 import {Router} from '@angular/router';
-import {DataServise} from '../../../service/data.servise';
+import {DataService} from '../../../service/data.service';
 
 @Component({
   selector: 'app-languages-page',
@@ -30,7 +30,7 @@ export class LanguagesPageComponent implements OnInit, OnDestroy {
       words: Word[];
 
       constructor(public dialog: MatDialog,
-        public dataService: DataServise,
+        public dataService: DataService,
         private changeDetectorRefs: ChangeDetectorRef,
         private languageService: LanguageService,
         private wordService: WordService,

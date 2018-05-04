@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {Http} from '@angular/http';
 import {MatDialogRef} from '@angular/material';
-import {Episode} from '../../model/Episode';
-import {EpisodeService} from '../../service/episode.service';
+import {Episode} from '../../../model/Episode';
+import {EpisodeService} from '../../../service/episode.service';
 
 @Component ({
   selector: 'app-add-episode-dialog',
   templateUrl: 'add-episode-dialog.html',
-  styleUrls: ['./admin-episode-page.component.css']
+  styleUrls: ['../admin-episode-page.component.css']
 })
 export class AdminAddEpisodeDialogComponent implements OnInit {
   newEpisode: Episode;

@@ -5,6 +5,7 @@ import {AdminGamePageComponent} from '../../pages/admin-game-page/admin-game-pag
 import {AdminEpisodePageComponent} from '../../pages/admin-episode-page/admin-episode-page.component';
 import {ADMIN_LOCATION_ROUTES} from '../../pages/admin-location-page/routes';
 import {ADMIN_GAME_ROUTES} from '../../pages/admin-game-page/routes';
+import {ADMIN_EPISODE_ROUTES} from '../../pages/admin-episode-page/routes';
 
 export const ADMIN_ROUTES = [
   { path: '', component: AdminLocationPageComponent},
@@ -12,5 +13,5 @@ export const ADMIN_ROUTES = [
   { path: 'characters', component: AdminCharactersPageComponent},
   { path: 'users', component: AdminUsersPageComponent},
   { path: 'dictionaries', component: AdminGamePageComponent, children: ADMIN_GAME_ROUTES},
-  { path: 'episodes', component: AdminEpisodePageComponent}
+  { path: 'episodes', component: AdminEpisodePageComponent, children: ADMIN_EPISODE_ROUTES}
 ];

@@ -59,10 +59,10 @@ import {AdminEditWordDialogComponent} from './pages/admin-game-page/dictionary-p
 import {AdminAddWordDialogComponent} from './pages/admin-game-page/dictionary-page/add-word-dialog';
 import {WordService} from './service/word.service';
 import {AdminEpisodePageComponent} from './pages/admin-episode-page/admin-episode-page.component';
-import {AdminAddEpisodeDialogComponent} from './pages/admin-episode-page/add-episode-dialog';
-import {AdminAddSeasonDialogComponent} from './pages/admin-episode-page/add-season-dialog';
-import {AdminEditEpisodeDialogComponent} from './pages/admin-episode-page/edit-episode-dialog';
-import {AdminEditSeasonDialogComponent} from './pages/admin-episode-page/edit-season-dialog';
+import {AdminAddEpisodeDialogComponent} from './pages/admin-episode-page/episode-page/add-episode-dialog';
+import {AdminAddSeasonDialogComponent} from './pages/admin-episode-page/season-page/add-season-dialog';
+import {AdminEditEpisodeDialogComponent} from './pages/admin-episode-page/episode-page/edit-episode-dialog';
+import {AdminEditSeasonDialogComponent} from './pages/admin-episode-page/season-page/edit-season-dialog';
 import { PhotoLoaderComponent } from './components/photo-loader/photo-loader.component';
 import {UserService} from './service/user.service';
 import { GameListItemComponent } from './components/game-list-item/game-list-item.component';
@@ -77,7 +77,9 @@ import { EditLocationPageComponent } from './pages/admin-location-page/edit-loca
 import {AdminAddPlaceDialogComponent} from './pages/admin-location-page/choose-place-page/add-place-dialog';
 import { LanguagesPageComponent } from './pages/admin-game-page/languages-page/languages-page.component';
 import { DictionaryPageComponent } from './pages/admin-game-page/dictionary-page/dictionary-page.component';
-import {DataServise} from './service/data.servise';
+import { EpisodePageComponent } from './pages/admin-episode-page/episode-page/episode-page.component';
+import { SeasonPageComponent } from './pages/admin-episode-page/season-page/season-page.component';
+import {DataService} from './service/data.service';
 
 
 const materialModules = [
@@ -151,7 +153,9 @@ const materialModules = [
     ChoosePlacePageComponent,
     EditLocationPageComponent,
     LanguagesPageComponent,
-    DictionaryPageComponent
+    DictionaryPageComponent,
+    EpisodePageComponent,
+    SeasonPageComponent
   ],
   entryComponents: [
     ConfirmActionDialogComponent,
@@ -195,7 +199,7 @@ const materialModules = [
     LanguageService,
     WordService,
     GameService,
-    DataServise
+    DataService
   ],
   bootstrap: [AppComponent]
 })

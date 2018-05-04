@@ -8,7 +8,7 @@ import {LanguageService} from '../../../service/language.service';
 import {AdminEditWordDialogComponent} from './edit-word-dialog';
 import {ConfirmActionDialogComponent} from '../../../components/confirm-action/confirm-action-dialog';
 import {AdminAddWordDialogComponent} from './add-word-dialog';
-import {DataServise} from '../../../service/data.servise';
+import {DataService} from '../../../service/data.service';
 
 @Component({
   selector: 'app-dictionary-page',
@@ -26,7 +26,7 @@ export class DictionaryPageComponent implements OnInit {
   words: Word[];
 
   constructor(public dialog: MatDialog,
-              public dataService: DataServise,
+              public dataService: DataService,
               private changeDetectorRefs: ChangeDetectorRef,
               private languageService: LanguageService,
               private wordService: WordService) {
