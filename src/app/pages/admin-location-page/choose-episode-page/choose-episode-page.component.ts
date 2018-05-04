@@ -2,6 +2,7 @@ import {Component, OnInit, Output} from '@angular/core';
 import {Episode} from '../../../model/Episode';
 import {Location} from '../../../model/Location';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
+import {DataService} from '../../../service/data.service';
 
 @Component({
   selector: 'app-choose-episode-page',
@@ -9,23 +10,30 @@ import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '
   styleUrls: ['./choose-episode-page.component.css']
 })
 export class ChooseEpisodePageComponent implements OnInit {
+  isSelected;
 
   location: Location;
-  isSelected = false;
-  constructor(private router: Router) { }
+
+  constructor(private router: Router,
+              private dataService: DataService) { }
 
   ngOnInit() {
+    this.location = new Location();
   }
 
   setEpisode(episode: Episode) {
-    this.location.episode = episode;
-    this.isSelected = true;
+    if (episode) {
+      this.location.episode = episode;
+      this.isSelected = true;
+    } else {
+      this.isSelected = false;
+    }
   }
 
   goNext() {
     if (this.isSelected) {
-      console.log('goNext');
-      this.router.navigate(['admin/location/2']);
+      this.dataService.location = this.location;
+      this.router.navigate(['admin/location/episode/place']);
     }
   }
 }

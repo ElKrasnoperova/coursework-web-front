@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {Place} from '../../../model/Place';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatDialog, MatTableDataSource} from '@angular/material';
@@ -9,6 +9,7 @@ import {PlaceService} from '../../../service/place.service';
 import {Location} from '../../../model/Location';
 import {LocationService} from '../../../service/location.service';
 import {Router} from '@angular/router';
+import {DataService} from '../../../service/data.service';
 
 @Component({
   selector: 'app-choose-place-page',
@@ -16,64 +17,36 @@ import {Router} from '@angular/router';
   styleUrls: ['./choose-place-page.component.css']
 })
 export class ChoosePlacePageComponent implements OnInit {
+  isSelected: boolean;
 
-  isSelected = false;
+  places:    Place[];
 
   location: Location;
-
-  places: Place[];
-  locations: Location[];
-
 
   displayedColumns_places = ['id', 'name', 'select'];
   dataSource_places: MatTableDataSource<Place>;
   selection_places = new SelectionModel<Place>(false, []);
 
-  dataSource_locations: MatTableDataSource<Location>;
-
   constructor(public dialog: MatDialog,
               private router: Router,
               private placeService: PlaceService,
               private locationService: LocationService,
-              private changeDetectorRefs: ChangeDetectorRef) {
+              private changeDetectorRefs: ChangeDetectorRef,
+              private dataService: DataService) {
     }
 
   ngOnInit() {
-    this.location = new Location();
-    this.getPlaces();
-  }
-
-  getLocations(): void {
-    console.log('getLocations');
-    this.locationService.getLocations(this.location.episode, this.location.place)
-      .then(items => {
-        console.log(items);
-        this.locations = items;
-        this.refreshLocations();
-      });
-  }
-
-  refreshLocations(): void {
-    this.dataSource_locations = new MatTableDataSource<Location>(this.locations);
-    this.changeDetectorRefs.detectChanges();
-  }
-
-
-  getCharactersList() {
-    this.setPlace();
-    this.getLocations();
-    if (this.isSelected) {
-      this.router.navigate(['admin/location/3']);
-    }
-  }
-
-  getSelectedPlaceIndex(): number {
-    if (this.selection_places.selected.length === 0) {
-      return -1;
+    if (this.dataService.location) {
+      this.getLocationInfo();
+      this.getPlaces();
     } else {
-      this.isSelected = true;
-      return this.places.indexOf(this.selection_places.selected[0]);
+      this.router.navigate(['/notFound']);
     }
+  }
+
+  getLocationInfo(): void {
+    this.location = this.dataService.location;
+    this.dataService.location = null;
   }
 
   getPlaces(): void {
@@ -141,12 +114,24 @@ export class ChoosePlacePageComponent implements OnInit {
     });
   }
 
-  setPlace() {
+  getSelectedPlaceIndex(): number {
+    if (this.selection_places.selected.length === 0) {
+      return -1;
+    } else {
+      return this.places.indexOf(this.selection_places.selected[0]);
+    }
+  }
+
+  setPlace(index: number) {
+    this.location.place = new Place();
+    this.location.place.name = this.places[index].name;
+  }
+
+  goNext() {
     const index = this.getSelectedPlaceIndex();
     if (index !== -1) {
-      // this.place = this.places[index];
-      this.location.place = new Place();
-      this.location.place.name = this.places[index].name;
+      this.setPlace(index);
+      this.router.navigate(['admin/location/episode/place/location']);
     }
   }
 
@@ -166,6 +151,4 @@ export class ChoosePlacePageComponent implements OnInit {
       this.selection_places.clear() :
       this.dataSource_places.data.forEach(row => this.selection_places.select(row));
   }
-
-
 }

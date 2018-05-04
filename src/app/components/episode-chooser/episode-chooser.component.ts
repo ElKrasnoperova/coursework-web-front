@@ -37,10 +37,16 @@ export class EpisodeChooserComponent implements OnInit {
   }
 
   getEpisodesForSeason(season: Episode) {
-    this.episodeService.getEpisodesForSeasons(season.seasonNumber)
-      .then(items => {
-        this.episodes = items;
-      });
+    if (season) {
+      this.episodeService.getEpisodesForSeasons(season.seasonNumber)
+        .then(items => {
+          this.episodes = items;
+          this.enableEpisodeSelect();
+        });
+    } else {
+      this.setEpisode(null);
+      this.disableEpisodeSelect();
+    }
   }
 
   setEpisode(value: any) {
@@ -48,26 +54,12 @@ export class EpisodeChooserComponent implements OnInit {
     this.episodeSelected.emit(value);
   }
 
-  // checked = false;
-  // indeterminate = false;
-  // align = 'start';
-  // selectedSeason = null;
-  // selectedEpisode = null;
-  //
-
   enableEpisodeSelect() {
     this.episodeDisabled = false;
   }
-  //
-  // enableChronology(state) {
-  //   if (state === true) {
-  //     if (this.selectedSeason !== null) {
-  //       this.episodeDisabled = false;
-  //     }
-  //     this.seasonDisabled = false;
-  //   } else {
-  //     this.seasonDisabled = true;
-  //     this.episodeDisabled = true;
-  //   }
-  // }
+
+  disableEpisodeSelect() {
+    this.episodes = [];
+    this.episodeDisabled = true;
+  }
 }

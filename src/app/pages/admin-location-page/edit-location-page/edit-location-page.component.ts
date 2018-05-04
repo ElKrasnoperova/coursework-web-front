@@ -8,6 +8,8 @@ import {LocationService} from '../../../service/location.service';
 import {AdminEditLocationDialogComponent} from './edit-location-dialog';
 import {ConfirmActionDialogComponent} from '../../../components/confirm-action/confirm-action-dialog';
 import {Character} from '../../../model/Character';
+import {DataService} from '../../../service/data.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-edit-location-page',
@@ -20,19 +22,35 @@ export class EditLocationPageComponent implements OnInit {
   dataSource_locations: MatTableDataSource<Location>;
   selection_locations = new SelectionModel<Location>(false, []);
 
-  dataSource_places: MatTableDataSource<Place>;
-  selection_places = new SelectionModel<Place>(false, []);
-
-  location: Location;
-  places: Place[];
   locations: Location[];
-  characters: Character[];
+  location: Location;
 
-  constructor(public dialog: MatDialog,
+  constructor(public  dialog: MatDialog,
               private changeDetectorRefs: ChangeDetectorRef,
-              private locationService: LocationService) { }
+              private locationService: LocationService,
+              private dataService: DataService,
+              private router: Router) { }
 
   ngOnInit() {
+    if (this.dataService.location){
+      this.getLocationData();
+      this.getLocations();
+    } else {
+      this.router.navigate(['/notFound']);
+    }
+  }
+
+  getLocationData() {
+    this.location  = this.dataService.location;
+    this.dataService.location = null;
+  }
+
+  getLocations(): void {
+    this.locationService.getLocations(this.location.episode, this.location.place)
+      .then(items => {
+        this.locations = items;
+        this.refreshLocations();
+      });
   }
 
   addLocation(): void {
@@ -40,13 +58,10 @@ export class EditLocationPageComponent implements OnInit {
   }
 
   openAddDialogForLocation() {
-    console.log('open add dialog for location');
     const dialogRef = this.dialog
       .open(AdminAddLocationDialogComponent, {
         height: '45%', width: '35%'
       });
-    console.log('set to dialog:');
-    console.log(this.location);
     dialogRef.componentInstance.location = this.location;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -96,39 +111,6 @@ export class EditLocationPageComponent implements OnInit {
     });
   }
 
-  masterToggle_locations() {
-    this.isAllPlacesSelected() ?
-      this.selection_locations.clear() :
-      this.dataSource_locations.data.forEach(row => this.selection_locations.select(row));
-  }
-
-  refreshLocations(): void {
-    this.dataSource_locations = new MatTableDataSource<Location>(this.locations);
-    this.changeDetectorRefs.detectChanges();
-  }
-
-  isAllLocationsSelected() {
-    const numSelected = this.selection_locations.selected.length;
-    const numRows = this.dataSource_locations.data.length;
-    return numSelected === numRows;
-  }
-
-  isAllPlacesSelected() {
-    const numSelected = this.selection_places.selected.length;
-    const numRows = this.dataSource_places.data.length;
-    return numSelected === numRows;
-  }
-
-  getLocations(): void {
-    console.log('getLocations');
-    this.locationService.getLocations(this.location.episode, this.location.place)
-      .then(items => {
-        console.log(items);
-        this.locations = items;
-        this.refreshLocations();
-      });
-  }
-
   getSelectedLocationIndex(): number {
     if (this.selection_locations.selected.length === 0) {
       return -1;
@@ -137,26 +119,20 @@ export class EditLocationPageComponent implements OnInit {
     }
   }
 
-  getCharactersList() {
-    this.setPlace();
-    this.getLocations();
+  refreshLocations(): void {
+    this.dataSource_locations = new MatTableDataSource<Location>(this.locations);
+    this.changeDetectorRefs.detectChanges();
   }
 
-  setPlace() {
-    const index = this.getSelectedPlaceIndex();
-    if (index !== -1) {
-      // this.place = this.places[index];
-      this.location.place = new Place();
-      this.location.place.name = this.places[index].name;
-    }
+  masterToggle_locations() {
+    this.isAllLocationsSelected() ?
+      this.selection_locations.clear() :
+      this.dataSource_locations.data.forEach(row => this.selection_locations.select(row));
   }
 
-  getSelectedPlaceIndex(): number {
-    if (this.selection_places.selected.length === 0) {
-      return -1;
-    } else {
-      return this.places.indexOf(this.selection_places.selected[0]);
-    }
+  isAllLocationsSelected() {
+    const numSelected = this.selection_locations.selected.length;
+    const numRows = this.dataSource_locations.data.length;
+    return numSelected === numRows;
   }
-
 }
