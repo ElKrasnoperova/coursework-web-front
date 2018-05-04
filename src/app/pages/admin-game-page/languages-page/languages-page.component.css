@@ -1,0 +1,25 @@
+.add-language-button {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  color: red;
+  margin-left: 95%;
+}
+
+.button-row-for-language {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+mat-cell, mat-header-cell {
+  overflow: visible;
+}
+
+.container-for-admin-games {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+  width: 95%;
+  margin: 30px;
+}

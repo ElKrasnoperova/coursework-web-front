@@ -4,7 +4,7 @@ import {LocationService} from '../../../service/location.service';
 import {Character} from '../../../model/Character';
 import {Place} from '../../../model/Place';
 import {Episode} from '../../../model/Episode';
-import {AdminAddLanguageDialogComponent} from '../../admin-game-page/add-language-dialog';
+import {AdminAddLanguageDialogComponent} from '../../admin-game-page/languages-page/add-language-dialog';
 import {MatDialogRef} from '@angular/material';
 
 @Component ({

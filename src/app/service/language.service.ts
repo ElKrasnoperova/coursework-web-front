@@ -5,7 +5,7 @@ import {Language} from '../model/Language';
 
 @Injectable()
 export class LanguageService {
-  private baseUrl = 'http://localhost:4200/api';
+  private baseUrl = 'http://localhost:9090/api';
 
   constructor(private http: Http) { }
 

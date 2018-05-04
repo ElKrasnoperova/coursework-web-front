@@ -29,27 +29,27 @@ mat-cell, mat-header-cell {
   overflow: visible;
 }
 
-.container-for-admin-games {
-  display: flex;
-  flex-direction: column;
-  max-height: 500px;
-  min-width: 300px;
-  width: 95%;
-  margin: 30px;
-}
+/*.container-for-admin-games {*/
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*max-height: 500px;*/
+  /*min-width: 300px;*/
+  /*width: 95%;*/
+  /*margin: 30px;*/
+/*}*/
 
-.button-row-for-language {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
+/*.button-row-for-language {*/
+  /*display: flex;*/
+  /*align-items: center;*/
+  /*justify-content: space-around;*/
+/*}*/
 
-.add-language-button {
-  margin-top: 8px;
-  margin-bottom: 8px;
-  color: red;
-  margin-left: 95%;
-}
+/*.add-language-button {*/
+  /*margin-top: 8px;*/
+  /*margin-bottom: 8px;*/
+  /*color: red;*/
+  /*margin-left: 95%;*/
+/*}*/
 .full-width-language-input {
   width: 100%;
 }
@@ -61,8 +61,8 @@ mat-cell, mat-header-cell {
   margin: 16px;
 }
 
-.header {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
+/*.header {*/
+  /*display: flex;*/
+  /*justify-content: space-around;*/
+  /*align-items: center;*/
+/*}*/

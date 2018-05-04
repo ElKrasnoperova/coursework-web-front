@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialogRef} from '@angular/material';
-import {Word} from '../../model/Word';
-import {WordService} from '../../service/word.service';
+import {Word} from '../../../model/Word';
+import {WordService} from '../../../service/word.service';
 
 @Component({
   selector: 'app-edit-word-dialog',
   templateUrl: 'edit-word-dialog.html',
-  styleUrls: ['./admin-game-page.component.css']
+  styleUrls: ['../admin-game-page.component.css']
 })
 export class AdminEditWordDialogComponent implements OnInit {
   word: Word;

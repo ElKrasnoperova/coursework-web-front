@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Place} from '../../../model/Place';
-import {AdminAddLanguageDialogComponent} from '../../admin-game-page/add-language-dialog';
+import {AdminAddLanguageDialogComponent} from '../../admin-game-page/languages-page/add-language-dialog';
 import {MatDialogRef} from '@angular/material';
 import {PlaceService} from '../../../service/place.service';
 

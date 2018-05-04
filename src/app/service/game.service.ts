@@ -6,7 +6,7 @@ import {log} from 'util';
 
 @Injectable()
 export class GameService {
-  private baseUrl = 'http://localhost:4200/api';
+  private baseUrl = 'http://localhost:9090/api';
 
   constructor(private http: Http) { }
 

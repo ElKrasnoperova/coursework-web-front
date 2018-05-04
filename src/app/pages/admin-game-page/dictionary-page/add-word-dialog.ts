@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {Language} from '../../model/Language';
+import {Language} from '../../../model/Language';
 import {Http} from '@angular/http';
 import {MatDialogRef} from '@angular/material';
-import {WordService} from '../../service/word.service';
-import {Word} from '../../model/Word';
+import {WordService} from '../../../service/word.service';
+import {Word} from '../../../model/Word';
 
 @Component({
   selector: 'app-add-word-dialog',
   templateUrl: 'add-word-dialog.html',
-  styleUrls: ['./admin-game-page.component.css']
+  styleUrls: ['../admin-game-page.component.css']
 })
 export class AdminAddWordDialogComponent implements OnInit {
   newWord: Word;

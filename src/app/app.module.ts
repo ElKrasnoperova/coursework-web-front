@@ -49,14 +49,14 @@ import {AdminEditLocationDialogComponent} from './pages/admin-location-page/edit
 import {AdminDeleteLocationDialogComponent} from './pages/admin-location-page/edit-location-page/delete-location-dialog';
 
 import {AdminService} from './service/admin.service';
-import {AdminAddLanguageDialogComponent} from './pages/admin-game-page/add-language-dialog';
-import {AdminEditLanguageDialogComponent} from './pages/admin-game-page/edit-language-dialog';
+import {AdminAddLanguageDialogComponent} from './pages/admin-game-page/languages-page/add-language-dialog';
+import {AdminEditLanguageDialogComponent} from './pages/admin-game-page/languages-page/edit-language-dialog';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import {ConfirmExitDialogComponent} from './components/toolbar/confirmation-dialog';
 import {AdminEditPlaceDialogComponent} from './pages/admin-location-page/choose-place-page/edit-place-dialog';
 import {LanguageService} from './service/language.service';
-import {AdminEditWordDialogComponent} from './pages/admin-game-page/edit-word-dialog';
-import {AdminAddWordDialogComponent} from './pages/admin-game-page/add-word-dialog';
+import {AdminEditWordDialogComponent} from './pages/admin-game-page/dictionary-page/edit-word-dialog';
+import {AdminAddWordDialogComponent} from './pages/admin-game-page/dictionary-page/add-word-dialog';
 import {WordService} from './service/word.service';
 import {AdminEpisodePageComponent} from './pages/admin-episode-page/admin-episode-page.component';
 import {AdminAddEpisodeDialogComponent} from './pages/admin-episode-page/add-episode-dialog';
@@ -75,6 +75,8 @@ import { ChooseEpisodePageComponent } from './pages/admin-location-page/choose-e
 import { ChoosePlacePageComponent } from './pages/admin-location-page/choose-place-page/choose-place-page.component';
 import { EditLocationPageComponent } from './pages/admin-location-page/edit-location-page/edit-location-page.component';
 import {AdminAddPlaceDialogComponent} from './pages/admin-location-page/choose-place-page/add-place-dialog';
+import { LanguagesPageComponent } from './pages/admin-game-page/languages-page/languages-page.component';
+import { DictionaryPageComponent } from './pages/admin-game-page/dictionary-page/dictionary-page.component';
 
 
 const materialModules = [
@@ -146,7 +148,9 @@ const materialModules = [
     PanelForMapComponent,
     ChooseEpisodePageComponent,
     ChoosePlacePageComponent,
-    EditLocationPageComponent
+    EditLocationPageComponent,
+    LanguagesPageComponent,
+    DictionaryPageComponent
   ],
   entryComponents: [
     ConfirmActionDialogComponent,

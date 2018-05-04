@@ -2,15 +2,15 @@ import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatDialog, MatTableDataSource} from '@angular/material';
-import {AdminAddLanguageDialogComponent} from './add-language-dialog';
-import {AdminEditLanguageDialogComponent} from './edit-language-dialog';
+import {AdminAddLanguageDialogComponent} from './languages-page/add-language-dialog';
+import {AdminEditLanguageDialogComponent} from './languages-page/edit-language-dialog';
 import {Language} from '../../model/Language';
 import {LanguageService} from '../../service/language.service';
 import {ConfirmActionDialogComponent} from '../../components/confirm-action/confirm-action-dialog';
 import {Word} from '../../model/Word';
 import {WordService} from '../../service/word.service';
-import {AdminEditWordDialogComponent} from './edit-word-dialog';
-import {AdminAddWordDialogComponent} from './add-word-dialog';
+import {AdminEditWordDialogComponent} from './dictionary-page/edit-word-dialog';
+import {AdminAddWordDialogComponent} from './dictionary-page/add-word-dialog';
 
 @Component({
   selector: 'app-admin-game-page',

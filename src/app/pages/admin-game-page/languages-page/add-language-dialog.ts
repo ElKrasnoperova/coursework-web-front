@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {LanguageService} from '../../service/language.service';
-import {Language} from '../../model/Language';
+import {LanguageService} from '../../../service/language.service';
+import {Language} from '../../../model/Language';
 import {Http} from '@angular/http';
 import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-add-language-dialog',
   templateUrl: 'add-language-dialog.html',
-  styleUrls: ['./admin-game-page.component.css']
+  styleUrls: ['../admin-game-page.component.css']
 })
 export class AdminAddLanguageDialogComponent implements OnInit {
   newLanguage: Language;
