@@ -7,6 +7,7 @@ import {ConfirmActionDialogComponent} from '../../../components/confirm-action/c
 import {AdminAddSeasonDialogComponent} from './add-season-dialog';
 import {AdminEditSeasonDialogComponent} from './edit-season-dialog';
 import {Router} from '@angular/router';
+import {DataService} from '../../../service/data.service';
 
 @Component({
   selector: 'app-season-page',
@@ -15,14 +16,10 @@ import {Router} from '@angular/router';
 })
 export class SeasonPageComponent implements OnInit {
 
-  selection_episodes = new SelectionModel<Episode>(false, []);
-  dataSource_episodes: MatTableDataSource<Episode>;
-
   selection_seasons = new SelectionModel<Episode>(false, []);
   dataSource_seasons: MatTableDataSource<Episode>;
   displayedColumns_seasons = ['id', 'seasonNumber', 'select'];
 
-  episodes:       Episode[];
   seasons:        Episode[];
 
   selectedSeason: Episode;
@@ -30,7 +27,8 @@ export class SeasonPageComponent implements OnInit {
   constructor(public  dialog: MatDialog,
               private router: Router,
               private changeDetectorRefs: ChangeDetectorRef,
-              private episodeService: EpisodeService) { }
+              private episodeService: EpisodeService,
+              private dataService: DataService) { }
 
   ngOnInit() {
     this.getAllSeasons();
@@ -44,21 +42,26 @@ export class SeasonPageComponent implements OnInit {
       });
   }
 
-  getEpisodesForSelectedSeason(): void {
-    this.episodeService.getEpisodesForSeasons(this.selectedSeason.seasonNumber)
-      .then( items => {
-        this.episodes = items;
-        this.refreshEpisodes();
-      });
-  }
+  // getEpisodesForSelectedSeason(): void {
+  //   this.episodeService.getEpisodesForSeasons(this.selectedSeason.seasonNumber)
+  //     .then( items => {
+  //       this.episodes = items;
+  //       this.refreshEpisodes();
+  //     });
+  // }
 
   getSeason(): void {
     const index = this.getSelectedSeasonIndex();
     if (index !== -1) {
-      this.selectedSeason = this.seasons[index];
-      this.getEpisodesForSelectedSeason();
-      this.router.navigate(['admin/episodes/season/episode']);
+      this.setSeason(index);
+      this.saveData();
+      // this.getEpisodesForSelectedSeason();
+      this.router.navigate(['admin/seasons/episodes']);
     }
+  }
+
+  setSeason(index: number): void {
+    this.selectedSeason = this.seasons[index];
   }
 
   deleteSeason(): void {
@@ -144,12 +147,12 @@ export class SeasonPageComponent implements OnInit {
       this.dataSource_seasons.data.forEach(row => this.selection_seasons.select(row));
   }
 
-  private refreshEpisodes() {
-    this.dataSource_episodes = new MatTableDataSource<Episode>(this.episodes);
-    this.changeDetectorRefs.detectChanges();
-  }
+  // private refreshEpisodes() {
+  //   this.dataSource_episodes = new MatTableDataSource<Episode>(this.episodes);
+  //   this.changeDetectorRefs.detectChanges();
+  // }
 
-  ngOnDestroy() {
-
+  saveData() {
+    this.dataService.season = this.selectedSeason;
   }
 }

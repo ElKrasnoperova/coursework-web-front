@@ -33,7 +33,7 @@ export class ChooseEpisodePageComponent implements OnInit {
   goNext() {
     if (this.isSelected) {
       this.dataService.location = this.location;
-      this.router.navigate(['admin/location/episode/place']);
+      this.router.navigate(['admin/character_locations/episodes/places']);
     }
   }
 }

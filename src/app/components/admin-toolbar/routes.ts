@@ -8,10 +8,10 @@ import {ADMIN_GAME_ROUTES} from '../../pages/admin-game-page/routes';
 import {ADMIN_EPISODE_ROUTES} from '../../pages/admin-episode-page/routes';
 
 export const ADMIN_ROUTES = [
-  { path: '', component: AdminLocationPageComponent},
-  { path: 'location', component: AdminLocationPageComponent, children: ADMIN_LOCATION_ROUTES},
+  { path: '', redirectTo: 'characters', pathMatch: 'full'},
+  { path: 'character_locations', component: AdminLocationPageComponent, children: ADMIN_LOCATION_ROUTES},
   { path: 'characters', component: AdminCharactersPageComponent},
   { path: 'users', component: AdminUsersPageComponent},
-  { path: 'dictionaries', component: AdminGamePageComponent, children: ADMIN_GAME_ROUTES},
-  { path: 'episodes', component: AdminEpisodePageComponent, children: ADMIN_EPISODE_ROUTES}
+  { path: 'languages', component: AdminGamePageComponent, children: ADMIN_GAME_ROUTES},
+  { path: 'seasons', component: AdminEpisodePageComponent, children: ADMIN_EPISODE_ROUTES}
 ];

@@ -9,6 +9,8 @@ import {AdminEditWordDialogComponent} from './edit-word-dialog';
 import {ConfirmActionDialogComponent} from '../../../components/confirm-action/confirm-action-dialog';
 import {AdminAddWordDialogComponent} from './add-word-dialog';
 import {DataService} from '../../../service/data.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {PlatformLocation} from '@angular/common';
 
 @Component({
   selector: 'app-dictionary-page',
@@ -29,8 +31,30 @@ export class DictionaryPageComponent implements OnInit {
               public dataService: DataService,
               private changeDetectorRefs: ChangeDetectorRef,
               private languageService: LanguageService,
-              private wordService: WordService) {
-    this.selectedLanguage = new Language();
+              private wordService: WordService,
+              private router: Router,
+              location: PlatformLocation) {
+    location.onPopState(() => {
+      this.saveData();
+    });
+  }
+
+  saveData(): void {
+    this.dataService.language = this.selectedLanguage;
+  }
+
+  ngOnInit() {
+    if (this.dataService.language) {
+      this.setLanguageInfo();
+      this.getWords();
+    } else {
+      this.router.navigate(['/notFound']);
+    }
+  }
+
+  setLanguageInfo() {
+    this.selectedLanguage = this.dataService.language;
+    this.dataService.language = null;
   }
 
   getSelectedWordIndex(): number {
@@ -122,11 +146,4 @@ export class DictionaryPageComponent implements OnInit {
       this.selection_words.clear() :
       this.dataSource_words.data.forEach(row => this.selection_words.select(row));
   }
-
-  ngOnInit() {
-    this.selectedLanguage = this.dataService.language;
-    console.log(this.selectedLanguage);
-    this.getWords();
-  }
-
 }

@@ -6,6 +6,9 @@ import {EpisodeService} from '../../../service/episode.service';
 import {ConfirmActionDialogComponent} from '../../../components/confirm-action/confirm-action-dialog';
 import {AdminAddEpisodeDialogComponent} from './add-episode-dialog';
 import {AdminEditEpisodeDialogComponent} from './edit-episode-dialog';
+import {DataService} from '../../../service/data.service';
+import {Router} from '@angular/router';
+import {PlatformLocation} from '@angular/common';
 
 @Component({
   selector: 'app-episode-page',
@@ -16,18 +19,38 @@ export class EpisodePageComponent implements OnInit {
 
   selection_episodes = new SelectionModel<Episode>(false, []);
   dataSource_episodes: MatTableDataSource<Episode>;
-  displayedColumns_episodes  = ['id', 'episodeNumber', 'name', 'select'];
+  displayedColumns_episodes = ['id', 'episodeNumber', 'name', 'select'];
 
-  episodes:       Episode[];
+  episodes: Episode[];
 
   selectedSeason: Episode;
 
   constructor(public  dialog: MatDialog,
               private changeDetectorRefs: ChangeDetectorRef,
-              private episodeService: EpisodeService) { }
+              private episodeService: EpisodeService,
+              private dataService: DataService,
+              private router: Router, location: PlatformLocation) {
+    location.onPopState(() => {
+      this.saveData();
+    });
+  }
+
+  saveData(): void {
+    this.dataService.season = this.selectedSeason;
+  }
 
   ngOnInit() {
-    this.getEpisodesForSelectedSeason();
+    if (this.dataService.season) {
+      this.setSeasonInfo();
+      this.getEpisodesForSelectedSeason();
+    } else {
+      this.router.navigate(['/notFound']);
+    }
+  }
+
+  setSeasonInfo() {
+    this.selectedSeason = this.dataService.season;
+    this.dataService.season = null;
   }
 
   getEpisodesForSelectedSeason(): void {

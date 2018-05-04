@@ -10,6 +10,7 @@ import {Location} from '../../../model/Location';
 import {LocationService} from '../../../service/location.service';
 import {Router} from '@angular/router';
 import {DataService} from '../../../service/data.service';
+import {PlatformLocation} from '@angular/common';
 
 @Component({
   selector: 'app-choose-place-page',
@@ -32,7 +33,11 @@ export class ChoosePlacePageComponent implements OnInit {
               private placeService: PlaceService,
               private locationService: LocationService,
               private changeDetectorRefs: ChangeDetectorRef,
-              private dataService: DataService) {
+              private dataService: DataService,
+              location: PlatformLocation) {
+      location.onPopState(() => {
+        this.saveData();
+      });
     }
 
   ngOnInit() {
@@ -123,15 +128,19 @@ export class ChoosePlacePageComponent implements OnInit {
   }
 
   setPlace(index: number) {
-    this.location.place = new Place();
-    this.location.place.name = this.places[index].name;
+    this.location.place = this.places[index];
+  }
+
+  saveData(): void {
+    this.dataService.location = this.location;
   }
 
   goNext() {
     const index = this.getSelectedPlaceIndex();
     if (index !== -1) {
       this.setPlace(index);
-      this.router.navigate(['admin/location/episode/place/location']);
+      this.saveData();
+      this.router.navigate(['admin/character_locations/episodes/places/locations']);
     }
   }
 

@@ -29,7 +29,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { MapComponent } from './components/map/map.component';
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 import { AdminLocationPageComponent } from './pages/admin-location-page/admin-location-page.component';
-import { LocationOfCharacterComponent } from './components/location-of-character/location-of-character.component';
 import { AdminToolbarComponent } from './components/admin-toolbar/admin-toolbar.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { AdminCharactersPageComponent } from './pages/admin-characters-page/admin-characters-page.component';
@@ -121,7 +120,6 @@ const materialModules = [
     SettingsPageComponent,
     ConfirmActionDialogComponent,
     AdminLocationPageComponent,
-    LocationOfCharacterComponent,
     AdminToolbarComponent,
     AdminCharactersPageComponent,
     AdminUsersPageComponent,

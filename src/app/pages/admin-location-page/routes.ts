@@ -4,8 +4,8 @@ import {ChoosePlacePageComponent} from './choose-place-page/choose-place-page.co
 import {EditLocationPageComponent} from './edit-location-page/edit-location-page.component';
 
 export const ADMIN_LOCATION_ROUTES: Routes = [
-  {path: '', redirectTo: 'episode', pathMatch: 'full'},
-  {path: 'episode', component: ChooseEpisodePageComponent},
-  {path: 'episode/place', component: ChoosePlacePageComponent},
-  {path: 'episode/place/location', component: EditLocationPageComponent}
+  {path: '', redirectTo: 'episodes', pathMatch: 'full'},
+  {path: 'episodes', component: ChooseEpisodePageComponent},
+  {path: 'episodes/places', component: ChoosePlacePageComponent},
+  {path: 'episodes/places/locations', component: EditLocationPageComponent}
 ];

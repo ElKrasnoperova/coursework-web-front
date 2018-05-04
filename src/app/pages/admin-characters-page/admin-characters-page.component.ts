@@ -16,7 +16,7 @@ import {ConfirmActionDialogComponent} from '../../components/confirm-action/conf
   styleUrls: ['./admin-characters-page.component.css']
 })
 export class AdminCharactersPageComponent implements OnInit {
-  displayedColumns = ['id', 'name', 'birthYear', 'faith', 'organization', 'select', 'firstEpisode','lastEpisode'];
+  displayedColumns = ['id', 'name', 'birthYear', 'faith', 'organization', 'select', 'firstEpisode', 'lastEpisode' ];
   dataSource: MatTableDataSource<Character>;
   selection = new SelectionModel<Character>(false, []);
   constructor(public  dialog: MatDialog,

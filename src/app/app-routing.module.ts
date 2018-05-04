@@ -13,7 +13,7 @@ import {TranslationGamePageComponent} from './pages/translation-game-page/transl
 import {AnswerListPageComponent} from './pages/answer-list-page/answer-list-page.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'characters/1', pathMatch: 'full'},
+  {path: '', redirectTo: 'characters', pathMatch: 'full'},
   {path: 'login', component: AuthPageComponent},
   {path: 'characters', component: CharacterPageComponent},
   {path: 'characters/:id', component: CharacterPageComponent},

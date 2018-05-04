@@ -35,11 +35,16 @@ export class CharacterPageComponent implements OnInit {
 
   initCards(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    const character = this.findById(id);
-    if (character) {
-      this.setCharacter(character);
-    } else {
-      this.router.navigate(['/characterNotFound']);
+    console.log(id);
+    if (id !== 0) {
+      const character = this.findById(id);
+      if (character) {
+        this.setCharacter(character);
+      } else {
+        this.router.navigate(['/notFound']);
+      }
+    } else if (id === 0) {
+      this.setCharacter(this.characters[0]) ;
     }
   }
 
