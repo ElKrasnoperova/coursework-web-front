@@ -8,6 +8,7 @@ import {LanguageService} from '../../../service/language.service';
 import {AdminEditWordDialogComponent} from './edit-word-dialog';
 import {ConfirmActionDialogComponent} from '../../../components/confirm-action/confirm-action-dialog';
 import {AdminAddWordDialogComponent} from './add-word-dialog';
+import {DataServise} from '../../../service/data.servise';
 
 @Component({
   selector: 'app-dictionary-page',
@@ -25,6 +26,7 @@ export class DictionaryPageComponent implements OnInit {
   words: Word[];
 
   constructor(public dialog: MatDialog,
+              public dataService: DataServise,
               private changeDetectorRefs: ChangeDetectorRef,
               private languageService: LanguageService,
               private wordService: WordService) {
@@ -40,9 +42,6 @@ export class DictionaryPageComponent implements OnInit {
   }
 
   getWords(): void {
-    this.selectedLanguage.id = 10;
-    this.selectedLanguage.name = 'Дотракийский';
-    this.selectedLanguage.photo = null;
     this.wordService.getWords(this.selectedLanguage)
       .then(items => {
         this.words = items;
@@ -125,6 +124,8 @@ export class DictionaryPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.selectedLanguage = this.dataService.language;
+    console.log(this.selectedLanguage);
     this.getWords();
   }
 

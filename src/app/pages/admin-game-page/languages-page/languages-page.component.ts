@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatDialog, MatTableDataSource} from '@angular/material';
 import {Language} from '../../../model/Language';
@@ -8,14 +8,15 @@ import {ConfirmActionDialogComponent} from '../../../components/confirm-action/c
 import {AdminAddLanguageDialogComponent} from './add-language-dialog';
 import {AdminEditLanguageDialogComponent} from './edit-language-dialog';
 import {Word} from '../../../model/Word';
-import {Route, Router} from '@angular/router';
+import {Router} from '@angular/router';
+import {DataServise} from '../../../service/data.servise';
 
 @Component({
   selector: 'app-languages-page',
   templateUrl: './languages-page.component.html',
   styleUrls: ['./languages-page.component.css']
 })
-export class LanguagesPageComponent implements OnInit {
+export class LanguagesPageComponent implements OnInit, OnDestroy {
 
       dataSource_words: MatTableDataSource<Word>;
 
@@ -24,11 +25,12 @@ export class LanguagesPageComponent implements OnInit {
       displayedColumns_languages = ['id', 'name', 'select'];
 
       languages: Language[];
-      selectedLanguage: Language;
+      public selectedLanguage: Language;
 
       words: Word[];
 
       constructor(public dialog: MatDialog,
+        public dataService: DataServise,
         private changeDetectorRefs: ChangeDetectorRef,
         private languageService: LanguageService,
         private wordService: WordService,
@@ -60,7 +62,7 @@ export class LanguagesPageComponent implements OnInit {
     const index = this.getSelectedLanguageIndex();
     if (index !== -1) {
       this.selectedLanguage = this.languages[index];
-      this.router.navigate(['admin/dictionaries/2']);
+      this.router.navigate(['admin/dictionaries/language/dictionary']);
     }
   }
 
@@ -155,5 +157,9 @@ export class LanguagesPageComponent implements OnInit {
     this.isAllLanguagesSelected() ?
       this.selection_languages.clear() :
       this.dataSource_languages.data.forEach(row => this.selection_languages.select(row));
+  }
+
+  ngOnDestroy() {
+        this.dataService.language = this.selectedLanguage;
   }
 }

@@ -4,6 +4,6 @@ import {DictionaryPageComponent} from './dictionary-page/dictionary-page.compone
 
 export const ADMIN_GAME_ROUTES: Routes = [
   {path: '', component: LanguagesPageComponent},
-  {path: '1', component: LanguagesPageComponent},
-  {path: '2', component: DictionaryPageComponent}
+  {path: 'language', component: LanguagesPageComponent},
+  {path: 'language/dictionary', component: DictionaryPageComponent}
   ];

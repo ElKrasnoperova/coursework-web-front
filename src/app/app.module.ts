@@ -77,6 +77,7 @@ import { EditLocationPageComponent } from './pages/admin-location-page/edit-loca
 import {AdminAddPlaceDialogComponent} from './pages/admin-location-page/choose-place-page/add-place-dialog';
 import { LanguagesPageComponent } from './pages/admin-game-page/languages-page/languages-page.component';
 import { DictionaryPageComponent } from './pages/admin-game-page/dictionary-page/dictionary-page.component';
+import {DataServise} from './service/data.servise';
 
 
 const materialModules = [
@@ -193,7 +194,8 @@ const materialModules = [
     UserService,
     LanguageService,
     WordService,
-    GameService
+    GameService,
+    DataServise
   ],
   bootstrap: [AppComponent]
 })
