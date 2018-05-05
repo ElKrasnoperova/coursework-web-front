@@ -2,6 +2,7 @@ import {Language} from '../model/Language';
 import {Episode} from '../model/Episode';
 import {Location} from '../model/Location';
 import {Word} from '../model/Word';
+import {Character} from '../model/Character';
 
 export class DataService {
   public language: Language;
@@ -11,4 +12,6 @@ export class DataService {
 
   public answers: Word[];
   public results: boolean[];
+
+  public character: Character;
 }
