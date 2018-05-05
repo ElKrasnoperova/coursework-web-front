@@ -19,14 +19,14 @@
     </mat-table>
   </div>
 
-  <div>
+  <div class = margin-for-result>
     Ваши баллы:
     <div *ngIf="score; then userScore else default"></div>
     <ng-template #userScore>
       {{score}} / {{results.length}}
     </ng-template>
     <ng-template #default>
-      {{defaultScore}} / {{results.length}} за посещение
+        {{defaultScore}} / {{results.length}} за посещение
     </ng-template>
   </div>
 

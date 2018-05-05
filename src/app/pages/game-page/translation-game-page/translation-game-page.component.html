@@ -1,13 +1,13 @@
 <mat-progress-bar mode=determinate value = {{progressBarValue}} class="progress-bar-margin"></mat-progress-bar>
 
-<div class="container-for-admin-episodes mat-elevation-z8">
-  cards
+<div class="container-for-translation-card mat-elevation-z8">
   <div #cardContainer>
     <app-game-card #gameCard [(word)]="word" (translationIsDone)="setAnswer($event)"></app-game-card>
     <mat-error *ngIf="answerRequiredError">
       Ну хоть что-нибудь :(
     </mat-error>
   </div>
-
-  <button #nextButton mat-raised-button color="accent" (click)="nextWord()" >Дальше</button>
+  <div class = button-next>
+    <button #nextButton mat-raised-button color="accent" (click)="nextWord()" >Дальше</button>
+  </div>
 </div>

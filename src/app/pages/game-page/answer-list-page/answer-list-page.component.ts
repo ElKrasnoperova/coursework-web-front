@@ -21,6 +21,8 @@ export class AnswerListPageComponent implements OnInit {
   score: Number;
   defaultScore = 0.01;
 
+  color: string;
+
   constructor(private router: Router,
               private dataService: DataService,
               private changeDetectorRefs: ChangeDetectorRef) { }
