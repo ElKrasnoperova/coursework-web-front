@@ -25,3 +25,8 @@
   top: 112px;
   right: 0;
 }
+
+.icon-location {
+  float: left;
+  z-index: 101;
+}
