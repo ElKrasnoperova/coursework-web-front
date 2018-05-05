@@ -1,0 +1,18 @@
+<h2>Редактировать язык</h2>
+<mat-form-field class = full-width-language-input>
+  <label> Название языка
+    <input matInput [(ngModel)]="updatedLanguage.name" class = input-margin>
+  </label>
+</mat-form-field>
+<div>
+  <mat-dialog-actions>
+    <app-photo-loader [photo]="updatedLanguage.photo" (photoIsChosen)="setPhoto($event)"></app-photo-loader>
+  </mat-dialog-actions>
+</div>
+<div class = confirmation-buttons-languages>
+  <mat-dialog-actions>
+    <button mat-button color = "primary">Отмена</button>
+    <button mat-button color = "accent" (click)="updateLanguage()">Сохранить</button>
+  </mat-dialog-actions>
+</div>
+

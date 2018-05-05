@@ -1,20 +1,14 @@
 <mat-card class = column-choosers>
-  <!--<mat-card-content>-->
-    <!--<section>-->
-      <!--<mat-checkbox [(ngModel)]="checked" (change)="enableChronology(checked)">Хронология</mat-checkbox>-->
-    <!--</section>-->
-  <!--</mat-card-content>-->
-
   <mat-form-field>
     <mat-select class = "selection" placeholder="Выберите сезон"
-               (change)="enableEpisodeSelect()" (selectionChange)="getEpisodesForSeason($event.value)">
+                (selectionChange)="getEpisodesForSeason($event.value)">
       <mat-option [value]="null"></mat-option>
       <mat-option *ngFor="let season of seasons" [value]="season">
         Сезон {{season.seasonNumber}}
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <!--<br>-->
+
   <mat-form-field>
     <mat-select class = "selection" placeholder="Выберите серию"
                 [value]="selectedEpisode" (selectionChange)="setEpisode($event.value)"
@@ -25,5 +19,4 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-
 </mat-card>

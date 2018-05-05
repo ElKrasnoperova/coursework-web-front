@@ -1,9 +1,9 @@
-.add-season-button {
-  margin-top: 8px;
-  margin-bottom: 8px;
-  color: red;
-  margin-left: 95%;
-}
+/*.add-season-button {*/
+  /*margin-top: 8px;*/
+  /*margin-bottom: 8px;*/
+  /*color: red;*/
+  /*margin-left: 95%;*/
+/*}*/
 
 .add-season-form {
   display: flex;
@@ -14,20 +14,20 @@
   width: 100%;
 }
 
-.container-for-admin-episodes {
-  display: flex;
-  flex-direction: column;
-  max-height: 500px;
-  min-width: 300px;
-  width: 95%;
-  margin: 30px;
-}
+/*.container-for-admin-episodes {*/
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*max-height: 500px;*/
+  /*min-width: 300px;*/
+  /*width: 95%;*/
+  /*margin: 30px;*/
+/*}*/
 
-.button-row-for-episodes {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
+/*.button-row-for-episodes {*/
+  /*display: flex;*/
+  /*justify-content: space-around;*/
+  /*align-items: center;*/
+/*}*/
 
 mat-cell, mat-header-cell {
   overflow: visible;

@@ -1,0 +1,23 @@
+<h2>Редактировать местоположение</h2>
+<div >
+  <mat-label>
+    Персонаж: {{updatedLocation.character.name}}
+  </mat-label>
+
+  <p>
+    X <input name="X" [(ngModel)]="updatedLocation.place.x">
+    Y <input name="Y" [(ngModel)]="updatedLocation.place.y">
+  </p>
+  <mat-dialog-actions>
+    <button mat-button class = add-place-form>Выбрать на карте</button>
+  </mat-dialog-actions>
+
+</div>
+<div class = confirmation-buttons>
+  <mat-dialog-actions>
+    <button mat-button color = "primary">Отмена</button>
+    <button mat-button color = "accent" (click)="updateLocation()">Добавить</button>
+  </mat-dialog-actions>
+</div>
+
+

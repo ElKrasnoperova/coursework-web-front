@@ -6,21 +6,21 @@ import {log} from 'util';
 
 @Injectable()
 export class GameService {
-  private baseUrl = 'http://localhost:4200/api';
+  private baseUrl = 'http://localhost:9090/api';
 
   constructor(private http: Http) { }
 
-  getWords(languageName: string): Promise<Word[]> {
-    return this.http.post(`${this.baseUrl}/game/start`, languageName)
+  getWords(id: number): Promise<Word[]> {
+    return this.http.get(`${this.baseUrl}/game/language/${id}/start`)
       .toPromise()
       .then(response => response.json() as Word[])
       .catch(this.handleError);
   }
 
-  getResult(words: Word[]): Promise<Boolean[]> {
+  getResult(words: Word[]): Promise<boolean[]> {
     return this.http.post(`${this.baseUrl}/game/check`, words)
       .toPromise()
-      .then(response => response.json() as Boolean[])
+      .then(response => response.json() as boolean[])
       .catch(this.handleError);
   }
 

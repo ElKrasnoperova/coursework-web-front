@@ -1,0 +1,26 @@
+<h2>Добавить локацию</h2>
+<div >
+  <mat-form-field class = add-place-form>
+    <mat-select placeholder="Персонаж" (selectionChange)="setCharacter($event.value)">
+      <mat-option *ngFor="let character of characters" [value]="character">
+        {{character.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <p>
+    X <input name="X" [(ngModel)]="newLocation.place.x">
+    Y <input name="Y" [(ngModel)]="newLocation.place.y">
+  </p>
+  <mat-dialog-actions>
+    <button mat-button class = add-place-form>Выбрать на карте</button>
+  </mat-dialog-actions>
+
+</div>
+  <div class = confirmation-buttons>
+    <mat-dialog-actions>
+      <button mat-button color = "primary">Отмена</button>
+      <button mat-button color = "accent" (click)="addLocation()">Добавить</button>
+    </mat-dialog-actions>
+  </div>
+
+

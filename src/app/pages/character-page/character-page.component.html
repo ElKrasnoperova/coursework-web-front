@@ -1,0 +1,17 @@
+<div class="container-for-character">
+          <app-character-card [character] = character></app-character-card>
+          <div class = "up-down-buttons" *ngIf="character">
+              <div class = "button-column">
+                  <button mat-fab color="primary" (click)="setCharacter(nextCharacter)"
+                          [routerLink]="['/characters', nextCharacter.id]">
+                      <mat-icon>keyboard_arrow_up</mat-icon>
+                    </button>
+                  </div>
+              <div class = "button-column">
+                  <button mat-fab color="primary" (click)="setCharacter(previousCharacter)"
+                          [routerLink]="['/characters', previousCharacter.id]">
+                      <mat-icon>keyboard_arrow_down</mat-icon>
+                    </button>
+                  </div>
+          </div>
+</div>

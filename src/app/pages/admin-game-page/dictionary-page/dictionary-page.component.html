@@ -1,0 +1,48 @@
+<div class = selected-language> {{ selectedLanguage.name }}</div>
+
+<div class="container-for-admin-games mat-elevation-z8">
+  <button mat-icon-button class = add-language-button (click)="addWord()">
+    <mat-icon>add</mat-icon>
+  </button>
+  <mat-table #table [dataSource]="dataSource_words">
+    <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterWordsToggle() : null"
+                      [checked]="selection_words.hasValue() && isAllWordsSelected()"
+                      [indeterminate]="selection_words.hasValue() && !isAllWordsSelected()">
+        </mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? selection_words.toggle(row) : null"
+                      [checked]="selection_words.isSelected(row)">
+        </mat-checkbox>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> Номер </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="translation">
+      <mat-header-cell *matHeaderCellDef> Слово </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.translation}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="word">
+      <mat-header-cell *matHeaderCellDef> Перевод </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.word}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns_words" class = header></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns_words;"
+             (click)="selection_words.toggle(row)">
+    </mat-row>
+  </mat-table>
+</div>
+
+<div class = button-row-for-language>
+  <button mat-raised-button color="primary" (click)="deleteWord()">Удалить</button>
+  <button mat-raised-button color="accent" (click)="editWord()">Редактировать</button>
+</div>

@@ -1,0 +1,13 @@
+<!--<mat-progress-bar mode="determinate" value="40" class="progress-bar-margin"></mat-progress-bar>-->
+
+<div class="container-for-admin-episodes mat-elevation-z8">
+  cards
+  <div #cardContainer>
+    <app-game-card #gameCard [(word)]="word" (translationIsDone)="setAnswer($event)"></app-game-card>
+    <mat-error *ngIf="answerRequiredError">
+      Ну хоть что-нибудь :(
+    </mat-error>
+  </div>
+
+  <button #nextButton mat-raised-button color="accent" (click)="nextWord()" >Дальше</button>
+</div>

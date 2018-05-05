@@ -1,0 +1,11 @@
+<form>
+  <ng-template matStepLabel>Выберите эпизод</ng-template>
+  <div class = episode-and-season-choosers>
+
+    <app-episode-chooser (episodeSelected)="setEpisode($event)"></app-episode-chooser>
+
+  </div>
+  <div>
+    <button mat-button color = "accent" (click)="goNext()">Дальше</button>
+  </div>
+</form>

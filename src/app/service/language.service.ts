@@ -5,12 +5,19 @@ import {Language} from '../model/Language';
 
 @Injectable()
 export class LanguageService {
-  private baseUrl = 'http://localhost:4200/api';
+  private baseUrl = 'http://localhost:9090/api';
 
   constructor(private http: Http) { }
 
+  getLanguage(languageName: string): Promise<Language> {
+    return this.http.post(`${this.baseUrl}/language`, languageName)
+      .toPromise()
+      .then( response => response.json() as Language)
+      .catch(this.handleError);
+  }
+
   getLanguages(): Promise<Language[]> {
-    return this.http.get(`${this.baseUrl}/admin/language/all`)
+    return this.http.get(`${this.baseUrl}/language/all`)
       .toPromise()
       .then(response => response.json() as Language[])
       .catch(this.handleError);

@@ -1,5 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Word} from '../../model/Word';
+import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material/core';
 
 @Component({
   selector: 'app-game-card',
@@ -8,18 +10,23 @@ import {Word} from '../../model/Word';
 })
 export class GameCardComponent implements OnInit {
   @Input() word: Word;
-  // @Output()
-  // translationIsDone: EventEmitter<Word> = new EventEmitter<Word>();
-  // answer: string;
+  @Output() translationIsDone: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  answerControl = new FormControl('', [
+    Validators.required
+  ]);
 
   ngOnInit(): void {
     this.word = new Word();
-    console.log('in card init');
-    console.log(this.word);
   }
   constructor() { }
-  // submitAnswer(): void {
-  //   // this.word.word = this.answer;
-  //   this.translationIsDone.emit(this.word);
-  // }
+
+  submitAnswer(): void {
+    if (!this.answerControl.hasError('required')) {
+      this.translationIsDone.emit(true);
+    } else {
+      this.translationIsDone.emit(false);
+    }
+  }
 }
+

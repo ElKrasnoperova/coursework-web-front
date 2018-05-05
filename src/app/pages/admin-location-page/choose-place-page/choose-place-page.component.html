@@ -1,0 +1,41 @@
+<div class="container-for-admin-location mat-elevation-z8">
+  <button mat-icon-button class = add-location-button (click)="addPlace()">
+    <mat-icon>add</mat-icon>
+  </button>
+  <mat-table #table [dataSource]="dataSource_places">
+    <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle_places() : null"
+                      [checked]="selection_places.hasValue() && isAllPlacesSelected()"
+                      [indeterminate]="selection_places.hasValue() && !isAllPlacesSelected()">
+        </mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? selection_places.toggle(row) : null"
+                      [checked]="selection_places.isSelected(row)">
+        </mat-checkbox>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> Номер </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Место </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns_places"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns_places;"
+             (click)="selection_places.toggle(row)">
+    </mat-row>
+  </mat-table>
+</div>
+<div class = button-row-for-location>
+  <button mat-raised-button color="primary" class = button-in-admin-games (click)="deletePlace()">Удалить</button>
+  <button mat-raised-button color="accent"  class = button-in-admin-games (click)="editPlace()">Редактировать</button>
+  <button mat-raised-button color="primary" class = button-in-admin-games (click)="goNext()">Список персонажей</button>
+</div>

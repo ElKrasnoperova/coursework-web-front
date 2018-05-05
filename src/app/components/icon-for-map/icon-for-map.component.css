@@ -1,0 +1,14 @@
+.background-div {
+  background-color: white;
+  width: 7%;
+  height: 14%;
+  box-shadow: 1px 1px 2px 1px gray;
+}
+
+.img-for-icon {
+  width: 80%;
+  display: block;
+  margin: 0 auto !important;
+  padding: 2px;
+}
+
