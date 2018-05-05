@@ -9,8 +9,8 @@ import {ADMIN_ROUTES} from './components/admin-toolbar/routes';
 import {ErrorPageComponent} from './pages/error-page/error-page.component';
 import {GamePageComponent} from './pages/game-page/game-page.component';
 import {CharacterPageComponent} from './pages/character-page/character-page.component';
-import {TranslationGamePageComponent} from './pages/translation-game-page/translation-game-page.component';
-import {AnswerListPageComponent} from './pages/answer-list-page/answer-list-page.component';
+import {TranslationGamePageComponent} from './pages/game-page/translation-game-page/translation-game-page.component';
+import {AnswerListPageComponent} from './pages/game-page/answer-list-page/answer-list-page.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'characters', pathMatch: 'full'},

@@ -32,7 +32,7 @@ export class EditLocationPageComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    if (this.dataService.location){
+    if (this.dataService.location && this.dataService.location.place) {
       this.getLocationData();
       this.getLocations();
     } else {

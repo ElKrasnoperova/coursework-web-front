@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {Word} from '../../model/Word';
-import {GameService} from '../../service/game.service';
-import {Language} from '../../model/Language';
+import {Word} from '../../../model/Word';
+import {GameService} from '../../../service/game.service';
+import {Language} from '../../../model/Language';
 import {ActivatedRoute, Router} from '@angular/router';
-import {LanguageService} from '../../service/language.service';
+import {LanguageService} from '../../../service/language.service';
+import {DataService} from '../../../service/data.service';
 
 @Component({
   selector: 'app-translation-game-page',
@@ -21,8 +22,6 @@ export class TranslationGamePageComponent implements OnInit {
   index: number;
   lastIndex: number;
 
-  results: Boolean[];
-
   answer = false;
   answerRequiredError = false;
 
@@ -30,7 +29,8 @@ export class TranslationGamePageComponent implements OnInit {
   constructor(private gameService: GameService,
               private languageService: LanguageService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private dataService: DataService) {
     this.languageName = route.snapshot.params['**'];
   }
 
@@ -86,8 +86,10 @@ export class TranslationGamePageComponent implements OnInit {
   getResults(): void {
     this.gameService.getResult(this.words)
       .then(items => {
-        this.results = items;
-        this.router.navigate([`/games/${this.language.name}/results`]);       // TODO + words, answers
+        this.dataService.answers = this.words;
+        this.dataService.results = items;
+        console.log('go to results' + this.language.name);
+        this.router.navigate([`/games/${this.language.name}/results`]);
       });
   }
 }

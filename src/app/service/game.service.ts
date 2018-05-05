@@ -17,10 +17,10 @@ export class GameService {
       .catch(this.handleError);
   }
 
-  getResult(words: Word[]): Promise<Boolean[]> {
+  getResult(words: Word[]): Promise<boolean[]> {
     return this.http.post(`${this.baseUrl}/game/check`, words)
       .toPromise()
-      .then(response => response.json() as Boolean[])
+      .then(response => response.json() as boolean[])
       .catch(this.handleError);
   }
 

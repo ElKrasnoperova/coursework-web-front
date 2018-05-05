@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Language} from '../../model/Language';
 import {LanguageService} from '../../service/language.service';
-import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-game-page',
