@@ -81,7 +81,7 @@ export class DictionaryPageComponent implements OnInit {
   openDeleteDialogForWord(index: number) {
     this.dialog
       .open(ConfirmActionDialogComponent, {
-        height: '25%', width: '31%'
+        height: '20%'
       })
       .afterClosed().subscribe(result => {
       if (result) {
@@ -102,7 +102,7 @@ export class DictionaryPageComponent implements OnInit {
   openEditDialogForWord(index: number) {
     const dialogRef = this.dialog
       .open(AdminEditWordDialogComponent, {
-        height: '35%', width: '35%'
+        height: '45%', width: '35%'
       });
     dialogRef.componentInstance.word = this.words[index];
     dialogRef.afterClosed().subscribe(result => {
@@ -120,7 +120,7 @@ export class DictionaryPageComponent implements OnInit {
   openAddDialogForWord() {
     const dialogRef = this.dialog
       .open(AdminAddWordDialogComponent, {
-        height: '35%', width: '35%'
+        height: '45%', width: '35%'
       });
     dialogRef.componentInstance.translationLang = this.selectedLanguage;
     dialogRef.afterClosed().subscribe(result => {

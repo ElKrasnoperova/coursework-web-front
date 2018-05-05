@@ -89,7 +89,7 @@ export class AdminCharactersPageComponent implements OnInit {
   openDeleteDialogForCharacter(index: number): void {
     this.dialog
       .open(ConfirmActionDialogComponent, {
-        height: '25%'
+        height: '20%'
       })
       .afterClosed().subscribe(result => {
         if (result) {

@@ -3,6 +3,7 @@ import {Language} from '../../../model/Language';
 import {MatDialogRef} from '@angular/material';
 import {LanguageService} from '../../../service/language.service';
 import {AdminAddLanguageDialogComponent} from './add-language-dialog';
+import {Photo} from '../../../model/Photo';
 
 @Component({
   selector: 'app-edit-language-dialog',
@@ -23,5 +24,9 @@ export class AdminEditLanguageDialogComponent implements OnInit {
       .then(response => {
         this.dialogRef.close(response);
       });
+  }
+
+  setPhoto(photo: Photo): void {
+    this.updatedLanguage.photo = photo;
   }
 }

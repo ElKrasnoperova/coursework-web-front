@@ -29,6 +29,11 @@ mat-cell, mat-header-cell {
   overflow: visible;
 }
 
+.input-margin {
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
 /*.container-for-admin-games {*/
   /*display: flex;*/
   /*flex-direction: column;*/

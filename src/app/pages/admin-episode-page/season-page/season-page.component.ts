@@ -72,7 +72,7 @@ export class SeasonPageComponent implements OnInit {
   openDeleteDialogForSeason(index: number): void {
     this.dialog
       .open(ConfirmActionDialogComponent, {
-        height: '25%', width: '31%'
+        height: '20%'
       })
       .afterClosed().subscribe(result => {
       if (result) {
@@ -92,7 +92,7 @@ export class SeasonPageComponent implements OnInit {
   openAddDialogForSeason() {
     this.dialog
       .open(AdminAddSeasonDialogComponent, {
-        height: '40%', width: '31%'
+        height: '25%', width: '31%'
       })
       .afterClosed().subscribe(result => {
       if (result) {
@@ -110,7 +110,7 @@ export class SeasonPageComponent implements OnInit {
   openEditDialogForSeason(index: number) {
     const dialogRef = this.dialog
       .open(AdminEditSeasonDialogComponent, {
-        height: '35%', width: '35%'
+        height: '25%', width: '31%'
       });
     dialogRef.componentInstance.season = this.seasons[index];
     dialogRef.afterClosed().subscribe(result => {

@@ -3,6 +3,7 @@ import {LanguageService} from '../../../service/language.service';
 import {Language} from '../../../model/Language';
 import {Http} from '@angular/http';
 import {MatDialogRef} from '@angular/material';
+import {Photo} from '../../../model/Photo';
 
 @Component({
   selector: 'app-add-language-dialog',
@@ -23,5 +24,9 @@ export class AdminAddLanguageDialogComponent implements OnInit {
       .then(response => {
         this.dialogRef.close(response);
       });
+  }
+
+  setPhoto(photo: Photo) {
+    this.newLanguage.photo = photo;
   }
 }

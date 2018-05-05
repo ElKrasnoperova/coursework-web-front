@@ -69,7 +69,7 @@ export class EpisodePageComponent implements OnInit {
   openDeleteDialogForEpisode(index: number): void {
     this.dialog
       .open(ConfirmActionDialogComponent, {
-        height: '25%', width: '31%'
+        height: '20%'
       })
       .afterClosed().subscribe(result => {
       if (result) {

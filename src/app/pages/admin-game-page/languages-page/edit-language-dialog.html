@@ -1,12 +1,13 @@
 <h2>Редактировать язык</h2>
 <mat-form-field class = full-width-language-input>
-  <label class="mat-tab-label"> Название языка
-    <input matInput [(ngModel)]="updatedLanguage.name">
+  <label> Название языка
+    <input matInput [(ngModel)]="updatedLanguage.name" class = input-margin>
   </label>
 </mat-form-field>
 <div>
-  (Загрузка картиночки)
-  <app-photo-loader></app-photo-loader>
+  <mat-dialog-actions>
+    <app-photo-loader [photo]="updatedLanguage.photo" (photoIsChosen)="setPhoto($event)"></app-photo-loader>
+  </mat-dialog-actions>
 </div>
 <div class = confirmation-buttons-languages>
   <mat-dialog-actions>

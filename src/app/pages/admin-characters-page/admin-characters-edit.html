@@ -31,10 +31,10 @@
   </div>
 
   <mat-dialog-actions class = full-width-buttons>
-    <app-photo-loader [photo]="updatedCharacter.photo"></app-photo-loader>
+    <app-photo-loader [photo]="updatedCharacter.photo" (photoIsChosen)="setPhoto($event)"></app-photo-loader>
   </mat-dialog-actions>
 
-  <app-photo-loader (photoIsChosen)="setPhoto($event)"></app-photo-loader>
+  <!--<app-photo-loader (photoIsChosen)="setPhoto($event)"></app-photo-loader>-->
 
   <mat-dialog-actions class = full-width-buttons>
     <button mat-button mat-dialog-close color="primary">Отмена</button>

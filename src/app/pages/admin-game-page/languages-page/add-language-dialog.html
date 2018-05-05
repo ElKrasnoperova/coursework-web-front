@@ -4,7 +4,9 @@
 </mat-form-field>
 <div class = full-width-language-input>
 
-  <app-photo-loader></app-photo-loader>
+  <mat-dialog-actions>
+    <app-photo-loader (photoIsChosen)="setPhoto($event)"></app-photo-loader>
+  </mat-dialog-actions>
 </div>
 <div class = confirmation-buttons-languages>
   <mat-dialog-actions>

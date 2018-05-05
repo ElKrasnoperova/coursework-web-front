@@ -106,7 +106,7 @@ export class ChoosePlacePageComponent implements OnInit {
   openDeleteDialogForPlace(index: number) {
     this.dialog
       .open(ConfirmActionDialogComponent, {
-        height: '25%', width: '31%'
+        height: '20%'
       })
       .afterClosed().subscribe(result => {
       if (result) {
