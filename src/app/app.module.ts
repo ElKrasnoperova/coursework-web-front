@@ -19,14 +19,12 @@ import { SignInFormComponent } from './components/sign-in-form/sign-in-form.comp
 import { SignUpFormComponent } from './components/sign-up-form/sign-up-form.component';
 import { TranslationGamePageComponent } from './pages/game-page/translation-game-page/translation-game-page.component';
 import { MapPageComponent } from './pages/map-page/map-page.component';
-import { YearChooserComponent } from './components/year-chooser/year-chooser.component';
 import { GameCardComponent } from './components/game-card/game-card.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {CharacterCardComponent} from './components/character-card/character-card.component';
 import { AnswerListPageComponent } from './pages/game-page/answer-list-page/answer-list-page.component';
 import {MatTableModule} from '@angular/material/table';
 import { AppRoutingModule } from './app-routing.module';
-import { MapComponent } from './components/map/map.component';
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 import { AdminToolbarComponent } from './components/admin-toolbar/admin-toolbar.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -76,7 +74,6 @@ import { DictionaryPageComponent } from './pages/admin-game-page/dictionary-page
 import { EpisodePageComponent } from './pages/admin-episode-page/episode-page/episode-page.component';
 import { SeasonPageComponent } from './pages/admin-episode-page/season-page/season-page.component';
 import {DataService} from './service/data.service';
-import { IconForMapComponent } from './components/icon-for-map/icon-for-map.component';
 
 
 const materialModules = [
@@ -109,12 +106,10 @@ const materialModules = [
     SignUpFormComponent,
     TranslationGamePageComponent,
     MapPageComponent,
-    YearChooserComponent,
     GameCardComponent,
     CharacterCardComponent,
     AnswerListPageComponent,
     GamesPageComponent,
-    MapComponent,
     SettingsPageComponent,
     ConfirmActionDialogComponent,
     AdminToolbarComponent,
@@ -148,8 +143,7 @@ const materialModules = [
     LanguagesPageComponent,
     DictionaryPageComponent,
     EpisodePageComponent,
-    SeasonPageComponent,
-    IconForMapComponent
+    SeasonPageComponent
   ],
   entryComponents: [
     ConfirmActionDialogComponent,

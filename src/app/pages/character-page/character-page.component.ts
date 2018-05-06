@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Character} from '../../model/Character';
 import {CharacterService} from '../../service/character.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {PlatformLocation} from '@angular/common';
+import {DataService} from '../../service/data.service';
 
 @Component({
   selector: 'app-character-page',
@@ -18,11 +20,18 @@ export class CharacterPageComponent implements OnInit {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private characterService: CharacterService) {
+              private characterService: CharacterService,
+              private dataService: DataService,
+              private location: PlatformLocation) {
+      location.onPopState(() => this.resetMapData());
   }
 
   ngOnInit() {
     this.getCharacters();
+  }
+
+  resetMapData() {
+    this.dataService.character = null;
   }
 
   getCharacters(): void {
