@@ -43,3 +43,11 @@
 .margin-for-result {
   margin-top: 16px;
 }
+
+.correct {
+  color: darkgreen;
+}
+
+.incorrect {
+  color: red;
+}

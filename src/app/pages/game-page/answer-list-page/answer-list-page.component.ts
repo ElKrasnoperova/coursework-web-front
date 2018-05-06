@@ -13,7 +13,7 @@ import {Character} from '../../../model/Character';
 export class AnswerListPageComponent implements OnInit {
 
   dataSource: MatTableDataSource<Word>;
-  displayedColumns = ['translation', 'word'];
+  displayedColumns = ['translation', 'word', 'result'];
 
   answers: Word[];
   results: boolean[];
@@ -52,6 +52,10 @@ export class AnswerListPageComponent implements OnInit {
 
   setScore(): void {
     this.score = this.results.filter( result => result === true).length;
+  }
+
+  getIconForResult(result: boolean): string {
+    return result === true ? 'done' : 'close';
   }
 }
 
