@@ -6,6 +6,7 @@ import {Place} from '../../../model/Place';
 import {Episode} from '../../../model/Episode';
 import {AdminAddLanguageDialogComponent} from '../../admin-game-page/languages-page/add-language-dialog';
 import {MatDialogRef} from '@angular/material';
+import {ErrorHandler} from '../../../service/error-handler/error.handler';
 
 @Component ({
   selector: 'app-add-location-dialog',
@@ -21,28 +22,28 @@ export class AdminAddLocationDialogComponent implements OnInit {
   ngOnInit(): void {
     this.newLocation = new Location();
     this.newLocation = {...this.location};
-
-    console.log('add-location; newLoc = ...location :');
-    console.log(this.location);
-    console.log(this.newLocation);
-
     this.getCharactersForEpisode();
   }
   constructor(private locationService: LocationService,
-              private dialogRef: MatDialogRef<AdminAddLocationDialogComponent>) { }
+              private dialogRef: MatDialogRef<AdminAddLocationDialogComponent>,
+              private errorHandler: ErrorHandler) { }
 
   getCharactersForEpisode(): void {
     this.locationService.getCharactersForEpisode(this.newLocation.episode)
       .then(items => {
         this.characters = items;
-        console.log('this episode"s characters:');
-        console.log(items);
+      })
+      .catch(err => {
+        this.errorHandler.handleError(err);
       });
   }
 
   addLocation(): void {
     this.locationService.createLoation(this.newLocation)
-      .then(response =>  this.dialogRef.close(response));
+      .then(response =>  this.dialogRef.close(response))
+      .catch(err => {
+        this.errorHandler.handleError(err);
+      });
   }
 
   setCharacter(character: Character) {

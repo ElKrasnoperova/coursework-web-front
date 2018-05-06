@@ -4,6 +4,7 @@ import {Http} from '@angular/http';
 import {MatDialogRef} from '@angular/material';
 import {WordService} from '../../../service/word.service';
 import {Word} from '../../../model/Word';
+import {ErrorHandler} from '../../../service/error-handler/error.handler';
 
 @Component({
   selector: 'app-add-word-dialog',
@@ -15,7 +16,8 @@ export class AdminAddWordDialogComponent implements OnInit {
   translationLang: Language;
   constructor(private http: Http,
               private dialogRef: MatDialogRef<AdminAddWordDialogComponent>,
-              private wordService: WordService) {
+              private wordService: WordService,
+              private errorHandler: ErrorHandler) {
     this.newWord = new Word();
   }
   ngOnInit(): void {
@@ -25,6 +27,9 @@ export class AdminAddWordDialogComponent implements OnInit {
     this.wordService.createWord(this.newWord)
       .then(response => {
         this.dialogRef.close(response);
+      })
+      .catch(err => {
+        this.errorHandler.handleError(err);
       });
   }
 }

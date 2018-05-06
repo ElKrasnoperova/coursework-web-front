@@ -10,6 +10,8 @@ import {ConfirmActionDialogComponent} from '../../../components/confirm-action/c
 import {Character} from '../../../model/Character';
 import {DataService} from '../../../service/data.service';
 import {Router} from '@angular/router';
+import {ErrorHandler} from '../../../service/error-handler/error.handler';
+import {isBoolean} from "util";
 
 @Component({
   selector: 'app-edit-location-page',
@@ -29,14 +31,15 @@ export class EditLocationPageComponent implements OnInit {
               private changeDetectorRefs: ChangeDetectorRef,
               private locationService: LocationService,
               private dataService: DataService,
-              private router: Router) { }
+              private router: Router,
+              private errorHandler: ErrorHandler) { }
 
   ngOnInit() {
     if (this.dataService.location && this.dataService.location.place) {
       this.getLocationData();
       this.getLocations();
     } else {
-      this.router.navigate(['/notFound']);
+      this.router.navigate(['/404']);
     }
   }
 
@@ -50,6 +53,9 @@ export class EditLocationPageComponent implements OnInit {
       .then(items => {
         this.locations = items;
         this.refreshLocations();
+      })
+      .catch(err => {
+        this.errorHandler.handleError(err);
       });
   }
 
@@ -64,7 +70,7 @@ export class EditLocationPageComponent implements OnInit {
       });
     dialogRef.componentInstance.location = this.location;
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
+      if (result && !isBoolean(result)) {
         this.locations.push(result);
         this.refreshLocations();
       }
@@ -83,7 +89,7 @@ export class EditLocationPageComponent implements OnInit {
       });
     dialogRef.componentInstance.location = this.locations[index];
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
+      if (result && !isBoolean(result)) {
         this.locations[index] = result;
         this.refreshLocations();
       }
@@ -106,6 +112,9 @@ export class EditLocationPageComponent implements OnInit {
           .then(() => {
             this.locations.splice(index, 1);
             this.refreshLocations();
+          })
+          .catch(err => {
+            this.errorHandler.handleError(err);
           });
       }
     });

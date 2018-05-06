@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MatDialogRef} from '@angular/material';
 import {Episode} from '../../../model/Episode';
 import {EpisodeService} from '../../../service/episode.service';
+import {ErrorHandler} from '../../../service/error-handler/error.handler';
 
 @Component({
   selector: 'app-edit-season-dialog',
@@ -15,12 +16,16 @@ export class AdminEditSeasonDialogComponent implements OnInit {
     this.updatedSeason = {...this.season};
   }
   constructor (private episodeService: EpisodeService,
-               private dialogRef: MatDialogRef<AdminEditSeasonDialogComponent>) {
+               private dialogRef: MatDialogRef<AdminEditSeasonDialogComponent>,
+               private errorHandler: ErrorHandler) {
   }
   updateSeason(): void {
     this.episodeService.updateSeason(this.updatedSeason)
       .then(response => {
         this.dialogRef.close(response);
+      })
+      .catch(err => {
+        this.errorHandler.handleError(err);
       });
   }
 }

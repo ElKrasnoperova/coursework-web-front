@@ -8,6 +8,8 @@ import {AdminAddSeasonDialogComponent} from './add-season-dialog';
 import {AdminEditSeasonDialogComponent} from './edit-season-dialog';
 import {Router} from '@angular/router';
 import {DataService} from '../../../service/data.service';
+import {ErrorHandler} from '../../../service/error-handler/error.handler';
+import {isBoolean} from "util";
 
 @Component({
   selector: 'app-season-page',
@@ -36,7 +38,8 @@ export class SeasonPageComponent implements OnInit {
               private router: Router,
               private changeDetectorRefs: ChangeDetectorRef,
               private episodeService: EpisodeService,
-              private dataService: DataService) { }
+              private dataService: DataService,
+              private errorHandler: ErrorHandler) { }
 
   ngOnInit() {
     this.getAllSeasons();
@@ -88,6 +91,9 @@ export class SeasonPageComponent implements OnInit {
           .then(() => {
             this.seasons.splice(index, 1);
             this.refreshSeasons();
+          })
+          .catch(err => {
+            this.errorHandler.handleError(err);
           });
       }
     });
@@ -103,7 +109,7 @@ export class SeasonPageComponent implements OnInit {
         height: '25%'
       })
       .afterClosed().subscribe(result => {
-      if (result) {
+      if (result && !isBoolean(result)) {
         this.seasons.push(result);
         this.refreshSeasons();
       }
@@ -123,7 +129,7 @@ export class SeasonPageComponent implements OnInit {
       });
     dialogRef.componentInstance.season = this.seasons[index];
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
+      if (result && !isBoolean(result)) {
         this.seasons[index] = result;
         this.selectedSeason = result;
         this.refreshSeasons();
@@ -157,11 +163,6 @@ export class SeasonPageComponent implements OnInit {
       // this.dataSource_seasons.forEach(row => this.selection_seasons.select(row));
       this.dataSource_seasons.data.forEach(row => this.selection_seasons.select(row));
   }
-
-  // private refreshEpisodes() {
-  //   this.dataSource_episodes = new MatTableDataSource<Episode>(this.episodes);
-  //   this.changeDetectorRefs.detectChanges();
-  // }
 
   saveData() {
     this.dataService.season = this.selectedSeason;

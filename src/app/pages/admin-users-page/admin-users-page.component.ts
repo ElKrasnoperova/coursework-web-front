@@ -3,6 +3,7 @@ import {MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 import {User} from '../../model/User';
 import {AdminService} from '../../service/admin.service';
+import {ErrorHandler} from '../../service/error-handler/error.handler';
 
 @Component({
   selector: 'app-admin-users-page',
@@ -16,12 +17,24 @@ export class AdminUsersPageComponent implements OnInit {
 
   users: User[];
 
+  constructor(private userService: AdminService,
+              private changeDetectorRefs: ChangeDetectorRef,
+              private errorHandler: ErrorHandler) {
+  }
+
+  ngOnInit() {
+    this.getUsers();
+  }
+
   getUsers(): void {
     this.userService.getUsers()
       .then( items => {
         this.users = items;
         this.refresh();
         console.log(this.users);
+      })
+      .catch(err => {
+        this.errorHandler.handleError(err);
       });
   }
 
@@ -32,6 +45,9 @@ export class AdminUsersPageComponent implements OnInit {
         .then(result => {
           this.users[index] = result;
           this.refresh();
+        })
+        .catch(err => {
+          this.errorHandler.handleError(err);
         });
     }
   }
@@ -44,6 +60,9 @@ export class AdminUsersPageComponent implements OnInit {
           this.users[index] = result;
           console.log('devoted');
           this.refresh();
+        })
+        .catch(err => {
+          this.errorHandler.handleError(err);
         });
     }
   }
@@ -71,13 +90,5 @@ export class AdminUsersPageComponent implements OnInit {
     } else {
       return this.users.indexOf(this.selection.selected[0]);
     }
-  }
-
-  constructor(private userService: AdminService,
-              private changeDetectorRefs: ChangeDetectorRef) {
-  }
-
-  ngOnInit() {
-    this.getUsers();
   }
 }

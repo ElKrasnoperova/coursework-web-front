@@ -4,6 +4,7 @@ import {MatDialogRef} from '@angular/material';
 import {LanguageService} from '../../../service/language.service';
 import {AdminAddLanguageDialogComponent} from './add-language-dialog';
 import {Photo} from '../../../model/Photo';
+import {ErrorHandler} from '../../../service/error-handler/error.handler';
 
 @Component({
   selector: 'app-edit-language-dialog',
@@ -17,12 +18,16 @@ export class AdminEditLanguageDialogComponent implements OnInit {
     this.updatedLanguage = {...this.language};
   }
   constructor (private languageService: LanguageService,
-               private dialogRef: MatDialogRef<AdminAddLanguageDialogComponent>) {
+               private dialogRef: MatDialogRef<AdminAddLanguageDialogComponent>,
+               private errorHandler: ErrorHandler) {
   }
   updateLanguage(): void {
     this.languageService.updateLanguage(this.updatedLanguage)
       .then(response => {
         this.dialogRef.close(response);
+      })
+      .catch(err => {
+        this.errorHandler.handleError(err);
       });
   }
 

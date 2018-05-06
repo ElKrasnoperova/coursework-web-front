@@ -11,6 +11,8 @@ import {LocationService} from '../../../service/location.service';
 import {Router} from '@angular/router';
 import {DataService} from '../../../service/data.service';
 import {PlatformLocation} from '@angular/common';
+import {ErrorHandler} from '../../../service/error-handler/error.handler';
+import {isBoolean} from "util";
 
 @Component({
   selector: 'app-choose-place-page',
@@ -34,7 +36,8 @@ export class ChoosePlacePageComponent implements OnInit {
               private locationService: LocationService,
               private changeDetectorRefs: ChangeDetectorRef,
               private dataService: DataService,
-              location: PlatformLocation) {
+              location: PlatformLocation,
+              private errorHandler: ErrorHandler) {
       location.onPopState(() => {
         this.saveData();
       });
@@ -45,7 +48,7 @@ export class ChoosePlacePageComponent implements OnInit {
       this.getLocationInfo();
       this.getPlaces();
     } else {
-      this.router.navigate(['/notFound']);
+      this.router.navigate(['/404']);
     }
   }
 
@@ -59,6 +62,9 @@ export class ChoosePlacePageComponent implements OnInit {
       .then(items => {
         this.places = items;
         this.refreshPlaces();
+      })
+      .catch(err => {
+        this.errorHandler.handleError(err);
       });
   }
 
@@ -72,7 +78,7 @@ export class ChoosePlacePageComponent implements OnInit {
         height: '28%'
       })
       .afterClosed().subscribe(result => {
-      if (result) {
+      if (result && !isBoolean(result)) {
         this.places.push(result);
         this.refreshPlaces();
       }
@@ -91,7 +97,7 @@ export class ChoosePlacePageComponent implements OnInit {
       });
     dialogRef.componentInstance.place = this.places[index];
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
+      if (result && !isBoolean(result)) {
         this.places[index] = result;
         this.refreshPlaces();
       }
@@ -114,6 +120,9 @@ export class ChoosePlacePageComponent implements OnInit {
           .then(() => {
             this.places.splice(index, 1);
             this.refreshPlaces();
+          })
+          .catch(err => {
+            this.errorHandler.handleError(err);
           });
       }
     });
