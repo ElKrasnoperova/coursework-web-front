@@ -146,4 +146,8 @@ export class DictionaryPageComponent implements OnInit {
       this.selection_words.clear() :
       this.dataSource_words.data.forEach(row => this.selection_words.select(row));
   }
+
+  goBack() {
+    this.router.navigate(['/admin/languages']);
+  }
 }

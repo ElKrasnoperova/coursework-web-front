@@ -135,4 +135,8 @@ export class EditLocationPageComponent implements OnInit {
     const numRows = this.dataSource_locations.data.length;
     return numSelected === numRows;
   }
+
+  goBack() {
+    this.router.navigate(['admin/character_locations/episodes/places']);
+  }
 }

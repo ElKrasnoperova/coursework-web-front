@@ -143,4 +143,8 @@ export class EpisodePageComponent implements OnInit {
       this.selection_episodes.clear() :
       this.dataSource_episodes.data.forEach(row => this.selection_episodes.select(row));
   }
+
+  goBack(){
+    this.router.navigate(['admin/seasons']);
+  }
 }

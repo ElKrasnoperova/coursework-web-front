@@ -160,4 +160,8 @@ export class ChoosePlacePageComponent implements OnInit {
       this.selection_places.clear() :
       this.dataSource_places.data.forEach(row => this.selection_places.select(row));
   }
+
+  goBack() {
+    this.router.navigate(['admin/character_locations/episodes']);
+  }
 }

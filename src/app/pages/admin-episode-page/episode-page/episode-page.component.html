@@ -42,7 +42,7 @@
   </mat-table>
 </div>
 <div class = button-row-for-episodes>
-  <button mat-raised-button color = "primary">Назад</button>
+  <button mat-raised-button color = "primary" (click)="goBack()">Назад</button>
   <button mat-raised-button color = "accent" (click)="editEpisode()">Редактировать</button>
   <button mat-raised-button color = "primary" (click)="deleteEpisode()">Удалить</button>
 </div>
