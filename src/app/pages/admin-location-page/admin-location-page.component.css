@@ -50,3 +50,12 @@ mat-cell {
   /*justify-content: center;*/
   /*margin: 4px;*/
 /*}*/
+
+.coordinates {
+  display: flex;
+  justify-content: space-around;
+}
+
+.margin-for-label-location {
+  margin-bottom: 16px;
+}

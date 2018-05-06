@@ -98,7 +98,7 @@ export class LanguagesPageComponent implements OnInit {
   openEditDialogForLanguage(index: number) {
     const dialogRef = this.dialog
       .open(AdminEditLanguageDialogComponent, {
-        height: '35%', width: '35%'
+        height: '35%'
       });
     dialogRef.componentInstance.language = this.languages[index];
     dialogRef.afterClosed().subscribe(result => {
@@ -117,7 +117,7 @@ export class LanguagesPageComponent implements OnInit {
   openAddDialogForLanguage() {
     this.dialog
       .open(AdminAddLanguageDialogComponent, {
-        height: '31%', width: '35%'
+        height: '30%'
       })
       .afterClosed().subscribe(result => {
       if (result) {

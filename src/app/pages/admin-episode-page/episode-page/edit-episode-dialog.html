@@ -1,14 +1,20 @@
 <h2>Редактировать серию</h2>
-<mat-form-field class = full-width-language-input>
-  <div> Сезон {{ episode.episodeNumber }} </div>
-  <label class="mat-tab-label"> Номер серии
-    <input matInput [(ngModel)]="updatedEpisode.episodeNumber">
-  </label>
-  <label class="mat-tab-label"> Название серии
-    <input matInput [(ngModel)]="updatedEpisode.name">
+
+<div class = margin-for-label> Сезон {{ episode.episodeNumber }} </div>
+
+<mat-form-field class = full-width-season>
+  <label> Номер серии
+    <input matInput [(ngModel)]="updatedEpisode.episodeNumber" class = margin-for-label>
   </label>
 </mat-form-field>
-<div class = confirmation-buttons-languages>
+
+<mat-form-field class = full-width-season>
+  <label> Название серии
+    <input matInput [(ngModel)]="updatedEpisode.name" class = margin-for-label>
+  </label>
+</mat-form-field>
+
+<div class = confirmation-buttons-episodes>
   <mat-dialog-actions>
     <button mat-button color = "primary">Отмена</button>
     <button mat-button color = "accent" (click)="updateEpisode()">Сохранить</button>

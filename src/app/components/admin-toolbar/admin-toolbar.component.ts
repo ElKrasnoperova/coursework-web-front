@@ -19,5 +19,6 @@ export const ITEMS = [
   {id: 2, value: 'Словари', path: 'languages'},
   {id: 3, value: 'Персонажи', path: 'characters'},
   {id: 4, value: 'Пользователи', path: 'users'},
-  {id: 5, value: 'Эпизоды', path: 'seasons'}
+  {id: 5, value: 'Эпизоды', path: 'seasons'},
+  {id: 6, value: 'Фото', path: 'photos'}
 ];

@@ -102,7 +102,7 @@ export class DictionaryPageComponent implements OnInit {
   openEditDialogForWord(index: number) {
     const dialogRef = this.dialog
       .open(AdminEditWordDialogComponent, {
-        height: '45%', width: '35%'
+        height: '45%'
       });
     dialogRef.componentInstance.word = this.words[index];
     dialogRef.afterClosed().subscribe(result => {
@@ -120,7 +120,7 @@ export class DictionaryPageComponent implements OnInit {
   openAddDialogForWord() {
     const dialogRef = this.dialog
       .open(AdminAddWordDialogComponent, {
-        height: '45%', width: '35%'
+        height: '45%'
       });
     dialogRef.componentInstance.translationLang = this.selectedLanguage;
     dialogRef.afterClosed().subscribe(result => {
