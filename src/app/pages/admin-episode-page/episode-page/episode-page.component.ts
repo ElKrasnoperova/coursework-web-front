@@ -9,6 +9,8 @@ import {AdminEditEpisodeDialogComponent} from './edit-episode-dialog';
 import {DataService} from '../../../service/data.service';
 import {Router} from '@angular/router';
 import {PlatformLocation} from '@angular/common';
+import {ErrorHandler} from '../../../service/error-handler/error.handler';
+import {isBoolean} from "util";
 
 @Component({
   selector: 'app-episode-page',
@@ -29,7 +31,8 @@ export class EpisodePageComponent implements OnInit {
               private changeDetectorRefs: ChangeDetectorRef,
               private episodeService: EpisodeService,
               private dataService: DataService,
-              private router: Router, location: PlatformLocation) {
+              private router: Router, location: PlatformLocation,
+              private errorHandler: ErrorHandler) {
     location.onPopState(() => {
       this.saveData();
     });
@@ -44,7 +47,7 @@ export class EpisodePageComponent implements OnInit {
       this.setSeasonInfo();
       this.getEpisodesForSelectedSeason();
     } else {
-      this.router.navigate(['/notFound']);
+      this.router.navigate(['/404']);
     }
   }
 
@@ -77,6 +80,9 @@ export class EpisodePageComponent implements OnInit {
           .then(() => {
             this.episodes.splice(index, 1);
             this.refreshEpisodes();
+          })
+          .catch(err => {
+            this.errorHandler.handleError(err);
           });
       }
     });
@@ -93,7 +99,7 @@ export class EpisodePageComponent implements OnInit {
       });
     dialogRef.componentInstance.season = this.selectedSeason;
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
+      if (result && !isBoolean(result)) {
         this.episodes.push(result);
         this.refreshEpisodes();
       }
@@ -112,7 +118,7 @@ export class EpisodePageComponent implements OnInit {
       });
     dialogRef.componentInstance.episode = this.episodes[index];
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
+      if (result && !isBoolean(result)) {
         this.episodes[index] = result;
         this.refreshEpisodes();
       }

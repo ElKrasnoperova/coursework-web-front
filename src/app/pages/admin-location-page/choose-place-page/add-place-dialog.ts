@@ -3,6 +3,7 @@ import {Place} from '../../../model/Place';
 import {AdminAddLanguageDialogComponent} from '../../admin-game-page/languages-page/add-language-dialog';
 import {MatDialogRef} from '@angular/material';
 import {PlaceService} from '../../../service/place.service';
+import {ErrorHandler} from '../../../service/error-handler/error.handler';
 
 @Component ({
   selector: 'app-add-place-dialog',
@@ -13,7 +14,8 @@ import {PlaceService} from '../../../service/place.service';
 export class AdminAddPlaceDialogComponent implements OnInit {
   newPlace: Place;
   constructor(private dialogRef: MatDialogRef<AdminAddLanguageDialogComponent>,
-              private placeService: PlaceService) {
+              private placeService: PlaceService,
+              private errorHandler: ErrorHandler) {
     this.newPlace = new Place();
   }
   ngOnInit(): void {
@@ -22,6 +24,9 @@ export class AdminAddPlaceDialogComponent implements OnInit {
     this.placeService.createPlace(this.newPlace)
       .then(response => {
         this.dialogRef.close(response);
+      })
+      .catch(err => {
+        this.errorHandler.handleError(err);
       });
   }
 }

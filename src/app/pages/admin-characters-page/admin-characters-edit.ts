@@ -6,6 +6,7 @@ import {MatDialogRef} from '@angular/material';
 import {HttpClient} from '@angular/common/http';
 import {Photo} from '../../model/Photo';
 import {Episode} from '../../model/Episode';
+import {ErrorHandler} from '../../service/error-handler/error.handler';
 
 @Component({
   selector: 'app-admin-character-edit-dialog',
@@ -19,12 +20,16 @@ export class AdminCharactersEditDialogComponent implements OnInit {
     this.updatedCharacter = {...this.character};
   }
   constructor(private characterService: CharacterService,
-              private dialogRef: MatDialogRef<AdminCharactersAddDialogComponent>) {
+              private dialogRef: MatDialogRef<AdminCharactersAddDialogComponent>,
+              private errorHandler: ErrorHandler) {
   }
   updateCharacter(): void {
     this.characterService.updateCharacter(this.updatedCharacter)
       .then(response => {
         this.dialogRef.close(response);
+      })
+      .catch(err => {
+        this.errorHandler.handleError(err);
       });
   }
   setPhoto(photo: Photo): void {

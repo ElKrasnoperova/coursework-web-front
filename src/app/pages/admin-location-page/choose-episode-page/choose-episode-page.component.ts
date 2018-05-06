@@ -1,7 +1,7 @@
-import {Component, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Episode} from '../../../model/Episode';
 import {Location} from '../../../model/Location';
-import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
+import {Router} from '@angular/router';
 import {DataService} from '../../../service/data.service';
 
 @Component({

@@ -4,6 +4,7 @@ import {Language} from '../../../model/Language';
 import {Http} from '@angular/http';
 import {MatDialogRef} from '@angular/material';
 import {Photo} from '../../../model/Photo';
+import {ErrorHandler} from '../../../service/error-handler/error.handler';
 
 @Component({
   selector: 'app-add-language-dialog',
@@ -14,7 +15,8 @@ export class AdminAddLanguageDialogComponent implements OnInit {
   newLanguage: Language;
   constructor(private  http: Http,
               private dialogRef: MatDialogRef<AdminAddLanguageDialogComponent>,
-              private languageService: LanguageService) {
+              private languageService: LanguageService,
+              private errorHandler: ErrorHandler) {
     this.newLanguage = new Language();
   }
   ngOnInit(): void {
@@ -23,6 +25,9 @@ export class AdminAddLanguageDialogComponent implements OnInit {
     this.languageService.createLanguage(this.newLanguage)
       .then(response => {
         this.dialogRef.close(response);
+      })
+      .catch(err => {
+        this.errorHandler.handleError(err);
       });
   }
 

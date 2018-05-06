@@ -5,6 +5,7 @@ import { CharacterService } from '../../service/character.service';
 import {MatDialogRef} from '@angular/material';
 import {Episode} from '../../model/Episode';
 import {Photo} from '../../model/Photo';
+import {ErrorHandler} from '../../service/error-handler/error.handler';
 
 
 @Component({
@@ -20,12 +21,16 @@ export class AdminCharactersAddDialogComponent implements OnInit {
     this.newCharacter = new Character();
   }
   constructor(private characterService: CharacterService,
-              private dialogRef: MatDialogRef<AdminCharactersAddDialogComponent>) {
+              private dialogRef: MatDialogRef<AdminCharactersAddDialogComponent>,
+              private errorHandler: ErrorHandler) {
   }
   createCharacter(): void {
     this.characterService.createCharacter(this.newCharacter)
       .then(response => {
         this.dialogRef.close(response);
+      })
+      .catch(err => {
+        this.errorHandler.handleError(err);
       });
   }
 

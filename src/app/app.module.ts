@@ -41,7 +41,6 @@ import {ConfirmActionDialogComponent} from './components/confirm-action/confirm-
 import {PlaceService} from './service/place.service';
 import {AdminAddLocationDialogComponent} from './pages/admin-location-page/edit-location-page/add-location-dialog';
 import {AdminEditLocationDialogComponent} from './pages/admin-location-page/edit-location-page/edit-location-dialog';
-import {AdminDeleteLocationDialogComponent} from './pages/admin-location-page/edit-location-page/delete-location-dialog';
 
 import {AdminService} from './service/admin.service';
 import {AdminAddLanguageDialogComponent} from './pages/admin-game-page/languages-page/add-language-dialog';
@@ -77,6 +76,7 @@ import {DataService} from './service/data.service';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { Error500PageComponent } from './pages/error-500-page/error-500-page.component';
 import { Error403PageComponent } from './pages/error-403-page/error-403-page.component';
+import {ErrorHandler} from './service/error-handler/error.handler';
 
 
 const materialModules = [
@@ -123,7 +123,6 @@ const materialModules = [
     AdminCharactersEditDialogComponent,
     AdminAddLocationDialogComponent,
     AdminEditLocationDialogComponent,
-    AdminDeleteLocationDialogComponent,
     AdminAddLanguageDialogComponent,
     AdminEditLanguageDialogComponent,
     AdminAddWordDialogComponent,
@@ -157,7 +156,6 @@ const materialModules = [
     AdminCharactersEditDialogComponent,
     AdminAddLocationDialogComponent,
     AdminEditLocationDialogComponent,
-    AdminDeleteLocationDialogComponent,
     AdminAddLanguageDialogComponent,
     AdminEditLanguageDialogComponent,
     AdminAddWordDialogComponent,
@@ -193,7 +191,8 @@ const materialModules = [
     LanguageService,
     WordService,
     GameService,
-    DataService
+    DataService,
+    ErrorHandler
   ],
   bootstrap: [AppComponent]
 })

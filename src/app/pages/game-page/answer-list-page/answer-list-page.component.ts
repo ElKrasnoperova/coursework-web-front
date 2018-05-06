@@ -34,7 +34,7 @@ export class AnswerListPageComponent implements OnInit {
       this.setScore();
       console.log(this.score);
     } else {
-      this.router.navigate(['/notFound']);
+      this.router.navigate(['/404']);
     }
   }
 

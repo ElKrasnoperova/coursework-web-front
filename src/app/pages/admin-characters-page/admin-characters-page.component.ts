@@ -8,6 +8,8 @@ import { CharacterService } from '../../service/character.service';
 import { AdminCharactersAddDialogComponent } from './admin-characters-add';
 import {AdminCharactersEditDialogComponent} from './admin-characters-edit';
 import {ConfirmActionDialogComponent} from '../../components/confirm-action/confirm-action-dialog';
+import {ErrorHandler} from '../../service/error-handler/error.handler';
+import {isBoolean} from 'util';
 
 
 @Component({
@@ -21,7 +23,8 @@ export class AdminCharactersPageComponent implements OnInit {
   selection = new SelectionModel<Character>(false, []);
   constructor(public  dialog: MatDialog,
               private characterService: CharacterService,
-              private changeDetectorRefs: ChangeDetectorRef) {
+              private changeDetectorRefs: ChangeDetectorRef,
+              private errorHandler: ErrorHandler) {
   }
   characters: Character[];
 
@@ -42,6 +45,9 @@ export class AdminCharactersPageComponent implements OnInit {
       .then( items => {
         this.characters = items;
         this.refresh();
+      })
+      .catch(err => {
+        this.errorHandler.handleError(err);
       });
   }
 
@@ -65,7 +71,8 @@ export class AdminCharactersPageComponent implements OnInit {
         height: '80%', width: '40%'
       })
       .afterClosed().subscribe(result => {
-        if (result) {
+        if (result && !isBoolean(result)) {
+          console.log(result);
           this.characters.push(result);
           this.refresh();
         }
@@ -79,7 +86,7 @@ export class AdminCharactersPageComponent implements OnInit {
       });
     dialogRef.componentInstance.character = this.characters[index];
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
+      if (result && !isBoolean(result)) {
         this.characters[index] = result;
         this.refresh();
       }
@@ -97,6 +104,9 @@ export class AdminCharactersPageComponent implements OnInit {
             .then(() => {
               this.characters.splice(index, 1);
               this.refresh();
+            })
+            .catch(err => {
+              this.errorHandler.handleError(err);
             });
         }
       });

@@ -9,6 +9,8 @@ import {AdminAddLanguageDialogComponent} from './add-language-dialog';
 import {AdminEditLanguageDialogComponent} from './edit-language-dialog';
 import {Router} from '@angular/router';
 import {DataService} from '../../../service/data.service';
+import {ErrorHandler} from '../../../service/error-handler/error.handler';
+import {isBoolean} from "util";
 
 @Component({
   selector: 'app-languages-page',
@@ -29,7 +31,8 @@ export class LanguagesPageComponent implements OnInit {
               private changeDetectorRefs: ChangeDetectorRef,
               private languageService: LanguageService,
               private wordService: WordService,
-              private router: Router) {
+              private router: Router,
+              private errorHandler: ErrorHandler) {
   }
 
   ngOnInit() {
@@ -49,6 +52,9 @@ export class LanguagesPageComponent implements OnInit {
       .then(items => {
         this.languages = items;
         this.refreshLanguages();
+      })
+      .catch(err => {
+        this.errorHandler.handleError(err);
       });
   }
 
@@ -85,6 +91,9 @@ export class LanguagesPageComponent implements OnInit {
           .then(() => {
             this.languages.splice(index, 1);
             this.refreshLanguages();
+          })
+          .catch(err => {
+            this.errorHandler.handleError(err);
           });
       }
     });
@@ -102,7 +111,7 @@ export class LanguagesPageComponent implements OnInit {
       });
     dialogRef.componentInstance.language = this.languages[index];
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
+      if (result && !isBoolean(result)) {
         this.languages[index] = result;
         this.selectedLanguage = result;
         this.refreshLanguages();
@@ -120,7 +129,7 @@ export class LanguagesPageComponent implements OnInit {
         height: '31%', width: '35%'
       })
       .afterClosed().subscribe(result => {
-      if (result) {
+      if (result && !isBoolean(result)) {
         this.languages.push(result);
         this.refreshLanguages();
       }

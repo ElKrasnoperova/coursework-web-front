@@ -4,6 +4,7 @@ import {AdminAddLanguageDialogComponent} from '../../admin-game-page/languages-p
 import {MatDialogRef} from '@angular/material';
 import {LocationService} from '../../../service/location.service';
 import {Character} from '../../../model/Character';
+import {ErrorHandler} from '../../../service/error-handler/error.handler';
 
 @Component ({
   selector: 'app-edit-location-dialog',
@@ -21,12 +22,16 @@ export class AdminEditLocationDialogComponent implements OnInit {
     this.getCharactersForEpisode();
   }
   constructor (private locationService: LocationService,
-               private dialogRef: MatDialogRef<AdminAddLanguageDialogComponent>) {
+               private dialogRef: MatDialogRef<AdminAddLanguageDialogComponent>,
+               private errorHandler: ErrorHandler) {
   }
   updateLocation(): void {
     this.locationService.updateLocation(this.updatedLocation)
       .then(response => {
         this.dialogRef.close(response);
+      })
+      .catch(err => {
+        this.errorHandler.handleError(err);
       });
   }
   setCharacter(character: Character) {
@@ -36,6 +41,9 @@ export class AdminEditLocationDialogComponent implements OnInit {
     this.locationService.getCharactersForEpisode(this.updatedLocation.episode)
       .then(items => {
         this.characters = items;
+      })
+      .catch(err => {
+        this.errorHandler.handleError(err);
       });
   }
 }

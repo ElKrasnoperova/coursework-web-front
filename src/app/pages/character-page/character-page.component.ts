@@ -4,6 +4,7 @@ import {CharacterService} from '../../service/character.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PlatformLocation} from '@angular/common';
 import {DataService} from '../../service/data.service';
+import {ErrorHandler} from '../../service/error-handler/error.handler';
 
 @Component({
   selector: 'app-character-page',
@@ -22,7 +23,8 @@ export class CharacterPageComponent implements OnInit {
               private route: ActivatedRoute,
               private characterService: CharacterService,
               private dataService: DataService,
-              private location: PlatformLocation) {
+              private location: PlatformLocation,
+              private errorHandler: ErrorHandler) {
       location.onPopState(() => this.resetMapData());
   }
 
@@ -39,6 +41,9 @@ export class CharacterPageComponent implements OnInit {
       .then(characters => {
         this.characters = characters;
         this.initCards();
+      })
+      .catch(err => {
+        this.errorHandler.handleError(err);
       });
   }
 
@@ -50,7 +55,7 @@ export class CharacterPageComponent implements OnInit {
       if (character) {
         this.setCharacter(character);
       } else {
-        this.router.navigate(['/notFound']);
+        this.router.navigate(['/404']);
       }
     } else if (id === 0) {
       this.setCharacter(this.characters[0]) ;

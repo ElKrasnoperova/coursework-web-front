@@ -5,6 +5,7 @@ import {Language} from '../../../model/Language';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LanguageService} from '../../../service/language.service';
 import {DataService} from '../../../service/data.service';
+import {ErrorHandler} from '../../../service/error-handler/error.handler';
 
 @Component({
   selector: 'app-translation-game-page',
@@ -32,7 +33,8 @@ export class TranslationGamePageComponent implements OnInit {
               private languageService: LanguageService,
               private route: ActivatedRoute,
               private router: Router,
-              private dataService: DataService) {
+              private dataService: DataService,
+              private errorHandler: ErrorHandler) {
     this.languageName = route.snapshot.params['**'];
   }
 
@@ -49,7 +51,8 @@ export class TranslationGamePageComponent implements OnInit {
         this.language = result;
         this.getWords();
       })
-      .catch(() => this.router.navigate(['/notFound']));
+      .catch( err => this.errorHandler.handleError(err));
+      // .catch(() => this.router.navigate(['/notFound']));
   }
   initLanguage(): void {
     const languageName = this.route.snapshot.paramMap.get('languageName');

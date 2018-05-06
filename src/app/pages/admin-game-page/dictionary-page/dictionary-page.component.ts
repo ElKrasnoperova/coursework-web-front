@@ -11,6 +11,8 @@ import {AdminAddWordDialogComponent} from './add-word-dialog';
 import {DataService} from '../../../service/data.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PlatformLocation} from '@angular/common';
+import {ErrorHandler} from '../../../service/error-handler/error.handler';
+import {isBoolean} from "util";
 
 @Component({
   selector: 'app-dictionary-page',
@@ -33,7 +35,8 @@ export class DictionaryPageComponent implements OnInit {
               private languageService: LanguageService,
               private wordService: WordService,
               private router: Router,
-              location: PlatformLocation) {
+              location: PlatformLocation,
+              private errorHandler: ErrorHandler) {
     location.onPopState(() => {
       this.saveData();
     });
@@ -48,7 +51,7 @@ export class DictionaryPageComponent implements OnInit {
       this.setLanguageInfo();
       this.getWords();
     } else {
-      this.router.navigate(['/notFound']);
+      this.router.navigate(['/404']);
     }
   }
 
@@ -70,6 +73,9 @@ export class DictionaryPageComponent implements OnInit {
       .then(items => {
         this.words = items;
         this.refreshWords();
+      })
+      .catch(err => {
+        this.errorHandler.handleError(err);
       });
   }
 
@@ -89,6 +95,9 @@ export class DictionaryPageComponent implements OnInit {
           .then(() => {
             this.words.splice(index, 1);
             this.refreshWords();
+          })
+          .catch(err => {
+            this.errorHandler.handleError(err);
           });
       }
     });
@@ -106,7 +115,7 @@ export class DictionaryPageComponent implements OnInit {
       });
     dialogRef.componentInstance.word = this.words[index];
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
+      if (result && !isBoolean(result)) {
         this.words[index] = result;
         this.refreshWords();
       }
@@ -124,7 +133,7 @@ export class DictionaryPageComponent implements OnInit {
       });
     dialogRef.componentInstance.translationLang = this.selectedLanguage;
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
+      if (result && !isBoolean(result)) {
         this.words.push(result);
         this.refreshWords();
       }
