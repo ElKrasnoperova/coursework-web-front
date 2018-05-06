@@ -4,7 +4,7 @@
                 (selectionChange)="getEpisodesForSeason($event.value)">
       <mat-option [value]="null"></mat-option>
       <mat-option *ngFor="let season of seasons" [value]="season">
-        Сезон {{season.seasonNumber}}
+        Сезон {{season.episodeNumber}}
       </mat-option>
     </mat-select>
   </mat-form-field>

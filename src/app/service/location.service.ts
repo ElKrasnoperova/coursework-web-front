@@ -51,7 +51,7 @@ export class LocationService {
   getMapLocations(episode: Episode): Promise<Location[]> {
     const location = new Location();
     location.episode = episode;
-    return this.http.post(`${this.baseUrl}/admin/location/map`, location)
+    return this.http.post(`${this.baseUrl}/location/map`, location)
       .toPromise()
       .then(response => response.json() as Location[])
       .catch(this.errorHandler.handleResponse);

@@ -11,6 +11,8 @@ import {GamePageComponent} from './pages/game-page/game-page.component';
 import {CharacterPageComponent} from './pages/character-page/character-page.component';
 import {TranslationGamePageComponent} from './pages/game-page/translation-game-page/translation-game-page.component';
 import {AnswerListPageComponent} from './pages/game-page/answer-list-page/answer-list-page.component';
+import {Error403PageComponent} from './pages/error-403-page/error-403-page.component';
+import {Error500PageComponent} from './pages/error-500-page/error-500-page.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'characters', pathMatch: 'full'},
@@ -23,6 +25,9 @@ const routes: Routes = [
   {path: 'games/:languageName/results', component: AnswerListPageComponent},
   {path: 'settings', component: SettingsPageComponent},
   {path: 'admin', component: AdminToolbarComponent, children: ADMIN_ROUTES},
+  {path: '404', component: ErrorPageComponent},
+  {path: '403', component: Error403PageComponent},
+  {path: '500', component: Error500PageComponent},
   {path: '**', component: ErrorPageComponent}
 ];
 @NgModule({

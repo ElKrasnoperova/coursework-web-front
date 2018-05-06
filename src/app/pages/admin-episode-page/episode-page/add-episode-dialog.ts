@@ -22,7 +22,7 @@ export class AdminAddEpisodeDialogComponent implements OnInit {
   ngOnInit(): void {
   }
   addEpisode(): void {
-    this.newEpisode.seasonNumber = this.season.seasonNumber;
+    this.newEpisode.season.episodeNumber = this.season.season.episodeNumber;
     this.episodeService.createEpisode(this.newEpisode)
       .then(response => {
         this.dialogRef.close(response);

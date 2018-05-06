@@ -18,8 +18,8 @@ export class EpisodeService {
       .catch(this.errorHandler.handleResponse);
   }
 
-  getEpisodesForSeasons(seasonNumber: number): Promise<Episode[]> {
-    return this.http.get(`${this.baseUrl}/episode/season/${seasonNumber}/all`)
+  getEpisodesForSeason(season: Episode): Promise<Episode[]> {
+    return this.http.post(`${this.baseUrl}/episode/season/all`, season)
       .toPromise()
       .then(response => response.json() as Episode[])
       .catch(this.errorHandler.handleResponse);

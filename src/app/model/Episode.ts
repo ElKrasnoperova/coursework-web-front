@@ -1,6 +1,6 @@
 export class Episode {
   id:             number;
   name:           string;
-  seasonNumber:   number;
+  season:         Episode;
   episodeNumber:  number;
 }

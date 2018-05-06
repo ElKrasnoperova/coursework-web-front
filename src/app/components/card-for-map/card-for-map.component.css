@@ -1,22 +1,47 @@
-.example-card {
-  max-width: 312px;
-  height: 128px;
-  padding: 0;
+.panel-for-map {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  height: 90%;
 }
 
-.img-for-card {
-  width: 30%;
-  height: 100%;
+.image-for-panel {
+  width: 45%;
   float: right;
-  margin: 0 !important;
+  padding-top: 16px;
+  margin-top: 24px;
 }
 
-.left-rotation {
-  float: left;
-  height: 100%;
-  padding: 16px;
+.column-panel {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
-.button-location{
-  margin-left: 20px !important;
+.full-width {
+  width: 100%;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 24px;
+}
+
+.subtitle {
+  font-size: 20px;
+}
+
+.button-panel {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.invisible {
+  display: none;
 }

@@ -12,19 +12,10 @@ import {DataService} from '../../service/data.service';
 })
 export class PanelForMapComponent implements OnInit {
 
-  checked: boolean;
-
-  // @Input()  activeLocation:  number;
-  // @Input()  character:  Character;
-  // @Output() locationsLoaded: EventEmitter<Location[]> = new EventEmitter<Location[]>();
-
   @Output() episodeSelected: EventEmitter<Episode> = new EventEmitter<Episode>();
 
-  locations: Location[];
-  // dataService: DataService;
 
-  constructor(public dataService: DataService) {
-    // this.dataService = dataServ;
+  constructor() {
   }
 
   ngOnInit() {
@@ -33,23 +24,4 @@ export class PanelForMapComponent implements OnInit {
   passData(episode: Episode): void {
     this.episodeSelected.emit(episode);
   }
-
-  // passData(): void {
-  //   this.locationsLoaded.emit(this.locations);
-  // }
-
-  // loadLocationsForEpispde(episode: Episode) {
-  //   if (episode) {
-  //     this.locationService.getMapLocations(episode)
-  //       .then(items => {
-  //         this.locations = items;
-  //         this.passData();
-  //       });
-  //   }
-  // }
-  //
-  // test() {
-  //   console.log(this.activeLocation);
-  //   console.log(this.character);
-  // }
 }

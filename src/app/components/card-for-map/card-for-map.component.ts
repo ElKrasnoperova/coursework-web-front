@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+import {DataService} from '../../service/data.service';
 
 @Component({
   selector: 'app-card-for-map',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardForMapComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dataService: DataService) { }
 
   ngOnInit() {
   }

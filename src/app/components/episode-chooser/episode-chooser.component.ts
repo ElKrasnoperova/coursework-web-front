@@ -1,7 +1,7 @@
 // TODO Change color of selected item
 // TODO Make component adaptive
 
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {Episode} from '../../model/Episode';
 import {EpisodeService} from '../../service/episode.service';
 
@@ -38,7 +38,7 @@ export class EpisodeChooserComponent implements OnInit {
 
   getEpisodesForSeason(season: Episode) {
     if (season) {
-      this.episodeService.getEpisodesForSeasons(season.seasonNumber)
+      this.episodeService.getEpisodesForSeason(season)
         .then(items => {
           this.episodes = items;
           this.enableEpisodeSelect();

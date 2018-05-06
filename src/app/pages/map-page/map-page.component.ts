@@ -1,4 +1,4 @@
-import {Component, ComponentFactoryResolver, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {Episode} from '../../model/Episode';
 import {LocationService} from '../../service/location.service';
 import {Location} from '../../model/Location';

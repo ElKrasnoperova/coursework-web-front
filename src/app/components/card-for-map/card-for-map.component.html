@@ -1,12 +1,19 @@
-<mat-card class="example-card">
-  <div class = "left-rotation">
+<div *ngIf="dataService.character" class=panel-for-map>
+  <!--[ngClass] = "{'invisible': checked === false, 'visible': checked === true}"-->
+  <div class = image-for-panel *ngIf="dataService.character.photo">
+    <img mat-card-image src={{dataService.character.photo.path}} >
+  </div>
+  <div>
     <mat-card-header>
-      <mat-card-title>Тирион Ланнистер</mat-card-title>
-      <mat-card-subtitle>270 год после Э.З.</mat-card-subtitle>
+      <div class =  column-panel>
+        <mat-card-title class = title>{{dataService.character.name}}</mat-card-title>
+        <mat-card-subtitle>{{dataService.character.birthYear}} год после З.Э.</mat-card-subtitle>
+      </div>
     </mat-card-header>
     <mat-card-actions>
-      <button mat-button class = "button-location" color = "accent">Подробнее</button>
+      <div class = button-panel >
+        <button mat-raised-button color="accent" routerLink="/characters/{{dataService.character.id}}">Подробнее</button>
+      </div>
     </mat-card-actions>
   </div>
-  <img mat-card-image src = ".././assets/img/tyrion.jpg" class = img-for-card >
-</mat-card>
+</div>

@@ -1,30 +1,12 @@
-
 <mat-card>
 
   <div>
-    <mat-slide-toggle>Включить режим просмотра</mat-slide-toggle>
+    <mat-slide-toggle>Режим навигации</mat-slide-toggle>
     <div class=full-width>
       <app-episode-chooser (episodeSelected)="passData($event)"></app-episode-chooser>
     </div>
   </div>
 
-  <div *ngIf="dataService.character" class=panel-for-map [ngClass] = "{'invisible': checked === false, 'visible': checked === true}">
-    <div class = image-for-panel *ngIf="dataService.character.photo">
-      <img mat-card-image src={{dataService.character.photo.path}} >
-    </div>
-    <div>
-      <mat-card-header>
-        <div class =  column-panel>
-          <mat-card-title class = title>{{dataService.character.name}}</mat-card-title>
-          <mat-card-subtitle>{{dataService.character.birthYear}} год после З.Э.</mat-card-subtitle>
-        </div>
-      </mat-card-header>
-      <mat-card-actions>
-        <div class = button-panel >
-          <button mat-raised-button color="accent" routerLink="/characters/{{dataService.character.id}}">Подробнее</button>
-        </div>
-      </mat-card-actions>
-    </div>
-  </div>
+  <app-card-for-map></app-card-for-map>
 
 </mat-card>

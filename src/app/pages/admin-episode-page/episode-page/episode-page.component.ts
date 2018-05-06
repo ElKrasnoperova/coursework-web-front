@@ -57,7 +57,7 @@ export class EpisodePageComponent implements OnInit {
   }
 
   getEpisodesForSelectedSeason(): void {
-    this.episodeService.getEpisodesForSeasons(this.selectedSeason.seasonNumber)
+    this.episodeService.getEpisodesForSeason(this.selectedSeason)
       .then( items => {
         this.episodes = items;
         this.refreshEpisodes();

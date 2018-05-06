@@ -1,6 +1,6 @@
 
 .map {
-  width: 71%;
+  width: 71.5%;
   height: 100%;
   position: relative;
   top: 24px;
@@ -22,6 +22,7 @@
   position: fixed;
   right: 0;
   bottom: 0;
+  box-shadow: -2px 1px 6px 0 lightgray;
 }
 
 .foreground {
