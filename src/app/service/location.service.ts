@@ -46,6 +46,15 @@ export class LocationService {
       .catch(this.handleError);
   }
 
+  getMapLocations(episode: Episode): Promise<Location[]> {
+    const location = new Location();
+    location.episode = episode;
+    return this.http.post(`${this.baseUrl}/admin/location/map`, location)
+      .toPromise()
+      .then(response => response.json() as Location[])
+      .catch(this.handleError);
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('Some error occured', error);
     return Promise.reject(error.message || error);

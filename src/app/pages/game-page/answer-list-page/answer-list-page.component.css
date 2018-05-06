@@ -31,10 +31,23 @@
 .button-style-for-answers{
   margin-top: 16px;
   margin-right: 96px;
-  /*width: 200px;*/
   text-transform: uppercase;
 }
 
 .answer-list-card {
   width: 70%;
+  margin-left: 15%;
+  margin-top: 5%;
+}
+
+.margin-for-result {
+  margin-top: 16px;
+}
+
+.correct {
+  color: darkgreen;
+}
+
+.incorrect {
+  color: red;
 }

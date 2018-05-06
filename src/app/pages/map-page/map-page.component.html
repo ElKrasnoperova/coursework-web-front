@@ -1,11 +1,13 @@
-<div class="map-wrap">
-  <div class = panel-location>
-    <app-panel-for-map></app-panel-for-map>
+<div>
+  <div #iconLayer class="foreground wrap">  </div>
+
+  <div class="wrap">
+    <img class="map" onmouseover="mapzoom(this,{maxZoom:5})"
+         mat-card-image src="../../../assets/img/map.png">
   </div>
-      <app-map></app-map>
-  <div class = icon-location>
-    <app-icon-for-map></app-icon-for-map>
+
+  <div class="wrap panel">
+    <app-panel-for-map  #panel (episodeSelected)="getCharactersForEpisode($event)" ></app-panel-for-map>
   </div>
+
 </div>
-
-

@@ -25,6 +25,8 @@ export class TranslationGamePageComponent implements OnInit {
   answer = false;
   answerRequiredError = false;
 
+  progressBarValue = 0;
+
 
   constructor(private gameService: GameService,
               private languageService: LanguageService,
@@ -73,6 +75,8 @@ export class TranslationGamePageComponent implements OnInit {
       this.index++;
       this.word = this.words[this.index];
       this.answer = false;
+      this.progressBarValue += 20;
+      console.log(this.progressBarValue);
     } else {
       this.getResults();
     }

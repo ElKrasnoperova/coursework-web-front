@@ -1,12 +1,14 @@
 .game-card {
   display: flex;
   flex-direction: column;
-  width: 45%;
+  width: 100%;
 }
 
 .image-for-language-card {
   background-size: contain;
+  max-width: 100% !important;
 }
+
 
 .image-style {
   width: 100%;
@@ -19,18 +21,24 @@
 }
 
 .game-list-item {
-  width: 45% !important;
+  width: 100% !important;
   height: 75%;
   padding: 0 !important;
 }
 
 .button-style {
   display: block;
-  margin-top: 16px;
-
+  margin-top: 8px;
 }
 
 .card-button {
   width: 100% !important;
 }
 
+mat-card {
+  width: 40%;
+}
+
+.image {
+  width: 100% !important;
+}

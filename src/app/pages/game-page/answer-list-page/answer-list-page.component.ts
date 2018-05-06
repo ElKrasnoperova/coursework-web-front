@@ -21,6 +21,8 @@ export class AnswerListPageComponent implements OnInit {
   score: Number;
   defaultScore = 0.01;
 
+  color: string;
+
   constructor(private router: Router,
               private dataService: DataService,
               private changeDetectorRefs: ChangeDetectorRef) { }
@@ -50,6 +52,10 @@ export class AnswerListPageComponent implements OnInit {
 
   setScore(): void {
     this.score = this.results.filter( result => result === true).length;
+  }
+
+  getIconForResult(result: boolean): string {
+    return result === true ? 'done' : 'close';
   }
 }
 
