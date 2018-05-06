@@ -12,6 +12,8 @@ import {DataService} from '../../service/data.service';
 })
 export class PanelForMapComponent implements OnInit {
 
+  checked: boolean;
+
   // @Input()  activeLocation:  number;
   // @Input()  character:  Character;
   // @Output() locationsLoaded: EventEmitter<Location[]> = new EventEmitter<Location[]>();

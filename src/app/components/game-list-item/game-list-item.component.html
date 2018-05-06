@@ -1,13 +1,15 @@
-<mat-grid-list cols = 2>
-    <mat-grid-tile class = game-list-item>
-      <div class = game-card>
-        <div class = image-for-language-card *ngIf="language.photo">
-          <img [src]="language.photo.path">
-        </div>
-        <div class = button-style>
-          <a mat-raised-button class = card-button routerLink={{language.name}}> {{language.name}} </a>
-        </div>
+<mat-card class = card-width>
+  <div class = game-list-item>
+    <div class = game-card>
+      <div class = image-for-language-card *ngIf="language.photo">
+        <img [src]="language.photo.path">
+        <!--<img src = '../../assets/img/horses_crop.jpg' class = image>-->
       </div>
-    </mat-grid-tile>
-</mat-grid-list>
+      <div class = button-style>
+        <a mat-raised-button class = card-button routerLink={{language.name}}> {{language.name}} </a>
+      </div>
+    </div>
+  </div>
+
+</mat-card>
 

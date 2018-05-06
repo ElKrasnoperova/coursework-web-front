@@ -74,6 +74,7 @@ import { DictionaryPageComponent } from './pages/admin-game-page/dictionary-page
 import { EpisodePageComponent } from './pages/admin-episode-page/episode-page/episode-page.component';
 import { SeasonPageComponent } from './pages/admin-episode-page/season-page/season-page.component';
 import {DataService} from './service/data.service';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 const materialModules = [
@@ -94,6 +95,7 @@ const materialModules = [
   MatDialogModule,
   MatStepperModule,
   MatListModule,
+  MatSlideToggleModule,
 ];
 @NgModule({
   declarations: [

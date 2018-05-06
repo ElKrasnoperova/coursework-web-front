@@ -1,11 +1,14 @@
 
-<mat-card class=panel-for-map>
+<mat-card>
 
-  <div class=full-width>
-    <app-episode-chooser (episodeSelected)="passData($event)"></app-episode-chooser>
+  <div>
+    <mat-slide-toggle>Включить режим просмотра</mat-slide-toggle>
+    <div class=full-width>
+      <app-episode-chooser (episodeSelected)="passData($event)"></app-episode-chooser>
+    </div>
   </div>
 
-  <div *ngIf="dataService.character">
+  <div *ngIf="dataService.character" class=panel-for-map [ngClass] = "{'invisible': checked === false, 'visible': checked === true}">
     <div class = image-for-panel *ngIf="dataService.character.photo">
       <img mat-card-image src={{dataService.character.photo.path}} >
     </div>
