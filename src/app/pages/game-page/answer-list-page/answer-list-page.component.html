@@ -11,19 +11,25 @@
 
       <ng-container matColumnDef="word">
         <mat-header-cell *matHeaderCellDef class = "header-font"> Ваш перевод </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.word}} </mat-cell>
+          <mat-cell *matCellDef="let element; let i = index ">
+            <div *ngFor="let result of results; let k = index ">
+            <div *ngIf = "i === k" [ngClass] = "{'incorrect': result === false && i === k, 'correct': result === true && i === k}">
+            {{element.word}}
+            </div>
+            </div>
+          </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="result">
-        <mat-header-cell *matHeaderCellDef class = "header-font"> Верно ли </mat-header-cell>
-        <mat-cell *matCellDef="let row; let i = index ">
-          <div *ngFor="let result of results; let k = index ">
-            <div *ngIf = "i === k" [ngClass] = "{'incorrect': result === false && i === k, 'correct': result === true && i === k}">
-              <mat-icon>{{getIconForResult(result)}}</mat-icon>
-            </div>
-          </div>
-        </mat-cell>
-      </ng-container>
+      <!--<ng-container matColumnDef="result">-->
+        <!--<mat-header-cell *matHeaderCellDef class = "header-font"> Верно ли </mat-header-cell>-->
+        <!--<mat-cell *matCellDef="let row; let i = index ">-->
+          <!--<div *ngFor="let result of results; let k = index ">-->
+            <!--<div *ngIf = "i === k" [ngClass] = "{'incorrect': result === false && i === k, 'correct': result === true && i === k}">-->
+              <!--<mat-icon>{{getIconForResult(result)}}</mat-icon>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</mat-cell>-->
+      <!--</ng-container>-->
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

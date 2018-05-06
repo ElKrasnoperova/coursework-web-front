@@ -13,7 +13,7 @@ import {Character} from '../../../model/Character';
 export class AnswerListPageComponent implements OnInit {
 
   dataSource: MatTableDataSource<Word>;
-  displayedColumns = ['translation', 'word', 'result'];
+  displayedColumns = ['translation', 'word'];
 
   answers: Word[];
   results: boolean[];
