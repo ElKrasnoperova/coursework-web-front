@@ -75,6 +75,7 @@ import { EpisodePageComponent } from './pages/admin-episode-page/episode-page/ep
 import { SeasonPageComponent } from './pages/admin-episode-page/season-page/season-page.component';
 import {DataService} from './service/data.service';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { Error500PageComponent } from './pages/error-500-page/error-500-page.component';
 
 
 const materialModules = [
@@ -145,7 +146,8 @@ const materialModules = [
     LanguagesPageComponent,
     DictionaryPageComponent,
     EpisodePageComponent,
-    SeasonPageComponent
+    SeasonPageComponent,
+    Error500PageComponent
   ],
   entryComponents: [
     ConfirmActionDialogComponent,
