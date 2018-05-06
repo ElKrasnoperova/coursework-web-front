@@ -66,7 +66,7 @@ export class EditLocationPageComponent implements OnInit {
   openAddDialogForLocation() {
     const dialogRef = this.dialog
       .open(AdminAddLocationDialogComponent, {
-        height: '45%', width: '35%'
+        height: '35%'
       });
     dialogRef.componentInstance.location = this.location;
     dialogRef.afterClosed().subscribe(result => {
@@ -85,7 +85,7 @@ export class EditLocationPageComponent implements OnInit {
   openEditDialogForLocation(index: number): void {
     const dialogRef = this.dialog
       .open(AdminEditLocationDialogComponent, {
-        height: '45%', width: '35%'
+        height: '35%'
       });
     dialogRef.componentInstance.location = this.locations[index];
     dialogRef.afterClosed().subscribe(result => {

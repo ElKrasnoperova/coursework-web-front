@@ -75,7 +75,7 @@ export class ChoosePlacePageComponent implements OnInit {
   openAddDialogForPlace() {
     this.dialog
       .open(AdminAddPlaceDialogComponent, {
-        height: '45%', width: '35%'
+        height: '28%'
       })
       .afterClosed().subscribe(result => {
       if (result && !isBoolean(result)) {
@@ -93,7 +93,7 @@ export class ChoosePlacePageComponent implements OnInit {
   openEditDialogForPlace(index: number) {
     const dialogRef = this.dialog
       .open(AdminEditPlaceDialogComponent, {
-        height: '45%', width: '35%'
+        height: '30%'
       });
     dialogRef.componentInstance.place = this.places[index];
     dialogRef.afterClosed().subscribe(result => {

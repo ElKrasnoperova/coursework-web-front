@@ -39,3 +39,17 @@ mat-cell, mat-header-cell {
   justify-content: space-around;
   margin-top: 16px;
 }
+
+.full-width-season {
+  width: 100%;
+}
+
+.input-margin {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.margin-for-label {
+  margin-top: 16px;
+  margin-bottom: 8px;
+}

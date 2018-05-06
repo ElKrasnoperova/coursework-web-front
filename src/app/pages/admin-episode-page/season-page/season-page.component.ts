@@ -18,8 +18,16 @@ import {isBoolean} from "util";
 })
 export class SeasonPageComponent implements OnInit {
 
+
+
   selection_seasons = new SelectionModel<Episode>(false, []);
+  // selection_seasons: Episode[];
   dataSource_seasons: MatTableDataSource<Episode>;
+  // dataSource_seasons: Episode[] = [
+  //   {id: 1, episodeNumber: 1, name: 'first', seasonNumber: 2},
+  //   {id: 2, episodeNumber: 2, name: 'second', seasonNumber: 1},
+  // ];
+
   displayedColumns_seasons = ['id', 'seasonNumber', 'select'];
 
   seasons:        Episode[];
@@ -98,7 +106,7 @@ export class SeasonPageComponent implements OnInit {
   openAddDialogForSeason() {
     this.dialog
       .open(AdminAddSeasonDialogComponent, {
-        height: '25%', width: '31%'
+        height: '25%'
       })
       .afterClosed().subscribe(result => {
       if (result && !isBoolean(result)) {
@@ -110,13 +118,14 @@ export class SeasonPageComponent implements OnInit {
 
   editSeason(): void {
     const index = this.getSelectedSeasonIndex();
+    console.log(index);
     if (index !== -1) { this.openEditDialogForSeason(index); }
   }
 
   openEditDialogForSeason(index: number) {
     const dialogRef = this.dialog
       .open(AdminEditSeasonDialogComponent, {
-        height: '25%', width: '31%'
+        height: '25%'
       });
     dialogRef.componentInstance.season = this.seasons[index];
     dialogRef.afterClosed().subscribe(result => {
@@ -144,16 +153,19 @@ export class SeasonPageComponent implements OnInit {
   isAllSeasonsSelected() {
     const numSelected = this.selection_seasons.selected.length;
     const numRows = this.dataSource_seasons.data.length;
+    // const numRows = this.dataSource_seasons.length;
     return numSelected === numRows;
   }
 
   masterSeasonsToggle() {
     this.isAllSeasonsSelected() ?
       this.selection_seasons.clear() :
+      // this.dataSource_seasons.forEach(row => this.selection_seasons.select(row));
       this.dataSource_seasons.data.forEach(row => this.selection_seasons.select(row));
   }
 
   saveData() {
     this.dataService.season = this.selectedSeason;
   }
+
 }

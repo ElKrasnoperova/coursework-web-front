@@ -95,7 +95,7 @@ export class EpisodePageComponent implements OnInit {
   openAddDialogForEpisode(): void {
     const dialogRef = this.dialog
       .open(AdminAddEpisodeDialogComponent, {
-        height: '52%', width: '35%'
+        height: '38%'
       });
     dialogRef.componentInstance.season = this.selectedSeason;
     dialogRef.afterClosed().subscribe(result => {
@@ -114,7 +114,7 @@ export class EpisodePageComponent implements OnInit {
   openEditDialogForEpisode(index: number) {
     const dialogRef = this.dialog
       .open(AdminEditEpisodeDialogComponent, {
-        height: '35%', width: '35%'
+        height: '45%'
       });
     dialogRef.componentInstance.episode = this.episodes[index];
     dialogRef.afterClosed().subscribe(result => {
@@ -150,7 +150,7 @@ export class EpisodePageComponent implements OnInit {
       this.dataSource_episodes.data.forEach(row => this.selection_episodes.select(row));
   }
 
-  goBack(){
+  goBack() {
     this.router.navigate(['admin/seasons']);
   }
 }

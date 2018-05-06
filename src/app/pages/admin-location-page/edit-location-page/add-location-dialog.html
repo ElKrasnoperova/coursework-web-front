@@ -7,10 +7,15 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <p>
-    X <input name="X" [(ngModel)]="newLocation.place.x">
-    Y <input name="Y" [(ngModel)]="newLocation.place.y">
-  </p>
+  <div class = coordinates>
+    <mat-form-field>
+      <input matInput name="X" [(ngModel)]="newLocation.place.x" placeholder="X">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="Y" [(ngModel)]="newLocation.place.y" placeholder="Y">
+    </mat-form-field>
+  </div>
+
   <mat-dialog-actions>
     <button mat-button class = add-place-form>Выбрать на карте</button>
   </mat-dialog-actions>
