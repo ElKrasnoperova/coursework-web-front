@@ -76,6 +76,7 @@ import { SeasonPageComponent } from './pages/admin-episode-page/season-page/seas
 import {DataService} from './service/data.service';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { Error500PageComponent } from './pages/error-500-page/error-500-page.component';
+import { Error403PageComponent } from './pages/error-403-page/error-403-page.component';
 
 
 const materialModules = [
@@ -147,7 +148,8 @@ const materialModules = [
     DictionaryPageComponent,
     EpisodePageComponent,
     SeasonPageComponent,
-    Error500PageComponent
+    Error500PageComponent,
+    Error403PageComponent
   ],
   entryComponents: [
     ConfirmActionDialogComponent,
