@@ -82,7 +82,7 @@ export class AdminCharactersPageComponent implements OnInit {
   openEditDialogForCharacter(index: number): void {
     const dialogRef = this.dialog
       .open(AdminCharactersEditDialogComponent, {
-        height: '80%', width: '35%'
+        height: '80%'
       });
     dialogRef.componentInstance.character = this.characters[index];
     dialogRef.afterClosed().subscribe(result => {

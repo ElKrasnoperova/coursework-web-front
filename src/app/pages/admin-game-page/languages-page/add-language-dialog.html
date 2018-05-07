@@ -1,13 +1,19 @@
 <h2>Добавить язык</h2>
-<mat-form-field class = full-width-language-input>
-  <input matInput placeholder="Название языка" [(ngModel)]="newLanguage.name">
-</mat-form-field>
-<div class = full-width-language-input>
+<div class = filds-in-row>
+  <div>
+    <mat-form-field class = full-width-language-input>
+      <input matInput placeholder="Название языка" [(ngModel)]="newLanguage.name">
+    </mat-form-field>
+  </div>
 
-  <mat-dialog-actions>
-    <app-photo-loader (photoIsChosen)="setPhoto($event)"></app-photo-loader>
-  </mat-dialog-actions>
+  <div class = photo-loader-margin>
+      <mat-dialog-actions>
+        <app-photo-loader (photoIsChosen)="setPhoto($event)"></app-photo-loader>
+      </mat-dialog-actions>
+  </div>
+
 </div>
+
 <div class = confirmation-buttons-languages>
   <mat-dialog-actions>
       <button mat-button color = "primary">Отмена</button>

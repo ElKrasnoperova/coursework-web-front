@@ -55,3 +55,15 @@
   margin-top: 16px;
   margin-bottom: 16px;
 }
+
+.column-dialog {
+  display: flex;
+  flex-direction: row;
+}
+
+.photo-loader-in-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 96px;
+}
