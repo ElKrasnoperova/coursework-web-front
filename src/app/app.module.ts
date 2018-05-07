@@ -46,7 +46,6 @@ import {AdminService} from './service/admin.service';
 import {AdminAddLanguageDialogComponent} from './pages/admin-game-page/languages-page/add-language-dialog';
 import {AdminEditLanguageDialogComponent} from './pages/admin-game-page/languages-page/edit-language-dialog';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
-import {ConfirmExitDialogComponent} from './components/toolbar/confirmation-dialog';
 import {AdminEditPlaceDialogComponent} from './pages/admin-location-page/choose-place-page/edit-place-dialog';
 import {LanguageService} from './service/language.service';
 import {AdminEditWordDialogComponent} from './pages/admin-game-page/dictionary-page/edit-word-dialog';
@@ -77,6 +76,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { Error500PageComponent } from './pages/error-500-page/error-500-page.component';
 import { Error403PageComponent } from './pages/error-403-page/error-403-page.component';
 import {ErrorHandler} from './service/error-handler/error.handler';
+import {PrincipalService} from './service/principal.service';
 
 
 const materialModules = [
@@ -128,7 +128,6 @@ const materialModules = [
     AdminAddWordDialogComponent,
     AdminEditWordDialogComponent,
     ErrorPageComponent,
-    ConfirmExitDialogComponent,
     AdminAddPlaceDialogComponent,
     AdminEditPlaceDialogComponent,
     AdminAddEpisodeDialogComponent,
@@ -160,7 +159,6 @@ const materialModules = [
     AdminEditLanguageDialogComponent,
     AdminAddWordDialogComponent,
     AdminEditWordDialogComponent,
-    ConfirmExitDialogComponent,
     AdminAddPlaceDialogComponent,
     AdminEditPlaceDialogComponent,
     AdminAddEpisodeDialogComponent,
@@ -192,7 +190,8 @@ const materialModules = [
     WordService,
     GameService,
     DataService,
-    ErrorHandler
+    ErrorHandler,
+    PrincipalService
   ],
   bootstrap: [AppComponent]
 })

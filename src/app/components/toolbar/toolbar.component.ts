@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {MatDialog, MatTabChangeEvent} from '@angular/material';
-import {ConfirmExitDialogComponent} from './confirmation-dialog';
+import {UserService} from '../../service/user.service';
+import {ErrorHandler} from '../../service/error-handler/error.handler';
+import {ConfirmActionDialogComponent} from '../confirm-action/confirm-action-dialog';
 
 @Component({
   selector: 'app-toolbar',
@@ -17,18 +19,24 @@ export class ToolbarComponent implements OnInit {
     {label: 'Игры', link: 'games'}
   ];
 
-  constructor(public dialog: MatDialog, private router: Router) {}
+  constructor(public dialog: MatDialog, private router: Router,
+              private userService: UserService,
+              private errorHandler: ErrorHandler) {}
 
   ngOnInit() {
     console.log(this.router.url);
   }
 
-  openConfirmationDialog() {
+  openExitDialog() {
+    console.log('attempt logout');
     this.dialog
-      .open(ConfirmExitDialogComponent, {
+      .open(ConfirmActionDialogComponent, {
         height: '25%', width: '31%'
       })
       .afterClosed().subscribe(result => {
-    });
+        if (result) {
+          this.userService.logout()
+            .catch( err => this.errorHandler.handleError(err));}
+      });
   }
 }

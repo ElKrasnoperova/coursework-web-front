@@ -1,4 +1,5 @@
-<form class="example-form">
+<form class="example-form" (ngSubmit)="signin()">
+
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Имя пользователя" name="username" [(ngModel)]="user.login" (change)="passData()"
            [formControl]="usernameControl">
@@ -6,6 +7,7 @@
       Введите имя пользователя
     </mat-error>
   </mat-form-field>
+
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Пароль" name="password" [(ngModel)]="user.password" (change)="passData()"
            [type]="hide ? 'password' : 'text'"
@@ -15,6 +17,8 @@
       Введите пароль
     </mat-error>
   </mat-form-field>
+
+  <button mat-raised-button color="primary" class = button-position type="submit">Войти</button>
 </form>
 
 

@@ -1,20 +1,17 @@
 import {Injectable} from '@angular/core';
-import {Http, RequestOptions} from '@angular/http';
+import {Headers, Http, RequestOptions} from '@angular/http';
 import {User} from '../model/User';
 import {ErrorHandler} from './error-handler/error.handler';
+import {HttpHeaders} from '@angular/common/http';
+import {PrincipalService} from './principal.service';
 
 @Injectable()
 export class UserService {
   private baseUrl = 'http://localhost:4200/api';
 
-  constructor(private http: Http, private errorHandler: ErrorHandler) { }
-
-  getInfo(): Promise<string> {
-    return this.http.get(`${this.baseUrl}/me`)
-      .toPromise()
-      .then(response => response.json() as string)
-      .catch(this.errorHandler.handleResponse);
-  }
+  constructor(private http: Http,
+              private errorHandler: ErrorHandler,
+              private principalService: PrincipalService) { }
 
   checkUsername(login: string): Promise<boolean> {
     return this.http.post(`${this.baseUrl}/signup/check/username`, login)
@@ -37,14 +34,24 @@ export class UserService {
       .catch(this.errorHandler.handleResponse);
   }
 
-  signin(username: string, password: string): Promise<any> {
-    const requestParam = {
-      username: username,
-      password: password
-    };
-    console.log(requestParam);
-    return this.http.post(`${this.baseUrl}/login`, requestParam)
+  signin(user: User): Promise<any> {
+    const header  = new Headers();
+    header.append('Content-Type', 'application/x-www-form-urlencoded');
+    const options = new RequestOptions({ withCredentials: true, headers: header });
+    const body    = `username=${user.login}&password=${user.password}`;
+    return this.http.post(`${this.baseUrl}/login`, body, options)
       .toPromise()
+      .then(() => this.principalService.initUser())
+      .catch(this.errorHandler.handleResponse);
+  }
+
+  logout(): Promise<any> {
+    const header  = new Headers();
+    header.append('Content-Type', 'application/x-www-form-urlencoded');
+    const options = new RequestOptions({ withCredentials: true, headers: header });
+    return this.http.post(`${this.baseUrl}/logout`, options)
+      .toPromise()
+      .then(() => this.principalService.invalidate())
       .catch(this.errorHandler.handleResponse);
   }
 

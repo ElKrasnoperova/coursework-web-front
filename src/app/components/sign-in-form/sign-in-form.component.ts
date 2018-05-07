@@ -1,9 +1,14 @@
 
-import {Component, Directive, EventEmitter, Input, Output} from '@angular/core';
-import {AbstractControl, FormControl, FormGroupDirective, NG_VALIDATORS, NgForm, Validator, ValidatorFn, Validators} from '@angular/forms';
+import {Component, Directive, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {
+  AbstractControl, FormControl, FormGroup, FormGroupDirective, NG_VALIDATORS, NgForm, Validator, ValidatorFn,
+  Validators
+} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import {User} from '../../model/User';
 import {Episode} from '../../model/Episode';
+import {UserService} from '../../service/user.service';
+import {ErrorHandler} from '../../service/error-handler/error.handler';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -20,10 +25,10 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['sign-in-form.component.css'],
 })
 
-export class SignInFormComponent {
+export class SignInFormComponent implements OnInit {
   hide = true;
 
-  user = new User();
+  user: User;
   @Output() dataChanged: EventEmitter<User> = new EventEmitter<User>();
 
   usernameControl = new FormControl('', [
@@ -32,6 +37,17 @@ export class SignInFormComponent {
   passwordControl = new FormControl('', [
     Validators.required
   ]);
+
+  constructor(private  userService: UserService, private errorHandler: ErrorHandler){ }
+
+  ngOnInit(): void {
+    this.user = new User();
+  }
+
+  signin() {
+    this.userService.signin(this.user)
+      .catch( err => this.errorHandler.handleError(err));
+  }
 
   passData(): void {
     this.dataChanged.emit(this.user);

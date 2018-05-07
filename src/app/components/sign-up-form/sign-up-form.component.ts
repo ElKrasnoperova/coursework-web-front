@@ -1,7 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {UserService} from '../../service/user.service';
 import {User} from '../../model/User';
-import {MyErrorStateMatcher} from '../sign-in-form/sign-in-form.component';
 import {FormControl, Validators} from '@angular/forms';
 
 @Component({
