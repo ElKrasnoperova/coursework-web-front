@@ -77,6 +77,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { Error500PageComponent } from './pages/error-500-page/error-500-page.component';
 import { Error403PageComponent } from './pages/error-403-page/error-403-page.component';
 import {ErrorHandler} from './service/error-handler/error.handler';
+import { AdminPhotoPageComponent } from './pages/admin-photo-page/admin-photo-page.component';
+import {AdminPhotoAddDialogComponent} from './pages/admin-photo-page/add-photo-dialog';
 
 
 const materialModules = [
@@ -148,7 +150,9 @@ const materialModules = [
     EpisodePageComponent,
     SeasonPageComponent,
     Error500PageComponent,
-    Error403PageComponent
+    Error403PageComponent,
+    AdminPhotoPageComponent,
+    AdminPhotoAddDialogComponent
   ],
   entryComponents: [
     ConfirmActionDialogComponent,
@@ -166,7 +170,8 @@ const materialModules = [
     AdminAddEpisodeDialogComponent,
     AdminAddSeasonDialogComponent,
     AdminEditEpisodeDialogComponent,
-    AdminEditSeasonDialogComponent
+    AdminEditSeasonDialogComponent,
+    AdminPhotoAddDialogComponent
   ],
   imports: [
     MatTabsModule,
