@@ -43,7 +43,12 @@
 
     <ng-container matColumnDef="isAdmin">
       <mat-header-cell *matHeaderCellDef> Админ </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.isAdmin}}</mat-cell>
+      <mat-cell *matCellDef="let element">
+        <div [ngClass] =  "{'admin': element.admin === true, 'not-admin': element.admin === false}">
+          <!--{{element.admin}}-->
+          <mat-icon>{{getIconForResult(element.admin)}}</mat-icon>
+        </div>
+      </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

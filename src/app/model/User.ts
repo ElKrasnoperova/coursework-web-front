@@ -5,5 +5,5 @@ export class User {
   password: string;
   email:    string;
   telegram: string;
-  isAdmin:  boolean;
+  admin:  boolean;
 }
