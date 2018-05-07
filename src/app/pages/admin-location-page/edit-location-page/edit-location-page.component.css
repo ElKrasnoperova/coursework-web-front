@@ -19,3 +19,7 @@
   width: 95%;
   margin: 30px;
 }
+
+.mat-column-select {
+  overflow: visible;
+}

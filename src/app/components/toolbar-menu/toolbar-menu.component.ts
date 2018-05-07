@@ -27,7 +27,8 @@ export class ToolbarMenuComponent implements OnInit {
       .afterClosed().subscribe(result => {
       if (result) {
         this.userService.logout()
-          .catch( err => this.errorHandler.handleError(err));}
+          .catch( err => this.errorHandler.handleError(err));
+      }
     });
   }
 }

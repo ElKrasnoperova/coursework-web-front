@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolbarTabsComponent implements OnInit {
   tabLinks = [
-    {label: 'Вход', link: 'login'},
     {label: 'Персонажи', link: 'characters'},
     {label: 'Карта', link: 'map'},
     {label: 'Игры', link: 'games'}
