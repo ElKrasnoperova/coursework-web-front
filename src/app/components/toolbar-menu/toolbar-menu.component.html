@@ -1,0 +1,14 @@
+<button mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon>perm_identity</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="admin">
+    <span>Админка</span>
+  </button>
+  <button mat-menu-item routerLink="settings">
+    <span>Настройки</span>
+  </button>
+  <button mat-menu-item (click)="openExitDialog()">
+    <span>Выход</span>
+  </button>
+</mat-menu>

@@ -79,6 +79,8 @@ import {ErrorHandler} from './service/error-handler/error.handler';
 import { AdminPhotoPageComponent } from './pages/admin-photo-page/admin-photo-page.component';
 import {AdminPhotoAddDialogComponent} from './pages/admin-photo-page/add-photo-dialog';
 import {PrincipalService} from './service/principal.service';
+import { ToolbarMenuComponent } from './components/toolbar-menu/toolbar-menu.component';
+import { ToolbarTabsComponent } from './components/toolbar-tabs/toolbar-tabs.component';
 
 
 const materialModules = [
@@ -151,7 +153,9 @@ const materialModules = [
     Error500PageComponent,
     Error403PageComponent,
     AdminPhotoPageComponent,
-    AdminPhotoAddDialogComponent
+    AdminPhotoAddDialogComponent,
+    ToolbarMenuComponent,
+    ToolbarTabsComponent
   ],
   entryComponents: [
     ConfirmActionDialogComponent,

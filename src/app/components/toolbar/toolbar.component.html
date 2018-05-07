@@ -3,32 +3,11 @@
     <img src="../assets/img/logo_white.png" class="logo" routerLink="">
     <span routerLink="">Game of thrones</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>perm_identity</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu"> <!--Чтобы это поле отображалость только у админа, надо будет сделать *ngIf = "admin"-->
-      <button mat-menu-item routerLink="admin">
-        <span>Админка</span>
-      </button>
-      <button mat-menu-item routerLink="settings">
-        <span>Настройки</span>
-      </button>
-      <button mat-menu-item (click)="openExitDialog()">
-        <span>Выход</span>
-      </button>
-    </mat-menu>
+    <app-toolbar-menu></app-toolbar-menu>
   </mat-toolbar-row>
 </mat-toolbar>
 <div>
-  <nav mat-tab-nav-bar>
-    <a mat-tab-link
-       *ngFor="let tabLink of tabLinks; let i = index"
-       [routerLink]="tabLink.link"
-       routerLinkActive #rla="routerLinkActive"
-       [active]="rla.isActive">
-      {{tabLink.label}}
-    </a>
-  </nav>
+  <app-toolbar-tabs></app-toolbar-tabs>
   <router-outlet></router-outlet>
 </div>
 
