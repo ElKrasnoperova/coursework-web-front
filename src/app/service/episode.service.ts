@@ -6,7 +6,7 @@ import {ErrorHandler} from './error-handler/error.handler';
 
 @Injectable()
 export class EpisodeService {
-  private baseUrl = 'http://localhost:4200/api';
+  private baseUrl = 'http://localhost:9090/api';
 
   constructor(private http: Http, private errorHandler: ErrorHandler) {
   }
