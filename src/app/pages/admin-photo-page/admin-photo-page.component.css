@@ -1,0 +1,36 @@
+.add-photo-button {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  color: red;
+  margin-left: 95%;
+}
+
+.container-for-admin-photos{
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+  width: 95%;
+  margin: 30px;
+}
+
+.button-row-for-photos {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.mat-column-select {
+  overflow: visible;
+}
+
+.full-width-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.loader-center {
+  margin-left: 8%;
+}

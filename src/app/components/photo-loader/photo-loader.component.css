@@ -1,0 +1,14 @@
+.img-size {
+  width: 90%;
+  height: 40%;
+}
+
+.loader-size {
+  /*width: 50%;*/
+  height: 40%;
+}
+
+.button {
+  position: relative;
+}
+

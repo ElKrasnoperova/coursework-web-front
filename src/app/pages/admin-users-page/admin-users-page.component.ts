@@ -91,4 +91,9 @@ export class AdminUsersPageComponent implements OnInit {
       return this.users.indexOf(this.selection.selected[0]);
     }
   }
+
+  getIconForResult(result: boolean): string {
+    console.log(result);
+    return result === true ? 'tag_faces' : null;
+  }
 }

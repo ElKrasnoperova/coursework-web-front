@@ -24,3 +24,11 @@
   /*width: 100%;*/
   justify-content: space-around;
 }
+
+.admin {
+  color: darkgreen;
+}
+
+.not-admin {
+  color: red;
+}

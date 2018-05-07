@@ -71,3 +71,20 @@ mat-cell, mat-header-cell {
   /*justify-content: space-around;*/
   /*align-items: center;*/
 /*}*/
+
+.filds-in-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.photo-loader-margin {
+  margin-left: 32px;
+  margin-top: -12px;
+}
+
+.photo-loader-edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 32px;
+}
