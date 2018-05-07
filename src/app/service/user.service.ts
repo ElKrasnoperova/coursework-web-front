@@ -7,7 +7,7 @@ import {PrincipalService} from './principal.service';
 
 @Injectable()
 export class UserService {
-  private baseUrl = 'http://localhost:9090/api';
+  private baseUrl = 'http://localhost:4200/api';
 
   constructor(private http: Http,
               private errorHandler: ErrorHandler,
