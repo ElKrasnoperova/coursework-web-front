@@ -9,7 +9,8 @@ import {AdminEditSeasonDialogComponent} from './edit-season-dialog';
 import {Router} from '@angular/router';
 import {DataService} from '../../../service/data.service';
 import {ErrorHandler} from '../../../service/error-handler/error.handler';
-import {isBoolean} from "util";
+import {isBoolean} from 'util';
+import {PrincipalService} from '../../../service/principal.service';
 
 @Component({
   selector: 'app-season-page',
@@ -21,12 +22,7 @@ export class SeasonPageComponent implements OnInit {
 
 
   selection_seasons = new SelectionModel<Episode>(false, []);
-  // selection_seasons: Episode[];
   dataSource_seasons: MatTableDataSource<Episode>;
-  // dataSource_seasons: Episode[] = [
-  //   {id: 1, episodeNumber: 1, name: 'first', seasonNumber: 2},
-  //   {id: 2, episodeNumber: 2, name: 'second', seasonNumber: 1},
-  // ];
 
   displayedColumns_seasons = ['id', 'seasonNumber', 'select'];
 
@@ -39,7 +35,8 @@ export class SeasonPageComponent implements OnInit {
               private changeDetectorRefs: ChangeDetectorRef,
               private episodeService: EpisodeService,
               private dataService: DataService,
-              private errorHandler: ErrorHandler) { }
+              private errorHandler: ErrorHandler,
+              principalService: PrincipalService) { }
 
   ngOnInit() {
     this.getAllSeasons();

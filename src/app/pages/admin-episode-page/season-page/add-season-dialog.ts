@@ -4,6 +4,7 @@ import {MatDialogRef} from '@angular/material';
 import {Episode} from '../../../model/Episode';
 import {EpisodeService} from '../../../service/episode.service';
 import {ErrorHandler} from '../../../service/error-handler/error.handler';
+import {PrincipalService} from '../../../service/principal.service';
 
 @Component ({
   selector: 'app-add-season-dialog',
@@ -15,7 +16,8 @@ export class AdminAddSeasonDialogComponent implements OnInit {
   constructor(private  http: Http,
               private dialogRef: MatDialogRef<AdminAddSeasonDialogComponent>,
               private episodeService: EpisodeService,
-              private errorHandler: ErrorHandler) {
+              private errorHandler: ErrorHandler,
+              principalService: PrincipalService) {
     this.newSeason = new Episode();
   }
   ngOnInit(): void {
