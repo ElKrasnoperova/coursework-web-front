@@ -81,6 +81,12 @@ import {AdminPhotoAddDialogComponent} from './pages/admin-photo-page/add-photo-d
 import {PrincipalService} from './service/principal.service';
 import { ToolbarMenuComponent } from './components/toolbar-menu/toolbar-menu.component';
 import { ToolbarTabsComponent } from './components/toolbar-tabs/toolbar-tabs.component';
+import {StorageServiceModule, WebStorageService} from 'angular-webstorage-service';
+import {UserAccess} from './service/url-access-handler/user-access';
+import {AdminAccess} from './service/url-access-handler/admin-access';
+import {AnonAccess} from './service/url-access-handler/anon-access';
+import {PhotoService} from './service/photo.service';
+import {PreviewPhotoDialogComponent} from './pages/admin-photo-page/preview-photo-dialog.component';
 
 
 const materialModules = [
@@ -153,9 +159,10 @@ const materialModules = [
     Error500PageComponent,
     Error403PageComponent,
     AdminPhotoPageComponent,
-    AdminPhotoAddDialogComponent,
     ToolbarMenuComponent,
-    ToolbarTabsComponent
+    ToolbarTabsComponent,
+    PreviewPhotoDialogComponent,
+    AdminPhotoAddDialogComponent
   ],
   entryComponents: [
     ConfirmActionDialogComponent,
@@ -173,7 +180,8 @@ const materialModules = [
     AdminAddSeasonDialogComponent,
     AdminEditEpisodeDialogComponent,
     AdminEditSeasonDialogComponent,
-    AdminPhotoAddDialogComponent
+    AdminPhotoAddDialogComponent,
+    PreviewPhotoDialogComponent
   ],
   imports: [
     MatTabsModule,
@@ -184,6 +192,8 @@ const materialModules = [
     SlideshowModule,
     ReactiveFormsModule,
     BrowserModule,
+    StorageServiceModule,
+    // WebStorageService,          //
     AppRoutingModule,
     HttpClientModule,
     HttpModule
@@ -200,7 +210,14 @@ const materialModules = [
     GameService,
     DataService,
     ErrorHandler,
-    PrincipalService
+    PrincipalService,
+    PhotoService,
+    BrowserModule,
+    StorageServiceModule,
+    // WebStorageService,
+    UserAccess,
+    AdminAccess,
+    AnonAccess
   ],
   bootstrap: [AppComponent]
 })

@@ -1,7 +1,7 @@
 <mat-dialog-actions class = full-width-buttons>
     <div class = loader-size>
       <img #preview src="" class = img-size>
-      <input type="file" style="display: none" (change)="initPhoto($event.target.value)" #fileInput>
+      <input type="file" style="display: none" (change)="initPhoto($event)" #fileInput> <!--.value-->
     </div>
     <div>
       <button mat-raised-button (click)="fileInput.click()" class = button>Выбрать фото</button>

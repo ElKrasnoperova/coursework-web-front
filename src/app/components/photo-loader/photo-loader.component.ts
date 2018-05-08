@@ -1,5 +1,6 @@
 import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {Photo} from '../../model/Photo';
+import {PrincipalService} from '../../service/principal.service';
 
 @Component({
   selector: 'app-photo-loader',
@@ -19,22 +20,20 @@ export class PhotoLoaderComponent implements OnInit {
   ngOnInit() {
     if (this.photo !== undefined ) {
       this.showPreview(this.photo.path);
+    } else {
+      this.photo = new Photo();
     }
   }
 
   initPhoto(event): void {
-    if (this.photo === undefined) {
-      this.photo = new Photo();
-    }
     const files = event.target.files;
     const file = files[0];
-    if (file.type.match('image.*')) {
-      const path = this.basePath + this.getFilename(event.target.value, '/');
-      console.log(path);
-      this.photo.path = path;
-      this.showPreview(path);
-      this.photoIsChosen.emit(this.photo);
+    if (!file.type.match('image.*')) {
+      return;
     }
+    this.photo.path = this.basePath + this.getFilename(event.target.value, '\\');
+    this.showPreview(this.photo.path);
+    this.photoIsChosen.emit(this.photo);
   }
 
   getFilename(fakepath: string, separator: string): string {
