@@ -1,7 +1,8 @@
 // TODO Добавить картинки для слайдера
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {IImage} from 'ng-simple-slideshow/src/app/modules/slideshow/IImage';
 import {PrincipalService} from '../../service/principal.service';
+import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 
 @Component({
   selector: 'app-auth-page',
@@ -14,15 +15,7 @@ export class AuthPageComponent  {
     {url: '', href: '/login'}
   ];
 
-  constructor( public  principalService: PrincipalService) { }
-
-  // test() {
-  //   // this.principalService.initUser();
-  // }
-  //
-  // check(): boolean {
-  //   return this.principalService.hasAdminRole();
-  // }
+  constructor() { }
 
 }
 

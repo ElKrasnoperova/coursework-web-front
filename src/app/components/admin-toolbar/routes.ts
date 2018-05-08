@@ -7,10 +7,11 @@ import {AdminPhotoPageComponent} from '../../pages/admin-photo-page/admin-photo-
 
 export const ADMIN_ROUTES = [
   { path: '', redirectTo: 'characters', pathMatch: 'full'},
-  { path: 'character_locations', children: ADMIN_LOCATION_ROUTES},
-  { path: 'characters', component: AdminCharactersPageComponent},
-  { path: 'users', component: AdminUsersPageComponent},
-  { path: 'languages',  children: ADMIN_GAME_ROUTES},
-  { path: 'seasons', children: ADMIN_EPISODE_ROUTES},
-  { path: 'photos', component: AdminPhotoPageComponent},
+
+  { path: 'character_locations',  children:  ADMIN_LOCATION_ROUTES},
+  { path: 'characters',           component: AdminCharactersPageComponent},
+  { path: 'users',                component: AdminUsersPageComponent},
+  { path: 'languages',            children:  ADMIN_GAME_ROUTES},
+  { path: 'seasons',              children:  ADMIN_EPISODE_ROUTES},
+  { path: 'photos',               component: AdminPhotoPageComponent},
 ];

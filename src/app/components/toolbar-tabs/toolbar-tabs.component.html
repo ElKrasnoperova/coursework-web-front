@@ -1,13 +1,14 @@
 <nav mat-tab-nav-bar>
+   <span>
+    <a mat-tab-link *ngIf="!principalService.hasUserRole()"
+       routerLink="/login" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">Главная</a>
+  </span>
   <span *ngFor="let tabLink of tabLinks; let i = index">
-  <a mat-tab-link
+  <a mat-tab-link *ngIf="!(tabLink.label=='Игры' && !principalService.hasUserRole())"
      [routerLink]="tabLink.link"
      routerLinkActive #rla="routerLinkActive"
      [active]="rla.isActive">
     {{tabLink.label}}
   </a>
-  </span>
-  <span>
-    <a mat-tab-link routerLink="login" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">Вход</a>
   </span>
 </nav>

@@ -13,6 +13,7 @@ import {DataService} from '../../../service/data.service';
 import {PlatformLocation} from '@angular/common';
 import {ErrorHandler} from '../../../service/error-handler/error.handler';
 import {isBoolean} from "util";
+import {PrincipalService} from '../../../service/principal.service';
 
 @Component({
   selector: 'app-choose-place-page',
@@ -37,7 +38,8 @@ export class ChoosePlacePageComponent implements OnInit {
               private changeDetectorRefs: ChangeDetectorRef,
               private dataService: DataService,
               location: PlatformLocation,
-              private errorHandler: ErrorHandler) {
+              private errorHandler: ErrorHandler,
+              principalService: PrincipalService) {
       location.onPopState(() => {
         this.saveData();
       });

@@ -2,7 +2,7 @@
   <mat-icon>perm_identity</mat-icon>
 </button>
 <mat-menu #menu="matMenu">
-  <button mat-menu-item routerLink="admin">
+  <button mat-menu-item routerLink="admin" *ngIf="principalService.hasAdminRole()">
     <span>Админка</span>
   </button>
   <button mat-menu-item routerLink="settings">

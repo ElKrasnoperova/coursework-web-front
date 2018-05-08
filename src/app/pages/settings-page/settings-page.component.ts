@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {User} from '../../model/User';
-import {isBoolean} from 'util';
 import {UserService} from '../../service/user.service';
 import {ConfirmActionDialogComponent} from '../../components/confirm-action/confirm-action-dialog';
 

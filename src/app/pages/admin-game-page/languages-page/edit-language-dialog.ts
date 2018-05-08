@@ -5,6 +5,7 @@ import {LanguageService} from '../../../service/language.service';
 import {AdminAddLanguageDialogComponent} from './add-language-dialog';
 import {Photo} from '../../../model/Photo';
 import {ErrorHandler} from '../../../service/error-handler/error.handler';
+import {PrincipalService} from '../../../service/principal.service';
 
 @Component({
   selector: 'app-edit-language-dialog',
@@ -19,7 +20,8 @@ export class AdminEditLanguageDialogComponent implements OnInit {
   }
   constructor (private languageService: LanguageService,
                private dialogRef: MatDialogRef<AdminAddLanguageDialogComponent>,
-               private errorHandler: ErrorHandler) {
+               private errorHandler: ErrorHandler,
+               principalService: PrincipalService) {
   }
   updateLanguage(): void {
     this.languageService.updateLanguage(this.updatedLanguage)

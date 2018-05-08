@@ -3,6 +3,7 @@ import {Episode} from '../../../model/Episode';
 import {Location} from '../../../model/Location';
 import {Router} from '@angular/router';
 import {DataService} from '../../../service/data.service';
+import {PrincipalService} from '../../../service/principal.service';
 
 @Component({
   selector: 'app-choose-episode-page',
@@ -15,7 +16,8 @@ export class ChooseEpisodePageComponent implements OnInit {
   location: Location;
 
   constructor(private router: Router,
-              private dataService: DataService) { }
+              private dataService: DataService,
+              principalService: PrincipalService) { }
 
   ngOnInit() {
     this.location = new Location();

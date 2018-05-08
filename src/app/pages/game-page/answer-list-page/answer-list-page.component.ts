@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {DataService} from '../../../service/data.service';
 import {MatTableDataSource} from '@angular/material';
 import {Character} from '../../../model/Character';
+import {PrincipalService} from '../../../service/principal.service';
 
 @Component({
   selector: 'app-answer-list-page',
@@ -25,7 +26,8 @@ export class AnswerListPageComponent implements OnInit {
 
   constructor(private router: Router,
               private dataService: DataService,
-              private changeDetectorRefs: ChangeDetectorRef) { }
+              private changeDetectorRefs: ChangeDetectorRef,
+              principalService: PrincipalService) { }
 
   ngOnInit() {
     if (this.dataService.answers && this.dataService.results) {

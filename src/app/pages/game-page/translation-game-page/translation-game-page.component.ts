@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {LanguageService} from '../../../service/language.service';
 import {DataService} from '../../../service/data.service';
 import {ErrorHandler} from '../../../service/error-handler/error.handler';
+import {PrincipalService} from '../../../service/principal.service';
 
 @Component({
   selector: 'app-translation-game-page',
@@ -34,7 +35,8 @@ export class TranslationGamePageComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private dataService: DataService,
-              private errorHandler: ErrorHandler) {
+              private errorHandler: ErrorHandler,
+              principalService: PrincipalService) {
     this.languageName = route.snapshot.params['**'];
   }
 

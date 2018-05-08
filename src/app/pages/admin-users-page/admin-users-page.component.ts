@@ -4,6 +4,7 @@ import {SelectionModel} from '@angular/cdk/collections';
 import {User} from '../../model/User';
 import {AdminService} from '../../service/admin.service';
 import {ErrorHandler} from '../../service/error-handler/error.handler';
+import {PrincipalService} from '../../service/principal.service';
 
 @Component({
   selector: 'app-admin-users-page',
@@ -19,7 +20,8 @@ export class AdminUsersPageComponent implements OnInit {
 
   constructor(private userService: AdminService,
               private changeDetectorRefs: ChangeDetectorRef,
-              private errorHandler: ErrorHandler) {
+              private errorHandler: ErrorHandler,
+              principalService: PrincipalService) {
   }
 
   ngOnInit() {

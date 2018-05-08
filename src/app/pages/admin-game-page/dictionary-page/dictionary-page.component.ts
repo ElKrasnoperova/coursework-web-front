@@ -13,6 +13,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {PlatformLocation} from '@angular/common';
 import {ErrorHandler} from '../../../service/error-handler/error.handler';
 import {isBoolean} from "util";
+import {PrincipalService} from '../../../service/principal.service';
 
 @Component({
   selector: 'app-dictionary-page',
@@ -36,7 +37,8 @@ export class DictionaryPageComponent implements OnInit {
               private wordService: WordService,
               private router: Router,
               location: PlatformLocation,
-              private errorHandler: ErrorHandler) {
+              private errorHandler: ErrorHandler,
+              principalService: PrincipalService) {
     location.onPopState(() => {
       this.saveData();
     });

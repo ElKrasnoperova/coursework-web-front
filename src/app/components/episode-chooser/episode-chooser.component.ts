@@ -1,7 +1,7 @@
 // TODO Change color of selected item
 // TODO Make component adaptive
 
-import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Episode} from '../../model/Episode';
 import {EpisodeService} from '../../service/episode.service';
 

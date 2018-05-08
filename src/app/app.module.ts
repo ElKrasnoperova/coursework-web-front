@@ -193,7 +193,6 @@ const materialModules = [
     ReactiveFormsModule,
     BrowserModule,
     StorageServiceModule,
-    // WebStorageService,          //
     AppRoutingModule,
     HttpClientModule,
     HttpModule
@@ -214,7 +213,6 @@ const materialModules = [
     PhotoService,
     BrowserModule,
     StorageServiceModule,
-    // WebStorageService,
     UserAccess,
     AdminAccess,
     AnonAccess

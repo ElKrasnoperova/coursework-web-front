@@ -1,5 +1,4 @@
 <div *ngIf="dataService.character" class=panel-for-map>
-  <!--[ngClass] = "{'invisible': checked === false, 'visible': checked === true}"-->
   <div class = image-for-panel *ngIf="dataService.character.photo">
     <img mat-card-image src={{dataService.character.photo.path}} >
   </div>

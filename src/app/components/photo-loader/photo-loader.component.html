@@ -1,6 +1,6 @@
 <mat-dialog-actions class = full-width-buttons>
     <div class = loader-size>
-      <img #preview src="" class = img-size>
+      <img *ngIf="photo" #preview src={{photo.path}} class = img-size>
       <input type="file" style="display: none" (change)="initPhoto($event)" #fileInput> <!--.value-->
     </div>
     <div>

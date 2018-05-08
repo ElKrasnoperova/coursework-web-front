@@ -10,6 +10,7 @@ import {AdminCharactersEditDialogComponent} from './admin-characters-edit';
 import {ConfirmActionDialogComponent} from '../../components/confirm-action/confirm-action-dialog';
 import {ErrorHandler} from '../../service/error-handler/error.handler';
 import {isBoolean} from 'util';
+import {PrincipalService} from '../../service/principal.service';
 
 
 @Component({
@@ -24,7 +25,8 @@ export class AdminCharactersPageComponent implements OnInit {
   constructor(public  dialog: MatDialog,
               private characterService: CharacterService,
               private changeDetectorRefs: ChangeDetectorRef,
-              private errorHandler: ErrorHandler) {
+              private errorHandler: ErrorHandler,
+              principalService: PrincipalService) {
   }
   characters: Character[];
 

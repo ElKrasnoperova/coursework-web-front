@@ -1,6 +1,7 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Inject, Injectable, OnInit} from '@angular/core';
 import {ErrorHandler} from './error-handler/error.handler';
 import {Http} from '@angular/http';
+import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 
 @Injectable()
 export class PrincipalService implements OnInit {
@@ -11,7 +12,9 @@ export class PrincipalService implements OnInit {
 
   ngOnInit(): void {
   }
-  constructor(private http: Http, private errorHandler: ErrorHandler) {
+  constructor(private http: Http,
+              private errorHandler: ErrorHandler,
+              @Inject(LOCAL_STORAGE) private storage: WebStorageService) {
   }
 
   getPrincipal(): Promise<any> {
@@ -39,25 +42,44 @@ export class PrincipalService implements OnInit {
     roles.forEach( role => {
       switch (role) {
         case 'ROLE_ADMIN':
-          this.isAdmin = true;
+          this.storage.set('isAdmin', true);
           break;
         case 'ROLE_USER':
-          this.isUser = true;
+          this.storage.set('isUser', true);
           break;
       }
     });
   }
 
   hasAdminRole(): boolean {
-    return this.isAdmin;
+    // return true;
+    // console.log(this.storage.get('isAdmin'));
+    return this.storage.get('isAdmin');
+    // return this.storage.get('isAdmin') === 'true';
   }
 
   hasUserRole(): boolean {
-    return this.isAdmin;
+    // return true;
+    // console.log(this.storage.get('isUser'));
+    return this.storage.get('isUser');
+    // return this.storage.get('isUser') === 'true';
+  }
+
+  isNotUser(): boolean {
+    // return false;
+    return this.storage.get('isAdmin') || !this.storage.get('isUser') ;
+    // return !( this.storage.get('isAdmin') || this.storage.get('isUser') );
+    // return true;
+    // console.log(localStorage.getItem('isAdmin'));
+    // return !(localStorage.getItem('isAdmin') === 'true' || localStorage.getItem('isUser') === 'true');
   }
 
   invalidate(): void {
-    this.isAdmin = false;
-    this.isUser = false;
+    this.storage.remove('isAdmin');
+    this.storage.remove('isUser');
+    // this.storage.remove('isAdmin');
+    // this.storage.remove('isUser');
+    // localStorage.removeItem('isAdmin');
+    // localStorage.removeItem('isUser');
   }
 }

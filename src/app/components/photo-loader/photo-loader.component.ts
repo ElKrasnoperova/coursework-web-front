@@ -18,11 +18,6 @@ export class PhotoLoaderComponent implements OnInit {
 
   constructor() { }
   ngOnInit() {
-    if (this.photo !== undefined ) {
-      this.showPreview(this.photo.path);
-    } else {
-      this.photo = new Photo();
-    }
   }
 
   initPhoto(event): void {
@@ -31,18 +26,15 @@ export class PhotoLoaderComponent implements OnInit {
     if (!file.type.match('image.*')) {
       return;
     }
+
+    this.photo = new Photo();
     this.photo.path = this.basePath + this.getFilename(event.target.value, '\\');
-    this.showPreview(this.photo.path);
     this.photoIsChosen.emit(this.photo);
   }
 
-  getFilename(fakepath: string, separator: string): string {
+  private getFilename(fakepath: string, separator: string): string {
     const start = fakepath.lastIndexOf(separator) + 1;
     const  end = fakepath.length;
     return fakepath.substring(start, end);
-  }
-
-  showPreview(fullpath: string) {
-    this.preview.nativeElement.setAttribute('src', fullpath);
   }
 }

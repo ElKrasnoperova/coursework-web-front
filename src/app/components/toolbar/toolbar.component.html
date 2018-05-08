@@ -3,7 +3,7 @@
     <img src="../assets/img/logo_white.png" class="logo" routerLink="">
     <span routerLink="">Game of thrones</span>
     <span class="example-spacer"></span>
-    <app-toolbar-menu></app-toolbar-menu>
+    <app-toolbar-menu *ngIf="principalService.hasUserRole()"></app-toolbar-menu>
   </mat-toolbar-row>
 </mat-toolbar>
 <div>

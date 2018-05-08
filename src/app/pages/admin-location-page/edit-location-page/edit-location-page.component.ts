@@ -12,6 +12,7 @@ import {DataService} from '../../../service/data.service';
 import {Router} from '@angular/router';
 import {ErrorHandler} from '../../../service/error-handler/error.handler';
 import {isBoolean} from "util";
+import {PrincipalService} from '../../../service/principal.service';
 
 @Component({
   selector: 'app-edit-location-page',
@@ -32,7 +33,8 @@ export class EditLocationPageComponent implements OnInit {
               private locationService: LocationService,
               private dataService: DataService,
               private router: Router,
-              private errorHandler: ErrorHandler) { }
+              private errorHandler: ErrorHandler,
+              principalService: PrincipalService) { }
 
   ngOnInit() {
     if (this.dataService.location && this.dataService.location.place) {
