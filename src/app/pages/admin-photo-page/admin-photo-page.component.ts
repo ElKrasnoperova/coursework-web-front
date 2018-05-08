@@ -48,7 +48,7 @@ export class AdminPhotoPageComponent implements OnInit {
   openAddDialog(): void {
     this.dialog
       .open(AdminPhotoAddDialogComponent, {
-        height: '50%', width: '40%'
+        height: '50%', width: '30%'
       })
       .afterClosed().subscribe(result => {
         if (result && !isBoolean(result)) {

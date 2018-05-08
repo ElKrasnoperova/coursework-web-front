@@ -25,7 +25,7 @@
 }
 
 .full-width-buttons {
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
   margin-top: 16px;

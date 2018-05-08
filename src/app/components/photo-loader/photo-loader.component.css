@@ -1,14 +1,19 @@
 .img-size {
-  width: 90%;
-  height: 40%;
+  height: 100%;
 }
 
 .loader-size {
-  /*width: 50%;*/
-  height: 40%;
+  height: 333px;
+  width: 232px;
+}
+
+.mat-dialog-actions {
+  padding: 12px 0;
+  display: block;
+  margin-bottom: -24px;
 }
 
 .button {
+  margin-top: 8px;
   position: relative;
 }
-
