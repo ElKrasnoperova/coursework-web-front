@@ -6,7 +6,7 @@ export class Character {
   name:                     string;
   birthYear:                number;
   faith:                    string;
-  organization:             string;
+  description:             string;
   firstEpisode:             Episode;
   lastEpisode:              Episode;
   photo:                    Photo;

@@ -1,7 +1,7 @@
 <div class = "container">
   <mat-card class = "example-card-hero">
       <form *ngIf="character">
-        <img *ngIf="character.photo" mat-card-lg-image src = "{{character.photo.path}}" align="right" class="img-for-card">
+          <img *ngIf="character.photo" mat-card-lg-image src = "{{character.photo.path}}" align="right" class="img-for-card">
         <mat-card-title class = "character-name">{{character.name}}</mat-card-title>
         <mat-card-subtitle>{{character.birthYear}} год после Э.З.</mat-card-subtitle>
         <div class = text-row>
@@ -10,8 +10,8 @@
         <div class = "text-row">
           <p class="title">Вера&nbsp;</p> <p>{{character.faith}}</p>
         </div>
-        <div class = "text-row">
-          <p class="title">Организация&nbsp;</p><p>{{character.organization}}</p>
+        <div>
+          <p class="title">Описание&nbsp;</p><p>{{character.description}}</p>
         </div>
       </form>
   </mat-card>

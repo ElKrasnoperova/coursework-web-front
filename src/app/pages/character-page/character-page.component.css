@@ -6,10 +6,9 @@
 }
 
 .up-down-buttons {
-  margin-left: 48px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  position: fixed;
+  left: 65%;
+  top: 35%;
 }
 
 .button-column{
