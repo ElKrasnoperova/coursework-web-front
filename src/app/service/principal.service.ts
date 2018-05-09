@@ -54,14 +54,16 @@ export class PrincipalService implements OnInit {
   hasAdminRole(): boolean {
     // return true;
     // console.log(this.storage.get('isAdmin'));
-    return this.storage.get('isAdmin');
+    return true;
+    // return this.storage.get('isAdmin');
     // return this.storage.get('isAdmin') === 'true';
   }
 
   hasUserRole(): boolean {
     // return true;
     // console.log(this.storage.get('isUser'));
-    return this.storage.get('isUser');
+    // return this.storage.get('isUser');
+    return true;
     // return this.storage.get('isUser') === 'true';
   }
 

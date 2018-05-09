@@ -1,12 +1,15 @@
+
+  <p *ngIf="location" class = table-title>
+    Эпизод: Сезон {{location.episode.season.episodeNumber}} серия {{location.episode.episodeNumber}} <br>
+    Локация: {{location.place.name}}
+  </p>
+
+
+
 <div class="container-for-admin-location mat-elevation-z8">
 <button mat-icon-button class = add-location-button (click)="addLocation()">
 <mat-icon>add</mat-icon>
 </button>
-
-  <p *ngIf="location">
-    Эпизод: Сезон {{location.episode.season.episodeNumber}} серия {{location.episode.episodeNumber}}.
-    Локация: {{location.place.name}}
-  </p>
 
 <mat-table #table [dataSource]="dataSource_locations">
   <ng-container matColumnDef="select">

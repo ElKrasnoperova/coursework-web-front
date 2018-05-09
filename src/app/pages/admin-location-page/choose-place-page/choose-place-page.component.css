@@ -23,3 +23,10 @@
 .mat-column-select {
   overflow: visible;
 }
+
+.table-title{
+  font-weight: bold;
+  margin-left: 34px;
+  margin-top: 24px;
+  font-size: 18px;
+}
