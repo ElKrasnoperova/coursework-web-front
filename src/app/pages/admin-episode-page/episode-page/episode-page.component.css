@@ -23,3 +23,12 @@
 mat-cell, mat-header-cell {
   overflow: visible;
 }
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.mat-column-select {
+  overflow: visible;
+}

@@ -3,15 +3,13 @@ import {Location} from '../../../model/Location';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatDialog, MatTableDataSource} from '@angular/material';
 import {AdminAddLocationDialogComponent} from './add-location-dialog';
-import {Place} from '../../../model/Place';
 import {LocationService} from '../../../service/location.service';
 import {AdminEditLocationDialogComponent} from './edit-location-dialog';
 import {ConfirmActionDialogComponent} from '../../../components/confirm-action/confirm-action-dialog';
-import {Character} from '../../../model/Character';
 import {DataService} from '../../../service/data.service';
 import {Router} from '@angular/router';
 import {ErrorHandler} from '../../../service/error-handler/error.handler';
-import {isBoolean} from "util";
+import {isBoolean} from 'util';
 import {PrincipalService} from '../../../service/principal.service';
 
 @Component({

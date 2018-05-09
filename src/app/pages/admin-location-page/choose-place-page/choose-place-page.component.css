@@ -23,3 +23,13 @@
 .mat-column-select {
   overflow: visible;
 }
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.column-dialog {
+  display: flex;
+  flex-direction: row;
+}
