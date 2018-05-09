@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Language} from '../../model/Language';
 import {LanguageService} from '../../service/language.service';
 import {ErrorHandler} from '../../service/error-handler/error.handler';
+import {PrincipalService} from '../../service/principal.service';
 
 @Component({
   selector: 'app-game-page',
@@ -15,7 +16,8 @@ export class GamePageComponent implements OnInit {
     this.getLanguages();
   }
   constructor(private languageService: LanguageService,
-              private errorHandler: ErrorHandler) { }
+              private errorHandler: ErrorHandler,
+              principalService: PrincipalService) { }
   getLanguages() {
     this.languageService.getLanguages()
       .then(items => {

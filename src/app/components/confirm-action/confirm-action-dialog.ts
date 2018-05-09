@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {PrincipalService} from '../../service/principal.service';
 
 @Component({
   selector: 'app-confirm-of-action-dialog',
@@ -7,6 +8,6 @@ import {Component, OnInit} from '@angular/core';
 export class ConfirmActionDialogComponent implements OnInit{
   ngOnInit(): void {
   }
-  constructor() {
+  constructor(public principalService: PrincipalService) {
   }
 }

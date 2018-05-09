@@ -1,9 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Episode} from '../../model/Episode';
-import {Location} from '../../model/Location';
-import {LocationService} from '../../service/location.service';
-import {Character} from '../../model/Character';
-import {DataService} from '../../service/data.service';
+import {PrincipalService} from '../../service/principal.service';
 
 @Component({
   selector: 'app-panel-for-map',
@@ -14,8 +11,7 @@ export class PanelForMapComponent implements OnInit {
 
   @Output() episodeSelected: EventEmitter<Episode> = new EventEmitter<Episode>();
 
-
-  constructor() {
+  constructor(public principalService: PrincipalService) {
   }
 
   ngOnInit() {

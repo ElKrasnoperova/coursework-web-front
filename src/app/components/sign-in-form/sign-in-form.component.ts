@@ -1,24 +1,11 @@
 
-import {Component, Directive, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {
-  AbstractControl, FormControl, FormGroup, FormGroupDirective, NG_VALIDATORS, NgForm, Validator, ValidatorFn,
-  Validators
-} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../model/User';
-import {Episode} from '../../model/Episode';
 import {UserService} from '../../service/user.service';
 import {ErrorHandler} from '../../service/error-handler/error.handler';
 
-/** Error when invalid control is dirty, touched, or submitted. */
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return (control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
 
-/** @title Input with a custom ErrorStateMatcher */
 @Component({
   selector: 'app-sign-in-form',
   templateUrl: 'sign-in-form.component.html',
@@ -28,28 +15,26 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class SignInFormComponent implements OnInit {
   hide = true;
 
+  form: FormGroup;
+
   user: User;
   @Output() dataChanged: EventEmitter<User> = new EventEmitter<User>();
 
-  usernameControl = new FormControl('', [
-    Validators.required
-  ]);
-  passwordControl = new FormControl('', [
-    Validators.required
-  ]);
-
-  constructor(private  userService: UserService, private errorHandler: ErrorHandler){ }
+  constructor(private  userService: UserService,
+              private  errorHandler: ErrorHandler,
+              private  formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.user = new User();
+    this.form = this.formBuilder.group({
+      username: [null, [Validators.required]],
+      password: [null, [Validators.required]]
+    });
   }
 
   signin() {
+    console.log(this.user);
     this.userService.signin(this.user)
       .catch( err => this.errorHandler.handleError(err));
-  }
-
-  passData(): void {
-    this.dataChanged.emit(this.user);
   }
 }

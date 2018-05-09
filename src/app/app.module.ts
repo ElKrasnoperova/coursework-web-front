@@ -190,7 +190,7 @@ const materialModules = [
     SlideshowModule,
     ReactiveFormsModule,
     BrowserModule,
-    // WebStorageService,          //
+    StorageServiceModule,
     AppRoutingModule,
     HttpClientModule,
     HttpModule
@@ -210,7 +210,10 @@ const materialModules = [
     PrincipalService,
     PhotoService,
     BrowserModule,
-    // WebStorageService,
+    StorageServiceModule,
+    UserAccess,
+    AdminAccess,
+    AnonAccess
   ],
   bootstrap: [AppComponent]
 })

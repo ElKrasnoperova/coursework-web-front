@@ -1,7 +1,10 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {UserService} from '../../service/user.service';
 import {User} from '../../model/User';
-import {FormControl, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {PrincipalService} from '../../service/principal.service';
+import {Router} from '@angular/router';
+import {DataService} from '../../service/data.service';
 
 @Component({
   selector: 'app-sign-up-form',
@@ -11,29 +14,37 @@ import {FormControl, Validators} from '@angular/forms';
 export class SignUpFormComponent implements OnInit {
   hide = true;
 
+  form: FormGroup;
+
   user: User;
   @Output() dataChanged: EventEmitter<User> = new EventEmitter<User>();
 
-  isUsernameAvailable = true;
-  isTelegramAvailable = true;
-  isEmailAvailable    = true;
+  usernameIsAvailable = true;
+  telegramIsAvailable = true;
+  emailIsAvailable    = true;
 
-  username = new FormControl('', [
-    Validators.required
-  ]);
+  contactsIsNotSpecified = true ;
 
-  constructor(private userService: UserService) {
+  constructor(private userService:  UserService,
+              private formBuilder: FormBuilder,
+              private router: Router,
+              private dataService: DataService) {
   }
 
   ngOnInit() {
     this.user = new User();
+    this.form = this.formBuilder.group({
+      name:     [null, [Validators.required]],
+      username: [null, [Validators.required]],
+      password: [null, [Validators.required]]
+    });
   }
 
   checkUsername() {
     if (this.user.login) {
       this.userService.checkUsername(this.user.login)
         .then(result => {
-          this.isUsernameAvailable = result;
+          this.usernameIsAvailable = result;
         });
     }
   }
@@ -42,7 +53,7 @@ export class SignUpFormComponent implements OnInit {
     if (this.user.telegram) {
       this.userService.checkTelegram(this.user.telegram)
         .then(result => {
-          this.isTelegramAvailable = result;
+          this.telegramIsAvailable = result;
         });
     }
   }
@@ -51,13 +62,22 @@ export class SignUpFormComponent implements OnInit {
     if (this.user.email) {
       this.userService.checkEmail(this.user.email)
         .then(result => {
-          this.isEmailAvailable = result;
+          this.emailIsAvailable = result;
         });
     }
   }
 
-  passData(): void {
-    this.dataChanged.emit(this.user);
+  checkContacts() {
+    this.contactsIsNotSpecified = this.user.email == null && this.user.telegram == null;
+  }
+
+  signup(): void {
+    console.log(this.user);
+    this.userService.signup(this.user)
+      .then(newUser => {
+        this.dataService.user = newUser;
+        this.router.navigate(['/welcome']);
+      });
   }
 }
 

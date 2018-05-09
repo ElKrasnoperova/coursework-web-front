@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
 import {DataService} from '../../../service/data.service';
 import {ErrorHandler} from '../../../service/error-handler/error.handler';
 import {isBoolean} from "util";
+import {PrincipalService} from '../../../service/principal.service';
 
 @Component({
   selector: 'app-languages-page',
@@ -32,7 +33,8 @@ export class LanguagesPageComponent implements OnInit {
               private languageService: LanguageService,
               private wordService: WordService,
               private router: Router,
-              private errorHandler: ErrorHandler) {
+              private errorHandler: ErrorHandler,
+              principalService: PrincipalService) {
   }
 
   ngOnInit() {

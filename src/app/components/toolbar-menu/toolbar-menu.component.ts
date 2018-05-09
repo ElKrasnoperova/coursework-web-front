@@ -3,6 +3,7 @@ import {ConfirmActionDialogComponent} from '../confirm-action/confirm-action-dia
 import {UserService} from '../../service/user.service';
 import {ErrorHandler} from '../../service/error-handler/error.handler';
 import {MatDialog} from '@angular/material';
+import {PrincipalService} from '../../service/principal.service';
 
 @Component({
   selector: 'app-toolbar-menu',
@@ -13,7 +14,8 @@ export class ToolbarMenuComponent implements OnInit {
 
   constructor( public dialog: MatDialog,
                private userService: UserService,
-               private errorHandler: ErrorHandler) { }
+               private errorHandler: ErrorHandler,
+               public principalService: PrincipalService) { }
 
   ngOnInit() {
   }

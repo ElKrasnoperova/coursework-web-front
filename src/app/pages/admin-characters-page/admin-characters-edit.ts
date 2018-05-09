@@ -7,6 +7,7 @@ import {HttpClient} from '@angular/common/http';
 import {Photo} from '../../model/Photo';
 import {Episode} from '../../model/Episode';
 import {ErrorHandler} from '../../service/error-handler/error.handler';
+import {PrincipalService} from '../../service/principal.service';
 
 @Component({
   selector: 'app-admin-character-edit-dialog',
@@ -21,7 +22,8 @@ export class AdminCharactersEditDialogComponent implements OnInit {
   }
   constructor(private characterService: CharacterService,
               private dialogRef: MatDialogRef<AdminCharactersAddDialogComponent>,
-              private errorHandler: ErrorHandler) {
+              private errorHandler: ErrorHandler,
+              principalService: PrincipalService) {
   }
   updateCharacter(): void {
     this.characterService.updateCharacter(this.updatedCharacter)

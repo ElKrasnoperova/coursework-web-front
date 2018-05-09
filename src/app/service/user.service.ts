@@ -4,14 +4,18 @@ import {User} from '../model/User';
 import {ErrorHandler} from './error-handler/error.handler';
 import {HttpHeaders} from '@angular/common/http';
 import {PrincipalService} from './principal.service';
+import {Router} from '@angular/router';
+import {DataService} from './data.service';
 
 @Injectable()
 export class UserService {
   private baseUrl = 'http://localhost:4200/api';
 
   constructor(private http: Http,
+              private router: Router,
               private errorHandler: ErrorHandler,
-              private principalService: PrincipalService) { }
+              private principalService: PrincipalService,
+              private dataService: DataService){ }
 
   checkUsername(login: string): Promise<boolean> {
     return this.http.post(`${this.baseUrl}/signup/check/username`, login)
@@ -42,6 +46,18 @@ export class UserService {
     return this.http.post(`${this.baseUrl}/login`, body, options)
       .toPromise()
       .then(() => this.principalService.initUser())
+      .then(() => this.router.navigate(['/home']))
+      .catch(this.errorHandler.handleResponse);
+  }
+
+  signup(user: User): Promise<any> {
+    return this.http.post(`${this.baseUrl}/signup`, user)
+      .toPromise()
+      // .then(response => response.json() as User)
+      // .then(newUser => {
+      //   this.dataService.user = new User();
+      //   this.router.navigate(['/welcome']);
+      // })
       .catch(this.errorHandler.handleResponse);
   }
 
@@ -52,6 +68,7 @@ export class UserService {
     return this.http.post(`${this.baseUrl}/logout`, options)
       .toPromise()
       .then(() => this.principalService.invalidate())
+      .then(() => this.router.navigate(['/login']))
       .catch(this.errorHandler.handleResponse);
   }
 

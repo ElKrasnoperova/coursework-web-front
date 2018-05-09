@@ -3,6 +3,7 @@ import {Episode} from '../../model/Episode';
 import {LocationService} from '../../service/location.service';
 import {Location} from '../../model/Location';
 import {DataService} from '../../service/data.service';
+import {PrincipalService} from '../../service/principal.service';
 
 @Component({
   selector: 'app-map-page',
@@ -17,7 +18,8 @@ export class MapPageComponent implements OnInit {
 
   constructor(private renderer: Renderer2,
               private dataService: DataService,
-              private locationService: LocationService) { }
+              private locationService: LocationService,
+              public principalService: PrincipalService) { }
 
   ngOnInit() {
     this.iconLayer = this.renderer.createElement('div');

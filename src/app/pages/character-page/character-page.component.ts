@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {PlatformLocation} from '@angular/common';
 import {DataService} from '../../service/data.service';
 import {ErrorHandler} from '../../service/error-handler/error.handler';
+import {PrincipalService} from '../../service/principal.service';
 
 @Component({
   selector: 'app-character-page',
@@ -24,7 +25,8 @@ export class CharacterPageComponent implements OnInit {
               private characterService: CharacterService,
               private dataService: DataService,
               private location: PlatformLocation,
-              private errorHandler: ErrorHandler) {
+              private errorHandler: ErrorHandler,
+              principalService: PrincipalService) {
       location.onPopState(() => this.resetMapData());
   }
 

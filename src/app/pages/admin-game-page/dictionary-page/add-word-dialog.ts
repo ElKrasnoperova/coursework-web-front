@@ -5,6 +5,7 @@ import {MatDialogRef} from '@angular/material';
 import {WordService} from '../../../service/word.service';
 import {Word} from '../../../model/Word';
 import {ErrorHandler} from '../../../service/error-handler/error.handler';
+import {PrincipalService} from '../../../service/principal.service';
 
 @Component({
   selector: 'app-add-word-dialog',
@@ -17,7 +18,8 @@ export class AdminAddWordDialogComponent implements OnInit {
   constructor(private http: Http,
               private dialogRef: MatDialogRef<AdminAddWordDialogComponent>,
               private wordService: WordService,
-              private errorHandler: ErrorHandler) {
+              private errorHandler: ErrorHandler,
+              principalService: PrincipalService) {
     this.newWord = new Word();
   }
   ngOnInit(): void {

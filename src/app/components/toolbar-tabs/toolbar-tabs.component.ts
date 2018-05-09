@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PrincipalService} from '../../service/principal.service';
 
 @Component({
   selector: 'app-toolbar-tabs',
@@ -11,7 +12,7 @@ export class ToolbarTabsComponent implements OnInit {
     {label: 'Карта', link: 'map'},
     {label: 'Игры', link: 'games'}
   ];
-  constructor() { }
+  constructor(public principalService: PrincipalService) { }
 
   ngOnInit() {
   }

@@ -2,7 +2,7 @@
 
   <div>
     <mat-slide-toggle color = "primary"><p class = title>Режим навигации</p></mat-slide-toggle>
-    <div class=full-width>
+    <div class=full-width *ngIf="principalService.hasUserRole()">
       <app-episode-chooser (episodeSelected)="passData($event)"></app-episode-chooser>
     </div>
   </div>
