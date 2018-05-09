@@ -12,7 +12,9 @@ import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 export class AuthPageComponent  {
 
   public imageSources: IImage[] = [
-    {url: '', href: '/login'}
+    {url: '../../../assets/img/slider1.jpg', href: '/login'},
+    {url: '../../../assets/img/slider2.jpg', href: '/login'},
+    {url: '../../../assets/img/slider3.jpg', href: '/login'},
   ];
 
   constructor() { }

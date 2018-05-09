@@ -6,11 +6,11 @@ export const GAME_ROUTES = [
   // {
   //   path: ':languageName',
   //   component: TranslationGamePageComponent
-    // children: [
-    //   {
-    //     path: 'results',
-    //     component: AnswerListPageComponent
-    //   }
-    // ]
+  //   children: [
+  //     {
+  //       path: 'results',
+  //       component: AnswerListPageComponent
+  //     }
+  //   ]
   // }
 ];
