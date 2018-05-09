@@ -32,3 +32,6 @@ h1.example-app-name {
   flex: 1 0 auto;
 }
 
+.sidenav {
+  box-shadow: 1px 1px 1px gray;
+}
