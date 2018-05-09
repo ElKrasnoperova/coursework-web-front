@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
 import {Character} from '../../model/Character';
 
 @Component({
@@ -8,10 +8,12 @@ import {Character} from '../../model/Character';
 })
 export class CharacterCardComponent implements OnInit {
 
-  @Input() character: Character;
-  constructor() { }
+  @Input()  character: Character;
 
+  constructor() {
+  }
   ngOnInit() {
   }
-
 }
+
+

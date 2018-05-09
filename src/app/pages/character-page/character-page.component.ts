@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {Character} from '../../model/Character';
 import {CharacterService} from '../../service/character.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -6,6 +6,7 @@ import {PlatformLocation} from '@angular/common';
 import {DataService} from '../../service/data.service';
 import {ErrorHandler} from '../../service/error-handler/error.handler';
 import {PrincipalService} from '../../service/principal.service';
+import {KEY_CODE} from '../../model/key-code';
 
 @Component({
   selector: 'app-character-page',
@@ -86,4 +87,24 @@ export class CharacterPageComponent implements OnInit {
     }
   }
 
+  arrowUp() {
+    this.setCharacter(this.nextCharacter);
+    console.log('up');
+    this.router.navigate([['/characters'], this.nextCharacter.id]);
+  }
+
+  arrowDown() {
+    this.setCharacter(this.previousCharacter);
+    this.router.navigate([['/characters'], this.previousCharacter.id]);
+  }
+
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    if (event.keyCode === KEY_CODE.ARROW_UP) {
+      this.arrowUp();
+    }
+    if (event.keyCode === KEY_CODE.ARROW_DOWN) {
+      this.arrowDown();
+    }
+  }
 }

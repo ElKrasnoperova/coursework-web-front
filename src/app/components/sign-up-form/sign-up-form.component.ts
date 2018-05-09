@@ -1,10 +1,11 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
 import {UserService} from '../../service/user.service';
 import {User} from '../../model/User';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {PrincipalService} from '../../service/principal.service';
 import {Router} from '@angular/router';
 import {DataService} from '../../service/data.service';
+import {KEY_CODE} from '../../model/key-code';
 
 @Component({
   selector: 'app-sign-up-form',
@@ -78,6 +79,13 @@ export class SignUpFormComponent implements OnInit {
         this.dataService.user = newUser;
         this.router.navigate(['/welcome']);
       });
+  }
+
+  validate(event): boolean {
+    return (event.keyCode >= KEY_CODE.DIGIT_0 && event.keyCode <= KEY_CODE.DIGIT_9)
+      || (event.keyCode >= KEY_CODE.LATIN_A && event.keyCode <= KEY_CODE.LATIN_Z)
+      || (event.keyCode >= KEY_CODE.LATIN_a && event.keyCode <= KEY_CODE.LATIN_z)
+      || event.keyCode === KEY_CODE.UNDERLINE;
   }
 }
 

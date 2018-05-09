@@ -1,42 +1,47 @@
 <div class = center-orient>
   <p class = "section-title">Настройки</p>
   <mat-card class = settings-section>
-    <form>
+    <form *ngIf="updatedUser">
       <mat-label class = section-label> Личные данные </mat-label>
 
       <mat-form-field class="full-width">
-        <label class="mat-tab-label"> Имя
-            <input matInput name="name" [(ngModel)]="user.name">
+        <label class="mat-tab-label title"> Имя
+            <input matInput name="name" [(ngModel)]="updatedUser.name" class="in">
         </label>
       </mat-form-field>
 
       <mat-form-field class="full-width">
-        <label class="mat-tab-label"> Логин
-          <input matInput name="login" [(ngModel)]="user.login">
+        <label class="mat-tab-label title"> Логин
+          <input matInput name="login" [(ngModel)]="updatedUser.login" class="in">
         </label>
       </mat-form-field>
 
       <mat-label class = section-label> Контактная информация </mat-label>
 
       <mat-form-field class="full-width">
-        <label class="mat-tab-label"> Телеграм
-          <input matInput name="telegram" [(ngModel)]="user.telegram">
+        <label class="mat-tab-label title"> Телеграм
+          <input matInput name="telegram" [(ngModel)]="updatedUser.telegram" class="in">
         </label>
       </mat-form-field>
 
       <mat-form-field class="full-width">
-        <label class="mat-tab-label"> Электронный адрес
-          <input matInput name="email" [(ngModel)]="user.email">
+        <label class="mat-tab-label title"> Электронный адрес
+          <input matInput name="email" [(ngModel)]="updatedUser.email" class="in">
         </label>
       </mat-form-field>
 
       <mat-label class = section-label> Безопасность </mat-label>
 
-      <mat-form-field class="full-width">
-        <label class="mat-tab-label"> Новый пароль</label>
-        <input matInput [type]="hide ? 'password' : 'text'" name="password" [(ngModel)]="user.password">
-        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-      </mat-form-field>
+      <div>
+        <br>
+        <label class="mat-tab-label title" for="password"> Новый пароль</label>
+        <mat-form-field class="full-width">
+          <input matInput [type]="hide ? 'password' : 'text'"
+                 id="password" name="password" [(ngModel)]="updatedUser.password">
+          <mat-icon  matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </mat-form-field>
+      </div>
+
     </form>
   </mat-card>
 

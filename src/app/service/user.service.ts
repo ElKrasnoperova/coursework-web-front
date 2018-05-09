@@ -72,8 +72,15 @@ export class UserService {
       .catch(this.errorHandler.handleResponse);
   }
 
+  getUser(): Promise<User> {
+    return this.http.get(`${this.baseUrl}/user`)
+      .toPromise()
+      .then(response => response.json() as User)
+      .catch(this.errorHandler.handleResponse);
+  }
+
   updateUser(updatedUser: User): Promise<User> {
-    return this.http.put(`${this.baseUrl}/signup/check/email`, updatedUser)
+    return this.http.put(`${this.baseUrl}/user/update`, updatedUser)
       .toPromise()
       .then(response => response.json() as User)
       .catch(this.errorHandler.handleResponse);

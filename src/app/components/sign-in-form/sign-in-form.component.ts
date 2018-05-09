@@ -1,5 +1,5 @@
 
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../model/User';
 import {UserService} from '../../service/user.service';
@@ -18,7 +18,8 @@ export class SignInFormComponent implements OnInit {
   form: FormGroup;
 
   user: User;
-  @Output() dataChanged: EventEmitter<User> = new EventEmitter<User>();
+
+  @ViewChild('button') button: ElementRef;
 
   constructor(private  userService: UserService,
               private  errorHandler: ErrorHandler,

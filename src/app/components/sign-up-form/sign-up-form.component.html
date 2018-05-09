@@ -5,19 +5,19 @@
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Имя пользователя *" name="username" [(ngModel)]="user.login" (input)="checkUsername()"
+    <input matInput placeholder="Имя пользователя *" name="username" [(ngModel)]="user.login"
+           (keypress)="validate($event)"
+           (input)="checkUsername()"
            formControlName="username">
-    <!--[formControl]="username"-->
   </mat-form-field>
   <mat-error *ngIf="!usernameIsAvailable" class="error">
     Имя пользователя занято
   </mat-error>
-  <!--<mat-error *ngIf="username.dirty && username.hasError('required')" class="error">-->
-    <!--Введите имя пользователя-->
-  <!--</mat-error>-->
 
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Telegram" name="telegram" [(ngModel)]="user.telegram" (input)="checkTelegram()"
+    <input matInput placeholder="Telegram" name="telegram" [(ngModel)]="user.telegram"
+           (keypress)="validate($event)"
+           (input)="checkTelegram()"
            (change)="checkContacts()"
            [ngModelOptions]="{standalone: true}">
   </mat-form-field>

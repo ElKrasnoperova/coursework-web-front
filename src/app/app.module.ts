@@ -84,6 +84,10 @@ import { ToolbarTabsComponent } from './components/toolbar-tabs/toolbar-tabs.com
 import {PhotoService} from './service/photo.service';
 import {PreviewPhotoDialogComponent} from './pages/admin-photo-page/preview-photo-dialog.component';
 import { AfterSignupPageComponent } from './pages/after-signup-page/after-signup-page.component';
+import {StorageServiceModule} from 'angular-webstorage-service';
+import {AnonAccess} from './service/url-access-handler/anon-access';
+import {UserAccess} from './service/url-access-handler/user-access';
+import {AdminAccess} from './service/url-access-handler/admin-access';
 
 
 const materialModules = [
