@@ -30,3 +30,13 @@
   margin-top: 24px;
   font-size: 18px;
 }
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.column-dialog {
+  display: flex;
+  flex-direction: row;
+}

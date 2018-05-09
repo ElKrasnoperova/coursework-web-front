@@ -36,3 +36,17 @@ mat-cell, mat-header-cell {
   font-weight: bold;
   font-size: 18px;
 }
+
+.column-dialog {
+  display: flex;
+  flex-direction: row;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.mat-column-select {
+  overflow: visible;
+}

@@ -24,6 +24,11 @@
   overflow: visible;
 }
 
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
 .table-title{
   font-weight: bold;
   margin-left: 34px;

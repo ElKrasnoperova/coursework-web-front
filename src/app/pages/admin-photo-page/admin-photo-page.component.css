@@ -34,3 +34,14 @@
 .loader-center {
   margin-left: 8%;
 }
+
+
+.column-dialog {
+  display: flex;
+  flex-direction: row;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}

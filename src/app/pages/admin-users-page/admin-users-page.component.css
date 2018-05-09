@@ -32,3 +32,8 @@
 .not-admin {
   color: red;
 }
+
+.column-dialog {
+  display: flex;
+  flex-direction: row;
+}

@@ -11,7 +11,7 @@
 <mat-icon>add</mat-icon>
 </button>
 
-<mat-table #table [dataSource]="dataSource_locations">
+<mat-table #table [dataSource]="dataSource_locations" class="mat-table">
   <ng-container matColumnDef="select">
   <mat-header-cell *matHeaderCellDef>
   <mat-checkbox (change)="$event ? masterToggle_locations() : null"

@@ -10,7 +10,7 @@ import {DataService} from '../../../service/data.service';
 import {Router} from '@angular/router';
 import {PlatformLocation} from '@angular/common';
 import {ErrorHandler} from '../../../service/error-handler/error.handler';
-import {isBoolean} from "util";
+import {isBoolean} from 'util';
 import {PrincipalService} from '../../../service/principal.service';
 
 @Component({
